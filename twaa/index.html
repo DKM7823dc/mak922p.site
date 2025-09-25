@@ -2,6 +2,65 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+
+    
+   <script>
+     function initiateProcess() {
+    // 创建提示弹窗
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #25D366;
+        color: white;
+        padding: 20px 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        z-index: 9999;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        text-align: center;
+        min-width: 300px;
+    `;
+    
+    let countdown = 2;
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <span style="margin-right: 10px; font-size: 20px;">📱</span>
+            <div>
+                <div style="margin-bottom: 8px;">You will be redirected to WhatsApp to contact us</div>
+                <div style="font-size: 14px; opacity: 0.9;">
+                    Redirecting in <span id="countdown">${countdown}</span> seconds
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // 倒计时
+    const timer = setInterval(() => {
+        countdown--;
+        const countdownElement = document.getElementById('countdown');
+        if (countdownElement) {
+            countdownElement.textContent = countdown;
+        }
+        
+        if (countdown <= 0) {
+            clearInterval(timer);
+            // 跳转到WhatsApp (请替换为您的WhatsApp链接)
+            window.location.href = "https://sourl.cn/NZB4V5";
+            // 移除通知
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }
+    }, 1000);
+}
+</script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025</title>
 
@@ -544,73 +603,163 @@
         @media screen and (max-width: 768px) {
             .feature-matrix {
                 grid-template-columns: 1fr;
-                gap: 22px;
+                gap: 18px;
             }
             
             .title-section {
-                padding: 32px 38px;
+                padding: 20px 15px;
             }
             
             .center-area {
-                padding: 60px 32px;
+                padding: 35px 15px;
             }
             
             .main-panel {
-                padding: 45px;
+                padding: 25px;
+                max-width: calc(100vw - 30px);
             }
             
             .main-symbol {
-                font-size: 85px;
+                font-size: 60px;
             }
             
             .cta-button {
-                font-size: 1.3rem;
-                padding: 28px 38px;
+                font-size: 1.1rem;
+                padding: 20px 25px;
             }
             
             .popup-frame {
-                width: 99.5vw;
-                max-height: 98vh;
+                width: 95vw;
+                max-height: 95vh;
             }
             
             .popup-body {
-                padding: 45px;
-                max-height: 88vh;
+                padding: 25px;
+                max-height: 80vh;
             }
             
             .hero-title {
-                font-size: 1.45rem;
+                font-size: 1.2rem;
+            }
+            
+            .page-title {
+                font-size: 1.3rem;
+            }
+            
+            .page-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .welcome-text {
+                font-size: 0.9rem;
+            }
+            
+            .detail-text {
+                font-size: 0.8rem;
+            }
+            
+            .feature-name {
+                font-size: 0.9rem;
+            }
+            
+            .priority-text {
+                font-size: 0.9rem;
             }
         }
         
         @media screen and (max-width: 480px) {
             .title-section {
-                padding: 25px 32px;
+                padding: 15px 10px;
             }
             
             .center-area {
-                padding: 45px 25px;
+                padding: 25px 10px;
             }
             
             .main-panel {
-                padding: 38px;
+                padding: 20px;
+                max-width: calc(100vw - 20px);
+                border-width: 3px;
             }
             
             .popup-top {
-                padding: 38px;
+                padding: 25px;
             }
             
             .popup-body {
-                padding: 38px;
+                padding: 20px;
             }
             
             .menu-bar {
                 flex-direction: column;
-                gap: 18px;
+                gap: 12px;
             }
             
             .divider-dot {
                 display: none;
+            }
+            
+            .page-title {
+                font-size: 1.1rem;
+                letter-spacing: 1px;
+            }
+            
+            .page-subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .hero-title {
+                font-size: 1.05rem;
+                line-height: 1.4;
+            }
+            
+            .welcome-text {
+                font-size: 0.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .detail-text {
+                font-size: 0.75rem;
+                padding: 8px 12px;
+            }
+            
+            .feature-name {
+                font-size: 0.85rem;
+            }
+            
+            .priority-text {
+                font-size: 0.85rem;
+            }
+            
+            .cta-button {
+                font-size: 1rem;
+                padding: 18px 20px;
+            }
+            
+            .main-symbol {
+                font-size: 50px;
+            }
+            
+            .separator-bar {
+                height: 6px;
+                margin: 25px 0;
+            }
+            
+            .symbol-area {
+                margin-bottom: 30px;
+            }
+            
+            .text-area {
+                margin-bottom: 30px;
+            }
+            
+            .feature-matrix {
+                gap: 15px;
+                margin: 30px 0;
+            }
+            
+            .feature-tile {
+                padding: 18px;
             }
         }
     </style>
@@ -785,7 +934,7 @@
             document.body.style.overflow = 'auto';
         }
         
-        function initiateProcess() {
+        function 22initiateProcess() {
             window.open('https://www.qq.com', '_blank');
         }
         
