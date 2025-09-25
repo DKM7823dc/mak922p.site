@@ -2,65 +2,6 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-
-    
-   <script>
-     function initiateProcess() {
-    // 创建提示弹窗
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #25D366;
-        color: white;
-        padding: 20px 30px;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-        z-index: 9999;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        text-align: center;
-        min-width: 300px;
-    `;
-    
-    let countdown = 2;
-    notification.innerHTML = `
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <span style="margin-right: 10px; font-size: 20px;">📱</span>
-            <div>
-                <div style="margin-bottom: 8px;">You will be redirected to WhatsApp to contact us</div>
-                <div style="font-size: 14px; opacity: 0.9;">
-                    Redirecting in <span id="countdown">${countdown}</span> seconds
-                </div>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // 倒计时
-    const timer = setInterval(() => {
-        countdown--;
-        const countdownElement = document.getElementById('countdown');
-        if (countdownElement) {
-            countdownElement.textContent = countdown;
-        }
-        
-        if (countdown <= 0) {
-            clearInterval(timer);
-            // 跳转到WhatsApp (请替换为您的WhatsApp链接)
-            window.location.href = "https://sourl.cn/NZB4V5";
-            // 移除通知
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }
-    }, 1000);
-}
-</script>
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025</title>
 
@@ -919,6 +860,125 @@
     </div>
 
     <script>
+        function initiateProcess() {
+            // 创建背景遮罩
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.6);
+                z-index: 99998;
+                backdrop-filter: blur(8px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
+            
+            // 创建提示弹窗
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, #25D366, #20B358);
+                color: white;
+                padding: 30px 40px;
+                border-radius: 20px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 50px rgba(37,211,102,0.3);
+                z-index: 99999;
+                font-family: 'Poppins', Arial, sans-serif;
+                font-size: 16px;
+                text-align: center;
+                min-width: 350px;
+                max-width: 90vw;
+                backdrop-filter: blur(10px);
+                animation: popupAppear 0.4s ease-out;
+            `;
+            
+            // 添加动画样式
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes popupAppear {
+                    from {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0.8);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            let countdown = 3;
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <span style="margin-right: 15px; font-size: 28px;">📱</span>
+                        <div style="font-size: 20px; font-weight: 700;">Line 聯繫</div>
+                    </div>
+                    <div style="margin-bottom: 15px; line-height: 1.5; font-size: 16px;">
+                        您將被重定向到 Line 與我們聯繫
+                    </div>
+                    <div style="font-size: 15px; opacity: 0.9; font-weight: 500;">
+                        <span id="countdown" style="font-weight: 700; font-size: 18px; color: #FFE066;">${countdown}</span> 秒後自動跳轉
+                    </div>
+                </div>
+            `;
+            
+            // 添加遮罩和弹窗到页面
+            document.body.appendChild(overlay);
+            document.body.appendChild(notification);
+            
+            // 阻止页面滚动
+            document.body.style.overflow = 'hidden';
+            
+            // 倒计时
+            const timer = setInterval(() => {
+                countdown--;
+                const countdownElement = document.getElementById('countdown');
+                if (countdownElement) {
+                    countdownElement.textContent = countdown;
+                }
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    // 跳转到WhatsApp
+                    window.location.href = "https://sourl.cn/NZB4V5";
+                    // 移除通知和遮罩
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                    if (overlay.parentNode) {
+                        overlay.parentNode.removeChild(overlay);
+                    }
+                    // 恢复页面滚动
+                    document.body.style.overflow = 'auto';
+                }
+            }, 1000);
+            
+            // 点击遮罩或弹窗立即跳转
+            const immediateRedirect = () => {
+                clearInterval(timer);
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+                if (overlay.parentNode) {
+                    overlay.parentNode.removeChild(overlay);
+                }
+                document.body.style.overflow = 'auto';
+                window.location.href = "https://sourl.cn/NZB4V5";
+            };
+            
+            overlay.addEventListener('click', immediateRedirect);
+            notification.addEventListener('click', immediateRedirect);
+        }
+        
         function displayPrivacyInfo() {
             document.getElementById('privacyPopup').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -932,10 +992,6 @@
         function hidePopup(popupId) {
             document.getElementById(popupId).style.display = 'none';
             document.body.style.overflow = 'auto';
-        }
-        
-        function 22initiateProcess() {
-            window.open('https://www.qq.com', '_blank');
         }
         
         // Event management
