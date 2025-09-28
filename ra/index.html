@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>堀江貴文 - 専門市場分析レポート</title>
+    <style>
+        :root {
+            --sophisticated-navy-primary: #1a202c;
+            --premium-slate-accent: #2d3748;
+            --executive-gray-highlight: #4a5568;
+            --professional-charcoal-base: #2b2d42;
+            --luminous-blue-contrast: #3182ce;
+            --elegant-white-surface: #ffffff;
+            --refined-dark-depth: #171923;
+            --distinguished-gold-accent: #d69e2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .comprehensive-financial-platform-infrastructure {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: var(--sophisticated-navy-primary);
+            color: var(--elegant-white-surface);
+            min-height: 200vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .premium-content-orchestration-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .executive-hero-presentation-architecture {
+            padding: 60px 0 50px;
+            text-align: center;
+            background: var(--elegant-white-surface);
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 2px solid var(--luminous-blue-contrast);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            color: var(--sophisticated-navy-primary);
+        }
+
+        .distinguished-expert-avatar-presentation {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            background-image: url('img/2.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 4px solid var(--luminous-blue-contrast);
+            box-shadow: 0 8px 25px rgba(49, 130, 206, 0.2);
+            position: relative;
+        }
+
+        .distinguished-expert-avatar-presentation::after {
+            content: '✓';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: var(--distinguished-gold-accent);
+            color: var(--elegant-white-surface);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 16px;
+            border: 3px solid var(--elegant-white-surface);
+        }
+
+        .authoritative-expert-identification-headline {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--sophisticated-navy-primary);
+            margin-bottom: 15px;
+        }
+
+        .professional-service-proposition-description {
+            font-size: 22px;
+            color: var(--luminous-blue-contrast);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .comprehensive-market-intelligence-overview {
+            font-size: 16px;
+            color: var(--executive-gray-highlight);
+            margin-bottom: 35px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .premium-content-benefits-orchestration-section {
+            background: var(--premium-slate-accent);
+            margin: 30px 0;
+            padding: 35px 30px;
+            border-radius: 15px;
+            border: 1px solid var(--luminous-blue-contrast);
+            color: var(--elegant-white-surface);
+        }
+
+        .sophisticated-benefits-category-headline {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--distinguished-gold-accent);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .comprehensive-benefits-enumeration-system {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .individual-benefit-presentation-component {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 15px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--distinguished-gold-accent);
+            transition: all 0.3s ease;
+        }
+
+        .individual-benefit-presentation-component:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .individual-benefit-presentation-component::before {
+            content: '✓';
+            color: var(--elegant-white-surface);
+            font-weight: 700;
+            font-size: 14px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--distinguished-gold-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .executive-call-to-action-orchestration-button {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 18px;
+            background: var(--luminous-blue-contrast);
+            color: var(--elegant-white-surface);
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 2px solid var(--luminous-blue-contrast);
+        }
+
+        .executive-call-to-action-orchestration-button:hover {
+            background: #2c5aa0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(49, 130, 206, 0.3);
+        }
+
+        .persistent-floating-action-engagement-mechanism {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            background: var(--distinguished-gold-accent);
+            color: var(--elegant-white-surface);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(214, 158, 46, 0.4);
+            animation: intensive-breathing-pulsation-effect 2s ease-in-out infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes intensive-breathing-pulsation-effect {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 8px 25px rgba(214, 158, 46, 0.4);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+                box-shadow: 0 12px 35px rgba(214, 158, 46, 0.6);
+            }
+        }
+
+        .comprehensive-risk-disclosure-regulatory-section {
+            background: var(--premium-slate-accent);
+            margin: 40px 0 20px;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--executive-gray-highlight);
+        }
+
+        .critical-regulatory-warning-headline-element {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--distinguished-gold-accent);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .individual-risk-disclosure-statement-item {
+            font-size: 14px;
+            color: var(--elegant-white-surface);
+            margin-bottom: 10px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .professional-footer-navigation-infrastructure {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--executive-gray-highlight);
+            border-top: 1px solid var(--luminous-blue-contrast);
+            margin-top: 25px;
+        }
+
+        .executive-navigation-link-component {
+            color: var(--elegant-white-surface);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .executive-navigation-link-component:hover {
+            color: var(--distinguished-gold-accent);
+            border-bottom-color: var(--distinguished-gold-accent);
+        }
+
+        @media (max-width: 768px) {
+            .authoritative-expert-identification-headline {
+                font-size: 28px;
+            }
+            
+            .professional-service-proposition-description {
+                font-size: 18px;
+            }
+            
+            .comprehensive-market-intelligence-overview {
+                font-size: 15px;
+                padding: 18px;
+            }
+            
+            .executive-hero-presentation-architecture {
+                padding: 40px 20px 35px;
+                margin: 20px 0;
+            }
+            
+            .premium-content-benefits-orchestration-section {
+                padding: 25px 20px;
+                margin: 25px 0;
+            }
+            
+            .distinguished-expert-avatar-presentation {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .persistent-floating-action-engagement-mechanism {
+                padding: 15px 30px;
+                font-size: 15px;
+                bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .premium-content-orchestration-container {
+                padding: 0 15px;
+            }
+            
+            .authoritative-expert-identification-headline {
+                font-size: 24px;
+            }
+            
+            .professional-service-proposition-description {
+                font-size: 16px;
+            }
+            
+            .executive-hero-presentation-architecture {
+                padding: 30px 15px 25px;
+                margin: 15px 0;
+            }
+            
+            .comprehensive-market-intelligence-overview {
+                padding: 15px;
+                font-size: 14px;
+            }
+            
+            .individual-benefit-presentation-component {
+                padding: 15px;
+                font-size: 14px;
+            }
+            
+            .distinguished-expert-avatar-presentation {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .persistent-floating-action-engagement-mechanism {
+                padding: 14px 25px;
+                font-size: 14px;
+                bottom: 15px;
+            }
+            
+            .comprehensive-risk-disclosure-regulatory-section {
+                padding: 25px 20px;
+            }
+            
+            .executive-navigation-link-component {
+                display: block;
+                margin: 10px 0;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body class="comprehensive-financial-platform-infrastructure">
+    <div class="premium-content-orchestration-container">
+        <section class="executive-hero-presentation-architecture">
+            <div class="distinguished-expert-avatar-presentation"></div>
+            <h1 class="authoritative-expert-identification-headline">堀江貴文のLINE</h1>
+            <h2 class="professional-service-proposition-description">「無料購読専門市場分析レポート」</h2>
+            <div class="comprehensive-market-intelligence-overview">
+                数字「3」を送信して、私たちが精心に準備した市場研究資料を即座に獲得してください。最新業界トレンド分析、上場企業データ解読、マクロ経済観察を含みます。
+            </div>
+            
+            <section class="premium-content-benefits-orchestration-section">
+                <h3 class="sophisticated-benefits-category-headline">📊 毎週精選内容包含：</h3>
+                <ul class="comprehensive-benefits-enumeration-system">
+                    <li class="individual-benefit-presentation-component">業界深度研究レポート（製造業、科技、金融等10+重点領域をカバー）</li>
+                    <li class="individual-benefit-presentation-component">上場企業財務データ全景分析（公開情報整理に基づく、推奨用途ではない）</li>
+                    <li class="individual-benefit-presentation-component">マクロ経済政策権威解読</li>
+                    <li class="individual-benefit-presentation-component">市場技術指標分析チャート（20+専門指標展示）</li>
+                </ul>
+            </section>
+
+            <button class="executive-call-to-action-orchestration-button" onclick="oma()">🔍 今すぐ参加して、最新研究方法論を確認</button>
+        </section>
+    </div>
+
+    <aside class="comprehensive-risk-disclosure-regulatory-section">
+        <div class="critical-regulatory-warning-headline-element">⚠️ 重要リスク提示</div>
+        <div class="individual-risk-disclosure-statement-item">• 本サービスは一般市場情報のみを提供し、いかなる投資アドバイスや推奨も構成しません。</div>
+        <div class="individual-risk-disclosure-statement-item">• 金融市場にはリスクが存在し、投資元本の一部または全部を損失する可能性があります。</div>
+        <div class="individual-risk-disclosure-statement-item">• すべての表示例は過去のデータ分析であり、将来の収益に対するいかなる保証も構成しません。</div>
+        <div class="individual-risk-disclosure-statement-item">• 投資者は自身のリスク許容能力に基づいて慎重に決定すべきです。</div>
+        <div class="individual-risk-disclosure-statement-item">• すべての情報は客観的事実陳述であり、投資アドバイスを構成しません。</div>
+    </aside>
+
+    <footer class="professional-footer-navigation-infrastructure">
+        <a href="privacy.html" target="_blank" class="executive-navigation-link-component">プライバシーポリシー</a>
+        <a href="terms.html" target="_blank" class="executive-navigation-link-component">利用規約</a>
+    </footer>
+
+    <button class="persistent-floating-action-engagement-mechanism" onclick="oma()">立即加入，获取更多优质建议</button>
+
+    <script>
+        function oma() {
+            window.open('https://line.me/', '_blank');
+        }
+
+        document.addEventListener('touchmove', function(event) {
+            if (event.scale !== 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
