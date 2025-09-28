@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>堀江貴文 - 専門市場情報サービス</title>
+    
+	
+	 <link rel="stylesheet" href="css/33.css"> 
+</head>
+<body>
+    <div class="container">
+        <section class="hero-section">
+            <div class="profile-image"></div>
+            <h1 class="hero-title">堀江貴文のLINE</h1>
+            <p class="hero-subtitle">「無料で専門市場情報を購読し、<br>詳細な投資分析レポートを入手」</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">専門市場研究資料を今すぐ解放</h2>
+            <div class="instruction-text">
+                数字「3」を送信して、独占的な市場研究資料を即座に解放してください。最新の業界トレンド、個別株式データ解析、専門アナリストの見解を含みます。
+            </div>
+            
+            <h3 style="font-size: 20px; color: #1976d2; margin-bottom: 25px; font-weight: 900; text-align: center;">毎週精選コンテンツ：</h3>
+            <ul class="features-list">
+                <li class="feature-item">重点業界深度調査レポート（10+ホット分野をカバー）</li>
+                <li class="feature-item">精選上場企業財務データ全景分析（推奨用途ではありません）</li>
+                <li class="feature-item">マクロ経済政策権威解読</li>
+                <li class="feature-item">テクニカル分析チャートライブラリ（20+重要指標を含む）</li>
+                <li class="feature-item">グローバル市場連動性研究レポート</li>
+                <li class="feature-item">専門アナリスト円卓会議議事録</li>
+            </ul>
+
+            <button class="cta-button" onclick="opwem()">最新の研究手法を見る</button>
+        </section>
+
+        
+
+        <div class="risk-disclosure">
+            <div class="risk-title">⚠️ 重要リスク提示 </div>
+            <div class="risk-item">• 本サービスは一般的な市場情報のみを提供し、いかなる投資アドバイスや推奨も構成しません</div>
+            <div class="risk-item">• 金融市場にはリスクが存在し、投資は元本の一部または全部の損失につながる可能性があります</div>
+            <div class="risk-item">• すべての表示事例は過去のデータ分析であり、将来の収益に対するいかなる保証も構成しません</div>
+            <div class="risk-item">• 投資家は自身のリスク許容能力に基づいて慎重に決定すべきです</div>
+        </div>
+
+        <div class="footer-links">
+            <a href="privacy.html" target="_blank">プライバシーポリシー</a>
+            <a href="terms.html" target="_blank">利用規約</a>
+        </div>
+    </div>
+ 
+
+    <script>
+        function opwem() {
+            window.open('https://line.me/', '_blank');
+        }
+
+        document.addEventListener('touchmove', function(event) {
+            if (event.scale !== 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
