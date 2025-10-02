@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Professionelle Aktienanalysen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'finance-blue': '#1e3a8a',
+                        'finance-dark': '#0f172a',
+                        'success-green': '#059669',
+                        'accent-gold': '#f59e0b',
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .bounce-animation {
+            animation: bounce 1s infinite;
+        }
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: fit-content;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: breathe 3s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            .dark\:bg-gray-900 { background-color: #111827; }
+            .dark\:text-white { color: #ffffff; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 font-sans pb-20">
+    <!-- Header Section -->
+    <header class="gradient-bg text-white py-6 px-4">
+        <div class="max-w-md mx-auto text-center">
+            <div class="mb-4">
+                <i class="fas fa-chart-line text-4xl text-accent-gold"></i>
+            </div>
+            <h1 class="text-2xl font-bold mb-2">Hoss</h1>
+            <p class="text-blue-100 text-base">Professionelle Aktienanalysen</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-md mx-auto px-4 py-6 space-y-6">
+        
+        <!-- Hero Image -->
+        <div class="text-center">
+            <img src="img/1.jpg" 
+                 alt="Hoss & hopf Aktienexperte" 
+                 class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white card-shadow">
+        </div>
+
+        <!-- WhatsApp CTA Section -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 card-shadow">
+            <div class="text-center mb-6">
+               
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    📲 Trete jetzt unserer kostenlosen WhatsApp-Gruppe bei
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 text-base">und du bekommst:</p>
+            </div>
+
+            <!-- Benefits List -->
+            <div class="space-y-4 mb-6">
+                <div class="flex items-start space-x-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-success-green rounded-full flex items-center justify-center mt-0.5">
+                        <i class="fas fa-check text-white text-sm"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+                        Jede Woche 5-7 spannende Aktien aus Europa & USA
+                    </p>
+                </div>
+                
+                <div class="flex items-start space-x-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-success-green rounded-full flex items-center justify-center mt-0.5">
+                        <i class="fas fa-check text-white text-sm"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+                        Einblick in Analysten-Meinungen, Watchlist und Kursentwicklungen
+                    </p>
+                </div>
+                
+                <div class="flex items-start space-x-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-success-green rounded-full flex items-center justify-center mt-0.5">
+                        <i class="fas fa-check text-white text-sm"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+                        Updates zu früheren Empfehlungen & Markttrends
+                    </p>
+                </div>
+                
+                <div class="flex items-start space-x-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-success-green rounded-full flex items-center justify-center mt-0.5">
+                        <i class="fas fa-check text-white text-sm"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+                        100% werbefrei, keine Anmeldung notwendig
+                    </p>
+                </div>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="bg-gradient-to-r from-success-green to-emerald-600 rounded-xl p-4 mb-6 text-center">
+                <div class="flex items-center justify-center space-x-2 text-white">
+                    <i class="fas fa-users"></i>
+                    <span class="font-semibold text-base">Bereits über 15.000 Anleger nutzen unsere Infos</span>
+                </div>
+            </div>
+
+           
+            
+            <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-3">
+                👉 Jetzt kostenlos Zugang sichern – kein Risiko, kein Abo
+            </p>
+        </div>
+
+        <!-- Second Section -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 card-shadow">
+            <div class="text-center mb-6">
+                <img src="img/2.jpg" 
+                     alt="Persönlicher Anlageplan" 
+                     class="w-full h-48 mx-auto object-cover mb-4 rounded-lg border-2 border-finance-blue">
+                
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 leading-relaxed">
+                    Ich unterstütze dich dabei, spannende Aktienchancen frühzeitig zu entdecken, 
+                    deinen persönlichen Anlageplan zu erstellen und dir ein zuverlässiges 
+                    Zusatzeinkommen aufzubauen Schritt für Schritt.
+                </h3>
+            </div>
+
+            <!-- Second CTA Button -->
+            <button onclick="k3()" 
+                    class="w-full bg-gradient-to-r from-finance-blue to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-6 rounded-xl text-lg transition-all duration-300 transform hover:scale-105">
+                <i class="fas fa-rocket mr-2"></i>
+                Jetzt beitreten
+            </button>
+        </div>
+
+   
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 px-4 text-gray-500 dark:text-gray-400">
+        <p class="text-sm">© 2024 Hoss & hopf. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <!-- Floating Button -->
+    <button onclick="k3()" 
+            class="floating-btn bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300">
+        <i class="fab fa-whatsapp mr-2"></i>Jetzt beitreten
+    </button>
+
+    <script>
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // k3 method to redirect to www.qq.com
+        function k3() {
+            window.open('https://www.qq.com', '_blank');
+        }
+    </script>
+</body>
+</html>
