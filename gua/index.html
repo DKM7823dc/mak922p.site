@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Take Control of Your Financial Future - Premium Investment Community</title>
+    <title>Financial Education Community - Learn Investment Basics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17617033552"></script>
@@ -16,9 +15,7 @@
   gtag('config', 'AW-17617033552');
 </script>
 
-
-<!-- Event snippet for 购买 conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<!-- Event snippet for 购买 conversion page -->
 <script>
 function gtag_report_conversion(url) {
   var callback = function () {
@@ -37,13 +34,421 @@ function gtag_report_conversion(url) {
 }
 </script>
 
-<script>
-      function k2() {
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        'primary-dark': '#1E3A8A',
+                        'accent': '#F59E0B',
+                        'accent-dark': '#D97706',
+                        'elite-gold': '#EAB308',
+                        'elite-dark': '#0F172A',
+                        'elite-gray': '#374151',
+                        'gray-950': '#0A0A0A',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #EAB308 0%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        }
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .section-divider {
+            background: linear-gradient(90deg, transparent 0%, #EAB308 50%, transparent 100%);
+            height: 2px;
+            width: 120px;
+            margin: 0 auto;
+        }
+        .elite-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .elite-card {
+            background: linear-gradient(145deg, #1f2937 0%, #111827 100%);
+            border: 1px solid #374151;
+        }
+        .elite-button {
+            background: linear-gradient(135deg, #1E40AF 0%, #1E3A8A 100%);
+            border: 2px solid #EAB308;
+            position: relative;
+            overflow: hidden;
+        }
+        .elite-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(234, 179, 8, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .elite-button:hover::before {
+            left: 100%;
+        }
+        .py-20 {
+            padding-top: 1rem;
+            padding-bottom: 5rem;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Early Risk Warning Banner -->
+    <div class="bg-red-600 text-white py-2 px-4 text-center text-sm">
+        <strong>INVESTMENT WARNING:</strong> All investments involve significant risk of loss. This is educational content only, not financial advice. Consult qualified professionals before investing.
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-elite-gold/10 to-primary/10"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-elite-gold/5 to-transparent"></div>
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="text-center max-w-4xl mx-auto animate-fade-in-up">
+                <h1 class="text-4xl md:text-7xl font-bold mb-6 leading-tight text-white">
+                    <span class="block">Learn About Your</span>
+                    <span class="gradient-text">Financial Future</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-4 font-light">
+                    Educational Resources for Personal Finance Understanding
+                </p>
+                
+                <!-- Risk Notice in Hero -->
+                <div class="bg-red-500/20 border border-red-400 rounded-lg p-4 mb-8 max-w-3xl mx-auto">
+                    <p class="text-red-200 text-sm">
+                        <strong>Important Notice:</strong> All financial strategies involve risk. Past performance does not guarantee future results. This is educational content only.
+                    </p>
+                </div>
+                
+                <div class="section-divider mb-8"></div>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-200">
+                    Looking to understand personal finance better?<br>
+                    <span class="text-elite-gold">Join our educational community to learn more.</span>
+                </h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+                    I've created a WhatsApp community you can join for free*. I'll share educational content about financial planning and investment basics to help you learn about wealth management strategies.
+                </p>
+                <p class="text-sm text-gray-400 mb-6">*Completely free to join - no hidden fees or costs</p>
+                <a onclick="k2()" class="elite-button inline-block text-white text-xl font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer">
+                    Join Educational WhatsApp Group
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Image Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center animate-fade-in">
+                <img src="img/3.jpg" alt="Financial Education Instructor" class="w-full max-w-2xl mx-auto rounded-2xl shadow-2xl mb-12">
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement Section -->
+    <section class="py-20 bg-white dark:bg-gray-950">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+                    <span class="gradient-text">Common Financial Challenges</span><br>
+                    and Educational Approaches
+                </h2>
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-3xl p-8 md:p-12 mb-12">
+                    <h3 class="text-2xl font-semibold mb-8 text-center text-primary">Many People Experience:</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                            <p class="text-lg text-gray-700 dark:text-gray-300">Working hard but feeling uncertain about financial planning--wanting to learn more about money management strategies?</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                            <p class="text-lg text-gray-700 dark:text-gray-300">Hearing about economic changes and wanting to understand financial concepts better, but not knowing where to start learning?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center space-y-6">
+                    <p class="text-xl text-gray-700 dark:text-gray-300 py-4 md:py-0">I understand these concerns. I'm John, and I've spent years studying financial education.</p>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 py-4 md:py-0">Through my learning journey, I realized that traditional approaches to financial education often lack practical frameworks that people can understand and apply.</p>
+                    
+                    <!-- Individual Results Disclaimer -->
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-2xl p-6 my-8">
+                        <p class="text-sm text-yellow-800 dark:text-yellow-200">
+                            <strong>Individual Results Notice:</strong> My personal experience is unique to my situation. Your results may vary significantly based on your individual circumstances, risk tolerance, and market conditions. No individual's experience should be considered typical or representative of what others might achieve.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-primary/10 rounded-2xl p-8 my-12">
+                        <p class="text-xl font-semibold text-center">
+                            <span class="text-primary">Educational Focus:</span> Traditional financial education often lacks practical frameworks. Our goal is to provide educational resources and learning opportunities to help you better understand financial concepts and strategies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Story Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+                    My Learning Journey: From <span class="text-red-500">Confusion</span> to <span class="gradient-text">Understanding</span>
+                </h2>
+                
+                <!-- Personal Experience Disclaimer -->
+                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-8">
+                    <p class="text-blue-800 dark:text-blue-200 text-sm text-center">
+                        <strong>Personal Experience Disclaimer:</strong> The following is my individual experience and should not be considered typical results. Your experience may be completely different.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="img/1.jpg" alt="John's Learning Journey" class="w-full rounded-2xl shadow-xl">
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-lg text-gray-700 dark:text-gray-300 py-4 md:py-0">I wasn't born into wealth or given special advantages. I was someone who wanted to understand personal finance better. When I faced financial challenges, I decided to educate myself.</p>
+                        <p class="text-lg text-gray-700 dark:text-gray-300 py-4 md:py-0">I didn't look for shortcuts or guaranteed methods. Instead, I focused on learning: <strong class="text-primary">I started studying established financial principles.</strong></p>
+                        <p class="text-lg text-gray-700 dark:text-gray-300 py-4 md:py-0">Over several years, I've developed my understanding of personal finance. I focused on proven principles and established strategies, creating what I call my <strong class="gradient-text">"Financial Education Framework."</strong></p>
+                        <div class="bg-primary/10 rounded-xl p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-primary">What I Learned?</h3>
+                            <p class="text-lg">Through education, I gained knowledge that helped me make more informed financial decisions. This learning process gave me better understanding of financial concepts and planning strategies.</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-3 italic">
+                                *This represents my personal learning experience only. Individual results and experiences will vary significantly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Discover Section -->
+    <section class="py-20 bg-white dark:bg-gray-950">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+                    In Our Educational Community, You Can <span class="gradient-text">Learn About...</span>
+                </h2>
+                <p class="text-xl text-center text-gray-600 dark:text-gray-400 mb-12">This is educational content designed to help you understand financial concepts. Results and application will vary by individual.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-gradient-to-br from-primary/10 to-purple-600/10 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">【Educational Focus: Mindset】</h3>
+                        <h4 class="text-xl font-semibold mb-4">Understanding Different Financial Perspectives</h4>
+                        <p class="text-gray-700 dark:text-gray-300">Learn about different approaches to thinking about money and financial planning strategies that others have used.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-600/10 to-primary/10 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">【Educational Focus: Strategy】</h3>
+                        <h4 class="text-xl font-semibold mb-4">Risk Management Framework</h4>
+                        <p class="text-gray-700 dark:text-gray-300">Explore educational content about building financial structures for various market conditions. Learn about this framework and how it might be applied to different situations.</p>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a onclick="k2()" class="inline-block bg-primary hover:bg-primary-dark text-white text-xl font-semibold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer">
+                        Join Educational WhatsApp Group
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitments Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+                    Our <span class="gradient-text">Educational Commitments</span> to You:
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold mb-4 text-green-600">✓ Educational Focus</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">This is purely educational content sharing. We focus on providing learning resources and information about financial concepts. No guarantees are made about results.</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold mb-4 text-blue-600">✓ Transparent Learning</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">We aim to provide clear educational content. If you find the material doesn't meet your learning needs, you can leave the group at any time. Your time is valuable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white dark:bg-gray-950">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+                    <span class="gradient-text">Frequently Asked Questions</span>
+                </h2>
+                <div class="space-y-6">
+                    <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Q: Is joining completely free with no hidden costs?</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">A: Yes, completely free with no hidden fees, costs, or future charges. This is an educational community.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Q: Is this financial advice or investment recommendations?</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">A: No, this is educational content only. We do not provide financial advice or investment recommendations. Always consult qualified professionals for personalized advice.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Q: Do I need investment experience?</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">A: No experience required. This educational content is designed for people wanting to learn about financial concepts, regardless of their current knowledge level.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-900 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Q: Are there any guarantees about results?</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">A: No guarantees whatsoever. This is educational content only. All financial strategies involve risk, and individual results vary significantly.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <img src="img/2.jpg" alt="Educational Resources" class="w-full max-w-md mx-auto rounded-2xl shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="py-20 bg-gradient-to-br from-primary to-purple-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Consider Your Learning Options:</h2>
+                <p class="text-xl md:text-2xl mb-8 leading-relaxed">
+                    You can continue with your current approach to financial learning, or you can explore new educational resources. Consider spending some time learning about different financial concepts and strategies.
+                </p>
+                <p class="text-2xl font-semibold mb-6">
+                    Educational opportunities are available.<br>
+                    Join our learning community.
+                </p>
+                
+                <!-- Final Risk Notice -->
+                <div class="bg-red-500/20 border border-red-400 rounded-lg p-4 mb-8">
+                    <p class="text-red-200 text-sm">
+                        <strong>Final Reminder:</strong> All investments involve substantial risk. This is educational content only, not financial advice. Results vary significantly by individual.
+                    </p>
+                </div>
+                
+                <a onclick="k2()" class="inline-block bg-white text-primary hover:bg-gray-100 text-xl font-bold py-5 px-16 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer">
+                    Join Educational WhatsApp Group
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Risk Disclaimer -->
+    <section class="py-12 bg-red-50 dark:bg-red-900/20 border-t border-red-200 dark:border-red-800">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h3 class="text-lg font-semibold text-red-600 dark:text-red-400 mb-4">⚠️ Important Risk Disclaimer & Legal Notice</h3>
+                <div class="text-sm text-red-700 dark:text-red-300 leading-relaxed space-y-3 text-left">
+                    <p><strong>INVESTMENT RISK WARNING:</strong> All investments carry significant risk of loss. You may lose some or all of your invested capital. Past performance is not indicative of future results and should not be relied upon to make investment decisions.</p>
+                    
+                    <p><strong>NO FINANCIAL ADVICE:</strong> This content is for educational and informational purposes only. Nothing on this website constitutes financial, investment, legal, or tax advice. We are not licensed financial advisors, and this information should not be considered as personalized investment recommendations.</p>
+                    
+                    <p><strong>INDIVIDUAL RESULTS DISCLAIMER:</strong> Any personal experiences shared are individual results that should not be considered typical or representative. Your results may vary significantly and could be substantially different, including the possibility of loss.</p>
+                    
+                    <p><strong>MANDATORY CONSULTATION:</strong> Before making any financial decisions, you must consult with qualified, licensed financial professionals who can assess your individual circumstances, risk tolerance, and financial goals.</p>
+                    
+                    <p><strong>NO GUARANTEED RETURNS:</strong> There are no guarantees of profit or protection against losses. Any financial strategy discussed may result in substantial financial losses. Market conditions are unpredictable and can change rapidly.</p>
+                    
+                    <p><strong>EDUCATIONAL PURPOSE:</strong> All content is provided for educational purposes only. We do not provide investment advice, recommendations, or any form of financial planning services.</p>
+                    
+                    <p><strong>PERSONAL RESPONSIBILITY:</strong> You are solely responsible for your investment decisions and their consequences. By accessing this content, you acknowledge these risks and agree to hold us harmless from any financial losses you may incur.</p>
+                    
+                    <p><strong>REGULATORY COMPLIANCE:</strong> This content has not been reviewed or approved by any financial regulatory authority. Investing in financial markets involves regulatory and tax implications that vary by jurisdiction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-950 text-gray-400 text-center">
+        <div class="container mx-auto px-6">
+            <p class="mb-4">&copy; 2024 Financial Education Community. Educational content only - not financial advice.</p>
+            <div class="flex justify-center space-x-6 text-sm">
+                <a href="Privacy.html" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-white transition-colors duration-300">Terms of Service</a>
+                <a href="risk.html" class="hover:text-white transition-colors duration-300">Risk Disclaimer</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Button -->
+    <div id="floatingButton" class="fixed left-1/2 transform -translate-x-1/2 z-50 opacity-0 translate-y-4 transition-all duration-300" style="bottom: calc(1.5rem + env(safe-area-inset-bottom));">
+        <a onclick="k2()" class="inline-block bg-primary hover:bg-primary-dark text-white text-lg font-semibold py-3 px-8 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 whitespace-nowrap cursor-pointer">
+            Join Educational Group
+        </a>
+    </div>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Floating button scroll control
+        let lastScrollTop = 0;
+        const floatingButton = document.getElementById('floatingButton');
+        
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > window.innerHeight) {
+                // Show button after scrolling past first screen
+                floatingButton.style.opacity = '1';
+                floatingButton.style.transform = 'translateX(-50%) translateY(0)';
+            } else {
+                // Hide button when at top
+                floatingButton.style.opacity = '0';
+                floatingButton.style.transform = 'translateX(-50%) translateY(16px)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // WhatsApp redirect function
+        function k2() {
        gtag_report_conversion('https://www.google.com');
         }
-</script>
-
-<script>
-document.write(decodeURIComponent("%0A%20%20%20%20%3Clink%20href%3D%22https%3A%2F%2Ffonts.googleapis.com%2Fcss2%3Ffamily%3DInter%3Awght%40300%3B400%3B500%3B600%3B700%3B800%26display%3Dswap%22%20rel%3D%22stylesheet%22%3E%0A%20%20%20%20%3Cscript%3E%0A%20%20%20%20%20%20%20%20tailwind.config%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20theme%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20extend%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20colors%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20primary%3A%20%27%231E40AF%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27primary-dark%27%3A%20%27%231E3A8A%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27accent%27%3A%20%27%23F59E0B%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27accent-dark%27%3A%20%27%23D97706%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27elite-gold%27%3A%20%27%23EAB308%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27elite-dark%27%3A%20%27%230F172A%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27elite-gray%27%3A%20%27%23374151%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27gray-950%27%3A%20%27%230A0A0A%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20fontFamily%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27sans%27%3A%20%5B%27Inter%27%2C%20%27system-ui%27%2C%20%27sans-serif%27%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27fade-in-up%27%3A%20%27fadeInUp%200.6s%20ease-out%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27fade-in%27%3A%20%27fadeIn%200.8s%20ease-out%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27pulse-slow%27%3A%20%27pulse%203s%20cubic-bezier%280.4%2C%200%2C%200.6%2C%201%29%20infinite%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20keyframes%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20fadeInUp%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%270%25%27%3A%20%7B%20opacity%3A%20%270%27%2C%20transform%3A%20%27translateY%2830px%29%27%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27100%25%27%3A%20%7B%20opacity%3A%20%271%27%2C%20transform%3A%20%27translateY%280%29%27%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20fadeIn%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%270%25%27%3A%20%7B%20opacity%3A%20%270%27%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%27100%25%27%3A%20%7B%20opacity%3A%20%271%27%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%3C%2Fscript%3E%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20.gradient-text%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20linear-gradient%28135deg%2C%20%23EAB308%200%25%2C%20%23F59E0B%20100%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20-webkit-background-clip%3A%20text%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20-webkit-text-fill-color%3A%20transparent%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-clip%3A%20text%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.hero-gradient%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20linear-gradient%28135deg%2C%20%230F172A%200%25%2C%20%231E293B%20100%25%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.dark%20.hero-gradient%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20linear-gradient%28135deg%2C%20%230f172a%200%25%2C%20%231e293b%20100%25%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.section-divider%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20linear-gradient%2890deg%2C%20transparent%200%25%2C%20%23EAB308%2050%25%2C%20transparent%20100%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%202px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20120px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.elite-card%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20linear-gradient%28145deg%2C%20%23ffffff%200%25%2C%20%23f8fafc%20100%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%201px%20solid%20%23e5e7eb%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%2020px%2025px%20-5px%20rgba%280%2C%200%2C%200%2C%200.1%29%2C%200%2010px%2010px%20-5px%20rgba%280%2C%200%2C%200%2C%200.04%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.dark%20.elite-card%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20linear-gradient%28145deg%2C%20%231f2937%200%25%2C%20%23111827%20100%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%201px%20solid%20%23374151%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.elite-button%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20linear-gradient%28135deg%2C%20%231E40AF%200%25%2C%20%231E3A8A%20100%25%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%202px%20solid%20%23EAB308%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20relative%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.elite-button%3A%3Abefore%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20content%3A%20%27%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20absolute%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20top%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%20-100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20linear-gradient%2890deg%2C%20transparent%2C%20rgba%28234%2C%20179%2C%208%2C%200.2%29%2C%20transparent%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%20left%200.5s%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.elite-button%3Ahover%3A%3Abefore%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.py-20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding-top%3A%201rem%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding-bottom%3A%205rem%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%20class%3D%22font-sans%20bg-white%20dark%3Abg-gray-950%20text-gray-900%20dark%3Atext-gray-100%20transition-colors%20duration-300%22%3E%0A%20%20%20%20%3C%21--%20Hero%20Section%20--%3E%0A%20%20%20%20%3Csection%20class%3D%22hero-gradient%20min-h-screen%20flex%20items-center%20justify-center%20relative%20overflow-hidden%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22absolute%20inset-0%20bg-gradient-to-br%20from-elite-gold%2F10%20to-primary%2F10%22%3E%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22absolute%20inset-0%20bg-%5Bradial-gradient%28ellipse_at_center%2C_var%28--tw-gradient-stops%29%29%5D%20from-transparent%20via-elite-gold%2F5%20to-transparent%22%3E%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%20py-20%20relative%20z-10%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22text-center%20max-w-4xl%20mx-auto%20animate-fade-in-up%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch1%20class%3D%22text-4xl%20md%3Atext-7xl%20font-bold%20mb-6%20leading-tight%20text-white%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22block%22%3ETake%20Control%20of%20Your%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22gradient-text%22%3EFinancial%20Future%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fh1%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-xl%20md%3Atext-2xl%20text-gray-300%20mb-8%20font-light%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Say%20Goodbye%20to%20Anxiety%2C%20Design%20Your%20Life%20of%20Freedom%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22section-divider%20mb-8%22%3E%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch2%20class%3D%22text-2xl%20md%3Atext-3xl%20font-semibold%20mb-6%20text-gray-200%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Are%20you%20tired%20of%20being%20controlled%20by%20bills%20and%20anxiety%3F%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22text-elite-gold%22%3EIt%27s%20time%20to%20write%20your%20own%20success%20story.%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20md%3Atext-xl%20text-gray-300%20mb-10%20max-w-3xl%20mx-auto%20leading-relaxed%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20I%27ve%20created%20a%20WhatsApp%20community%20you%20can%20join%20for%20free.%20I%27ll%20show%20you%20how%20to%20use%20a%20clear%20%22wealth%20operating%20system%22%20to%20reclaim%20control%20of%20your%20life%20and%20achieve%20ultimate%20freedom%E2%80%94the%20freedom%20of%20choice.%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20onclick%3D%22k2%28%29%22%20class%3D%22elite-button%20inline-block%20text-white%20text-xl%20font-semibold%20py-4%20px-12%20rounded-full%20transition-all%20duration-300%20transform%20hover%3Ascale-105%20hover%3Ashadow-2xl%20cursor-pointer%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Join%20WhatsApp%20Group%20Now%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fsection%3E%0A%0A%20%20%20%20%3C%21--%20Professional%20Image%20Section%20--%3E%0A%20%20%20%20%3Csection%20class%3D%22py-20%20bg-gray-50%20dark%3Abg-gray-900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22max-w-4xl%20mx-auto%20text-center%20animate-fade-in%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22img%2F3.jpg%22%20alt%3D%22Professional%20Financial%20Advisor%22%20class%3D%22w-full%20max-w-2xl%20mx-auto%20rounded-2xl%20shadow-2xl%20mb-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fsection%3E%0A%0A%20%20%20%20%3C%21--%20Problem%20Statement%20Section%20--%3E%0A%20%20%20%20%3Csection%20class%3D%22py-20%20bg-white%20dark%3Abg-gray-950%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22max-w-4xl%20mx-auto%20animate-fade-in-up%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch2%20class%3D%22text-4xl%20md%3Atext-5xl%20font-bold%20text-center%20mb-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22gradient-text%22%3EThis%20isn%27t%20your%20fault%2C%3C%2Fspan%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20but%20change%20is%20your%20responsibility%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-gray-50%20dark%3Abg-gray-900%20rounded-3xl%20p-8%20md%3Ap-12%20mb-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-2xl%20font-semibold%20mb-8%20text-center%20text-primary%22%3EDo%20you%20ever%20feel%20like%3A%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22space-y-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flex%20items-start%20space-x-4%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22w-2%20h-2%20bg-primary%20rounded-full%20mt-3%20flex-shrink-0%22%3E%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%22%3EWorking%20hard%2C%20but%20always%20feeling%20like%20you%27re%20on%20a%20treadmill%E2%80%94income%20increases%20but%20financial%20pressure%20never%20disappears%3F%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flex%20items-start%20space-x-4%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22w-2%20h-2%20bg-primary%20rounded-full%20mt-3%20flex-shrink-0%22%3E%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%22%3EWatching%20uncertain%20economic%20news%20fills%20your%20heart%20with%20worry%20about%20the%20future%2C%20but%20you%20don%27t%20know%20where%20to%20start%3F%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22text-center%20space-y-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-xl%20text-gray-700%20dark%3Atext-gray-300%20py-4%20md%3Apy-0%22%3EFriend%2C%20I%20completely%20understand.%20I%27m%20John%2C%20and%20I%20once%20stood%20on%20the%20same%20cliff%27s%20edge.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-600%20dark%3Atext-gray-400%20py-4%20md%3Apy-0%22%3EOne%20business%20failure%20taught%20me%20that%20waiting%20for%20external%20conditions%20to%20improve%20is%20equivalent%20to%20handing%20over%20your%20life%27s%20steering%20wheel%20to%20someone%20else.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-primary%2F10%20rounded-2xl%20p-8%20my-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-xl%20font-semibold%20text-center%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22text-primary%22%3EThe%20truth%20is%3A%3C%2Fspan%3E%20The%20traditional%20%22work%20hard%2C%20save%20money%22%20model%20is%20no%20longer%20sufficient%20to%20build%20a%20solid%20future.%20You%20don%27t%20need%20a%20better%20budget%20spreadsheet%E2%80%94you%20need%20a%20completely%20new%20mindset%20and%20an%20executable%20system.%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fsection%3E%0A%0A%20%20%20%20%3C%21--%20Personal%20Story%20Section%20--%3E%0A%20%20%20%20%3Csection%20class%3D%22py-20%20bg-gray-50%20dark%3Abg-gray-900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22max-w-4xl%20mx-auto%20animate-fade-in-up%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch2%20class%3D%22text-4xl%20md%3Atext-5xl%20font-bold%20text-center%20mb-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20Story%3A%20From%20%3Cspan%20class%3D%22text-red-500%22%3EOut%20of%20Control%3C%2Fspan%3E%20to%20%3Cspan%20class%3D%22gradient-text%22%3EAbsolute%20Mastery%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22grid%20md%3Agrid-cols-2%20gap-12%20items-center%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22img%2F1.jpg%22%20alt%3D%22John%27s%20Journey%22%20class%3D%22w-full%20rounded-2xl%20shadow-xl%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22space-y-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%20py-4%20md%3Apy-0%22%3EI%20wasn%27t%20Wall%20Street%27s%20darling.%20I%20was%20an%20entrepreneur%2C%20a%20problem%20solver.%20When%20my%20life%20script%20hit%20rock%20bottom%2C%20I%20chose%20to%20reject%20that%20setting.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%20py-4%20md%3Apy-0%22%3EI%20didn%27t%20seek%20get-rich-quick%20secrets.%20Instead%2C%20I%20did%20what%20truly%20powerful%20people%20do%3A%20%3Cstrong%20class%3D%22text-primary%22%3EI%20started%20studying%20the%20rules.%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%20py-4%20md%3Apy-0%22%3EOver%20the%20past%20eight%20years%2C%20I%27ve%20transformed%20myself%20into%20a%20%22personal%20finance%20architect.%22%20I%20eliminated%20noise%2C%20focused%20on%20timeless%20principles%20and%20repeatable%20strategies%2C%20and%20built%20my%20own%20%3Cstrong%20class%3D%22gradient-text%22%3E%22Wealth%20Operating%20System.%22%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-primary%2F10%20rounded-xl%20p-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-xl%20font-semibold%20mb-4%20text-primary%22%3EThe%20Result%3F%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%22%3EI%20gained%20more%20than%20just%20money.%20I%20gained%20something%20more%20precious%3A%20%3Cstrong%3Eabsolute%20control%3C%2Fstrong%3E.%20The%20peace%20of%20sleeping%20soundly%20even%20when%20markets%20fluctuate.%20The%20ultimate%20freedom%20to%20make%20life%20choices%20based%20on%20my%20values%2C%20not%20the%20size%20of%20my%20bills.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fsection%3E%0A%0A%20%20%20%20%3C%21--%20What%20You%27ll%20Discover%20Section%20--%3E%0A%20%20%20%20%3Csection%20class%3D%22py-20%20bg-white%20dark%3Abg-gray-950%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22max-w-4xl%20mx-auto%20animate-fade-in-up%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch2%20class%3D%22text-4xl%20md%3Atext-5xl%20font-bold%20text-center%20mb-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20In%20My%20Community%2C%20You%27ll%20%3Cspan%20class%3D%22gradient-text%22%3EDiscover...%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-xl%20text-center%20text-gray-600%20dark%3Atext-gray-400%20mb-12%22%3EThis%20is%20definitely%20not%20a%20theory%20class.%20What%20you%27ll%20take%20away%20is%20a%20clear%20action%20blueprint.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22grid%20md%3Agrid-cols-2%20gap-8%20mb-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-gradient-to-br%20from-primary%2F10%20to-purple-600%2F10%20rounded-2xl%20p-8%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-2xl%20font-bold%20mb-4%20text-primary%22%3E%E3%80%90Core%20Mindset%E3%80%91%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch4%20class%3D%22text-xl%20font-semibold%20mb-4%22%3EFrom%20%22Employee%20Mindset%22%20to%20%22Owner%20Mindset%22%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-gray-700%20dark%3Atext-gray-300%22%3EI%27ll%20share%20three%20key%20mindset%20shifts%20that%20are%20the%20foundation%20for%20building%20all%20wealth.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-gradient-to-br%20from-purple-600%2F10%20to-primary%2F10%20rounded-2xl%20p-8%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-2xl%20font-bold%20mb-4%20text-primary%22%3E%E3%80%90Core%20Strategy%E3%80%91%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch4%20class%3D%22text-xl%20font-semibold%20mb-4%22%3E%22Three-Layer%20Safety%20Net%22%20Model%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-gray-700%20dark%3Atext-gray-300%22%3EHow%20to%20build%20a%20financial%20structure%20that%20can%20withstand%20any%20economic%20storm%3F%20I%27ll%20break%20down%20this%20simple%20yet%20powerful%20framework%2C%20showing%20you%20exactly%20what%20to%20do%20at%20each%20step.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22text-center%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20onclick%3D%22k2%28%29%22%20class%3D%22inline-block%20bg-primary%20hover%3Abg-primary-dark%20text-white%20text-xl%20font-semibold%20py-4%20px-12%20rounded-full%20transition-all%20duration-300%20transform%20hover%3Ascale-105%20hover%3Ashadow-2xl%20cursor-pointer%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Join%20WhatsApp%20Group%20Now%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fsection%3E%0A%0A%20%20%20%20%3C%21--%20Commitments%20Section%20--%3E%0A%20%20%20%20%3Csection%20class%3D%22py-20%20bg-gray-50%20dark%3Abg-gray-900%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22max-w-4xl%20mx-auto%20animate-fade-in-up%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch2%20class%3D%22text-4xl%20md%3Atext-5xl%20font-bold%20text-center%20mb-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20I%20Make%20Two%20%3Cspan%20class%3D%22gradient-text%22%3EFirm%20Commitments%3C%2Fspan%3E%20to%20You%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22grid%20md%3Agrid-cols-2%20gap-8%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-white%20dark%3Abg-gray-800%20rounded-2xl%20p-8%20shadow-xl%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-2xl%20font-bold%20mb-4%20text-green-600%22%3E%E2%9C%93%20Zero%20Sales%20Commitment%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%22%3EThis%20is%20purely%20value%20sharing.%20I%20won%27t%20sell%20you%20any%20expensive%20courses%20or%20services.%20My%20goal%20is%20to%20give%20you%20real%2C%20practical%20tools.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-white%20dark%3Abg-gray-800%20rounded-2xl%20p-8%20shadow-xl%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-2xl%20font-bold%20mb-4%20text-blue-600%22%3E%E2%9C%93%20Risk-Free%20Commitment%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%22%3E%3Cstrong%3EWithin%20the%20first%2030%20minutes%2C%3C%2Fstrong%3E%20if%20you%20don%27t%20gain%20at%20least%20one%20powerful%20insight%20that%20can%20immediately%20change%20your%20financial%20perspective%2C%20please%20leave%20directly.%20Your%20time%20is%20invaluable%2C%20and%20I%20completely%20respect%20your%20judgment.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fsection%3E%0A%0A%20%20%20%20%3C%21--%20FAQ%20Section%20--%3E%0A%20%20%20%20%3Csection%20class%3D%22py-20%20bg-white%20dark%3Abg-gray-950%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22max-w-4xl%20mx-auto%20animate-fade-in-up%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch2%20class%3D%22text-4xl%20md%3Atext-5xl%20font-bold%20text-center%20mb-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22gradient-text%22%3EFrequently%20Asked%20Questions%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22space-y-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-gray-50%20dark%3Abg-gray-900%20rounded-xl%20p-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-xl%20font-semibold%20mb-3%20text-primary%22%3EQ%3A%20Is%20joining%20completely%20free%3F%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%22%3EA%3A%20Completely%20free.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-gray-50%20dark%3Abg-gray-900%20rounded-xl%20p-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-xl%20font-semibold%20mb-3%20text-primary%22%3EQ%3A%20What%20if%20I%20don%27t%20have%20time%20to%20watch%20the%20live%20session%3F%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%22%3EA%3A%20After%20signing%20up%2C%20we%27ll%20send%20you%20the%20recorded%20link.%20But%20we%20strongly%20recommend%20attending%20the%20live%20session%20for%20real-time%20Q%26A.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22bg-gray-50%20dark%3Abg-gray-900%20rounded-xl%20p-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-xl%20font-semibold%20mb-3%20text-primary%22%3EQ%3A%20Do%20I%20need%20investment%20experience%3F%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-lg%20text-gray-700%20dark%3Atext-gray-300%22%3EA%3A%20Not%20at%20all.%20This%20system%20is%20designed%20specifically%20for%20beginners%20and%20intermediate%20learners%20who%20feel%20confused%20but%20eager%20to%20change.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22text-center%20mt-12%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22img%2F2.jpg%22%20alt%3D%22Expert%20Guidance%22%20class%3D%22w-full%20max-w-md%20mx-auto%20rounded-2xl%20shadow-xl%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fsection%3E%0A%0A%20%20%20%20%3C%21--%20Final%20Call%20to%20Action%20--%3E%0A%20%20%20%20%3Csection%20class%3D%22py-20%20bg-gradient-to-br%20from-primary%20to-purple-600%20text-white%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22max-w-4xl%20mx-auto%20text-center%20animate-fade-in-up%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch2%20class%3D%22text-4xl%20md%3Atext-5xl%20font-bold%20mb-8%22%3EFinal%20Words%20of%20Advice%3A%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-xl%20md%3Atext-2xl%20mb-8%20leading-relaxed%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20You%20can%20choose%20to%20continue%20on%20the%20same%20path%2C%20expecting%20different%20results.%20Or%2C%20you%20can%20choose%20to%20give%20yourself%20a%20chance%E2%80%94spend%20one%20hour%20exploring%20a%20completely%20new%2C%20empowering%20lifestyle.%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22text-2xl%20font-semibold%20mb-10%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Your%20freedom%20is%20defined%20by%20you.%3Cbr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20I%27m%20waiting%20for%20you%20in%20the%20community.%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20onclick%3D%22k2%28%29%22%20class%3D%22inline-block%20bg-white%20text-primary%20hover%3Abg-gray-100%20text-xl%20font-bold%20py-5%20px-16%20rounded-full%20transition-all%20duration-300%20transform%20hover%3Ascale-105%20hover%3Ashadow-2xl%20cursor-pointer%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Join%20WhatsApp%20Group%20Now%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fsection%3E%0A%0A%20%20%20%20%3C%21--%20Risk%20Disclaimer%20--%3E%0A%20%20%20%20%3Csection%20class%3D%22py-12%20bg-red-50%20dark%3Abg-red-900%2F20%20border-t%20border-red-200%20dark%3Aborder-red-800%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22max-w-4xl%20mx-auto%20text-center%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ch3%20class%3D%22text-lg%20font-semibold%20text-red-600%20dark%3Atext-red-400%20mb-4%22%3E%E2%9A%A0%EF%B8%8F%20Important%20Risk%20Disclaimer%20%26%20Legal%20Notice%3C%2Fh3%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22text-sm%20text-red-700%20dark%3Atext-red-300%20leading-relaxed%20space-y-3%20text-left%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3EINVESTMENT%20RISK%20WARNING%3A%3C%2Fstrong%3E%20All%20investments%20carry%20significant%20risk%20of%20loss.%20You%20may%20lose%20some%20or%20all%20of%20your%20invested%20capital.%20Past%20performance%20is%20not%20indicative%20of%20future%20results%20and%20should%20not%20be%20relied%20upon%20to%20make%20investment%20decisions.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3ENO%20FINANCIAL%20ADVICE%3A%3C%2Fstrong%3E%20This%20content%20is%20for%20educational%20and%20informational%20purposes%20only.%20Nothing%20on%20this%20website%20constitutes%20financial%2C%20investment%2C%20legal%2C%20or%20tax%20advice.%20We%20are%20not%20licensed%20financial%20advisors%2C%20and%20this%20information%20should%20not%20be%20considered%20as%20personalized%20investment%20recommendations.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3EMANDATORY%20CONSULTATION%3A%3C%2Fstrong%3E%20Before%20making%20any%20financial%20decisions%2C%20you%20must%20consult%20with%20qualified%2C%20licensed%20financial%20professionals%20who%20can%20assess%20your%20individual%20circumstances%2C%20risk%20tolerance%2C%20and%20financial%20goals.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3ENO%20GUARANTEED%20RETURNS%3A%3C%2Fstrong%3E%20There%20are%20no%20guarantees%20of%20profit%20or%20protection%20against%20losses.%20Any%20financial%20strategy%20discussed%20may%20result%20in%20substantial%20financial%20losses.%20Market%20conditions%20are%20unpredictable%20and%20can%20change%20rapidly.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3EPERSONAL%20RESPONSIBILITY%3A%3C%2Fstrong%3E%20You%20are%20solely%20responsible%20for%20your%20investment%20decisions%20and%20their%20consequences.%20By%20accessing%20this%20content%2C%20you%20acknowledge%20these%20risks%20and%20agree%20to%20hold%20us%20harmless%20from%20any%20financial%20losses%20you%20may%20incur.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3EREGULATORY%20COMPLIANCE%3A%3C%2Fstrong%3E%20This%20content%20has%20not%20been%20reviewed%20or%20approved%20by%20any%20financial%20regulatory%20authority.%20Investing%20in%20financial%20markets%20involves%20regulatory%20and%20tax%20implications%20that%20vary%20by%20jurisdiction.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fsection%3E%0A%0A%20%20%20%20%3C%21--%20Footer%20--%3E%0A%20%20%20%20%3Cfooter%20class%3D%22py-12%20bg-gray-950%20text-gray-400%20text-center%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22container%20mx-auto%20px-6%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20class%3D%22mb-4%22%3E%26copy%3B%202024%20.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22flex%20justify-center%20space-x-6%20text-sm%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22Privacy.html%22%20class%3D%22hover%3Atext-white%20transition-colors%20duration-300%22%3EPrivacy%20Policy%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22terms.html%22%20class%3D%22hover%3Atext-white%20transition-colors%20duration-300%22%3ETerms%20of%20Service%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22risk.html%22%20class%3D%22hover%3Atext-white%20transition-colors%20duration-300%22%3Erisk%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Ffooter%3E%0A%0A%20%20%20%20%3C%21--%20Floating%20Button%20--%3E%0A%20%20%20%20%3Cdiv%20id%3D%22floatingButton%22%20class%3D%22fixed%20left-1%2F2%20transform%20-translate-x-1%2F2%20z-50%20opacity-0%20translate-y-4%20transition-all%20duration-300%22%20style%3D%22bottom%3A%20calc%281.5rem%20%2B%20env%28safe-area-inset-bottom%29%29%3B%22%3E%0A%20%20%20%20%20%20%20%20%3Ca%20onclick%3D%22k2%28%29%22%20class%3D%22inline-block%20bg-primary%20hover%3Abg-primary-dark%20text-white%20text-lg%20font-semibold%20py-3%20px-8%20rounded-full%20shadow-2xl%20transition-all%20duration-300%20transform%20hover%3Ascale-105%20whitespace-nowrap%20cursor-pointer%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20Join%20WhatsApp%20Group%0A%20%20%20%20%20%20%20%20%3C%2Fa%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3Cscript%3E%0A%20%20%20%20%20%20%20%20%2F%2F%20Dark%20mode%20detection%0A%20%20%20%20%20%20%20%20if%20%28window.matchMedia%20%26%26%20window.matchMedia%28%27%28prefers-color-scheme%3A%20dark%29%27%29.matches%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20document.documentElement.classList.add%28%27dark%27%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20window.matchMedia%28%27%28prefers-color-scheme%3A%20dark%29%27%29.addEventListener%28%27change%27%2C%20event%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28event.matches%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20document.documentElement.classList.add%28%27dark%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20document.documentElement.classList.remove%28%27dark%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%0A%0A%0A%20%20%20%20%20%20%20%20%2F%2F%20Floating%20button%20scroll%20control%0A%20%20%20%20%20%20%20%20let%20lastScrollTop%20%3D%200%3B%0A%20%20%20%20%20%20%20%20const%20floatingButton%20%3D%20document.getElementById%28%27floatingButton%27%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20window.addEventListener%28%27scroll%27%2C%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20scrollTop%20%3D%20window.pageYOffset%20%7C%7C%20document.documentElement.scrollTop%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28scrollTop%20%3E%20window.innerHeight%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20Show%20button%20after%20scrolling%20past%20first%20screen%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20floatingButton.style.opacity%20%3D%20%271%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20floatingButton.style.transform%20%3D%20%27translateX%28-50%25%29%20translateY%280%29%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20Hide%20button%20when%20at%20top%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20floatingButton.style.opacity%20%3D%20%270%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20floatingButton.style.transform%20%3D%20%27translateX%28-50%25%29%20translateY%2816px%29%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20lastScrollTop%20%3D%20scrollTop%3B%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%0A%20%20%20%20%20%20%20%20%2F%2F%20WhatsApp%20redirect%20function%20%28placeholder%29%0A%20%20%20%20%20%20%0A%20%20%20%20%3C%2Fscript%3E%0A%3C%2Fbody%3E"));
-</script>
-</html><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"9ea2993c9cb8406ca41718db989d1849","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"9ea2993c9cb8406ca41718db989d1849","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
