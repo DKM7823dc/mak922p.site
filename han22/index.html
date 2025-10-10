@@ -31,12 +31,6 @@
             }
         });
     </script>
-	<script>
-	 function k2() {
-           window.location.href="https://www.qq.com";
-        }
-        
-	</script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
         
@@ -85,9 +79,10 @@
     <div class="gradient-bg text-white py-8 px-4">
         <div class="max-w-md mx-auto text-center">
             <div class="mb-6">
-                <img src="img/1.jpg" 
+                <img src="https://yawkcbwlc.sbs/picture/bb.jpg" 
                      alt="전문가 프로필" 
-                     class="w-24 h-24 rounded-full mx-auto border-4 border-white shadow-lg"
+                     class="w-24 h-32 mx-auto border-4 border-white shadow-lg object-cover"
+                     style="border-radius: 50%;"
                      onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9IiM2MzY2RjEiLz4KPHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDMTMuMSAyIDE0IDIuOSAxNCA0QzE0IDUuMSAxMy4xIDYgMTIgNkMxMC45IDYgMTAgNS4xIDEwIDRDMTAgMi45IDEwLjkgMiAxMiAyWk0yMSAxOVYyMEgzVjE5QzMgMTYuODEgNi45MSAxNiAxMiAxNkMxNy4wOSAxNiAyMSAxNi44MSAyMSAxOVpNMTIgMTRDOC42OSAxNCA2IDE1Ljc5IDYgMThWMjBIMThWMThDMTggMTUuNzkgMTUuMzEgMTQgMTIgMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4KPC9zdmc+'">
             </div>
             <h1 class="text-2xl font-bold mb-2">전문 투자 컨설턴트</h1>
@@ -125,7 +120,7 @@
         <!-- Why Free Section -->
         <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 card-shadow">
             <div class="text-center mb-4">
-                <img src="img/2.png" 
+                <img src="https://yawkcbwlc.sbs/picture/daren.png" 
                      alt="전문가 이미지" 
                      class="w-full max-w-xs mx-auto rounded-xl shadow-lg"
                      onerror="this.style.display='none'">
@@ -145,7 +140,7 @@
         <!-- Final Message -->
         <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700">
             <div class="text-center mb-4">
-                <img src="img/3.jpg" 
+                <img src="https://yawkcbwlc.sbs/picture/hq720.jpg" 
                      alt="스터디 그룹" 
                      class="w-full max-w-xs mx-auto rounded-xl shadow-lg"
                      onerror="this.style.display='none'">
@@ -155,17 +150,11 @@
             </p>
         </div>
 
-        <!-- CTA Section -->
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 card-shadow text-center">
-            <button class="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 pulse-animation shadow-lg"
-                    onclick="showVVIPModal()">
-                🚀 BAND 스터디방, 지금 바로 합류하세요! (선착순 100명)
-            </button>
-        </div>
+
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-50 dark:bg-gray-900 py-8 px-4 mt-12">
+    <footer class="bg-gray-50 dark:bg-gray-900 py-8 px-4 mt-12 mb-20">
         <div class="max-w-md mx-auto">
             <div class="text-center space-y-3">
                 <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -178,6 +167,16 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating Bottom CTA Button -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 p-4 bg-gradient-to-t from-white via-white to-transparent dark:from-gray-900 dark:via-gray-900 dark:to-transparent">
+        <div class="max-w-md mx-auto">
+            <button class="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-4 px-6 rounded-2xl text-base transition-all duration-300 transform hover:scale-105 pulse-animation shadow-2xl border-2 border-white dark:border-gray-700"
+                    onclick="showVVIPModal()">
+                🚀 BAND 스터디방, 지금 바로 합류하세요! (선착순 100명)
+            </button>
+        </div>
+    </div>
 
     <!-- VVIP Modal -->
     <div id="vvipModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2">
@@ -280,7 +279,10 @@
             document.body.style.overflow = 'auto';
         }
         
-       
+        function k2() {
+            window.open('https://www.qq.com', '_blank');
+        }
+        
         // Close modal when clicking outside
         document.getElementById('vvipModal').addEventListener('click', function(e) {
             if (e.target === this) {
