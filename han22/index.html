@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPS Club - 투자 전문가와 함께하는 스터디</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        light: '#F8FAFC'
+                    }
+                }
+            }
+        }
+        
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+	<script>
+	 function k2() {
+           window.location.href="https://www.qq.com";
+        }
+        
+	</script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .floating-animation {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 min-h-screen">
+
+    <!-- Header Section -->
+    <div class="gradient-bg text-white py-8 px-4">
+        <div class="max-w-md mx-auto text-center">
+            <div class="mb-6">
+                <img src="img/1.jpg" 
+                     alt="전문가 프로필" 
+                     class="w-24 h-24 rounded-full mx-auto border-4 border-white shadow-lg"
+                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiIGZpbGw9IiM2MzY2RjEiLz4KPHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDMTMuMSAyIDE0IDIuOSAxNCA0QzE0IDUuMSAxMy4xIDYgMTIgNkMxMC45IDYgMTAgNS4xIDEwIDRDMTAgMi45IDEwLjkgMiAxMiAyWk0yMSAxOVYyMEgzVjE5QzMgMTYuODEgNi45MSAxNiAxMiAxNkMxNy4wOSAxNiAyMSAxNi44MSAyMSAxOVpNMTIgMTRDOC42OSAxNCA2IDE1Ljc5IDYgMThWMjBIMThWMThDMTggMTUuNzkgMTUuMzEgMTQgMTIgMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4KPC9zdmc+'">
+            </div>
+            <h1 class="text-2xl font-bold mb-2">전문 투자 컨설턴트</h1>
+            <p class="text-blue-100 text-sm">20년+ 글로벌 금융 경험</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-md mx-auto px-4 py-6 space-y-6">
+        
+        <!-- Experience Section -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 card-shadow">
+            <div class="text-center mb-4">
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-3">
+                        <div class="text-2xl font-bold text-blue-600">20+</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">년 경험</div>
+                    </div>
+                    <div class="bg-green-50 dark:bg-green-900/30 rounded-xl p-3">
+                        <div class="text-2xl font-bold text-green-600">1000+</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">종목 리서치</div>
+                    </div>
+                    <div class="bg-yellow-50 dark:bg-yellow-900/30 rounded-xl p-3">
+                        <div class="text-2xl font-bold text-yellow-600">500억+</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">자산 운용</div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
+                저는 글로벌 금융 시장에서 20년 이상 활동하며, 누적 1,000건 이상의 종목 리서치와 500억 원 이상의 자산 운용 경험을 쌓아왔습니다. 저의 투자 전략을 통해 많은 투자자들이 위기를 기회로 바꾸었고, 실제로 손실을 보던 분들이 단 1년 만에 평균 35% 이상의 수익률을 달성하기도 했습니다. 지금 BAND에 가입하시면, 제가직접 선별한 일일 우량주 5종목 추천과 저위험•고수익 매매 노하우를 무료로 받아보실 수 있습니다.
+            </p>
+        </div>
+
+        <!-- Why Free Section -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 card-shadow">
+            <div class="text-center mb-4">
+                <img src="img/2.png" 
+                     alt="전문가 이미지" 
+                     class="w-full max-w-xs mx-auto rounded-xl shadow-lg"
+                     onerror="this.style.display='none'">
+            </div>
+            <h3 class="font-bold text-lg text-gray-800 dark:text-gray-200 mb-3">제가 왜 이 모든 것을 무료로 제공할까요?</h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-base mb-4">
+                시중에 있는 수많은 소위 '전문가'들이 가르치는 기술이나 지표는, 사실상 비싼 수강료를 받기 위한 돈벌이 수단에 불과하기 때문입니다.
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-base mb-4">
+                저는 단지 제 개인의 미약한 힘으로나마 저의 '개미 군단'을 돕고, 저를 지지해주시는 분들께 진심으로 보답하고 싶을 뿐입니다.
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-base font-semibold">
+                지금 바로 제 밴드 스터디 그룹에 합류하십시오.
+            </p>
+        </div>
+
+        <!-- Final Message -->
+        <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700">
+            <div class="text-center mb-4">
+                <img src="img/3.jpg" 
+                     alt="스터디 그룹" 
+                     class="w-full max-w-xs mx-auto rounded-xl shadow-lg"
+                     onerror="this.style.display='none'">
+            </div>
+            <p class="text-purple-800 dark:text-purple-200 leading-relaxed text-base text-center">
+                팬 여러분, 그동안 저를 믿고 보내주신 열화와 같은 성원에 어떻게 보답해야 할지 늘 고민해왔습니다. 그리고 마침내, 제 모든 것을 걸고 이 전무후무한 프로젝트를 시작하기로 결심했습니다.
+            </p>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 card-shadow text-center">
+            <button class="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 pulse-animation shadow-lg"
+                    onclick="showVVIPModal()">
+                🚀 BAND 스터디방, 지금 바로 합류하세요! (선착순 100명)
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 dark:bg-gray-900 py-8 px-4 mt-12">
+        <div class="max-w-md mx-auto">
+            <div class="text-center space-y-3">
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    본 사이트는 투자 자문을 제공하지 않으며, 공유하는 내용은 개인적인 경험과 정보입니다.<br>
+                    수익은 보장되지 않으며, 투자에는 손실 가능성이 있습니다.
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-500">
+                    © 2025 JPS Club. All rights reserved. | 개인정보 처리방침
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VVIP Modal -->
+    <div id="vvipModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-md max-h-screen relative">
+            <!-- Close Button -->
+            <button onclick="closeVVIPModal()" class="absolute top-2 right-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xl z-10">
+                ×
+            </button>
+            
+            <!-- Modal Content -->
+            <div class="p-3 pt-8">
+                <!-- Header -->
+                <div class="text-center mb-3">
+                    <h2 class="text-sm font-bold text-red-600 dark:text-red-400 mb-1">
+                        [마지막 기회] VVIP 투자 스터디방에 당신을 초대합니다.
+                    </h2>
+                    <p class="text-gray-700 dark:text-gray-300 font-medium text-xs">
+                        입장 즉시, 아래 모든 것을 '평생 무료'로 드립니다:
+                    </p>
+                </div>
+                
+                <!-- Benefits List -->
+                <div class="space-y-2 mb-3">
+                    <div class="flex items-start bg-green-50 dark:bg-green-900/30 p-2 rounded-lg">
+                        <span class="text-green-600 font-bold mr-2 text-xs">✅</span>
+                        <div class="text-xs">
+                            <span class="font-semibold text-green-800 dark:text-green-200">매일:</span>
+                            <span class="text-green-700 dark:text-green-300"> 이번 달 폭등할 극비 종목 5개 제공</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start bg-blue-50 dark:bg-blue-900/30 p-2 rounded-lg">
+                        <span class="text-blue-600 font-bold mr-2 text-xs">✅</span>
+                        <div class="text-xs">
+                            <span class="font-semibold text-blue-800 dark:text-blue-200">전략:</span>
+                            <span class="text-blue-700 dark:text-blue-300"> 1억을 100억으로 만든 비법서 원본 즉시 전수</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start bg-purple-50 dark:bg-purple-900/30 p-2 rounded-lg">
+                        <span class="text-purple-600 font-bold mr-2 text-xs">✅</span>
+                        <div class="text-xs">
+                            <span class="font-semibold text-purple-800 dark:text-purple-200">지원:</span>
+                            <span class="text-purple-700 dark:text-purple-300"> 24시간 잠들지 않는 전문가의 1:1 답변</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start bg-yellow-50 dark:bg-yellow-900/30 p-2 rounded-lg">
+                        <span class="text-yellow-600 font-bold mr-2 text-xs">✅</span>
+                        <div class="text-xs">
+                            <span class="font-semibold text-yellow-800 dark:text-yellow-200">교육:</span>
+                            <span class="text-yellow-700 dark:text-yellow-300"> 주식/코인 시장을 지배하는 실전 매매 기술</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Promise -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-2 rounded-lg mb-3 text-center">
+                    <p class="text-gray-700 dark:text-gray-300 font-medium text-xs">
+                        약속드립니다. 100% 무료, 어떠한 유료 권유나 강요도 없습니다.
+                    </p>
+                </div>
+                
+                <!-- Urgency Warning -->
+                <div class="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-lg p-2 mb-3">
+                    <div class="text-center">
+                        <p class="text-red-700 dark:text-red-300 font-bold text-xs mb-1">
+                            ⚠️ 남은 자리: 단 100명 👇 지금 바로 '무료 입장'을 신청하세요! 👇
+                        </p>
+                        <p class="text-red-700 dark:text-red-300 font-bold text-xs">
+                            ⏱️ (선착순 마감) ⚠️
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Final Warning -->
+                <div class="bg-black text-white p-2 rounded-lg mb-3 text-center">
+                    <p class="font-bold text-xs text-red-400">
+                        오늘 자정, 이 방은 영원히 닫힙니다!
+                    </p>
+                </div>
+                
+                <!-- CTA Button -->
+                <button onclick="k2()" 
+                        class="w-full bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white font-bold py-3 px-4 rounded-xl text-sm transition-all duration-300 transform hover:scale-105 shadow-lg pulse-animation">
+                    밴드 스터디방 무료로 참여하기 (마감 임박)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showVVIPModal() {
+            document.getElementById('vvipModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeVVIPModal() {
+            document.getElementById('vvipModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+       
+        // Close modal when clicking outside
+        document.getElementById('vvipModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVVIPModal();
+            }
+        });
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVVIPModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
