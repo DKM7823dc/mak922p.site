@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florian Homm - Exklusive Investment-Betreuung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        gold: '#C9B037',
+                        dark: '#0F172A',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/22629832/251455_262814.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .team-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/22629832/698745_228789.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .eric-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('https://uploads.strikinglycdn.com/static/backgrounds/nature/184.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        @media (prefers-color-scheme: dark) {
+            .hero-bg {
+                background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/22629832/251455_262814.jpeg');
+            }
+            .team-bg {
+                background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/22629832/698745_228789.jpg');
+            }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="img/logo.webp" alt="FH Logo" class="h-10 w-auto">
+                    <span class="font-semibold text-lg text-primary">Florian Homm lädt privat ein!</span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#willkommen" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors text-base">Willkommen</a>
+                        <a href="#team" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors text-base">Über uns</a>
+                        <a href="#florian" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors text-base">Über Florian</a>
+                        <a href="#kontakt" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">Kontakt</a>
+                    </div>
+                </div>
+                
+                <button class="md:hidden p-2">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                Willkommen zu einer<br>
+                <span class="text-gold">einzigartigen</span><br>
+                Investment-Chance
+            </h1>
+            <p class="text-xl md:text-2xl mb-12 font-light leading-relaxed max-w-3xl mx-auto">
+                Die exklusive Jahresbetreuung durch Florian Homm und sein ausgewähltes Expertenteam
+            </p>
+            <button onclick="k2()" class="inline-block bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-2xl">
+                Mehr erfahren
+            </button>
+        </div>
+    </section>
+
+    <!-- Willkommen Section -->
+    <section id="willkommen" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Willkommen</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    Willkommen zu einem einzigartigen Investment-Chance: Die exklusive Jahresbetreuung durch Florian Homm und sein ausgewähltes Expertenteam
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Tiefe Erfahrung</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Ich möchte mit dir meine jahrelange Erfahrung an der Börse teilen, die einzigartigen Einsichten in den Markt und den Wert von Unternehmen, die ich aus unzähligen Investitionsentscheidungen gewonnen habe, sowie die Geschichten, die meinen Glauben an das Investieren gefestigt haben.
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
+                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Bewährte Strategien für Erfolg</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Außerdem möchte ich dir die praktischen Methoden und strategischen Rahmenwerke weitergeben, mit denen ich durch präzise Trendanalysen und gezielte Bewertung von Unternehmen Anlegern geholfen habe, an der Börse Gewinne zu erzielen.
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
+                    <div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Echte Professionalität</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Dank meines fundierten Finanzwissens, meines feinen Gespürs für den Markt und zahlreicher erfolgreicher Investitionsfälle zeige ich dir meine professionelle Kompetenz im Bereich Finanz- und Kapitalanlagen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 team-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">Über uns</h2>
+                <p class="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+                    Wir stellen Ihnen hier ein Expertenteam aus den Bereichen Finanzen, Wirtschaft und Analyse vor, das Ihnen hilft, fundierte Einblicke zu gewinnen und effiziente strategische Entscheidungen zu treffen.
+                </p>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Team Member 1 -->
+                <div class="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl text-gray-900 dark:text-gray-100">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-3xl font-bold mb-4">Frank Thelen</h3>
+                            <p class="text-primary font-semibold mb-4">Architekt von Technologie-Ökosystemen</p>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                Als einer der einflussreichsten Serienunternehmer und Risikokapitalgeber Europas treibt Frank Thelen mit dem Fokus auf „disruptive Innovation" den Aufbau eines multidimensionalen Einflussnetzwerks voran, das Frühphaseninvestitionen, öffentliche Märkte und politische Interessenvertretung verbindet.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                Er ist zudem Kernmitglied des Deutschen Innovationsrats und setzt sich für die Reform der Digitalpolitik sowie der Förderung von Start-ups ein. Das Magazin „Focus" zählte ihn zu den „50 Personen, die die Zukunft Deutschlands gestalten"
+                            </p>
+                            <button onclick="k2()" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                                Mehr über Technologietrends und Strategien für exponentielles Wachstum erfahren
+                            </button>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img src="img/f.webp" 
+                                 alt="Frank Thelen" class="w-full h-80 object-cover rounded-2xl shadow-xl">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl text-gray-900 dark:text-gray-100">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <img src="img/2.jpg" 
+                                 alt="Max Otte" class="w-full h-80 object-cover rounded-2xl shadow-xl">
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold mb-4">Max Otte</h3>
+                            <p class="text-primary font-semibold mb-4">Ökonom mit strategischem Denken</p>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                Als erfahrener Ökonom und politischer Berater verbindet er fundiertes wirtschaftliches Fachwissen mit praktischer Analyse politischer Entwicklungen. Seine fachkundigen Einschätzungen helfen dabei, die Auswirkungen politischer Entscheidungen auf Märkte und Investitionen präzise zu bewerten und darauf basierend vorausschauend zu planen.
+                            </p>
+                            <button onclick="k2()" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                                Mehr über Wirtschafts- und Politikanalysen erfahren
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl text-gray-900 dark:text-gray-100">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-3xl font-bold mb-4">Mario Lochner</h3>
+                            <p class="text-primary font-semibold mb-4">Experte für Finanzmarktanalyse und Anlagestrategien</p>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                Mit über zehn Jahren praktischer Erfahrung an den Finanzmärkten konzentriert er sich auf die Bewertung einzelner Aktien, die Analyse von Branchentrends sowie die Verknüpfung mit der Makroökonomie. Dabei entwickelt er für Investoren Anlagestrategien, die sowohl renditestark als auch sicherheitsorientiert sind.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                Von der Optimierung privater Vermögenswerte bis hin zum Management institutioneller Portfolios, seine fachkundigen Einblicke helfen Kunden, in komplexen Marktumfeldern den richtigen Investitionsanker zu finden und langfristigen Wertzuwachs zu erzielen.
+                            </p>
+                            <button onclick="k2()" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                                Mehr über Finanzmarktanalyse und Anlagestrategien erfahren
+                            </button>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img src="img/c.jpg" 
+                                 alt="Mario Lochner" class="w-full h-80 object-cover rounded-2xl shadow-xl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Florian Section -->
+    <section id="florian" class="py-20 eric-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img src="img/s.webp" 
+                             alt="Florian Homm" class="w-full h-96 object-cover rounded-2xl shadow-xl">
+                    </div>
+                    <div>
+                        <h2 class="text-4xl font-bold mb-6">Über Florian Homm</h2>
+                        <div class="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+                            <p>
+                                Florian Homm ist Deutschlands bekanntester ehemaliger Hedgefondsmanager. Er verfügt über jahrzehntelange Erfahrung als Hedgefondsmanager, Unternehmer und Investment Banker.
+                            </p>
+                            <p>
+                                Homm arbeitete unter anderem bei Merrill Lynch, Fidelity, Tweedy, Browne, Bank Julius Bär als Analyst, Nostro-Händler und Fondsmanager bevor er als Finanzunternehmer und Hedgefondsmanager Milliardär wurde. Homm gehörte auf dem Höhepunkt seiner Karriere mit zu den reichsten Deutschen.
+                            </p>
+                            <p>
+                                Bekannt wurde er für ein breites Publikum durch die erfolgreiche Sanierung von BVB Borussia Dortmund sowie als Bestsellerautor. Zu seinen bekanntesten Büchern zählen u. a. der Spiegel Bestseller Kopf Geld Jagd, Endspiel, Die Kunst des Leerverkaufs und der Manager Magazin Bestseller Erfolg im Crash.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="kontakt" class="py-20 bg-primary">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Bereit für Ihre Investment-Reise?
+            </h2>
+            <p class="text-xl mb-8 opacity-90 leading-relaxed">
+                Sichern Sie sich jetzt Ihren Platz in der exklusiven Jahresbetreuung durch Florian Homm und sein Expertenteam
+            </p>
+            <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+                <button onclick="k2()" class="w-full md:w-auto bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-xl">
+                    Kostenlose Beratung
+                </button>
+                <button onclick="k2()" class="w-full md:w-auto border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-primary transition-all transform hover:scale-105">
+                    Mehr Informationen
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Florian Homm. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // k2 method for button redirects
+        function k2() {
+            window.open('https://www.qq.com', '_blank');
+        }
+
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('button.md\\:hidden');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function() {
+                // Add mobile menu functionality here
+                console.log('Mobile menu clicked');
+            });
+        }
+    </script>
+</body>
+</html>
