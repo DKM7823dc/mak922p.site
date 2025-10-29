@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veriton Investment Inc. - Inversión Inteligente Impulsada por IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+     
+     
+    
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f4ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#5856eb',
+                            700: '#4f46e5',
+                            800: '#4338ca',
+                            900: '#3730a3'
+                        },
+                        secondary: {
+                            50: '#faf5ff',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9'
+                        },
+                        accent: {
+                            500: '#f59e0b',
+                            600: '#d97706'
+                        },
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                        '88': '22rem',
+                        '128': '32rem'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 3s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 30%, #475569 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-padding {
+            padding: 6rem 0;
+        }
+        
+        .container-custom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .sticky-nav {
+            backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.9);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .hero-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+    </style>
+
+    <script>
+        function k2() {
+            window.location.href="https://www.qq.com";
+        }
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('sticky-nav');
+            } else {
+                nav.classList.remove('sticky-nav');
+            }
+        });
+
+        // 平滑滚动到锚点
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // 移动端菜单切换
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 暗黑模式检测
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</head>
+
+<body class="bg-dark-900 text-white antialiased">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="container-custom">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">V</span>
+                    </div>
+                    <span class="text-xl font-bold text-white">Veriton Investment</span>
+                </div>
+
+                <!-- 桌面端导航 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="nav-link text-gray-300 hover:text-white font-medium">Inicio</a>
+                    <a href="#servicios" class="nav-link text-gray-300 hover:text-white font-medium">Servicios</a>
+                    <a href="#ventajas" class="nav-link text-gray-300 hover:text-white font-medium">Ventajas</a>
+                    <a href="#mision" class="nav-link text-gray-300 hover:text-white font-medium">Misión</a>
+                    <a href="#expansion" class="nav-link text-gray-300 hover:text-white font-medium">Expansión</a>
+                    <button onclick="k2()" class="btn-primary px-6 py-3 rounded-lg font-semibold text-white">
+                        Contactar
+                    </button>
+                </div>
+
+                <!-- 移动端菜单按钮 -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 移动端菜单 -->
+            <div id="mobile-menu" class="hidden md:hidden bg-dark-800 rounded-lg mt-2 p-4">
+                <a href="#inicio" class="block py-3 text-gray-300 hover:text-white">Inicio</a>
+                <a href="#servicios" class="block py-3 text-gray-300 hover:text-white">Servicios</a>
+                <a href="#ventajas" class="block py-3 text-gray-300 hover:text-white">Ventajas</a>
+                <a href="#mision" class="block py-3 text-gray-300 hover:text-white">Misión</a>
+                <a href="#expansion" class="block py-3 text-gray-300 hover:text-white">Expansión</a>
+                <button onclick="k2()" class="w-full mt-4 btn-primary px-6 py-3 rounded-lg font-semibold text-white">
+                    Contactar
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient hero-pattern min-h-screen flex items-center pt-20">
+        <div class="container-custom">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-up">
+                    <div class="inline-flex items-center bg-primary-500/10 border border-primary-500/20 rounded-full px-4 py-2 mb-6">
+                        <span class="text-primary-400 font-medium">🚀 Tecnología IA Avanzada</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-black leading-tight mb-6">
+                        <span class="text-white">Veriton</span><br>
+                        <span class="text-gradient">Investment Inc.</span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-300 mb-4 font-medium">
+                        El Futuro de la Inversión Inteligente
+                    </p>
+                    
+                    <p class="text-lg text-gray-400 mb-8 leading-relaxed max-w-2xl">
+                        Institución global de gestión de inversiones con sede en Estados Unidos, revolucionando los mercados con inteligencia artificial avanzada, trading cuantitativo y estrategias de inversión de vanguardia.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="k2()" class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg">
+                            Descubre Nuestras Estrategias
+                        </button>
+                        <button onclick="scrollToSection('servicios')" class="border-2 border-gray-600 hover:border-primary-500 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
+                            Ver Servicios
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-700">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary-400">20+</div>
+                            <div class="text-sm text-gray-400">Años de Experiencia</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-secondary-400">AI</div>
+                            <div class="text-sm text-gray-400">Tecnología Avanzada</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent-500">Global</div>
+                            <div class="text-sm text-gray-400">Alcance Mundial</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-fade-in lg:pl-12">
+                    <div class="relative">
+                        <div class="glass-card rounded-2xl p-8 animate-float">
+                            <img src="img/1.jpg" alt="Veriton Investment Technology" class="w-full h-64 object-cover rounded-xl mb-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Rendimiento IA</span>
+                                    <span class="text-green-400 font-semibold">+24.7%</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Activos Gestionados</span>
+                                    <span class="text-primary-400 font-semibold">$2.4B</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Precisión IA</span>
+                                    <span class="text-secondary-400 font-semibold">94.3%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="section-padding bg-dark-800">
+        <div class="container-custom">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    <span class="text-gradient">Nuestros Servicios</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Soluciones de inversión integral impulsadas por tecnología de IA de vanguardia
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Inversión Global en Acciones</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Especialización en empresas de alto crecimiento con análisis AI multidimensional en mercados globales.
+                    </p>
+                </div>
+
+                <div class="feature-card glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Trading Cuantitativo IA</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Algoritmos de deep learning para identificación en tiempo real de fluctuaciones y tendencias del mercado.
+                    </p>
+                </div>
+
+                <div class="feature-card glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Asignación Internacional</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Equilibrio de riesgo y rentabilidad con perspectiva global y estrategias dinámicas para crecimiento sostenible.
+                    </p>
+                </div>
+
+                <div class="feature-card glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2h8a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 1a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Consultoría Estratégica</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Investigación sistematizada con modelado IA para instituciones y clientes de alto patrimonio neto.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ventajas Section -->
+    <section id="ventajas" class="section-padding gradient-bg">
+        <div class="container-custom">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    <span class="text-gradient">Ventajas Estratégicas</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Liderando la innovación en inversión inteligente con tecnología de vanguardia
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="glass-card rounded-2xl p-8">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">🤖</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-3">Motor de Decisión IA</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    Análisis en tiempo real de flujos de datos globales, predicción de alta precisión y centro de decisión inteligente líder en la industria.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-8">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">👥</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-3">Equipo Interdisciplinario</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    Expertos en ingeniería financiera, ciencias cuantitativas y tecnología, con experiencia global y capacidad de decisión estratégica.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-8">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent-500 to-accent-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">🛡️</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-3">Control de Riesgo Avanzado</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    Modelos cuantitativos de múltiples niveles con monitoreo dinámico IA y mecanismos de decisión humana.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <img src="img/2.jpg" alt="Veriton Technology" class="w-full h-88 object-cover rounded-2xl shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión y Visión Section -->
+    <section id="mision" class="section-padding bg-dark-800">
+        <div class="container-custom">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    <span class="text-gradient">Misión y Visión</span>
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="glass-card rounded-2xl p-10">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mb-8">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6">Misión Corporativa</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Remodelar el ecosistema de inversión global con inteligencia artificial, permitiendo que la lógica de los datos y la sabiduría de los algoritmos se conviertan en la nueva fuerza que impulse el crecimiento de la riqueza.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-10">
+                    <div class="w-16 h-16 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-2xl flex items-center justify-center mb-8">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6">Visión Corporativa</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Convertirnos en una de las instituciones de inversión inteligente más influyentes del mundo, remodelando el futuro de los mercados de capital con tecnología de vanguardia.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expansión España Section -->
+    <section id="expansion" class="section-padding gradient-bg">
+        <div class="container-custom">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center bg-accent-500/10 border border-accent-500/20 rounded-full px-6 py-3 mb-8">
+                    <span class="text-accent-400 font-medium text-lg">🇪🇸 Próximamente en España</span>
+                </div>
+                
+                <h2 class="text-4xl lg:text-6xl font-bold mb-8">
+                    <span class="text-gradient">Estrategia Global</span><br>
+                    <span class="text-white">Entrada al Mercado Español</span>
+                </h2>
+                
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    Veriton Investment Inc. está a punto de ingresar oficialmente al mercado español, marcando una nueva etapa en nuestra estrategia de globalización.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                <div class="glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl">🚀</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Tecnología IA Avanzada</h3>
+                    <p class="text-gray-400">
+                        Sistemas de trading con IA de vanguardia para el mercado español
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl">🏆</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Equipo Internacional</h3>
+                    <p class="text-gray-400">
+                        Investigación de nivel internacional para inversores españoles
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl">💼</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Transformación Digital</h3>
+                    <p class="text-gray-400">
+                        Modernización del mercado financiero español
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <div class="inline-flex items-center bg-primary-500/10 border border-primary-500/20 rounded-full px-6 py-3 mb-8">
+                    <span class="text-primary-400 font-medium">⚡ Únete a la Revolución Financiera</span>
+                </div>
+                
+                <button onclick="k2()" class="btn-primary px-12 py-5 rounded-lg font-bold text-xl">
+                    Contactar Asesores Especializados
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="section-padding bg-dark-900">
+        <div class="container-custom text-center">
+            <h2 class="text-4xl lg:text-6xl font-bold mb-8">
+                ¿Listo para el <span class="text-gradient">Futuro de la Inversión?</span>
+            </h2>
+            <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                Únete a Veriton Investment y experimenta el poder de la inversión inteligente impulsada por IA
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <button onclick="k2()" class="btn-primary px-10 py-5 rounded-lg font-bold text-xl">
+                    Comenzar Ahora
+                </button>
+                <button onclick="scrollToSection('inicio')" class="border-2 border-gray-600 hover:border-primary-500 px-10 py-5 rounded-lg font-bold text-xl transition-all duration-300">
+                    Más Información
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-800 py-12">
+        <div class="container-custom">
+            
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>© 2025 Veriton Investment Inc. Todos los derechos reservados.</p>
+                <p class="mt-2 text-sm">
+                    Las inversiones conllevan riesgo. Los rendimientos pasados no garantizan resultados futuros.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Button -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button onclick="k2()" class="btn-primary px-6 py-3 rounded-full shadow-2xl animate-float">
+            <span class="hidden sm:inline">💬 Contactar Asesores</span>
+            <span class="sm:hidden">💬</span>
+        </button>
+    </div>
+
+    <!-- Analytics Scripts -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"a489f4c1ef9d42869dc27132aa30b936","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
