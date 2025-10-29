@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資コミュニティ - 毎日の専門家株式推奨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Noto Sans JP', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#FF6B6B',
+                        accent: '#4ECDC4',
+                        gold: '#FFD93D',
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'fade-in': 'fadeIn 1s ease-out',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .sticky-header {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .dark .sticky-header {
+            background: rgba(17, 24, 39, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .pattern-bg {
+            background-color: #5D5CDE;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 sticky-header border-b border-gray-200 dark:border-gray-700">
+        <div class="flex justify-between items-center px-4 py-3">
+            <div class="flex items-center">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                    <span class="text-white font-bold text-sm">投</span>
+                </div>
+                <span class="font-bold text-lg text-primary">投資コミュニティ</span>
+            </div>
+            <button onclick="redirectToQQ()" class="bg-primary text-white px-4 py-2 rounded-lg font-semibold text-sm">
+                参加
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pattern-bg text-white px-4 py-16 text-center relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-20 h-20 border border-white rounded-full"></div>
+            <div class="absolute top-32 right-8 w-12 h-12 border border-white rounded-full"></div>
+            <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-white rounded-full"></div>
+        </div>
+        
+        <div class="relative z-10 animate-fade-in">
+            <!-- Trust Badge -->
+            <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm mb-6">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                15,000名が信頼
+            </div>
+
+            <h1 class="text-3xl font-bold mb-4 leading-tight">
+                毎日の専門家による<br>
+                <span class="text-gold">株式推奨</span>で<br>
+                資産を成長させる
+            </h1>
+
+            <p class="text-lg mb-8 opacity-90 px-2">
+                松田学の限定コミュニティに参加して<br>
+                毎日3つのプレミアム株式推奨を<br>
+                <span class="font-bold text-gold">完全無料</span>で受け取ろう
+            </p>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 gap-4 mb-8 max-w-xs mx-auto">
+                <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                    <div class="text-2xl font-bold text-gold">42%</div>
+                    <div class="text-xs opacity-80">平均年間収益</div>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                    <div class="text-2xl font-bold text-gold">100%</div>
+                    <div class="text-xs opacity-80">完全無料</div>
+                </div>
+            </div>
+
+            <!-- Main CTA -->
+            <button onclick="redirectToQQ()" class="w-full max-w-sm bg-gold hover:bg-yellow-400 text-gray-900 font-bold text-lg py-4 rounded-full transition-all duration-300 transform active:scale-95 card-shadow">
+                <svg class="w-5 h-5 inline mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+                </svg>
+                今すぐコミュニティに参加
+            </button>
+
+            <p class="text-sm mt-4 opacity-70">
+                💳 クレジットカード不要 | 📱 即座にアクセス
+            </p>
+        </div>
+    </section>
+
+    <!-- Expert Section -->
+    <section class="bg-white dark:bg-gray-900 px-4 py-16">
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center bg-primary/10 text-primary rounded-full px-4 py-2 text-sm mb-4">
+                🏆 認定投資専門家
+            </div>
+            <h2 class="text-2xl font-bold mb-2">松田学</h2>
+            <p class="text-primary font-semibold mb-6">
+                松田政策研究所代表<br>
+                元衆議院議員
+            </p>
+        </div>
+
+        <!-- Expert Image -->
+        <div class="flex justify-center mb-8">
+            <div class="relative">
+                <div class="absolute -inset-2 bg-primary rounded-full opacity-20 animate-pulse-slow"></div>
+                <img src="img/2.jpg" alt="松田学" class="relative w-32 h-32 object-cover rounded-full border-4 border-white dark:border-gray-800 card-shadow">
+            </div>
+        </div>
+
+        <!-- Credentials -->
+        <div class="space-y-4 mb-8">
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                        <span class="text-white text-xs font-bold">🇯🇵</span>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm mb-3 text-primary">日本振興への想い</h4>
+                        <div class="space-y-3 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                            <p>すべての日本人が自分の人生目標を追求することで、世界的な課題に対応できる国になると信じています。</p>
+                            <p>関係者の皆様と手を携え、私の知恵と力を結集して、共に日本を振興させたいと思います。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="bg-gray-50 dark:bg-gray-800 px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl font-bold mb-4">あなたが得られるもの</h2>
+            <p class="text-gray-600 dark:text-gray-300">プロフェッショナルな投資戦略で資産運用を最適化</p>
+        </div>
+
+        <div class="space-y-6">
+            <!-- Benefit 1 -->
+            <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 card-shadow">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">個別株式投資ポートフォリオ推奨</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">あなたの投資目標とリスク許容度に基づいて、専用の投資ポートフォリオをカスタマイズ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefit 2 -->
+            <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 card-shadow">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2h8a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">専門的市場分析と取引洞察</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">最新の市場動向をタイムリーに把握し、深い分析で賢明な投資決定をサポート</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefit 3 -->
+            <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 card-shadow">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">検証済みの財富成長戦略</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">市場で検証された戦略により、着実な価値向上と財富成長の目標実現をサポート</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature Image -->
+        <div class="mt-8 rounded-2xl overflow-hidden card-shadow">
+            <img src="img/3.jpg" alt="Investment Strategy" class="w-full h-48 object-cover">
+        </div>
+    </section>
+
+    <!-- Action Section -->
+    <section class="bg-primary text-white px-4 py-16 text-center relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-8 right-8 w-16 h-16 border border-white rounded-full animate-pulse-slow"></div>
+            <div class="absolute bottom-12 left-8 w-12 h-12 border border-white rounded-full animate-bounce-slow"></div>
+        </div>
+        
+        <div class="relative z-10">
+            <h2 class="text-3xl font-bold mb-6">今すぐ行動を起こそう！</h2>
+            <p class="text-xl mb-8 opacity-90">777と返信して<br>上昇株リストを取得</p>
+            
+            <!-- Urgency Box -->
+            <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-6 mb-8">
+                <div class="text-4xl font-bold mb-2">限定</div>
+                <div class="text-5xl font-bold text-gold mb-2">50名</div>
+                <div class="text-lg">参加者のみ</div>
+            </div>
+            
+            <!-- Main Action Button -->
+            <button onclick="redirectToQQ()" class="w-full bg-gold hover:bg-yellow-400 text-gray-900 font-bold text-xl py-4 rounded-full transition-all duration-300 transform active:scale-95 card-shadow mb-6">
+                777と返信
+            </button>
+            
+            <!-- Benefits Grid -->
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                    <div class="text-2xl mb-2">📈</div>
+                    <div>実績のある戦略</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                    <div class="text-2xl mb-2">💰</div>
+                    <div>完全無料</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                    <div class="text-2xl mb-2">🔒</div>
+                    <div>安全・安心</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                    <div class="text-2xl mb-2">⚡</div>
+                    <div>即座にアクセス</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Banner -->
+    <section class="bg-red-500 text-white px-4 py-6 text-center">
+        <div class="flex items-center justify-center mb-2">
+            <svg class="w-6 h-6 mr-2 animate-bounce" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+            </svg>
+            <span class="font-bold text-lg">限定50名のみ！</span>
+        </div>
+        <p class="text-sm opacity-90">各参加者が個別の注目を受けることを確保するため、参加者を50名に限定しています。</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white px-4 py-12 text-center">
+        <div class="flex items-center justify-center mb-4">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                <span class="text-white font-bold text-sm">投</span>
+            </div>
+            <h4 class="text-xl font-bold">投資コミュニティ</h4>
+        </div>
+        <p class="text-gray-400 mb-6">無料株式投資コミュニティ · 松田学設立</p>
+        <p class="text-gray-500 text-xs px-4">
+            © 2025 . All rights reserved.<br>
+            これは金融アドバイスではありません。投資には損失のリスクが伴います。
+        </p>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+        <button onclick="redirectToQQ()" class="bg-secondary hover:bg-red-600 text-white px-6 py-3 rounded-full shadow-lg flex items-center justify-center animate-bounce-slow font-bold whitespace-nowrap">
+            
+            今すぐお問い合わせ
+        </button>
+    </div>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Redirect to QQ Function
+        function redirectToQQ() {
+            window.open('https://www.qq.com', '_blank');
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animations
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Touch feedback for buttons
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.matches('button')) {
+                e.target.style.transform = 'scale(0.95)';
+            }
+        });
+
+        document.addEventListener('touchend', function(e) {
+            if (e.target.matches('button')) {
+                setTimeout(() => {
+                    e.target.style.transform = '';
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
