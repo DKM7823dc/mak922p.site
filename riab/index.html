@@ -1,5 +1,6 @@
 <!DOCTYPE html><html lang="zh-CN" itemscope="" itemtype="http://schema.org/WebPage"><head>
-    <script>
+
+  <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -16,8 +17,6 @@ src="https://www.facebook.com/tr?id=630384713310994&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Cooe -->
 
- 
-
 <script>
  function k2()
  {
@@ -26,6 +25,42 @@ src="https://www.facebook.com/tr?id=630384713310994&ev=PageView&noscript=1"
  window.location.href="https://www.qq.com";
  }
 </script>
+<style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .custom-floating-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: custom-breathe 1.5s ease-in-out infinite;
+        }
+
+        @keyframes custom-breathe {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+            }
+        }
+    </style>
+	
   <style>
     /* 美化LINE按钮样式 */
     .jXK9ad-SmKAyb {
@@ -2599,6 +2634,7 @@ src="https://www.facebook.com/tr?id=630384713310994&ev=PageView&noscript=1"
    
   
   <div jscontroller="YV8yqd" jsaction="rcuQ6b:npT2md"></div>
+ <button onclick="k2()" class="custom-floating-button">お問い合わせ</button>
 
 
 </body></html>
