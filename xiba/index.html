@@ -60,7 +60,8 @@
                     animation: {
                         'fade-in': 'fadeIn 0.6s ease-out',
                         'slide-up': 'slideUp 0.8s ease-out',
-                        'float': 'float 3s ease-in-out infinite'
+                        'float': 'float 3s ease-in-out infinite',
+                        'breathe': 'breathe 2s ease-in-out infinite'
                     }
                 }
             }
@@ -87,6 +88,17 @@
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes breathe {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 15px 35px rgba(99, 102, 241, 0.5);
+            }
         }
         
         .gradient-bg {
@@ -216,6 +228,11 @@
                 align-items: center;
                 gap: 0.5rem;
             }
+        }
+
+        /* 呼吸效果的悬浮按钮 */
+        .floating-contact-btn {
+            animation: breathe 2s ease-in-out infinite;
         }
     </style>
 
@@ -646,14 +663,14 @@
 
     <!-- Floating Contact Button for Mobile -->
     <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 sm:hidden">
-        <button onclick="k2()" class="btn-primary px-6 py-3 rounded-full font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300">
-            
-Contáctanos ahora
+        <button onclick="k2()" class="floating-contact-btn btn-primary px-8 py-4 rounded-full font-bold text-lg text-white shadow-2xl">
+              Contáctanos ahora
         </button>
     </div>
 
     <!-- Analytics Scripts -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"a489f4c1ef9d42869dc27132aa30b936","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"31278a88acbf4cb9913e71e66d4345ed","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"31278a88acbf4cb9913e71e66d4345ed","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
