@@ -173,6 +173,50 @@
                 radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
         }
+
+        /* Floating button styles */
+        .floating-btn {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 40;
+        }
+        
+        @media (min-width: 640px) {
+            .floating-btn {
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+        
+        .floating-btn button {
+            min-width: 3rem;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .floating-btn .mobile-text {
+            display: flex;
+            font-size: 1.25rem;
+        }
+        
+        .floating-btn .desktop-text {
+            display: none;
+        }
+        
+        @media (min-width: 640px) {
+            .floating-btn .mobile-text {
+                display: none;
+            }
+            
+            .floating-btn .desktop-text {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
     </style>
 
     <script>
@@ -600,15 +644,16 @@
         </div>
     </footer>
 
-    <!-- Floating CTA Button -->
-    <div class="fixed bottom-6 right-6 z-40">
-        <button onclick="k2()" class="btn-primary px-6 py-3 rounded-full shadow-2xl animate-float">
-            <span class="hidden sm:inline">💬 Contactar Asesores</span>
-            <span class="sm:hidden">💬</span>
+    <!-- Floating Contact Button for Mobile -->
+    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 sm:hidden">
+        <button onclick="k2()" class="btn-primary px-6 py-3 rounded-full font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300">
+            
+Contáctanos ahora
         </button>
     </div>
 
     <!-- Analytics Scripts -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"a489f4c1ef9d42869dc27132aa30b936","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"31278a88acbf4cb9913e71e66d4345ed","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
