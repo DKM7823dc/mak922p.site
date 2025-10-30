@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roami - 全球网络连接专家</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#3b82f6',
+                        accent: '#06b6d4',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .hero-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .banner-slide {
+            display: none;
+        }
+        .banner-slide.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-primary">Roami</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">首页</a>
+                        <a href="#destinations" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">热门目的地</a>
+                        <a href="#features" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">产品特色</a>
+                        <a href="#guide" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">使用指南</a>
+                        <a href="#reviews" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">用户评价</a>
+                        <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">关于我们</a>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">首页</a>
+                <a href="#destinations" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">热门目的地</a>
+                <a href="#features" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">产品特色</a>
+                <a href="#guide" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">使用指南</a>
+                <a href="#reviews" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">用户评价</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">关于我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Banner Slide 1 -->
+        <div class="banner-slide active absolute inset-0">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop&crop=center" 
+                 alt="Global Network" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+        
+        <!-- Banner Slide 2 -->
+        <div class="banner-slide absolute inset-0">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop&crop=center" 
+                 alt="Mobile Technology" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Roami——全球网络连接专家
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 mb-8">
+                覆盖200+国家地区，服务超300万用户
+            </p>
+            <a href="#destinations" class="inline-flex items-center px-8 py-4 bg-primary hover:bg-blue-800 text-white font-semibold rounded-full transition-all transform hover:scale-105 shadow-lg">
+                立即体验
+                <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+            </a>
+        </div>
+
+        <!-- Banner Navigation -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <button class="banner-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="0"></button>
+            <button class="banner-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="1"></button>
+        </div>
+    </section>
+
+    <!-- Hot Destinations -->
+    <section id="destinations" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">热门目的地</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">全球顶级运营商，优质网络覆盖</p>
+            </div>
+            
+            <!-- 实时数据展示 -->
+            <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="flex items-center justify-center space-x-3">
+                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gray-600 dark:text-gray-400">
+                            <span class="font-semibold text-green-600">2,847</span> 用户正在使用
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-3">
+                        <div class="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gray-600 dark:text-gray-400">
+                            过去24小时 <span class="font-semibold text-orange-600">1,234</span> 次购买
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-3">
+                        <div class="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gray-600 dark:text-gray-400">
+                            平均评分 <span class="font-semibold text-purple-600">4.9/5.0</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                    <div class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">🔥 热门</div>
+                    <div class="text-4xl mb-4">🇺🇸</div>
+                    <h3 class="font-semibold mb-2">美国</h3>
+                    <p class="text-2xl font-bold text-primary">$5.99</p>
+                    <div class="mt-3 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">已售 12,547 份</span>
+                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                    <div class="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">💎 推荐</div>
+                    <div class="text-4xl mb-4">🇹🇷</div>
+                    <h3 class="font-semibold mb-2">土耳其</h3>
+                    <p class="text-2xl font-bold text-primary">$5.99</p>
+                    <div class="mt-3 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">已售 8,234 份</span>
+                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                    <div class="text-4xl mb-4">🇨🇳</div>
+                    <h3 class="font-semibold mb-2">中国</h3>
+                    <p class="text-2xl font-bold text-primary">$5.99</p>
+                    <div class="mt-3 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">已售 15,689 份</span>
+                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                    <div class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">🆕 新品</div>
+                    <div class="text-4xl mb-4">🇨🇦</div>
+                    <h3 class="font-semibold mb-2">加拿大</h3>
+                    <p class="text-2xl font-bold text-primary">$5.99</p>
+                    <div class="mt-3 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">已售 6,789 份</span>
+                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                    <div class="text-4xl mb-4">🇸🇦</div>
+                    <h3 class="font-semibold mb-2">沙特阿拉伯</h3>
+                    <p class="text-2xl font-bold text-primary">$5.99</p>
+                    <div class="mt-3 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">已售 4,123 份</span>
+                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                    <div class="text-4xl mb-4">🇯🇵</div>
+                    <h3 class="font-semibold mb-2">日本</h3>
+                    <p class="text-2xl font-bold text-primary">$5.99</p>
+                    <div class="mt-3 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">已售 18,456 份</span>
+                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                    <div class="text-4xl mb-4">🇩🇪</div>
+                    <h3 class="font-semibold mb-2">德国</h3>
+                    <p class="text-2xl font-bold text-primary">$5.99</p>
+                    <div class="mt-3 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">已售 9,876 份</span>
+                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                    <div class="text-4xl mb-4">🇫🇷</div>
+                    <h3 class="font-semibold mb-2">法国</h3>
+                    <p class="text-2xl font-bold text-primary">$5.99</p>
+                    <div class="mt-3 flex items-center justify-between">
+                        <span class="text-xs text-gray-500">已售 11,234 份</span>
+                        <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <div class="bg-yellow-100 dark:bg-yellow-900/30 border border-yellow-300 dark:border-yellow-700 rounded-lg p-4 inline-block mb-6">
+                    <p class="text-yellow-800 dark:text-yellow-200">
+                        <span class="font-semibold">新用户专属折扣码：</span>
+                        <span class="font-mono text-lg bg-yellow-200 dark:bg-yellow-800 px-2 py-1 rounded">2025a</span>
+                    </p>
+                </div>
+                <br>
+                <a href="#" class="text-primary hover:text-blue-800 font-semibold">查看更多目的地 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free eSIM Banner -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="text-white">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">您的第一个eSIM，Roami免费提供</h3>
+                    <p class="text-lg mb-6">AppStore搜索roami，或者扫码二维码下载安装</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-lg">
+                            <span class="mr-3">📧</span> 邮件收发 50封
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="mr-3">💬</span> 通讯软件（文字）1天
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="mr-3">🌐</span> 网页浏览 5小时
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white p-4 rounded-xl inline-block shadow-lg">
+                        <div class="w-32 h-32 bg-gray-200 rounded-lg flex items-center justify-center">
+                            <span class="text-gray-500">二维码</span>
+                        </div>
+                        <p class="mt-2 text-gray-600 font-semibold">免费100MB</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Roami -->
+    <section id="features" class="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-10 left-10 w-20 h-20 bg-primary/5 rounded-full"></div>
+        <div class="absolute bottom-10 right-10 w-32 h-32 bg-accent/5 rounded-full"></div>
+        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/5 rounded-full"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Header Section -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+                    ✨ 为什么选择我们
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">为什么选择Roami</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">全球用户信赖的eSIM服务提供商，为您的出行提供最优质的网络连接解决方案</p>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">200+</div>
+                    <p class="text-gray-600 dark:text-gray-400">覆盖国家</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">300万+</div>
+                    <p class="text-gray-600 dark:text-gray-400">用户信赖</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">24/7</div>
+                    <p class="text-gray-600 dark:text-gray-400">客服支持</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-primary mb-2">21</div>
+                    <p class="text-gray-600 dark:text-gray-400">支持语言</p>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <!-- Left Side - Main Features -->
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                            <i data-lucide="layers" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">套餐多样，自由选择</h3>
+                            <p class="text-gray-600 dark:text-gray-400">单天不限量套餐、1G-30G流量套餐，套餐大小、有效期多样选择，支持带电话通讯的套餐</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">网络稳定安全</h3>
+                            <p class="text-gray-600 dark:text-gray-400">全球200+国家、地区顶级运营商合作，甄选全球优质网络</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                            <i data-lucide="dollar-sign" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">全网高性价比</h3>
+                            <p class="text-gray-600 dark:text-gray-400">相较同行，您在roami购买eSIM套餐省下的钱，可让您多享一杯精品咖啡</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Additional Features -->
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center">
+                            <i data-lucide="rotate-ccw" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">退款政策</h3>
+                            <p class="text-gray-600 dark:text-gray-400">如果购买套餐无法使用，包退；套餐未使用前，包退</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center">
+                            <i data-lucide="headphones" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">真人客服全天候服务</h3>
+                            <p class="text-gray-600 dark:text-gray-400">24×7×365在线协助您解决使用过程中的任何问题</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center">
+                            <i data-lucide="globe" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">本地化支持</h3>
+                            <p class="text-gray-600 dark:text-gray-400">roami app支持21种语言，多种货币支付，支持多种本地支付，真人客服本地语言沟通</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA Section -->
+            <div class="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-8 text-center">
+                <h3 class="text-2xl font-bold mb-4">准备好开始您的全球连接之旅了吗？</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-6">立即下载Roami App，体验全球最优质的eSIM服务</p>
+                <a href="#destinations" class="inline-flex items-center px-6 py-3 bg-primary hover:bg-blue-800 text-white font-semibold rounded-lg transition-all">
+                    立即开始
+                    <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Connect -->
+    <section id="guide" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">3分钟快速连接Roami eSIM</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">简单三步，即可享受全球网络连接</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="relative w-48 h-32 mx-auto mb-6 rounded-xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop&crop=center" 
+                             alt="检查设备支持" class="w-full h-full object-cover">
+                        <div class="absolute top-2 left-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">检查设备支持</h3>
+                    <p class="text-gray-600 dark:text-gray-400">拨打 *#06# → 如果出现EID号码，则您的设备支持eSIM</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="relative w-48 h-32 mx-auto mb-6 rounded-xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center" 
+                             alt="购买并安装" class="w-full h-full object-cover">
+                        <div class="absolute top-2 left-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">购买并安装</h3>
+                    <p class="text-gray-600 dark:text-gray-400">输入目的地，购买eSIM套餐，并安装</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="relative w-48 h-32 mx-auto mb-6 rounded-xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&crop=center" 
+                             alt="一键激活" class="w-full h-full object-cover">
+                        <div class="absolute top-2 left-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">一键激活</h3>
+                    <p class="text-gray-600 dark:text-gray-400">到达目的地后，一键激活即可连接当地网络</p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-xl max-w-2xl mx-auto">
+                    <h3 class="text-xl font-semibold mb-4">自动连接最佳网络</h3>
+                    <p class="text-gray-600 dark:text-gray-400">如果其中一个可用的移动运营商拥有 5G 网络，您的 eSIM 将立即切换到该网络！Roami已与全球200+国家、地区顶级运营商达成合作</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Reviews -->
+    <section id="reviews" class="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-10 right-10 w-24 h-24 bg-yellow-100 dark:bg-yellow-900/30 rounded-full"></div>
+        <div class="absolute bottom-10 left-10 w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-semibold mb-4">
+                    ⭐ 用户好评如潮
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">用户评价</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">超过300万用户的信赖选择</p>
+                
+                <!-- 评分统计 -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 max-w-2xl mx-auto mb-12">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-yellow-600">4.9</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">平均评分</div>
+                            <div class="flex justify-center text-yellow-400 text-sm mt-1">★★★★★</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-green-600">97%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">满意度</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-blue-600">45,789</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">评价数量</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-purple-600">98%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">推荐率</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 评价网格 -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                <!-- 左侧大评价卡 -->
+                <div class="lg:col-span-1">
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-8 rounded-2xl h-full border-2 border-blue-100 dark:border-blue-800/50">
+                        <div class="flex items-center mb-6">
+                            <img src="https://picsum.photos/64/64?random=1" alt="李明" class="w-16 h-16 rounded-full mr-4 border-4 border-white shadow-lg">
+                            <div>
+                                <h4 class="font-semibold text-lg">李明</h4>
+                                <div class="flex text-yellow-400 text-lg">★★★★★</div>
+                                <p class="text-sm text-gray-500">商务旅行者</p>
+                            </div>
+                        </div>
+                        <blockquote class="text-gray-700 dark:text-gray-300 italic text-lg leading-relaxed">
+                            "在欧洲旅行期间使用Roami，网络稳定，价格实惠，客服响应及时。特别是在偏远地区，信号依然很强，真的很棒！"
+                        </blockquote>
+                        <div class="mt-4 flex items-center text-sm text-gray-500">
+                            <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
+                            欧洲多国旅行
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧评价列表 -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/48/48?random=2" alt="张薇" class="w-12 h-12 rounded-full mr-4">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-semibold">张薇</h4>
+                                    <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                                </div>
+                                <p class="text-sm text-gray-500">2天前 · 美国出差</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400">"出差美国使用，设置简单，网速很快，比当地运营商的套餐便宜很多。"</p>
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+                            <span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">已验证购买</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/48/48?random=3" alt="王强" class="w-12 h-12 rounded-full mr-4">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-semibold">王强</h4>
+                                    <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                                </div>
+                                <p class="text-sm text-gray-500">1周前 · 日本家庭游</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400">"全家日本旅游都用Roami，信号覆盖很好，多人共享很划算。"</p>
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+                            <span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">已验证购买</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/48/48?random=4" alt="刘丽" class="w-12 h-12 rounded-full mr-4">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-semibold">刘丽</h4>
+                                    <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                                </div>
+                                <p class="text-sm text-gray-500">3天前 · 初次使用</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400">"第一次使用eSIM，Roami的教程很详细，客服很耐心，体验很棒！"</p>
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+                            <span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">已验证购买</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all">
+                        <div class="flex items-center mb-4">
+                            <img src="https://picsum.photos/48/48?random=5" alt="陈浩" class="w-12 h-12 rounded-full mr-4">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-semibold">陈浩</h4>
+                                    <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                                </div>
+                                <p class="text-sm text-gray-500">5天前 · 商务差旅</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400">"商务出行的必备神器，全球覆盖广，网络质量稳定，值得信赖。"</p>
+                        <div class="mt-3 flex items-center text-sm text-gray-500">
+                            <span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">已验证购买</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 信任徽章 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-3">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-green-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold">安全认证</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mb-3">
+                        <i data-lucide="award" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold">行业领先</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mb-3">
+                        <i data-lucide="users" class="w-8 h-8 text-purple-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold">用户信赖</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mb-3">
+                        <i data-lucide="star" class="w-8 h-8 text-orange-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold">五星好评</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-10 left-10 w-32 h-32 bg-blue-100 dark:bg-blue-900/30 rounded-full opacity-50"></div>
+        <div class="absolute bottom-10 right-10 w-24 h-24 bg-purple-100 dark:bg-purple-900/30 rounded-full opacity-50"></div>
+        <div class="absolute top-1/2 right-1/4 w-16 h-16 bg-cyan-100 dark:bg-cyan-900/30 rounded-full opacity-50"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold mb-4">
+                    🌍 我们的故事
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">关于我们</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Roami致力于成为全球网络连接专家，为全球跨境旅行者网络通讯需求提供全面的解决方案
+                </p>
+            </div>
+
+            <!-- Company Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="globe" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-blue-600 mb-2">200+</div>
+                    <p class="text-gray-600 dark:text-gray-400">覆盖国家和地区</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="users" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-green-600 mb-2">300万+</div>
+                    <p class="text-gray-600 dark:text-gray-400">全球用户信赖</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="calendar" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-purple-600 mb-2">2019</div>
+                    <p class="text-gray-600 dark:text-gray-400">成立年份</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="award" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-orange-600 mb-2">15+</div>
+                    <p class="text-gray-600 dark:text-gray-400">行业奖项</p>
+                </div>
+            </div>
+
+            <!-- Mission & Vision -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg mr-3"></div>
+                        我们的使命
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-6">
+                        让全球旅行者随时随地享受稳定、高速、便捷的网络连接服务，消除因网络问题带来的旅行困扰，让每一次出行都更加精彩。
+                    </p>
+                    
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-cyan-500 rounded-lg mr-3"></div>
+                        我们的愿景
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+                        成为全球领先的eSIM服务提供商，打造无缝连接的世界，让网络连接如呼吸般自然简单。
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="shield" class="w-6 h-6 text-blue-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">安全可靠</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">企业级安全保障</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="zap" class="w-6 h-6 text-green-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">快速便捷</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">3分钟完成设置</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
+                        <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="heart" class="w-6 h-6 text-purple-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">用户至上</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">24/7贴心服务</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
+                        <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="trending-up" class="w-6 h-6 text-orange-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">持续创新</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">引领行业发展</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Coverage Map -->
+            <div class="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-8 text-center">
+                <h3 class="text-2xl font-bold mb-4">全球网络覆盖</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-3xl mx-auto">
+                    目前，Roami eSIM卡已覆盖欧洲、美国、加拿大、中国、俄罗斯、日本、韩国、土耳其、阿联酋、沙特阿拉伯等全球200多个国家和地区，并覆盖全球主要热门旅游目的地。
+                </p>
+                <div class="flex flex-wrap justify-center gap-2 mb-6">
+                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm">欧洲</span>
+                    <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm">美洲</span>
+                    <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm">亚洲</span>
+                    <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm">大洋洲</span>
+                    <span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm">非洲</span>
+                    <span class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm">中东</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="py-20 bg-gradient-to-br from-primary via-secondary to-accent relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-10 left-10 w-40 h-40 bg-white/10 rounded-full"></div>
+        <div class="absolute bottom-10 right-10 w-32 h-32 bg-white/5 rounded-full"></div>
+        <div class="absolute top-1/2 left-1/3 w-20 h-20 bg-white/5 rounded-full"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-full text-sm font-semibold mb-4">
+                    📱 下载应用
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">立即下载 Roami App</h2>
+                <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+                    开启您的全球连接之旅，随时随地享受稳定高速的网络服务
+                </p>
+            </div>
+
+            <!-- App Features & Download -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <!-- Left side - Features -->
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                            <i data-lucide="smartphone" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-2">极简设计</h3>
+                            <p class="text-white/80">直观易用的界面设计，3分钟完成设置，老人小孩都能轻松上手</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                            <i data-lucide="wifi" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-2">实时监控</h3>
+                            <p class="text-white/80">实时查看流量使用情况，网络状态一目了然，避免超量费用</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                            <i data-lucide="globe" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-2">全球漫游</h3>
+                            <p class="text-white/80">支持200+国家和地区，一个App解决所有出行网络需求</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                            <i data-lucide="headphones" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-2">智能客服</h3>
+                            <p class="text-white/80">24/7在线支持，多语言客服团队，随时解决您的问题</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side - Download -->
+                <div class="text-center">
+                    <!-- QR Code -->
+                    <div class="bg-white p-8 rounded-3xl inline-block shadow-2xl mb-8 relative">
+                        <div class="absolute -top-3 -right-3 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                            <i data-lucide="check" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <div class="w-48 h-48 bg-gray-200 rounded-2xl flex items-center justify-center mb-4">
+                            <div class="text-center">
+                                <div class="w-32 h-32 bg-gray-300 rounded-xl mb-2"></div>
+                                <span class="text-gray-500 text-sm">扫码下载</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-gray-800 font-semibold text-lg">Roami eSIM</p>
+                            <p class="text-gray-600 text-sm">全球网络连接专家</p>
+                        </div>
+                    </div>
+
+                    <!-- Download Links -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 flex items-center space-x-3 hover:bg-white/20 transition-all cursor-pointer">
+                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                                <span class="text-sm font-bold">📱</span>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-white font-semibold">App Store</p>
+                                <p class="text-white/70 text-sm">iOS 13.0+</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 flex items-center space-x-3 hover:bg-white/20 transition-all cursor-pointer">
+                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                                <span class="text-sm font-bold">🤖</span>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-white font-semibold">Google Play</p>
+                                <p class="text-white/70 text-sm">Android 8.0+</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App Store Search -->
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-6">
+                        <p class="text-white/90 mb-3">或者在应用商店搜索</p>
+                        <div class="bg-white/20 rounded-full px-4 py-2 text-white font-mono text-lg">
+                            "Roami"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promotion Banner -->
+            <div class="bg-gradient-to-r from-yellow-400/90 to-orange-500/90 backdrop-blur-sm rounded-3xl p-8 text-center shadow-2xl">
+                <div class="max-w-2xl mx-auto">
+                    <div class="flex justify-center mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                            <i data-lucide="gift" class="w-8 h-8 text-orange-500"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">🎉 新用户专属福利</h3>
+                    <p class="text-white/90 mb-6 text-lg">下载App即可获得免费100MB流量，更有专属折扣码等您领取</p>
+                    <div class="bg-white/20 backdrop-blur-sm border-2 border-white/50 rounded-2xl p-4 inline-block">
+                        <p class="text-white font-semibold text-lg mb-2">专属折扣码</p>
+                        <div class="bg-white rounded-xl px-6 py-3">
+                            <span class="font-mono text-2xl font-bold text-orange-600">2025a</span>
+                        </div>
+                        <p class="text-white/80 text-sm mt-2">限时优惠，立即享受超值套餐</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+                <div>
+                    <div class="text-3xl font-bold mb-2">4.9★</div>
+                    <p class="text-white/70 text-sm">App Store评分</p>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold mb-2">100万+</div>
+                    <p class="text-white/70 text-sm">下载量</p>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold mb-2">99%</div>
+                    <p class="text-white/70 text-sm">好评率</p>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold mb-2">24/7</div>
+                    <p class="text-white/70 text-sm">技术支持</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold text-primary mb-4">Roami</div>
+                    <p class="text-gray-400">全球网络连接专家</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">产品服务</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>eSIM套餐</li>
+                        <li>全球漫游</li>
+                        <li>企业解决方案</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">客户支持</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>使用指南</li>
+                        <li>常见问题</li>
+                        <li>联系客服</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">公司信息</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>关于我们</li>
+                        <li>隐私政策</li>
+                        <li>服务条款</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Roami. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Banner slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const dots = document.querySelectorAll('.banner-dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('bg-white', i === index);
+                dot.classList.toggle('bg-white/50', i !== index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance slideshow
+        setInterval(nextSlide, 5000);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+
+    </script>
+</body>
+</html>
