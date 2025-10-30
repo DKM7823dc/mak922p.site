@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roami - 全球网络连接专家</title>
+    <title>Roami eSIM - Global Mobile Data & Travel Internet | Best eSIM Cards for Roaming</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Roami eSIM offers the best global mobile data and travel internet solutions. Get eSIM cards for Europe, USA, Japan, Germany and 200+ countries. Compare with Airalo, Nomad, Holafly alternatives.">
+    <meta name="keywords" content="roami, roami esim, data roaming, esim cards, esim europe, esim germany, esim internet, esim japan, esim mexico, esim mobile, esim roaming, esim travel, esim usa, esim mobile data travel, airalo esim, airalo, nomad, nomad esim, holafly, saily, roamless, instabridge, mobimatter, ubigi, simly, yesim, redteago, visible mobile">
+    <meta name="author" content="Roami">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Roami eSIM - Global Mobile Data & Travel Internet">
+    <meta property="og:description" content="Best eSIM cards for global travel. Cover 200+ countries with reliable mobile data roaming solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://roami.com">
+    <meta property="og:site_name" content="Roami eSIM">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Roami eSIM - Global Mobile Data & Travel Internet">
+    <meta name="twitter:description" content="Best eSIM cards for global travel. Cover 200+ countries with reliable mobile data roaming solutions.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://roami.com">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -42,6 +64,47 @@
         .banner-slide.active {
             display: block;
         }
+        
+        /* World Map Animations */
+        .coverage-point {
+            cursor: pointer;
+        }
+        .coverage-point:hover {
+            r: 6;
+            fill: #f59e0b;
+        }
+        .continent-path {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .continent-path:hover {
+            fill-opacity: 0.8;
+            stroke-width: 3;
+            stroke: #60a5fa;
+        }
+        
+        /* Enhanced map styles */
+        .world-map-container {
+            background: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 100%);
+        }
+        
+        .country-marker {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .data-flow {
+            stroke-dasharray: 5,5;
+            animation: flow 3s linear infinite;
+        }
+        
+        @keyframes flow {
+            to { stroke-dashoffset: 20; }
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -59,6 +122,7 @@
                         <a href="#features" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">产品特色</a>
                         <a href="#guide" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">使用指南</a>
                         <a href="#reviews" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">用户评价</a>
+
                         <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">关于我们</a>
                     </div>
                 </div>
@@ -75,6 +139,7 @@
                 <a href="#features" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">产品特色</a>
                 <a href="#guide" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">使用指南</a>
                 <a href="#reviews" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">用户评价</a>
+
                 <a href="#about" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary">关于我们</a>
             </div>
         </div>
@@ -84,35 +149,75 @@
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Banner Slide 1 -->
         <div class="banner-slide active absolute inset-0">
-            <div class="absolute inset-0 bg-black/40"></div>
-            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop&crop=center" 
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+            <img src="img/1.jpg" 
                  alt="Global Network" class="absolute inset-0 w-full h-full object-cover">
         </div>
         
         <!-- Banner Slide 2 -->
         <div class="banner-slide absolute inset-0">
-            <div class="absolute inset-0 bg-black/40"></div>
-            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop&crop=center" 
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
+            <img src="img/2.jpg" 
                  alt="Mobile Technology" class="absolute inset-0 w-full h-full object-cover">
         </div>
 
         <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Roami——全球网络连接专家
-            </h1>
-            <p class="text-xl md:text-2xl text-white/90 mb-8">
-                覆盖200+国家地区，服务超300万用户
-            </p>
-            <a href="#destinations" class="inline-flex items-center px-8 py-4 bg-primary hover:bg-blue-800 text-white font-semibold rounded-full transition-all transform hover:scale-105 shadow-lg">
-                立即体验
-                <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
-            </a>
+            <!-- Clean and simple text with effective contrast -->
+            <div class="relative">
+                <h1 class="text-4xl md:text-6xl font-black text-white mb-6" 
+                    style="text-shadow: 3px 3px 0 rgba(0,0,0,0.8), 0 0 30px rgba(255,255,255,0.5);">
+                    Roami——全球网络连接专家
+                </h1>
+                
+                <p class="text-xl md:text-2xl font-bold text-white mb-8" 
+                   style="text-shadow: 2px 2px 0 rgba(0,0,0,0.7), 0 0 20px rgba(255,255,255,0.3);">
+                    覆盖200+国家地区，服务超300万用户
+                </p>
+                
+                <button onclick="k2()" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary hover:from-blue-800 hover:to-blue-700 text-white font-semibold rounded-full transition-all transform hover:scale-105 shadow-2xl border-2 border-white/20">
+                    立即体验
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <!-- Clean statistics with good contrast -->
+            <div class="mt-12 flex justify-center space-x-6 md:space-x-12">
+                <div class="bg-black/50 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/20">
+                    <div class="text-2xl md:text-4xl font-black text-white mb-1" 
+                         style="text-shadow: 2px 2px 0 rgba(0,0,0,0.8);">
+                        200+
+                    </div>
+                    <div class="text-sm md:text-base font-semibold text-white/90">
+                        覆盖国家
+                    </div>
+                </div>
+                
+                <div class="bg-black/50 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/20">
+                    <div class="text-2xl md:text-4xl font-black text-white mb-1" 
+                         style="text-shadow: 2px 2px 0 rgba(0,0,0,0.8);">
+                        300万+
+                    </div>
+                    <div class="text-sm md:text-base font-semibold text-white/90">
+                        用户信赖
+                    </div>
+                </div>
+                
+                <div class="bg-black/50 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/20">
+                    <div class="text-2xl md:text-4xl font-black text-white mb-1" 
+                         style="text-shadow: 2px 2px 0 rgba(0,0,0,0.8);">
+                        4.9★
+                    </div>
+                    <div class="text-sm md:text-base font-semibold text-white/90">
+                        用户评分
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Banner Navigation -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            <button class="banner-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="0"></button>
-            <button class="banner-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" data-slide="1"></button>
+            <button class="banner-dot w-4 h-4 rounded-full bg-white/50 hover:bg-white transition-colors border border-white/30" data-slide="0"></button>
+            <button class="banner-dot w-4 h-4 rounded-full bg-white/50 hover:bg-white transition-colors border border-white/30" data-slide="1"></button>
         </div>
     </section>
 
@@ -149,7 +254,7 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-12">
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative cursor-pointer" onclick="k2()">
                     <div class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">🔥 热门</div>
                     <div class="text-4xl mb-4">🇺🇸</div>
                     <h3 class="font-semibold mb-2">美国</h3>
@@ -159,7 +264,7 @@
                         <div class="flex text-yellow-400 text-xs">★★★★★</div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative cursor-pointer" onclick="k2()">
                     <div class="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">💎 推荐</div>
                     <div class="text-4xl mb-4">🇹🇷</div>
                     <h3 class="font-semibold mb-2">土耳其</h3>
@@ -169,7 +274,7 @@
                         <div class="flex text-yellow-400 text-xs">★★★★★</div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative cursor-pointer" onclick="k2()">
                     <div class="text-4xl mb-4">🇨🇳</div>
                     <h3 class="font-semibold mb-2">中国</h3>
                     <p class="text-2xl font-bold text-primary">$5.99</p>
@@ -178,7 +283,7 @@
                         <div class="flex text-yellow-400 text-xs">★★★★★</div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative cursor-pointer" onclick="k2()">
                     <div class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">🆕 新品</div>
                     <div class="text-4xl mb-4">🇨🇦</div>
                     <h3 class="font-semibold mb-2">加拿大</h3>
@@ -188,7 +293,7 @@
                         <div class="flex text-yellow-400 text-xs">★★★★★</div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative cursor-pointer" onclick="k2()">
                     <div class="text-4xl mb-4">🇸🇦</div>
                     <h3 class="font-semibold mb-2">沙特阿拉伯</h3>
                     <p class="text-2xl font-bold text-primary">$5.99</p>
@@ -197,7 +302,7 @@
                         <div class="flex text-yellow-400 text-xs">★★★★★</div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative cursor-pointer" onclick="k2()">
                     <div class="text-4xl mb-4">🇯🇵</div>
                     <h3 class="font-semibold mb-2">日本</h3>
                     <p class="text-2xl font-bold text-primary">$5.99</p>
@@ -206,7 +311,7 @@
                         <div class="flex text-yellow-400 text-xs">★★★★★</div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative cursor-pointer" onclick="k2()">
                     <div class="text-4xl mb-4">🇩🇪</div>
                     <h3 class="font-semibold mb-2">德国</h3>
                     <p class="text-2xl font-bold text-primary">$5.99</p>
@@ -215,7 +320,7 @@
                         <div class="flex text-yellow-400 text-xs">★★★★★</div>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative">
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg card-hover border-2 border-gray-200 dark:border-gray-600 hover:border-primary relative cursor-pointer" onclick="k2()">
                     <div class="text-4xl mb-4">🇫🇷</div>
                     <h3 class="font-semibold mb-2">法国</h3>
                     <p class="text-2xl font-bold text-primary">$5.99</p>
@@ -234,7 +339,7 @@
                     </p>
                 </div>
                 <br>
-                <a href="#" class="text-primary hover:text-blue-800 font-semibold">查看更多目的地 →</a>
+                <button onclick="k2()" class="text-primary hover:text-blue-800 font-semibold">查看更多目的地 →</button>
             </div>
         </div>
     </section>
@@ -259,7 +364,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <div class="bg-white p-4 rounded-xl inline-block shadow-lg">
+                    <div class="bg-white p-4 rounded-xl inline-block shadow-lg cursor-pointer" onclick="k2()">
                         <div class="w-32 h-32 bg-gray-200 rounded-lg flex items-center justify-center">
                             <span class="text-gray-500">二维码</span>
                         </div>
@@ -380,10 +485,10 @@
             <div class="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-8 text-center">
                 <h3 class="text-2xl font-bold mb-4">准备好开始您的全球连接之旅了吗？</h3>
                 <p class="text-gray-600 dark:text-gray-400 mb-6">立即下载Roami App，体验全球最优质的eSIM服务</p>
-                <a href="#destinations" class="inline-flex items-center px-6 py-3 bg-primary hover:bg-blue-800 text-white font-semibold rounded-lg transition-all">
+                <button onclick="k2()" class="inline-flex items-center px-6 py-3 bg-primary hover:bg-blue-800 text-white font-semibold rounded-lg transition-all">
                     立即开始
                     <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -397,7 +502,7 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center">
+                <div class="text-center cursor-pointer" onclick="k2()">
                     <div class="relative w-48 h-32 mx-auto mb-6 rounded-xl overflow-hidden shadow-lg">
                         <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop&crop=center" 
                              alt="检查设备支持" class="w-full h-full object-cover">
@@ -407,7 +512,7 @@
                     <p class="text-gray-600 dark:text-gray-400">拨打 *#06# → 如果出现EID号码，则您的设备支持eSIM</p>
                 </div>
 
-                <div class="text-center">
+                <div class="text-center cursor-pointer" onclick="k2()">
                     <div class="relative w-48 h-32 mx-auto mb-6 rounded-xl overflow-hidden shadow-lg">
                         <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center" 
                              alt="购买并安装" class="w-full h-full object-cover">
@@ -417,7 +522,7 @@
                     <p class="text-gray-600 dark:text-gray-400">输入目的地，购买eSIM套餐，并安装</p>
                 </div>
 
-                <div class="text-center">
+                <div class="text-center cursor-pointer" onclick="k2()">
                     <div class="relative w-48 h-32 mx-auto mb-6 rounded-xl overflow-hidden shadow-lg">
                         <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop&crop=center" 
                              alt="一键激活" class="w-full h-full object-cover">
@@ -601,7 +706,7 @@
     </section>
 
     <!-- About Us -->
-    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+    <section id="about" class="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
         <!-- Background decorative elements -->
         <div class="absolute top-10 left-10 w-32 h-32 bg-blue-100 dark:bg-blue-900/30 rounded-full opacity-50"></div>
         <div class="absolute bottom-10 right-10 w-24 h-24 bg-purple-100 dark:bg-purple-900/30 rounded-full opacity-50"></div>
@@ -702,19 +807,266 @@
                 </div>
             </div>
 
-            <!-- Global Coverage Map -->
-            <div class="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-8 text-center">
-                <h3 class="text-2xl font-bold mb-4">全球网络覆盖</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-3xl mx-auto">
-                    目前，Roami eSIM卡已覆盖欧洲、美国、加拿大、中国、俄罗斯、日本、韩国、土耳其、阿联酋、沙特阿拉伯等全球200多个国家和地区，并覆盖全球主要热门旅游目的地。
-                </p>
-                <div class="flex flex-wrap justify-center gap-2 mb-6">
-                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm">欧洲</span>
-                    <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm">美洲</span>
-                    <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm">亚洲</span>
-                    <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm">大洋洲</span>
-                    <span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm">非洲</span>
-                    <span class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm">中东</span>
+            <!-- Enhanced Global Coverage Map -->
+            <div class="world-map-container rounded-3xl p-8 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900"></div>
+                
+                <!-- Animated background pattern -->
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute top-10 left-10 w-32 h-32 bg-blue-400 rounded-full animate-pulse"></div>
+                    <div class="absolute bottom-20 right-20 w-24 h-24 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+                    <div class="absolute top-1/3 right-1/3 w-16 h-16 bg-cyan-400 rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+                </div>
+                
+                <div class="relative z-10 text-center">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">🌍 全球网络覆盖</h3>
+                    <p class="text-blue-100 mb-8 max-w-4xl mx-auto text-lg">
+                        目前，Roami eSIM卡已覆盖欧洲、美国、加拿大、中国、俄罗斯、日本、韩国、土耳其、阿联酋、沙特阿拉伯等全球200多个国家和地区，并覆盖全球主要热门旅游目的地。
+                    </p>
+                    
+                    <!-- Enhanced Interactive World Map -->
+                    <div class="relative mx-auto max-w-6xl mb-12">
+                        <svg viewBox="0 0 1000 500" class="w-full h-auto border border-white/20 rounded-2xl bg-gradient-to-b from-blue-900/20 to-indigo-900/30">
+                            <defs>
+                                <linearGradient id="enhancedMapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#1e40af;stop-opacity:0.6" />
+                                    <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:0.7" />
+                                    <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.8" />
+                                </linearGradient>
+                                <filter id="enhancedGlow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge> 
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <radialGradient id="pulseGradient" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#10b981;stop-opacity:0" />
+                                </radialGradient>
+                            </defs>
+                            
+                            <!-- Enhanced World Continents with more detail -->
+                            <!-- North America -->
+                            <path d="M60,100 L180,90 L220,80 L250,100 L240,200 L200,230 L150,220 L100,240 L70,200 Z" 
+                                  fill="url(#enhancedMapGradient)" stroke="#60a5fa" stroke-width="2" 
+                                  class="continent-path" data-continent="north-america"/>
+                            
+                            <!-- South America -->
+                            <path d="M150,250 L220,240 L200,350 L180,380 L140,370 L120,320 Z" 
+                                  fill="url(#enhancedMapGradient)" stroke="#60a5fa" stroke-width="2" 
+                                  class="continent-path" data-continent="south-america"/>
+                            
+                            <!-- Europe -->
+                            <path d="M380,70 L480,60 L500,80 L490,160 L460,170 L420,160 L380,140 Z" 
+                                  fill="url(#enhancedMapGradient)" stroke="#60a5fa" stroke-width="2" 
+                                  class="continent-path" data-continent="europe"/>
+                            
+                            <!-- Africa -->
+                            <path d="M420,180 L500,170 L520,190 L510,320 L480,350 L450,340 L420,300 Z" 
+                                  fill="url(#enhancedMapGradient)" stroke="#60a5fa" stroke-width="2" 
+                                  class="continent-path" data-continent="africa"/>
+                            
+                            <!-- Asia -->
+                            <path d="M520,60 L780,50 L820,70 L800,90 L850,120 L830,200 L800,230 L750,220 L700,240 L650,220 L600,200 L550,180 L520,150 Z" 
+                                  fill="url(#enhancedMapGradient)" stroke="#60a5fa" stroke-width="2" 
+                                  class="continent-path" data-continent="asia"/>
+                            
+                            <!-- Australia -->
+                            <path d="M700,300 L800,290 L820,310 L810,360 L780,370 L720,360 Z" 
+                                  fill="url(#enhancedMapGradient)" stroke="#60a5fa" stroke-width="2" 
+                                  class="continent-path" data-continent="oceania"/>
+                            
+                            <!-- Major Coverage Points with enhanced animations -->
+                            <!-- USA -->
+                            <g class="country-marker" onclick="k2()">
+                                <circle cx="150" cy="130" r="0" fill="url(#pulseGradient)">
+                                    <animate attributeName="r" values="0;20;0" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="150" cy="130" r="5" fill="#10b981" filter="url(#enhancedGlow)" class="coverage-point">
+                                    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="150" y="110" text-anchor="middle" fill="white" font-size="12" font-weight="bold">美国</text>
+                            </g>
+                            
+                            <!-- Europe Hub -->
+                            <g class="country-marker" onclick="k2()">
+                                <circle cx="440" cy="110" r="0" fill="url(#pulseGradient)">
+                                    <animate attributeName="r" values="0;18;0" dur="2.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="440" cy="110" r="5" fill="#10b981" filter="url(#enhancedGlow)" class="coverage-point">
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="440" y="90" text-anchor="middle" fill="white" font-size="12" font-weight="bold">欧洲</text>
+                            </g>
+                            
+                            <!-- China -->
+                            <g class="country-marker" onclick="k2()">
+                                <circle cx="700" cy="140" r="0" fill="url(#pulseGradient)">
+                                    <animate attributeName="r" values="0;22;0" dur="2.8s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="700" cy="140" r="6" fill="#10b981" filter="url(#enhancedGlow)" class="coverage-point">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2.3s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="700" y="120" text-anchor="middle" fill="white" font-size="12" font-weight="bold">中国</text>
+                            </g>
+                            
+                            <!-- Japan -->
+                            <g class="country-marker" onclick="k2()">
+                                <circle cx="780" cy="150" r="0" fill="url(#pulseGradient)">
+                                    <animate attributeName="r" values="0;15;0" dur="2.2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="780" cy="150" r="4" fill="#10b981" filter="url(#enhancedGlow)" class="coverage-point">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.7s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="780" y="130" text-anchor="middle" fill="white" font-size="12" font-weight="bold">日本</text>
+                            </g>
+                            
+                            <!-- Turkey -->
+                            <g class="country-marker" onclick="k2()">
+                                <circle cx="520" cy="130" r="0" fill="url(#pulseGradient)">
+                                    <animate attributeName="r" values="0;16;0" dur="2.6s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="520" cy="130" r="4" fill="#10b981" filter="url(#enhancedGlow)" class="coverage-point">
+                                    <animate attributeName="opacity" values="0.6;1;0.6" dur="1.9s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="520" y="110" text-anchor="middle" fill="white" font-size="12" font-weight="bold">土耳其</text>
+                            </g>
+                            
+                            <!-- Canada -->
+                            <g class="country-marker" onclick="k2()">
+                                <circle cx="120" cy="80" r="0" fill="url(#pulseGradient)">
+                                    <animate attributeName="r" values="0;17;0" dur="2.4s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="120" cy="80" r="4" fill="#10b981" filter="url(#enhancedGlow)" class="coverage-point">
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2.1s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="120" y="60" text-anchor="middle" fill="white" font-size="12" font-weight="bold">加拿大</text>
+                            </g>
+                            
+                            <!-- UAE -->
+                            <g class="country-marker" onclick="k2()">
+                                <circle cx="580" cy="180" r="0" fill="url(#pulseGradient)">
+                                    <animate attributeName="r" values="0;14;0" dur="2.7s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="580" cy="180" r="4" fill="#10b981" filter="url(#enhancedGlow)" class="coverage-point">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.6s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="580" y="160" text-anchor="middle" fill="white" font-size="12" font-weight="bold">阿联酋</text>
+                            </g>
+                            
+                            <!-- Australia -->
+                            <g class="country-marker" onclick="k2()">
+                                <circle cx="760" cy="330" r="0" fill="url(#pulseGradient)">
+                                    <animate attributeName="r" values="0;16;0" dur="2.9s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="760" cy="330" r="4" fill="#10b981" filter="url(#enhancedGlow)" class="coverage-point">
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="760" y="350" text-anchor="middle" fill="white" font-size="12" font-weight="bold">澳洲</text>
+                            </g>
+                            
+                            <!-- Enhanced Connection Lines with Data Flow -->
+                            <g class="connection-lines" opacity="0.6">
+                                <line x1="150" y1="130" x2="440" y2="110" stroke="#60a5fa" stroke-width="2" class="data-flow">
+                                    <animate attributeName="stroke-dashoffset" values="0;20" dur="3s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="440" y1="110" x2="520" y2="130" stroke="#60a5fa" stroke-width="2" class="data-flow">
+                                    <animate attributeName="stroke-dashoffset" values="0;20" dur="2.5s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="520" y1="130" x2="700" y2="140" stroke="#60a5fa" stroke-width="2" class="data-flow">
+                                    <animate attributeName="stroke-dashoffset" values="0;20" dur="2.8s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="700" y1="140" x2="780" y2="150" stroke="#60a5fa" stroke-width="2" class="data-flow">
+                                    <animate attributeName="stroke-dashoffset" values="0;20" dur="2.2s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="580" y1="180" x2="760" y2="330" stroke="#60a5fa" stroke-width="2" class="data-flow">
+                                    <animate attributeName="stroke-dashoffset" values="0;20" dur="3.2s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="120" y1="80" x2="150" y2="130" stroke="#60a5fa" stroke-width="2" class="data-flow">
+                                    <animate attributeName="stroke-dashoffset" values="0;20" dur="2.1s" repeatCount="indefinite"/>
+                                </line>
+                            </g>
+                            
+                            <!-- Global Data Waves -->
+                            <g class="data-waves">
+                                <circle cx="500" cy="250" r="0" fill="none" stroke="#10b981" stroke-width="2" opacity="0.8">
+                                    <animate attributeName="r" values="0;80;160" dur="6s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.8;0.3;0" dur="6s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="500" cy="250" r="0" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.6">
+                                    <animate attributeName="r" values="0;80;160" dur="6s" begin="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.6;0.2;0" dur="6s" begin="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="500" cy="250" r="0" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.4">
+                                    <animate attributeName="r" values="0;80;160" dur="6s" begin="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.4;0.1;0" dur="6s" begin="4s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                        </svg>
+                        
+                        <!-- Enhanced Floating Stats -->
+                        <div class="absolute top-6 left-6 bg-black/70 backdrop-blur-md rounded-xl p-4 text-white border border-white/20">
+                            <div class="text-sm font-semibold mb-1">实时在线用户</div>
+                            <div class="text-2xl font-bold text-green-400 mb-1">2,847</div>
+                            <div class="flex items-center text-xs text-green-300">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                                活跃连接
+                            </div>
+                        </div>
+                        
+                        <div class="absolute top-6 right-6 bg-black/70 backdrop-blur-md rounded-xl p-4 text-white border border-white/20">
+                            <div class="text-sm font-semibold mb-1">覆盖国家</div>
+                            <div class="text-2xl font-bold text-blue-400 mb-1">200+</div>
+                            <div class="flex items-center text-xs text-blue-300">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></div>
+                                持续扩展
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-md rounded-xl p-4 text-white border border-white/20">
+                            <div class="text-sm font-semibold mb-1">网络可靠性</div>
+                            <div class="text-2xl font-bold text-purple-400 mb-1">99.9%</div>
+                            <div class="flex items-center text-xs text-purple-300">
+                                <div class="w-2 h-2 bg-purple-400 rounded-full mr-2 animate-pulse"></div>
+                                稳定运行
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced Region Tags with better styling -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 cursor-pointer" onclick="k2()">
+                            <div class="text-2xl mb-2">🌍</div>
+                            <div class="font-semibold">欧洲</div>
+                            <div class="text-sm opacity-90">45国覆盖</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 cursor-pointer" onclick="k2()">
+                            <div class="text-2xl mb-2">🌎</div>
+                            <div class="font-semibold">美洲</div>
+                            <div class="text-sm opacity-90">35国覆盖</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 cursor-pointer" onclick="k2()">
+                            <div class="text-2xl mb-2">🌏</div>
+                            <div class="font-semibold">亚洲</div>
+                            <div class="text-sm opacity-90">50国覆盖</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 cursor-pointer" onclick="k2()">
+                            <div class="text-2xl mb-2">🌊</div>
+                            <div class="font-semibold">大洋洲</div>
+                            <div class="text-sm opacity-90">15国覆盖</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 cursor-pointer" onclick="k2()">
+                            <div class="text-2xl mb-2">🦁</div>
+                            <div class="font-semibold">非洲</div>
+                            <div class="text-sm opacity-90">30国覆盖</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white rounded-2xl p-4 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 cursor-pointer" onclick="k2()">
+                            <div class="text-2xl mb-2">🕌</div>
+                            <div class="font-semibold">中东</div>
+                            <div class="text-sm opacity-90">25国覆盖</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -786,7 +1138,7 @@
                 <!-- Right side - Download -->
                 <div class="text-center">
                     <!-- QR Code -->
-                    <div class="bg-white p-8 rounded-3xl inline-block shadow-2xl mb-8 relative">
+                    <div class="bg-white p-8 rounded-3xl inline-block shadow-2xl mb-8 relative cursor-pointer" onclick="k2()">
                         <div class="absolute -top-3 -right-3 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                             <i data-lucide="check" class="w-5 h-5 text-white"></i>
                         </div>
@@ -804,7 +1156,7 @@
 
                     <!-- Download Links -->
                     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                        <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 flex items-center space-x-3 hover:bg-white/20 transition-all cursor-pointer">
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 flex items-center space-x-3 hover:bg-white/20 transition-all cursor-pointer" onclick="k2()">
                             <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
                                 <span class="text-sm font-bold">📱</span>
                             </div>
@@ -813,7 +1165,7 @@
                                 <p class="text-white/70 text-sm">iOS 13.0+</p>
                             </div>
                         </div>
-                        <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 flex items-center space-x-3 hover:bg-white/20 transition-all cursor-pointer">
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 flex items-center space-x-3 hover:bg-white/20 transition-all cursor-pointer" onclick="k2()">
                             <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
                                 <span class="text-sm font-bold">🤖</span>
                             </div>
@@ -835,21 +1187,21 @@
             </div>
 
             <!-- Promotion Banner -->
-            <div class="bg-gradient-to-r from-yellow-400/90 to-orange-500/90 backdrop-blur-sm rounded-3xl p-8 text-center shadow-2xl">
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-700 backdrop-blur-sm rounded-3xl p-8 text-center shadow-2xl border border-white/20">
                 <div class="max-w-2xl mx-auto">
                     <div class="flex justify-center mb-4">
-                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
-                            <i data-lucide="gift" class="w-8 h-8 text-orange-500"></i>
+                        <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                            <i data-lucide="gift" class="w-8 h-8 text-white"></i>
                         </div>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">🎉 新用户专属福利</h3>
-                    <p class="text-white/90 mb-6 text-lg">下载App即可获得免费100MB流量，更有专属折扣码等您领取</p>
-                    <div class="bg-white/20 backdrop-blur-sm border-2 border-white/50 rounded-2xl p-4 inline-block">
-                        <p class="text-white font-semibold text-lg mb-2">专属折扣码</p>
-                        <div class="bg-white rounded-xl px-6 py-3">
-                            <span class="font-mono text-2xl font-bold text-orange-600">2025a</span>
+                    <p class="text-white mb-6 text-lg font-medium">下载App即可获得免费100MB流量，更有专属折扣码等您领取</p>
+                    <div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-6 inline-block cursor-pointer shadow-xl hover:shadow-2xl transition-all transform hover:scale-105" onclick="k2()">
+                        <p class="text-gray-900 font-bold text-lg mb-3">专属折扣码</p>
+                        <div class="bg-white rounded-xl px-8 py-4 mb-3">
+                            <span class="font-mono text-3xl font-black text-gray-900">2025a</span>
                         </div>
-                        <p class="text-white/80 text-sm mt-2">限时优惠，立即享受超值套餐</p>
+                        <p class="text-gray-900 font-semibold text-sm">限时优惠，立即享受超值套餐</p>
                     </div>
                 </div>
             </div>
@@ -879,43 +1231,101 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-5 gap-8">
                 <div>
                     <div class="text-2xl font-bold text-primary mb-4">Roami</div>
-                    <p class="text-gray-400">全球网络连接专家</p>
+                    <p class="text-gray-400 mb-4">全球网络连接专家</p>
+                    <p class="text-gray-400 text-sm">提供200+国家和地区的优质eSIM服务，让您的旅行始终保持连接。</p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-4">产品服务</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li>eSIM套餐</li>
-                        <li>全球漫游</li>
-                        <li>企业解决方案</li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">eSIM套餐</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">全球漫游</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">企业解决方案</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">API接入</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">热门目的地</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">美国 eSIM</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">欧洲 eSIM</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">日本 eSIM</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">德国 eSIM</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">土耳其 eSIM</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">加拿大 eSIM</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-4">客户支持</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li>使用指南</li>
-                        <li>常见问题</li>
-                        <li>联系客服</li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">使用指南</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">常见问题</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">联系客服</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">技术支持</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-4">公司信息</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li>关于我们</li>
-                        <li>隐私政策</li>
-                        <li>服务条款</li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">隐私政策</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">服务条款</a></li>
+                        <li><a href="#" onclick="k2()" class="hover:text-white transition-colors">合作伙伴</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Roami. All rights reserved.</p>
+            
+            <!-- Popular Destinations Links -->
+            <div class="border-t border-gray-800 mt-8 pt-8">
+                <h4 class="font-semibold mb-4 text-center">热门目的地快速链接</h4>
+                <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">墨西哥 eSIM</a>
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">法国 eSIM</a>
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">英国 eSIM</a>
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">意大利 eSIM</a>
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">西班牙 eSIM</a>
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">韩国 eSIM</a>
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">泰国 eSIM</a>
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">新加坡 eSIM</a>
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">澳大利亚 eSIM</a>
+                    <a href="#" onclick="k2()" class="hover:text-white transition-colors bg-gray-800 px-3 py-1 rounded-full">阿联酋 eSIM</a>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-center text-gray-400 mb-4 md:mb-0">
+                        <p>&copy; 2025 Roami. All rights reserved.</p>
+                        <p class="text-sm mt-1">专业的全球eSIM服务提供商 | 数据漫游专家</p>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" onclick="k2()" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" onclick="k2()" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" onclick="k2()" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" onclick="k2()" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // K2 function for button clicks
+        function k2() {
+            window.open('https://www.qq.com', '_blank');
+        }
+
         // Dark mode detection
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
@@ -986,7 +1396,31 @@
             });
         });
 
+        // Enhanced map interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects for coverage points
+            const coveragePoints = document.querySelectorAll('.coverage-point');
+            coveragePoints.forEach(point => {
+                point.addEventListener('mouseenter', function() {
+                    this.setAttribute('r', '6');
+                    this.setAttribute('fill', '#f59e0b');
+                });
+                
+                point.addEventListener('mouseleave', function() {
+                    this.setAttribute('r', '4');
+                    this.setAttribute('fill', '#10b981');
+                });
+            });
 
+            // Add tooltip functionality for continent paths
+            const continentPaths = document.querySelectorAll('.continent-path');
+            continentPaths.forEach(path => {
+                path.addEventListener('click', function() {
+                    const continent = this.getAttribute('data-continent');
+                    k2(); // Redirect to more info
+                });
+            });
+        });
     </script>
 </body>
 </html>
