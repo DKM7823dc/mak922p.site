@@ -190,7 +190,8 @@
         .floating-btn {
             position: fixed;
             bottom: 1rem;
-            right: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 40;
         }
         
@@ -198,35 +199,46 @@
             .floating-btn {
                 bottom: 1.5rem;
                 right: 1.5rem;
+                left: auto;
+                transform: none;
             }
         }
         
         .floating-btn button {
-            min-width: 3rem;
-            min-height: 3rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+            border-radius: 9999px; /* 确保按钮本身也是圆角 */
         }
         
-        .floating-btn .mobile-text {
+        /* 移动端样式 - 椭圆形按钮 */
+        .floating-btn .mobile-version {
             display: flex;
-            font-size: 1.25rem;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* rounded-full - 椭圆形 */
+            font-size: 0.875rem;
+            font-weight: 600;
         }
         
-        .floating-btn .desktop-text {
+        /* 桌面端样式 - 椭圆形按钮 */
+        .floating-btn .desktop-version {
             display: none;
         }
         
         @media (min-width: 640px) {
-            .floating-btn .mobile-text {
+            .floating-btn .mobile-version {
                 display: none;
             }
             
-            .floating-btn .desktop-text {
+            .floating-btn .desktop-version {
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
+                padding: 0.75rem 1.5rem;
+                border-radius: 9999px; /* rounded-full - 椭圆形 */
             }
         }
 
@@ -647,6 +659,26 @@
         </div>
     </section>
 
+    <!-- 悬浮联系按钮 -->
+    <div class="floating-btn">
+        <button onclick="k2()" class="floating-contact-btn btn-primary shadow-2xl hover:shadow-3xl transition-all duration-300">
+            <!-- 移动端版本 - 长方形按钮 -->
+            <span class="mobile-version">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.064 3.488"/>
+                </svg>
+                <span>WhatsApp</span>
+            </span>
+            <!-- 桌面端版本 - 圆形按钮 -->
+            <span class="desktop-version">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.064 3.488"/>
+                </svg>
+                <span class="font-semibold">Contáctanos</span>
+            </span>
+        </button>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-dark-800 py-12">
         <div class="container-custom">
@@ -661,12 +693,7 @@
         </div>
     </footer>
 
-    <!-- Floating Contact Button for Mobile -->
-    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 sm:hidden">
-        <button onclick="k2()" class="floating-contact-btn btn-primary px-8 py-4 rounded-full font-bold text-lg text-white shadow-2xl">
-              Contáctanos ahora
-        </button>
-    </div>
+   
 
     <!-- Analytics Scripts -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"a489f4c1ef9d42869dc27132aa30b936","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
