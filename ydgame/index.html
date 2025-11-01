@@ -47,6 +47,35 @@
         function openWhatsApp() {
             window.open('https://wa.me', '_blank');
         }
+
+        function openCustomerService() {
+            window.open('https://t.me', '_blank');
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('mobile-menu-button');
+            const menuIcon = menuButton.querySelector('svg');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            }
+        }
+
+        // Close mobile menu when clicking on a link
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('mobile-menu-button');
+            const menuIcon = menuButton.querySelector('svg');
+            
+            mobileMenu.classList.add('hidden');
+            menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+        }
     </script>
     <style>
         .glow-gold {
@@ -73,14 +102,14 @@
             z-index: 1000;
         }
         .social-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
+            font-size: 16px;
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -235,6 +264,51 @@
         .particle:nth-child(8) { left: 80%; animation-delay: 2.5s; }
         .particle:nth-child(9) { left: 90%; animation-delay: 3.5s; }
         .particle:nth-child(10) { left: 15%; animation-delay: 4.5s; }
+
+        /* Mobile menu styles */
+        .mobile-menu-slide {
+            transform: translateX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu-slide.hidden {
+            transform: translateX(-100%);
+        }
+
+        /* Custom py-20 override */
+        .py-20 {
+            padding-top: 2rem !important;
+            padding-bottom: 5rem;
+        }
+
+        /* Custom text-4xl override */
+        .text-4xl {
+            font-size: 1.8rem !important;
+        }
+
+        @media (max-width: 767px) {
+            .social-sidebar {
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                gap: 10px;
+            }
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+            .floating-button {
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .floating-button button {
+                padding: 10px 16px;
+                font-size: 14px;
+                white-space: nowrap;
+                min-width: max-content;
+            }
+        }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -258,10 +332,10 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <img src="img/148.png" alt="Rummy 91 Logo" class="h-12 w-auto">
-                    <span class="ml-3 text-2xl font-bold text-gold-400">Rummy 91</span>
+                    <span class="ml-3 text-xl md:text-2xl font-bold text-gold-400">Rummy 91</span>
                 </div>
                 
-                <!-- Navigation Menu -->
+                <!-- Desktop Navigation Menu -->
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="text-white hover:text-gold-400 transition-colors font-medium">Home</a>
                     <a href="#games" class="text-white hover:text-gold-400 transition-colors font-medium">Games</a>
@@ -271,10 +345,31 @@
                     <a href="#contact" class="text-white hover:text-gold-400 transition-colors font-medium">Contact</a>
                 </nav>
                 
-                <button onclick="k2()" class="bg-gradient-gold text-black px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform glow-gold">
-                    Download App
-                </button>
+                <div class="flex items-center space-x-4">
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" onclick="toggleMobileMenu()" class="md:hidden text-white p-2 hover:text-gold-400 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    
+                     
+                </div>
             </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gradient-dark border-t border-gray-700 z-40">
+            <nav class="container mx-auto px-4 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">Home</a>
+                    <a href="#games" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">Games</a>
+                    <a href="#features" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">Features</a>
+                    <a href="#earn" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">Earn</a>
+                    <a href="#about" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">About</a>
+                    <a href="#contact" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2">Contact</a>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -303,25 +398,23 @@
                 <div class="hero-features space-y-8">
                     <!-- Main Headline -->
                     <div class="hero-title">
-                        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-white" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5);">
-                            Play <span class="glow-text text-gold-400">25+</span> Games<br>
-                            Win Up to <br>
-                            <span class="glow-text text-gold-400">₹5 Crores</span> Daily
-                        </h1>
+                        <h3 class="text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-tight text-white" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5);">
+                           Win up to ₹5 crores every single day! More games. More wins. 
+                        </h3>
                     </div>
                     
                     <!-- Subtitle -->
                     <div class="hero-subtitle">
-                        <p class="text-2xl md:text-3xl text-gray-300 mb-6">
-                            🔥 India's <span class="text-gold-400 font-bold">#1 Gaming Platform</span>
+                        <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-6">
+                            🔥   <span class="text-gold-400 font-bold">Experience India's Top Gaming Platform.</span>
                         </p>
-                        <p class="text-lg text-gray-400 mb-8">
+                        <p class="text-base md:text-lg text-gray-400 mb-8">
                             Join millions of players and start earning real cash today!
                         </p>
                     </div>
                     
                     <!-- Key Features -->
-                    <div class="hero-features grid md:grid-cols-2 gap-4 mb-8">
+                    <div class="hero-features grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         <div class="flex items-center space-x-3">
                             <div class="w-3 h-3 bg-gold-400 rounded-full floating-element"></div>
                             <span class="text-white font-semibold">Instant Withdrawals</span>
@@ -332,57 +425,57 @@
                         </div>
                         <div class="flex items-center space-x-3">
                             <div class="w-3 h-3 bg-gold-400 rounded-full floating-element" style="animation-delay: 1s;"></div>
-                            <span class="text-white font-semibold">24/7 Support</span>
+                            <span class="text-white font-semibold">Dedicated Customer Support, Available 24/7</span>
                         </div>
                         <div class="flex items-center space-x-3">
                             <div class="w-3 h-3 bg-gold-400 rounded-full floating-element" style="animation-delay: 1.5s;"></div>
-                            <span class="text-white font-semibold">₹500 Welcome Bonus</span>
+                            <span class="text-white font-semibold">Massive Welcome Bonus Awaits</span>
                         </div>
                     </div>
                     
                     <!-- CTA Buttons -->
                     <div class="hero-cta flex flex-col sm:flex-row gap-4">
-                        <button onclick="k2()" class="bg-gradient-gold text-black px-10 py-5 rounded-full text-xl font-bold hover:scale-105 transition-all duration-300 glow-gold bounce-element">
-                            <i class="fab fa-android mr-3 text-2xl"></i>Download Now
+                        <button onclick="k2()" class="bg-gradient-gold text-black px-8 md:px-10 py-4 md:py-5 rounded-full text-lg md:text-xl font-bold hover:scale-105 transition-all duration-300 glow-gold bounce-element">
+                            <i class="fab fa-android mr-3 text-xl md:text-2xl"></i>Download Now
                         </button>
-                        <button onclick="k2()" class="border-2 border-gold-400 text-gold-400 px-10 py-5 rounded-full text-xl font-bold hover:bg-gold-400 hover:text-black transition-all duration-300">
+                        <button onclick="k2()" class="border-2 border-gold-400 text-gold-400 px-8 md:px-10 py-4 md:py-5 rounded-full text-lg md:text-xl font-bold hover:bg-gold-400 hover:text-black transition-all duration-300">
                             <i class="fas fa-play mr-3"></i>Play Demo
                         </button>
                     </div>
-                    
-                    <!-- Trust Indicators -->
-                    <div class="hero-features flex items-center space-x-8 pt-6">
+                    <!-- 
+                    <div class="hero-features flex items-center justify-center sm:justify-start space-x-4 md:space-x-8 pt-6">
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-gold-400">4.9⭐</div>
-                            <div class="text-sm text-gray-400">App Rating</div>
+                            <div class="text-2xl md:text-3xl font-bold text-gold-400">4.9⭐</div>
+                            <div class="text-xs md:text-sm text-gray-400">App Rating</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-gold-400">25M+</div>
-                            <div class="text-sm text-gray-400">Downloads</div>
+                            <div class="text-2xl md:text-3xl font-bold text-gold-400">25M+</div>
+                            <div class="text-xs md:text-sm text-gray-400">Downloads</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-gold-400">1Cr+</div>
-                            <div class="text-sm text-gray-400">Active Users</div>
+                            <div class="text-2xl md:text-3xl font-bold text-gold-400">1Cr+</div>
+                            <div class="text-xs md:text-sm text-gray-400">Active Users</div>
                         </div>
                     </div>
+					-->
                 </div>
                 
                 <!-- Right Content - Mobile Image -->
                 <div class="hero-mobile text-center lg:text-right">
                     <div class="relative inline-block">
-                        <img src="img/gaming-experience-mobile.png" alt="Rummy 91 Mobile App" class="max-w-full h-auto max-h-96 lg:max-h-[600px] floating-element">
+                        <img src="img/gaming-experience-mobile.png" alt="Rummy 91 Mobile App" class="max-w-full h-auto max-h-80 md:max-h-96 lg:max-h-[600px] floating-element">
                         
                         <!-- Floating Elements Around Phone -->
-                        <div class="absolute -top-4 -left-4 w-16 h-16 bg-gold-400 rounded-full flex items-center justify-center text-black font-bold text-lg floating-element" style="animation-delay: 0.5s;">
+                        <div class="absolute -top-4 -left-4 w-12 h-12 md:w-16 md:h-16 bg-gold-400 rounded-full flex items-center justify-center text-black font-bold text-sm md:text-lg floating-element" style="animation-delay: 0.5s;">
                             ₹5Cr
                         </div>
-                        <div class="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-gold rounded-full flex items-center justify-center floating-element" style="animation-delay: 1s;">
+                        <div class="absolute -bottom-4 -right-4 w-10 h-10 md:w-12 md:h-12 bg-gradient-gold rounded-full flex items-center justify-center floating-element" style="animation-delay: 1s;">
                             <i class="fas fa-trophy text-black"></i>
                         </div>
-                        <div class="absolute top-1/4 -right-8 w-10 h-10 bg-gold-400 rounded-full flex items-center justify-center floating-element" style="animation-delay: 1.5s;">
+                        <div class="absolute top-1/4 -right-6 md:-right-8 w-8 h-8 md:w-10 md:h-10 bg-gold-400 rounded-full flex items-center justify-center floating-element" style="animation-delay: 1.5s;">
                             <i class="fas fa-star text-black"></i>
                         </div>
-                        <div class="absolute top-3/4 -left-8 w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center text-black font-bold floating-element" style="animation-delay: 2s;">
+                        <div class="absolute top-3/4 -left-6 md:-left-8 w-12 h-12 md:w-14 md:h-14 bg-gradient-gold rounded-full flex items-center justify-center text-black font-bold floating-element" style="animation-delay: 2s;">
                             25+
                         </div>
                     </div>
@@ -404,9 +497,9 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="text-black text-center md:text-left mb-4 md:mb-0">
-                    <h3 class="text-2xl font-bold">🔥 Get 5% Bonus on every Add Cash up to ₹100,000</h3>
+                    <h3 class="text-lg md:text-2xl font-bold">🔥 First Deposit Offer – Earn Up to 150% Bonus Instantly!</h3>
                 </div>
-                <img src="img/gamezy-banner-home.png" alt="Gaming Banner" class="h-16 w-auto">
+               <!-- <img src="img/gamezy-banner-home.png" alt="Gaming Banner" class="h-12 md:h-16 w-auto">-->
             </div>
         </div>
     </section>
@@ -414,6 +507,7 @@
     <!-- App Stats -->
     <section class="bg-gray-900 py-12">
         <div class="container mx-auto px-4">
+		<!--
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-gold-400 mb-4">Rummy 91</h2>
                 <div class="flex items-center justify-center space-x-6">
@@ -436,9 +530,9 @@
                     </div>
                 </div>
             </div>
-            
+            -->
             <div class="bg-black rounded-lg p-6 max-w-md mx-auto">
-                <h3 class="text-xl font-bold mb-4 text-center">Withdraw winnings directly to your</h3>
+                <h3 class="text-xl font-bold mb-4 text-center">Withdraw winnings directly to your bank</h3>
                 <div class="flex items-center justify-center space-x-6">
                     <div class="text-center">
                         <span class="block font-bold text-gold-400">Bank Transfer</span>
@@ -456,7 +550,7 @@
     <section id="features" class="py-20 bg-gradient-dark">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-center mb-16 text-gold-400">
-                Truly Best India Game Platform
+                India's Top Game Platform
             </h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -478,11 +572,11 @@
                     <div class="text-center mb-4">
                         <img src="img/rewards-icon.png" alt="Rewards" class="h-16 w-16 mx-auto">
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-gold-400 text-center">Best in Category Offers</h3>
+                    <h3 class="text-xl font-bold mb-4 text-gold-400 text-center">Best Unbeatable Offers</h3>
                     <div class="space-y-2 text-gray-300">
-                        <p>✓ Welcome reward up to Rs 500 Bonus</p>
-                        <p>✓ Earn up to ₹50,000 per friend via Referrals</p>
-                        <p>✓ UNLIMITED Earnings via Missions</p>
+                        <p>✓ Get a welcome bonus of up to ₹500.</p>
+                        <p>✓ Refer friends and earn up to ₹50,000 each day.</p>
+                        <p>✓ Keep earning with unlimited mission rewards.</p>
                     </div>
                 </div>
 
@@ -491,11 +585,11 @@
                     <div class="text-center mb-4">
                         <img src="img/gaming-platform-icon.png" alt="Gaming Platform" class="h-16 w-16 mx-auto">
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-gold-400 text-center">Most Innovative Platform</h3>
+                    <h3 class="text-xl font-bold mb-4 text-gold-400 text-center">Cutting Edge Experience</h3>
                     <div class="space-y-2 text-gray-300">
-                        <p>✓ Play Slots, Parchisi Star and other games</p>
-                        <p>✓ Instant Withdrawals 24X7</p>
-                        <p>✓ 24X7 Customer Support</p>
+                        <p>✓ Play Slots, Parchisi Star, and dozens of thrilling games in one APP.</p>
+                        <p>✓ Withdraw instantly anytime.</p>
+                        <p>✓ Support team ready 24/7.</p>
                     </div>
                 </div>
 
@@ -504,11 +598,11 @@
                     <div class="text-center mb-4">
                         <img src="img/playing-icon.png" alt="Playing" class="h-16 w-16 mx-auto">
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-gold-400 text-center">Never Stop Playing</h3>
+                    <h3 class="text-xl font-bold mb-4 text-gold-400 text-center">A variety of games, non-stop fun</h3>
                     <div class="space-y-2 text-gray-300">
-                        <p>✓ Play more than 25+ Games</p>
-                        <p>✓ Free Cash Tournaments</p>
-                        <p>✓ Real Cash Games & More!</p>
+                        <p>✓ Play more than 199+ Games,From every genre, our games offer a different visual feast and an excellent game experience.</p>
+                        <p>✓ Free Cash Tournaments and Leaderboard worth more than 1 Cr/ month</p>
+                        <p>✓ Real Cash Games, 100% Bonus Games, Gadget Leagues & Many More!</p>
                     </div>
                 </div>
             </div>
@@ -520,25 +614,25 @@
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-4xl font-bold mb-8 text-gold-400">Best Gaming Experience</h2>
+                    <h2 class="text-4xl font-bold mb-8 text-gold-400">Experience the Ultimate in Gaming Fun!</h2>
                     <div class="grid grid-cols-2 gap-6 mb-8">
                         <div class="text-center">
                             <h4 class="font-bold text-gold-400">Welcome Bonus</h4>
                         </div>
                         <div class="text-center">
-                            <h4 class="font-bold text-gold-400">VIP Club</h4>
+                            <h4 class="font-bold text-gold-400">First Deposit Bonus Up To 150% </h4>
                         </div>
                         <div class="text-center">
-                            <h4 class="font-bold text-gold-400">Leaderboard</h4>
+                            <h4 class="font-bold text-gold-400">Big VIP Bonus </h4>
                         </div>
                         <div class="text-center">
-                            <h4 class="font-bold text-gold-400">Salon Club</h4>
+                            <h4 class="font-bold text-gold-400">Leaderboard For Amazing Rewards</h4>
                         </div>
                         <div class="text-center">
-                            <h4 class="font-bold text-gold-400">Social Center</h4>
+                            <h4 class="font-bold text-gold-400">Endless Voucher Promos</h4>
                         </div>
                         <div class="text-center">
-                            <h4 class="font-bold text-gold-400">25+ Games</h4>
+                            <h4 class="font-bold text-gold-400">Countless Exciting Games</h4>
                         </div>
                     </div>
                     <button onclick="k2()" class="bg-gradient-gold text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform">
@@ -563,8 +657,8 @@
                     <div class="text-center mb-6">
                         <img src="img/earn-refer.png" alt="Refer and Earn" class="max-w-full h-48 mx-auto">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gold-400 text-center">Refer and Earn</h3>
-                    <p class="text-gray-300 text-center mb-6">Earn up to ₹50,000 everytime you refer friend</p>
+                    <h3 class="text-2xl font-bold mb-4 text-gold-400 text-center">Refer. Earn And Repeat</h3>
+                    <p class="text-gray-300 text-center mb-6">Earn rewards up to ₹50,000 every time you refer friends</p>
                     <div class="text-center">
                         <button onclick="k2()" class="bg-gradient-gold text-black px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform">
                             Learn More
@@ -577,8 +671,8 @@
                     <div class="text-center mb-6">
                         <img src="img/infulancer.png" alt="Influencer" class="max-w-full h-48 mx-auto">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gold-400 text-center">Are you an Influencer?</h3>
-                    <p class="text-gray-300 text-center mb-6">Earn Lakhs of rupees everytime your followers play a game</p>
+                    <h3 class="text-2xl font-bold mb-4 text-gold-400 text-center">Calling all influencers!</h3>
+                    <p class="text-gray-300 text-center mb-6">Earn lakhs effortlessly whenever your followers play</p>
                     <div class="text-center">
                         <button onclick="k2()" class="bg-gradient-gold text-black px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform">
                             Learn More
@@ -592,7 +686,7 @@
     <!-- User Reviews -->
     <section class="py-20 bg-black">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gold-400">Trusted by 1 Crore players</h2>
+            <h2 class="text-4xl font-bold text-center mb-4 text-gold-400">Crore+ Players Trusted Us - Made with Love from India</h2>
             <p class="text-center text-xl mb-12 text-gray-300">Made with ❤️ in India, for India!</p>
             
             <div class="grid md:grid-cols-5 gap-6">
@@ -604,7 +698,7 @@
                             <div class="flex text-gold-400 text-xs">★★★★★</div>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-300">"Amazing app! Won ₹25,000 in my first week."</p>
+                    <p class="text-sm text-gray-300">"Amazing app! Rummy91 helped me win ₹25,000 in my first week."</p>
                 </div>
 
                 <div class="bg-gray-900 rounded-lg p-4 card-hover">
@@ -615,7 +709,7 @@
                             <div class="flex text-gold-400 text-xs">★★★★★</div>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-300">"Fast withdrawals and great games. Highly recommended!"</p>
+                    <p class="text-sm text-gray-300">"Rummy91 offers fast withdrawals and great games. Highly recommended!"</p>
                 </div>
 
                 <div class="bg-gray-900 rounded-lg p-4 card-hover">
@@ -626,7 +720,7 @@
                             <div class="flex text-gold-400 text-xs">★★★★☆</div>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-300">"Love the variety of games. Earning while playing!"</p>
+                    <p class="text-sm text-gray-300">"Love the variety of games on Rummy91. Earning while playing!"</p>
                 </div>
 
                 <div class="bg-gray-900 rounded-lg p-4 card-hover">
@@ -637,7 +731,7 @@
                             <div class="flex text-gold-400 text-xs">★★★★★</div>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-300">"Secure platform. Customer support is excellent."</p>
+                    <p class="text-sm text-gray-300">"Rummy91 is a secure platform. Customer support is excellent."</p>
                 </div>
 
                 <div class="bg-gray-900 rounded-lg p-4 card-hover">
@@ -648,7 +742,7 @@
                             <div class="flex text-gold-400 text-xs">★★★★★</div>
                         </div>
                     </div>
-                    <p class="text-sm text-gray-300">"Best gaming app in India. Regular tournaments!"</p>
+                    <p class="text-sm text-gray-300">"Rummy91 is the best gaming app in India. Regular tournaments!"</p>
                 </div>
             </div>
         </div>
@@ -657,7 +751,7 @@
     <!-- Game Types -->
     <section id="games" class="py-20 bg-gradient-dark">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gold-400">Download the Play. Win. Earn</h2>
+            <h2 class="text-4xl font-bold text-center mb-4 text-gold-400">Download now to play, win and earn rewards</h2>
             
             <div class="grid md:grid-cols-4 gap-6 mb-12">
                 <div class="text-center card-hover">
@@ -678,25 +772,19 @@
                 </div>
             </div>
 
-            <div class="text-center">
-                <h3 class="text-2xl font-bold mb-4">Tap to download the APP</h3>
-                <p class="text-gold-400 mb-6">Get 5% Bonus on every Add Cash up to ₹100,000</p>
-                <button onclick="k2()" class="bg-gradient-gold text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform glow-gold">
-                    Learn More
-                </button>
-            </div>
+            
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-black">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gold-400">Read More About Rummy 91 App</h2>
+            <h2 class="text-4xl font-bold text-center mb-16 text-gold-400">Discover More About Rummy 91</h2>
             
             <div class="max-w-4xl mx-auto mb-16">
                 <h3 class="text-2xl font-bold mb-4 text-gold-400">Rummy 91 APP</h3>
                 <p class="text-gray-300 text-lg leading-relaxed">
-                    Rummy 91 App is a skill-based platform where you make money while you play. This app takes your passion for the cards games one step ahead and engages you in an enthralling real cash games experience on your mobile screen.
+                   Rummy 91 is a gaming app where you can earn real money while playing. Take your passion for games to the next level with an exciting real-cash gaming experience - right on your mobile screen!
                 </p>
             </div>
 
@@ -704,7 +792,7 @@
                 <div class="bg-gray-900 rounded-lg p-6 card-hover">
                     <img src="img/icon_Rummy.png" alt="Rummy" class="h-16 w-16 mx-auto mb-4">
                     <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Rummy</h3>
-                    <p class="text-gray-300 text-sm mb-4">Bringing the traditional Indian household card game...</p>
+                    <p class="text-gray-300 text-sm mb-4">Bring the joy of traditional Indian Rummy to your screen! Play Points Rummy, compete for real money, and enjoy endless fun on daily tables, tournaments, or in the exclusive Room with your friends.</p>
                     <div class="text-center">
                         <button class="text-gold-400 hover:text-gold-300 font-bold">View More</button>
                     </div>
@@ -712,8 +800,9 @@
 
                 <div class="bg-gray-900 rounded-lg p-6 card-hover">
                     <img src="img/icon_dezhou.png" alt="Poker" class="h-16 w-16 mx-auto mb-4">
-                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Poker</h3>
-                    <p class="text-gray-300 text-sm mb-4">Poker games are one of the most popular card games in the world...</p>
+                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Slots</h3>
+                    <p class="text-gray-300 text-sm mb-4">Dive deep into the ocean and unleash the Power of the Kraken!
+This thrilling slot game takes you beneath the waves where treasures and dangers await. Spin the reels to summon the mighty Kraken, trigger epic bonus rounds, and multiply your winnings with powerful wilds and free spins</p>
                     <div class="text-center">
                         <button class="text-gold-400 hover:text-gold-300 font-bold">View More</button>
                     </div>
@@ -721,8 +810,10 @@
 
                 <div class="bg-gray-900 rounded-lg p-6 card-hover">
                     <img src="img/icon_Crash.png" alt="Crash" class="h-16 w-16 mx-auto mb-4">
-                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Crash</h3>
-                    <p class="text-gray-300 text-sm mb-4">Crash is a easy win game, what you need to do is only...</p>
+                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Aviator</h3>
+                    <p class="text-gray-300 text-sm mb-4">Take flight with Aviator, the ultimate crash game where your winnings soar as high as your nerves can take you!
+Watch the plane climb higher and higher - the multiplier grows, and so do your rewards. But be careful,  if you don't cash out before the plane flies away, you lose it all!
+Fast-paced, thrilling, and full of adrenaline, Aviator is all about timing, strategy, and daring. Will you cash out early or chase sky-high rewards?</p>
                     <div class="text-center">
                         <button class="text-gold-400 hover:text-gold-300 font-bold">View More</button>
                     </div>
@@ -730,8 +821,11 @@
 
                 <div class="bg-gray-900 rounded-lg p-6 card-hover">
                     <img src="img/icon_ander-banar.png" alt="Andar Bahar" class="h-16 w-16 mx-auto mb-4">
-                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Andar Bahar</h3>
-                    <p class="text-gray-300 text-sm mb-4">Andar Bahar is an Indian gambling game that is said to...</p>
+                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Jungle Delight</h3>
+                    <p class="text-gray-300 text-sm mb-4">Step into the wild with Jungle Delight, the vibrant slot adventure inspired by the heart of the jungle!
+Join a playful monkey and his animal friends as you spin the reels surrounded by lush trees, tropical fruits, and hidden treasures.
+With exciting bonus features, free spins, and mystery boxes waiting to be unlocked, Jungle Delight is packed with fun, color, and big rewards.
+Feel the rhythm of the jungle - where every spin brings a new surprise!</p>
                     <div class="text-center">
                         <button class="text-gold-400 hover:text-gold-300 font-bold">View More</button>
                     </div>
@@ -739,8 +833,10 @@
 
                 <div class="bg-gray-900 rounded-lg p-6 card-hover">
                     <img src="img/icon_wingo-lottery.png" alt="Wingo Lottery" class="h-16 w-16 mx-auto mb-4">
-                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Wingo Lottery</h3>
-                    <p class="text-gray-300 text-sm mb-4">Wingo Lottery is a famous lottery games which players...</p>
+                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Dragon Tiger</h3>
+                    <p class="text-gray-300 text-sm mb-4">Experience the ultimate face-off in Dragon Tiger, the fast-paced card game of luck, intuition, and excitement!
+Choose your side - Dragon or Tiger - place your bet, and watch as the cards are revealed. The higher card wins, it's that simple!
+With lightning-fast rounds and thrilling payouts, Dragon Tiger delivers nonstop action and pure adrenaline. Quick, simple, and rewarding - perfect for players who love fast-paced fun!</p>
                     <div class="text-center">
                         <button class="text-gold-400 hover:text-gold-300 font-bold">View More</button>
                     </div>
@@ -748,8 +844,10 @@
 
                 <div class="bg-gray-900 rounded-lg p-6 card-hover">
                     <img src="img/icon_7-Up-down.png" alt="7 Up Down" class="h-16 w-16 mx-auto mb-4">
-                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">7 Up Down</h3>
-                    <p class="text-gray-300 text-sm mb-4">7 Up Down dice game is very popular in Europe and the United States...</p>
+                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Fishing</h3>
+                    <p class="text-gray-300 text-sm mb-4">Cast your line and dive into the world of Mega Fishing - the ultimate ocean adventure where every shot could reel in massive rewards!
+Aim, shoot, and catch a variety of colorful fish, each with its own value and power-ups. The bigger the catch, the bigger your win!
+Join the fun-filled underwater arena, upgrade your cannons, and compete with players worldwide to become the true King of the Sea!</p>
                     <div class="text-center">
                         <button class="text-gold-400 hover:text-gold-300 font-bold">View More</button>
                     </div>
@@ -757,8 +855,11 @@
 
                 <div class="bg-gray-900 rounded-lg p-6 card-hover">
                     <img src="img/icon_longhu.png" alt="Dragon Tiger" class="h-16 w-16 mx-auto mb-4">
-                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Dragon Tiger</h3>
-                    <p class="text-gray-300 text-sm mb-4">Dragon Tiger is a fast-action game played with cards...</p>
+                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Chicken Road</h3>
+                    <p class="text-gray-300 text-sm mb-4">Get ready for a hilarious adventure in Chicken Road 2 - where crossing the road is more dangerous (and fun) than ever!
+Guide your brave chicken through busy streets, speeding cars, and crazy obstacles. Time your moves, dodge traffic, and collect rewards along the way.
+With new levels, colorful environments, and endless challenges, Chicken Road 2 takes the classic road-crossing chaos to the next level.
+How far can your chicken go before it becomes... road dinner?</p>
                     <div class="text-center">
                         <button class="text-gold-400 hover:text-gold-300 font-bold">View More</button>
                     </div>
@@ -766,8 +867,10 @@
 
                 <div class="bg-gray-900 rounded-lg p-6 card-hover">
                     <img src="img/icon_Rummy.png" alt="Rummy" class="h-16 w-16 mx-auto mb-4">
-                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Teen Patti</h3>
-                    <p class="text-gray-300 text-sm mb-4">Bringing the traditional Indian household card game...</p>
+                    <h3 class="text-xl font-bold mb-3 text-gold-400 text-center">Roulette</h3>
+                    <p class="text-gray-300 text-sm mb-4">Roulette is one of the most iconic and thrilling casino games ever created. Players place bets on where the ball will land on the spinning wheel - red or black, odd or even, or a specific number.
+Featuring realistic graphics, smooth animations, and live multiplayer options, Roulette delivers the authentic feel of a luxury casino right to your fingertips.
+Test your luck, trust your instincts, and enjoy every spin of this timeless game of chance!</p>
                     <div class="text-center">
                         <button class="text-gold-400 hover:text-gold-300 font-bold">View More</button>
                     </div>
@@ -801,11 +904,14 @@
         <div class="social-icon" style="background-color: #25D366;" onclick="openWhatsApp()">
             <i class="fab fa-whatsapp"></i>
         </div>
+        <div class="social-icon" style="background-color: #FFD700;" onclick="openCustomerService()" title="Customer Service">
+            <i class="fas fa-headset" style="color: #000;"></i>
+        </div>
     </div>
 
     <!-- Floating Button -->
     <div class="floating-button">
-        <button onclick="k2()" class="bg-gradient-gold text-black px-8 py-4 rounded-full text-xl font-bold glow-gold">
+        <button onclick="k2()" class="bg-gradient-gold text-black px-6 md:px-8 py-3 md:py-4 rounded-full text-lg md:text-xl font-bold glow-gold">
             <i class="fas fa-download mr-2"></i>Download App Now
         </button>
     </div>
@@ -813,8 +919,6 @@
     <!-- Footer -->
     <footer id="contact" class="bg-gradient-dark py-16">
         <div class="container mx-auto px-4">
-           
-
             <!-- Footer Bottom -->
             <div class="border-t border-gray-700 pt-8">
                 <div class="text-center space-y-4">
