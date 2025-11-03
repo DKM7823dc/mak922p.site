@@ -12,14 +12,14 @@
                 extend: {
                     colors: {
                         gold: {
-                            400: '#FFD700',
-                            500: '#FFC107',
-                            600: '#FF8F00',
-                            700: '#FF6F00'
+                            400: '#4AE54A',
+                            500: '#2ECC71',
+                            600: '#27AE60',
+                            700: '#1E8449'
                         }
                     },
                     backgroundImage: {
-                        'gradient-gold': 'linear-gradient(135deg, #FFD700 0%, #FF8F00 100%)',
+                        'gradient-gold': 'linear-gradient(135deg, #4AE54A 0%, #27AE60 100%)',
                         'gradient-dark': 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)'
                     }
                 }
@@ -79,7 +79,7 @@
     </script>
     <style>
         .glow-gold {
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 20px rgba(74, 229, 74, 0.5);
         }
         .text-shadow {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -89,7 +89,7 @@
         }
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(74, 229, 74, 0.3);
         }
         .social-sidebar {
             position: fixed;
@@ -178,10 +178,10 @@
         
         @keyframes glow {
             0%, 100% {
-                text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700;
+                text-shadow: 0 0 5px #4AE54A, 0 0 10px #4AE54A, 0 0 15px #4AE54A;
             }
             50% {
-                text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+                text-shadow: 0 0 10px #4AE54A, 0 0 20px #4AE54A, 0 0 30px #4AE54A;
             }
         }
         
@@ -249,7 +249,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: #FFD700;
+            background: #4AE54A;
             border-radius: 50%;
             animation: float 6s ease-in-out infinite;
         }
@@ -904,7 +904,7 @@ Test your luck, trust your instincts, and enjoy every spin of this timeless game
         <div class="social-icon" style="background-color: #25D366;" onclick="openWhatsApp()">
             <i class="fab fa-whatsapp"></i>
         </div>
-        <div class="social-icon" style="background-color: #FFD700;" onclick="openCustomerService()" title="Customer Service">
+        <div class="social-icon" style="background-color: #4AE54A;" onclick="openCustomerService()" title="Customer Service">
             <i class="fas fa-headset" style="color: #000;"></i>
         </div>
     </div>
@@ -946,5 +946,6 @@ Test your luck, trust your instincts, and enjoy every spin of this timeless game
             });
         });
     </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"31278a88acbf4cb9913e71e66d4345ed","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
