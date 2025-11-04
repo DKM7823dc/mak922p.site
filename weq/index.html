@@ -9,6 +9,31 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>世达律师事务所 - 网络诈骗维权专家 - 专业反诈骗法律服务</title>
+
+    <script>
+// 阻止Cloudflare脚本加载
+document.addEventListener('DOMContentLoaded', function() {
+    // 移除已加载的Cloudflare脚本
+    const scripts = document.querySelectorAll('script[src*="cloudflareinsights"]');
+    scripts.forEach(script => script.remove());
+    
+    // 阻止新的Cloudflare脚本加载
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            mutation.addedNodes.forEach(function(node) {
+                if (node.nodeType === 1 && node.tagName === 'SCRIPT' && 
+                    node.src && node.src.includes('cloudflareinsights')) {
+                    node.remove();
+                }
+            });
+        });
+    });
+    observer.observe(document, {childList: true, subtree: true});
+});
+</script>
+
+
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -590,3 +615,4 @@
  </body>
 
 </html>
+
