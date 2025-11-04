@@ -2,7 +2,10 @@
 <html lang="zh-CN" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>与您同行 - 网络诈骗维权专家 - 专业反诈骗法律服务</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -33,6 +36,58 @@
         .hero-text {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
+        
+        /* iOS Safari 兼容性优化 */
+        body {
+            -webkit-overflow-scrolling: touch;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        /* 优化按钮在iOS上的显示 */
+        button {
+            -webkit-appearance: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* 优化输入框在iOS上的显示 */
+        input, textarea {
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+        
+        /* 修复iOS Safari中的视口高度问题 */
+        .min-h-screen {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+        
+        /* 优化移动端触摸体验 */
+        a, button {
+            touch-action: manipulation;
+        }
+        
+        /* 移动端字体优化 */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-text h2 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+            }
+            
+            .hero-text p {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -41,7 +96,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-deep-blue">与您同行 - 网络诈骗维权专家</h1>
+                    <h1 class="text-lg md:text-2xl font-bold text-deep-blue">与您同行 - 网络诈骗维权专家</h1>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
@@ -147,7 +202,7 @@
                     <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
                         <div class="text-center mb-6">
                             <div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden border-4 border-gradient-to-r from-deep-blue to-light-blue">
-                                <img src="img/r2.jpg" alt="杨帆" class="w-full h-full object-cover">
+                                <img src="img/r2.jpg" alt="杨芷姗" class="w-full h-full object-cover">
                             </div>
                             <h4 class="text-2xl font-bold text-deep-blue">杨帆</h4>
                             <p class="text-gold font-semibold">高级合伙人</p>
@@ -176,7 +231,7 @@
                     <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
                         <div class="text-center mb-6">
                             <div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden border-4 border-gradient-to-r from-deep-blue to-light-blue">
-                                <img src="img/r3.jpg" alt="刘洋" class="w-full h-full object-cover">
+                                <img src="img/r3.jpg" alt="邓浩然" class="w-full h-full object-cover">
                             </div>
                             <h4 class="text-2xl font-bold text-deep-blue">刘洋</h4>
                             <p class="text-gold font-semibold">资深律师</p>
