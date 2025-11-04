@@ -88,6 +88,23 @@
                 line-height: 1.4;
             }
         }
+        
+        /* 优化团队优势图片的移动端显示 */
+        .team-advantage-image {
+            width: 100%;
+            max-width: 40rem;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        @media (max-width: 640px) {
+            .team-advantage-image {
+                max-width: 100%;
+                margin: 0 1rem;
+                border-radius: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -357,8 +374,8 @@
                 </div>
             </div>
             
-            <div class="mt-16 text-center">
-                <img src="img/2.jpg" alt="团队优势" class="max-w-2xl mx-auto rounded-xl shadow-xl">
+            <div class="mt-16 text-center px-4 sm:px-6 lg:px-8">
+                <img src="img/2.jpg" alt="团队优势" class="team-advantage-image mx-auto rounded-xl shadow-xl">
             </div>
         </div>
     </section>
@@ -454,16 +471,7 @@
                             </div>
                         </div>
                         
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                            </svg>
-                            <div>
-                                <p class="text-white font-semibold">邮件咨询</p>
-                                <a href="mailto:support@dddbal.com" class="text-gold hover:text-yellow-300 transition-colors">support@dddbal.com</a>
-                            </div>
-                        </div>
+                    
                     </div>
                 </div>
                 
@@ -515,8 +523,7 @@
             </div>
         </div>
     </footer>
-
-    <script>
+ <script>
         // k2方法 - 跳转到www.qq.com
         function k2() {
             window.open('https://www.qq.com', '_blank');
@@ -578,5 +585,5 @@
             }
         });
     </script>
-</body>
+ </body>
 </html>
