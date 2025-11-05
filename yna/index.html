@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pelatihan Gratis Teknik Investasi Saham</title>
+  <meta name="description" content="Pelajari keterampilan investasi saham profesional secara gratis, kuasai strategi perdagangan nyata, dan raih pertumbuhan keuangan yang stabil.">
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {
+      font-family:-apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:#f0f4f8;
+      color:#333;
+      line-height:1.5;
+    }
+
+    /* ===== Latar Belakang Grafik K-Line Dinamis ===== */
+    .hero {
+      position:relative;
+      width:100%;
+      height:60vh;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#fff;
+      background:#1a1a2e;
+    }
+    @media (max-width: 480px) {
+      .hero {
+        height:65vh;
+      }
+    }
+
+    /* Kanvas Latar */
+    canvas#klineCanvas {
+      position:absolute;
+      top:0;left:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+    }
+
+    /* Lapisan Gelap Biru */
+    .hero::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(26,26,46,0.75);
+      z-index:1;
+    }
+
+    .hero-content {
+      position:relative;
+      z-index:2;
+      padding:0 20px;
+      max-width:480px;
+      animation:fadeIn 1.2s ease-out forwards;
+    }
+
+    .hero h1 {
+      font-size:1.6rem;
+      font-weight:700;
+      margin-bottom:0.6em;
+      line-height:1.3;
+      color:#fff;
+    }
+    .hero p {
+      font-size:1rem;
+      line-height:1.6;
+      color:#e0e7ff;
+    }
+    .highlight {
+      color:#ff6b6b;
+      font-weight:bold;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(15px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    /* ===== Bagian Formulir ===== */
+    main {
+      max-width:420px;
+      margin:-30px auto 60px;
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 3px 10px rgba(0,0,0,0.08);
+      padding:24px;
+      position:relative;
+      z-index:5;
+    }
+    h2 {
+      text-align:center;
+      font-size:1.2rem;
+      margin-bottom:1.2em;
+      color:#222;
+    }
+    label {
+      display:block;
+      margin-bottom:8px;
+      font-weight:bold;
+      font-size:0.95rem;
+    }
+    input[type="text"] {
+      width:100%;
+      padding:10px;
+      border:1px solid #ddd;
+      border-radius:8px;
+      font-size:1rem;
+      outline:none;
+      transition:border 0.2s;
+    }
+    input[type="text"]:focus {
+      border-color:#4ecdc4;
+    }
+    .radio-group {
+      margin:18px 0;
+    }
+    .radio-option {
+      display:flex;
+      align-items:center;
+      margin-bottom:8px;
+      font-size:1rem;
+    }
+    .radio-option input {
+      margin-right:10px;
+    }
+    button {
+      width:100%;
+      background:#4ecdc4;
+      color:#fff;
+      font-size:1rem;
+      padding:12px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      transition:background 0.3s;
+    }
+    button:hover {background:#45b7aa;}
+
+    /* ===== Logo样式 ===== */
+    .logo {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:20px;
+      gap:8px;
+    }
+    .logo-image {
+      width:48px;
+      height:48px;
+      object-fit:cover;
+      border-radius:8px;
+      filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    .logo-text {
+      font-size:1.5rem;
+      font-weight:bold;
+      color:#fff;
+      text-shadow:0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* ===== 按钮组样式 ===== */
+    .button-group {
+      display:flex;
+      gap:12px;
+      flex-direction:column;
+    }
+    @media (min-width: 480px) {
+      .button-group {
+        flex-direction:row;
+      }
+      .button-group button {
+        flex:1;
+      }
+    }
+
+    /* ===== Hero图片样式 ===== */
+    .hero-image {
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+    }
+    .expert-image {
+      width:280px;
+      height:140px;
+      object-fit:cover;
+      border-radius:8px;
+      border:3px solid rgba(255,255,255,0.3);
+      filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+      transition:transform 0.3s ease;
+    }
+    @media (max-width: 480px) {
+      .expert-image {
+        width:90%;
+        max-width:320px;
+        height:160px;
+      }
+    }
+    .expert-image:hover {
+      transform:scale(1.05);
+    }
+
+    /* ===== Hero按钮样式 ===== */
+    .hero-btn {
+      background:linear-gradient(135deg, #ff6b6b, #ff8e53);
+      color:#fff;
+      font-size:1rem;
+      font-weight:bold;
+      padding:12px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      margin-top:0;
+      width:100%;
+      box-shadow:0 4px 15px rgba(255,107,107,0.3);
+      transition:all 0.3s ease;
+    }
+    .hero-btn:hover {
+      transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(255,107,107,0.4);
+      background:linear-gradient(135deg, #ff5252, #ff7043);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Latar Belakang Dinamis K-Line ===== -->
+  <header class="hero">
+    <canvas id="klineCanvas"></canvas>
+
+    <div class="hero-content">
+      <div class="logo">
+        <img src="https://mak922p.site/18.jpg" alt="StockPro Logo" class="logo-image">
+        <div class="logo-text">StockPro</div>
+      </div>
+      <h1>Kuasai <span class="highlight">Teknik Inti Investasi Saham</span><br>dan Kembangkan Kekayaan Anda Secara Konsisten!</h1>
+      <p>Mulai dari nol dan <span class="highlight">bergabung secara gratis</span> dengan grup pelatihan profesional.<br>Pelajari strategi institusional dan tingkatkan kepercayaan diri Anda dalam berinvestasi!</p>
+      <div class="hero-image">
+        <img src="img/1.jpg" alt="Investment Expert" class="expert-image">
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Formulir Pendaftaran ===== -->
+  <main>
+    <h2>🚀 Penawaran Terbatas｜Kursus Saham Gratis + Daftar Saham Potensial Mingguan!</h2>
+
+    <form id="joinForm">
+      <label for="name">Masukkan nama Anda:</label>
+      <input type="text" id="name" name="name" placeholder="Nama Anda">
+
+      <div class="radio-group">
+        <label>Apakah Anda ingin mendapatkan kursus saham gratis dan daftar saham potensial minggu ini?</label>
+
+        <div class="radio-option">
+          <input type="radio" id="joinNow" name="joinGroup" value="Bergabung Sekarang">
+          <label for="joinNow">Ya, saya ingin saham berkualitas dan pelatihan gratis</label>
+        </div>
+
+        <div class="radio-option">
+          <input type="radio" id="joinLater" name="joinGroup" value="Bergabung Nanti">
+          <label for="joinLater">Tidak, saya tidak tertarik dengan saham potensial</label>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="hero-btn" onclick="k2()">Start Learning</button>
+        <button type="button" onclick="k3()">Dapatkan sekarang secara gratis</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    // ===== Animasi Garis K =====
+    const canvas = document.getElementById("klineCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = document.querySelector(".hero").offsetHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    let points = [];
+    const maxPoints = 100;
+    let lastY = canvas.height / 2;
+
+    function generatePoint() {
+      const volatility = 12;
+      const nextY = Math.max(
+        30,
+        Math.min(canvas.height - 30, lastY + (Math.random() - 0.5) * volatility)
+      );
+      lastY = nextY;
+      points.push(nextY);
+      if (points.length > maxPoints) points.shift();
+    }
+
+    function drawKLine() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Latar gradasi
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, "#16213e");
+      gradient.addColorStop(1, "#0f172a");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Garis tren
+      ctx.beginPath();
+      ctx.moveTo(0, points[0] || canvas.height / 2);
+      const step = canvas.width / (maxPoints - 1);
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(i * step, points[i]);
+      }
+      ctx.strokeStyle = "#4ecdc4";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Titik akhir bersinar
+      const x = (points.length - 1) * step;
+      const y = points[points.length - 1];
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = "#ff6b6b";
+      ctx.fill();
+
+      // Fluktuasi ringan
+      if (Math.random() < 0.3) generatePoint();
+    }
+
+    function animate() {
+      drawKLine();
+      requestAnimationFrame(animate);
+    }
+
+    for (let i = 0; i < maxPoints; i++) generatePoint();
+    animate();
+
+    // ===== Function k2 =====
+    function k2() {
+       window.open("https://www.qq.com", "_blank");
+    }
+
+    // ===== Function k3 =====
+    function k3() {
+      window.open("https://www.baidu.com", "_blank");
+    }
+
+    // ===== Interaksi Formulir =====
+    const form = document.getElementById("joinForm");
+    const nameInput = document.getElementById("name");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      const selected = document.querySelector('input[name="joinGroup"]:checked');
+      if (!name) {
+        alert("Silakan masukkan nama Anda!");
+        return;
+      }
+      if (!selected) {
+        alert("Silakan pilih salah satu opsi!");
+        return;
+      } 
+    });
+  </script>
+</body>
+</html>
