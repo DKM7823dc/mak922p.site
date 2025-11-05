@@ -26,7 +26,10 @@
       justify-content:center;
       text-align:center;
       color:#fff;
-      background:#1a1a2e;
+      background-image:url('img/1.jpg');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
     }
     @media (max-width: 480px) {
       .hero {
@@ -48,7 +51,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:rgba(26,26,46,0.75);
+      background:rgba(0,0,0,0.6);
       z-index:1;
     }
 
@@ -66,11 +69,13 @@
       margin-bottom:0.6em;
       line-height:1.3;
       color:#fff;
+      text-shadow:0 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
     }
     .hero p {
       font-size:1rem;
       line-height:1.6;
       color:#e0e7ff;
+      text-shadow:0 2px 6px rgba(0,0,0,0.7), 0 0 15px rgba(0,0,0,0.4);
     }
     .highlight {
       color:#ff6b6b;
@@ -179,31 +184,7 @@
       }
     }
 
-    /* ===== Hero图片样式 ===== */
-    .hero-image {
-      margin-top:20px;
-      display:flex;
-      justify-content:center;
-    }
-    .expert-image {
-      width:280px;
-      height:140px;
-      object-fit:cover;
-      border-radius:8px;
-      border:3px solid rgba(255,255,255,0.3);
-      filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-      transition:transform 0.3s ease;
-    }
-    @media (max-width: 480px) {
-      .expert-image {
-        width:90%;
-        max-width:320px;
-        height:160px;
-      }
-    }
-    .expert-image:hover {
-      transform:scale(1.05);
-    }
+
 
     /* ===== Hero按钮样式 ===== */
     .hero-btn {
@@ -240,9 +221,6 @@
       </div>
       <h1>Kuasai <span class="highlight">Teknik Inti Investasi Saham</span><br>dan Kembangkan Kekayaan Anda Secara Konsisten!</h1>
       <p>Mulai dari nol dan <span class="highlight">bergabung secara gratis</span> dengan grup pelatihan profesional.<br>Pelajari strategi institusional dan tingkatkan kepercayaan diri Anda dalam berinvestasi!</p>
-      <div class="hero-image">
-        <img src="img/1.jpg" alt="Investment Expert" class="expert-image">
-      </div>
     </div>
   </header>
 
@@ -268,10 +246,7 @@
         </div>
       </div>
 
-      <div class="button-group">
-        <button type="button" class="hero-btn" onclick="k2()">Start Learning</button>
-        <button type="button" onclick="k3()">Dapatkan sekarang secara gratis</button>
-      </div>
+      
     </form>
   </main>
 
@@ -305,12 +280,7 @@
     function drawKLine() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Latar gradasi
-      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradient.addColorStop(0, "#16213e");
-      gradient.addColorStop(1, "#0f172a");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // 不再填充背景，让背景图片可见
 
       // Garis tren
       ctx.beginPath();
@@ -348,10 +318,7 @@
        window.open("https://www.qq.com", "_blank");
     }
 
-    // ===== Function k3 =====
-    function k3() {
-      window.open("https://www.baidu.com", "_blank");
-    }
+  
 
     // ===== Interaksi Formulir =====
     const form = document.getElementById("joinForm");
@@ -368,7 +335,9 @@
       if (!selected) {
         alert("Silakan pilih salah satu opsi!");
         return;
-      } 
+      }
+       
+     
     });
   </script>
 </body>
