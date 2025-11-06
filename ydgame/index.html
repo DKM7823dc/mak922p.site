@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -77,6 +76,50 @@
             mobileMenu.classList.add('hidden');
             menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
         }
+
+        // Dynamic download counter
+        function initDownloadCounter() {
+            const counter = document.getElementById('download-counter');
+            if (!counter) return;
+
+            // 从localStorage获取保存的下载数据，如果没有则使用默认值500000
+            let downloadCount = parseInt(localStorage.getItem('rummy91-downloads') || '500000');
+
+            // 格式化数字显示
+            function formatNumber(num) {
+                return num.toLocaleString();
+            }
+
+            // 更新显示
+            function updateDisplay() {
+                counter.textContent = formatNumber(downloadCount);
+                // 保存到localStorage
+                localStorage.setItem('rummy91-downloads', downloadCount.toString());
+            }
+
+            // 初始显示
+            updateDisplay();
+
+            // 每2秒增加100-200之间的随机数
+            setInterval(() => {
+                const increment = Math.floor(Math.random() * 101) + 100; // 100-200之间的随机数
+                downloadCount += increment;
+                updateDisplay();
+            }, 2000);
+        }
+
+        // 页面加载完成后初始化下载计数器
+        document.addEventListener('DOMContentLoaded', function() {
+            initDownloadCounter();
+            
+            // Update all "View More" buttons to use k2()
+            const viewMoreButtons = document.querySelectorAll('button');
+            viewMoreButtons.forEach(button => {
+                if (button.textContent.trim() === 'View More' && !button.onclick) {
+                    button.onclick = k2;
+                }
+            });
+        });
     </script>
     <style>
         .glow-gold {
@@ -286,6 +329,16 @@
             font-size: 1.8rem !important;
         }
 
+        /* Download counter animation */
+        #download-counter {
+            transition: all 0.5s ease;
+        }
+
+        #download-counter.updating {
+            color: #4AE54A;
+            transform: scale(1.05);
+        }
+
         @media (max-width: 767px) {
             .social-sidebar {
                 right: 10px;
@@ -440,13 +493,14 @@
                             <div class="text-xs md:text-sm text-gray-400">App Rating</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-2xl md:text-3xl font-bold text-gold-400">25M+</div>
+                            <div id="download-counter" class="text-2xl md:text-3xl font-bold text-gold-400">500,000</div>
                             <div class="text-xs md:text-sm text-gray-400">Downloads</div>
                         </div>
-                        <div class="text-center">
+                        <!--<div class="text-center">
                             <div class="text-2xl md:text-3xl font-bold text-gold-400">1Cr+</div>
                             <div class="text-xs md:text-sm text-gray-400">Active Users</div>
                         </div>
+						-->
                     </div>
 					 
                     <!-- CTA Buttons -->
@@ -454,9 +508,7 @@
                         <button onclick="k2()" class="bg-gradient-gold text-black px-8 md:px-10 py-4 md:py-5 rounded-full text-lg md:text-xl font-bold hover:scale-105 transition-all duration-300 glow-gold bounce-element">
                             <i class="fab fa-android mr-3 text-xl md:text-2xl"></i>Download Now
                         </button>
-                        <button onclick="k2()" class="border-2 border-gold-400 text-gold-400 px-8 md:px-10 py-4 md:py-5 rounded-full text-lg md:text-xl font-bold hover:bg-gold-400 hover:text-black transition-all duration-300">
-                            <i class="fas fa-play mr-3"></i>Play Demo
-                        </button>
+                         
                     </div>
 					
                     <!-- 
@@ -948,18 +1000,7 @@ Test your luck, trust your instincts, and enjoy every spin of this timeless game
         </div>
     </footer>
 
-    <script>
-        // Update all "View More" buttons to use k2()
-        document.addEventListener('DOMContentLoaded', function() {
-            const viewMoreButtons = document.querySelectorAll('button');
-            viewMoreButtons.forEach(button => {
-                if (button.textContent.trim() === 'View More' && !button.onclick) {
-                    button.onclick = k2;
-                }
-            });
-        });
-    </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"31278a88acbf4cb9913e71e66d4345ed","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"31278a88acbf4cb9913e71e66d4345ed","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"31278a88acbf4cb9913e71e66d4345ed","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"31278a88acbf4cb9913e71e66d4345ed","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
