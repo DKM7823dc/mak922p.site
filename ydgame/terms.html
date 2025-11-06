@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Rummy 91 | India's Best Gaming Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#4AE54A',
+                            500: '#2ECC71',
+                            600: '#27AE60',
+                            700: '#1E8449'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-gold': 'linear-gradient(135deg, #4AE54A 0%, #27AE60 100%)',
+                        'gradient-dark': 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)'
+                    }
+                }
+            }
+        }
+
+        // Back to main site
+        function goBack() {
+            window.history.back();
+        }
+
+        function goHome() {
+            window.location.href = '/';
+        }
+    </script>
+    <style>
+        .terms-section {
+            scroll-margin-top: 100px;
+        }
+        
+        .restriction-alert {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            border: 2px solid #fecaca;
+        }
+        
+        .warning-alert {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border: 2px solid #fed7aa;
+        }
+        
+        .info-alert {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border: 2px solid #93c5fd;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Dark mode detection -->
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+
+    <!-- Header -->
+    <header class="relative bg-gradient-dark py-4 sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="img/148.png" alt="Rummy 91 Logo" class="h-12 w-auto">
+                    <span class="ml-3 text-xl md:text-2xl font-bold text-gold-400">Rummy 91</span>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="goBack()" class="text-white hover:text-gold-400 transition-colors px-4 py-2 border border-gray-600 rounded-lg">
+                        <i class="fas fa-arrow-left mr-2"></i>Back
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-12">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <!-- Page Title -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-gold-400 mb-4">Terms of Service</h1>
+                <p class="text-xl text-gray-300">Last Updated: January 2025</p>
+            </div>
+
+            <!-- Important Alerts -->
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <!-- Age Restriction Alert -->
+                <div class="warning-alert rounded-lg p-6 text-center">
+                    <i class="fas fa-exclamation-triangle text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2 text-black">Age Requirement</h3>
+                    <p class="text-black font-semibold">Must be 18 years and above</p>
+                </div>
+
+                <!-- Region Restriction Alert -->
+                <div class="restriction-alert rounded-lg p-6 text-center">
+                    <i class="fas fa-map-marker-alt text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Regional Restrictions</h3>
+                    <p class="font-semibold">10 Indian states excluded</p>
+                </div>
+            </div>
+
+            <!-- Terms Sections -->
+            <div class="space-y-8">
+                <!-- Section 1 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-user-check mr-3"></i>1. Eligibility & Restricted Regions
+                    </h2>
+                    
+                    <div class="space-y-4 text-gray-300">
+                        <p>Rummy91 is an online rummy and skill-based gaming platform operated by <strong class="text-white">Rummy91 Tech Private Limited</strong>.</p>
+                        <p>Access is restricted to <strong class="text-gold-400">Indian players aged 18 years and above</strong>.</p>
+                        
+                        <div class="bg-red-900 border border-red-600 rounded-lg p-6">
+                            <h4 class="font-semibold text-red-200 mb-3">Cash games on Rummy91 are not available to residents or visitors from the following Indian states and territories:</h4>
+                            <div class="grid md:grid-cols-2 gap-2">
+                                <div class="space-y-1">
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Telangana
+                                    </div>
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Assam
+                                    </div>
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Odisha/Orissa
+                                    </div>
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Gujarat
+                                    </div>
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Maharashtra
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Delhi
+                                    </div>
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Andhra Pradesh
+                                    </div>
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Tamil Nadu
+                                    </div>
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Nagaland
+                                    </div>
+                                    <div class="flex items-center text-red-300">
+                                        <i class="fas fa-times-circle mr-2"></i>Sikkim
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-900 border border-yellow-600 rounded-lg p-4">
+                            <p class="text-yellow-200 font-semibold">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>
+                                If you access from these restricted regions, your account may be suspended and any winnings forfeited.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-gamepad mr-3"></i>2. About Rummy (Skill-Based Game)
+                    </h2>
+                    <div class="space-y-4 text-gray-300">
+                        <p>Indian Rummy is one of the most popular card games in India, enjoyed by millions of players online.</p>
+                        <p><strong class="text-green-400">Rummy is classified as a skill-based game, not a game of pure luck.</strong></p>
+                        <p>While the dealt cards may involve chance, victory depends on strategy, memory, and decision-making.</p>
+                    </div>
+                </section>
+
+                <!-- Section 3 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-handshake mr-3"></i>3. Acceptance of Terms
+                    </h2>
+                    <p class="text-gray-300 mb-4">By registering on Rummy91 or using our app/website, you confirm that:</p>
+                    <div class="bg-blue-900 border border-blue-600 rounded-lg p-6">
+                        <ul class="space-y-2 text-blue-200">
+                            <li><i class="fas fa-check-circle mr-2"></i>You are at least 18 years old.</li>
+                            <li><i class="fas fa-check-circle mr-2"></i>You live in India (outside the restricted states).</li>
+                            <li><i class="fas fa-check-circle mr-2"></i>You agree to our Privacy Policy and Refund Policy.</li>
+                            <li><i class="fas fa-check-circle mr-2"></i>You consent to share your personal information for account verification, KYC, deposits, withdrawals, and fraud prevention.</li>
+                        </ul>
+                    </div>
+                    <p class="text-red-300 mt-4 font-semibold">
+                        Do not register if you do not wish to share the mandatory information required for account creation and cash-game participation.
+                    </p>
+                </section>
+
+                <!-- Section 4 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-database mr-3"></i>4. Data Collection & Use
+                    </h2>
+                    <p class="text-gray-300 mb-4">To ensure a safe, compliant, and enjoyable gaming experience, we collect:</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-400 mb-2">Personal Data:</h4>
+                            <p class="text-gray-300 text-sm">Name, mobile number, email, address, date of birth, PAN or ID proof, profile photo.</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold text-green-400 mb-2">Financial Data:</h4>
+                            <p class="text-gray-300 text-sm">Bank details, UPI ID, Paytm handle, or other payment credentials.</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold text-purple-400 mb-2">Device & Access Data:</h4>
+                            <p class="text-gray-300 text-sm">IP address, browser, device type, and game activity logs.</p>
+                        </div>
+                    </div>
+
+                    <h4 class="font-semibold text-gold-400 mb-3">Your data is used strictly for:</h4>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300 mb-4">
+                        <li>Account verification (KYC and age check).</li>
+                        <li>Processing deposits and withdrawals via secure channels.</li>
+                        <li>Monitoring fair play and preventing multiple-account abuse.</li>
+                        <li>Sending notifications, bonus updates, and promotional codes.</li>
+                        <li>Legal and anti-fraud compliance with Indian laws.</li>
+                    </ul>
+                    
+                    <div class="bg-green-900 border border-green-600 rounded-lg p-4">
+                        <p class="text-green-200 font-semibold">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            We do not sell or share your personal data with unrelated third-party advertisers.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 5 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-comments mr-3"></i>5. Consent & Communication
+                    </h2>
+                    <p class="text-gray-300 mb-4">By registering, you consent to receive communication through:</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300 mb-4">
+                        <li>Email / SMS / WhatsApp / App Notifications regarding deposits, withdrawals, offers, and security updates.</li>
+                        <li>Recorded calls with customer support for quality assurance and faster issue resolution.</li>
+                    </ul>
+                    <p class="text-yellow-300">
+                        You may withdraw consent anytime by contacting support, but this may affect access to cash games or withdrawals.
+                    </p>
+                </section>
+
+                <!-- Section 6 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-lock mr-3"></i>6. Data Security
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h4 class="font-semibold text-green-400 mb-3">Rummy91 uses:</h4>
+                            <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                                <li>HTTPS and encrypted connections</li>
+                                <li>Verified third-party payment gateways</li>
+                                <li>Role-based data access and firewalls</li>
+                            </ul>
+                        </div>
+                        <div class="bg-yellow-900 border border-yellow-600 rounded-lg p-4">
+                            <p class="text-yellow-200 text-sm">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>
+                                Even though we maintain high security standards, no online platform can guarantee 100% protection. Please keep your password, OTP, and UPI credentials private.
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-red-300 font-semibold">
+                        If you suspect unauthorized access, notify support@rummy91.bet immediately.
+                    </p>
+                </section>
+
+                <!-- Section 7 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-heart-pulse mr-3"></i>7. Responsible Gaming
+                    </h2>
+                    <p class="text-gray-300 mb-4">Rummy91 promotes responsible and skill-based gaming:</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-green-900 border border-green-600 rounded-lg p-6">
+                            <ul class="space-y-2 text-green-200">
+                                <li><i class="fas fa-check mr-2"></i>Play only for entertainment.</li>
+                                <li><i class="fas fa-check mr-2"></i>Do not play with borrowed funds.</li>
+                                <li><i class="fas fa-check mr-2"></i>Take regular breaks.</li>
+                                <li><i class="fas fa-check mr-2"></i>Set personal deposit limits.</li>
+                                <li><i class="fas fa-check mr-2"></i>Contact our support team if you feel addicted or need a pause.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-900 border border-blue-600 rounded-lg p-6">
+                            <h4 class="font-semibold text-blue-200 mb-3">Need Help?</h4>
+                            <p class="text-blue-200 text-sm">Our support team is available 24/7 to help with responsible gaming concerns and account management.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 8 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-balance-scale mr-3"></i>8. Fair Play & Account Integrity
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-4 text-gray-300">
+                            <p>Every player competes under the same rules and scoring system.</p>
+                            <p>We prohibit bots, collusion, or fraudulent play.</p>
+                            <p>KYC verification may be required before large withdrawals.</p>
+                            <p>Suspicious or duplicate accounts may be restricted.</p>
+                        </div>
+                        <div class="bg-red-900 border border-red-600 rounded-lg p-6">
+                            <h4 class="font-semibold text-red-200 mb-3">Prohibited Activities:</h4>
+                            <ul class="space-y-2 text-red-200 text-sm">
+                                <li><i class="fas fa-ban mr-2"></i>Bot usage</li>
+                                <li><i class="fas fa-ban mr-2"></i>Account sharing</li>
+                                <li><i class="fas fa-ban mr-2"></i>Collusion</li>
+                                <li><i class="fas fa-ban mr-2"></i>Multiple accounts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 9 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-undo mr-3"></i>9. Refund Policy
+                    </h2>
+                    
+                    <div class="grid lg:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-green-900 border border-green-600 rounded-lg p-6">
+                            <h4 class="font-semibold text-green-200 mb-3">You may request a refund if:</h4>
+                            <ol class="list-decimal pl-6 space-y-2 text-green-200 text-sm">
+                                <li>Payment succeeded but credit was not received.</li>
+                                <li>Technical issues prevent game access for an extended time.</li>
+                                <li>Duplicate or repeated payments occurred.</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-blue-900 border border-blue-600 rounded-lg p-6">
+                            <h4 class="font-semibold text-blue-200 mb-3">How to request:</h4>
+                            <p class="text-blue-200 text-sm mb-3">Contact customer service via WhatsApp or email, describe your issue, and provide transaction details.</p>
+                            <p class="text-blue-200 text-sm">Refunds are generally processed within 5 business days.</p>
+                        </div>
+
+                        <div class="bg-red-900 border border-red-600 rounded-lg p-6">
+                            <h4 class="font-semibold text-red-200 mb-3">Refunds cannot be issued if:</h4>
+                            <ul class="space-y-2 text-red-200 text-sm">
+                                <li>• The credited balance was used partly.</li>
+                                <li>• Payment is older than 3 days.</li>
+                                <li>• Evidence of cheating, abuse, or fraud exists.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 10 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-user-times mr-3"></i>10. Account Termination
+                    </h2>
+                    <div class="bg-blue-900 border border-blue-600 rounded-lg p-6">
+                        <p class="text-blue-200">
+                            You may terminate your Rummy91 account anytime by emailing <strong>support@rummy91.bet</strong>. After verifying your identity, any remaining cash balance (if eligible) will be refunded to your registered payment method.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 11 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-wallet mr-3"></i>11. Cash Balance Policy
+                    </h2>
+                    
+                    <div class="bg-gray-800 p-6 rounded-lg mb-6">
+                        <h4 class="font-semibold text-gold-400 mb-3">Your Rummy91 balance consists of:</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-blue-600 p-4 rounded-lg text-center">
+                                <i class="fas fa-credit-card text-2xl mb-2"></i>
+                                <h5 class="font-bold">Deposit Balance</h5>
+                                <p class="text-sm">(Chips Account)</p>
+                            </div>
+                            <div class="bg-green-600 p-4 rounded-lg text-center">
+                                <i class="fas fa-trophy text-2xl mb-2"></i>
+                                <h5 class="font-bold">Winnings & Bonus</h5>
+                                <p class="text-sm">(Winnings Account)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="font-semibold text-gold-400 mb-3">Rules:</h4>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300 mb-6">
+                        <li>All deposits must be made in INR via UPI / Paytm / Bank.</li>
+                        <li>Withdrawals are allowed only from Winnings & Bonus Accounts after gameplay and KYC verification.</li>
+                        <li>Deposits are non-transferable and cannot be withdrawn directly.</li>
+                        <li>Rummy91 may apply daily or session-wise limits for responsible gaming and fraud prevention.</li>
+                        <li>Inactive balances (over 300 days) may be forfeited or refunded depending on KYC status.</li>
+                    </ul>
+                </section>
+
+                <!-- Section 12 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-receipt mr-3"></i>12. Taxes (TDS)
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="bg-yellow-900 border border-yellow-600 rounded-lg p-6">
+                            <p class="text-yellow-200 text-lg font-semibold mb-4">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>
+                                In compliance with Indian law, a 30% TDS (Tax Deducted at Source) is applied on any single-game winning exceeding ₹10,000.
+                            </p>
+                            <div class="space-y-2 text-yellow-200">
+                                <p>• Players must provide valid PAN details within 60 days to claim winnings.</p>
+                                <p>• Unverified winnings may be forfeited and remitted to the Government per TDS rules.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 13 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-exclamation-circle mr-3"></i>13. Limitation of Liability
+                    </h2>
+                    <p class="text-gray-300 mb-4">Rummy91 provides real-money skill games on an "as-is" basis.</p>
+                    
+                    <div class="bg-red-900 border border-red-600 rounded-lg p-6 mb-4">
+                        <h4 class="font-semibold text-red-200 mb-3">We are not liable for:</h4>
+                        <ul class="space-y-2 text-red-200">
+                            <li>• Losses due to player error, network disconnection, or device failure.</li>
+                            <li>• Unlawful use of your account or password sharing.</li>
+                            <li>• Access from restricted states or use by minors.</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="text-gold-400 font-semibold">
+                        Our maximum liability is limited to refunding any unused balance remaining in your account.
+                    </p>
+                </section>
+
+                <!-- Section 14 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-edit mr-3"></i>14. Changes to Terms
+                    </h2>
+                    <div class="space-y-4 text-gray-300">
+                        <p>Rummy91 may update these Terms and Conditions when new laws, payment systems, or features are added.</p>
+                        <p>We recommend checking this page periodically for the latest version.</p>
+                        <p class="text-gold-400 font-semibold">Continued use of the app means you accept the updated terms.</p>
+                    </div>
+                </section>
+
+                <!-- Section 15 -->
+                <section class="terms-section bg-gray-900 rounded-lg p-8">
+                    <h2 class="text-2xl font-bold text-gold-400 mb-6">
+                        <i class="fas fa-phone mr-3"></i>15. Contact Us
+                    </h2>
+                    <p class="text-gray-300 mb-6">For any questions related to gameplay, KYC, payments, or responsible gaming:</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-purple-600 p-6 rounded-lg text-center">
+                            <i class="fas fa-envelope text-3xl mb-4"></i>
+                            <h3 class="text-lg font-bold mb-2">Email</h3>
+                            <p class="text-sm">support@rummy91.bet</p>
+                        </div>
+                        
+                        <div class="bg-green-600 p-6 rounded-lg text-center">
+                            <i class="fab fa-whatsapp text-3xl mb-4"></i>
+                            <h3 class="text-lg font-bold mb-2">WhatsApp / Telegram</h3>
+                            <p class="text-sm">Official channels (available 24/7)</p>
+                        </div>
+                        
+                        <div class="bg-blue-600 p-6 rounded-lg text-center">
+                            <i class="fas fa-headset text-3xl mb-4"></i>
+                            <h3 class="text-lg font-bold mb-2">In-App Support</h3>
+                            <p class="text-sm">"Help / Customer Service" section inside the Rummy91 App</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Back to Top -->
+            <div class="text-center mt-12">
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-gradient-gold text-black px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform">
+                    <i class="fas fa-arrow-up mr-2"></i>Back to Top
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-dark py-8 border-t border-gray-700">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center items-center space-x-6 mb-4">
+                <img src="img/imps-logo.png" alt="IMPS" class="h-8 w-auto">
+                <img src="img/upi.png" alt="UPI" class="h-8 w-auto">
+                <span class="text-gold-400 font-bold">Secure Payment Methods</span>
+            </div>
+            <p class="text-gray-400 text-lg mb-2">Made with ❤️ in India, for India!</p>
+            <p class="text-gray-500 text-sm">&copy; 2025 Rummy 91. All rights reserved. | 100% Safe & Secure</p>
+            <p class="text-xs text-gray-600 mt-4">Play Responsibly. This game involves an element of financial risk and may be addictive. Please play responsibly and at your own risk.</p>
+        </div>
+    </footer>
+</body>
+</html>
