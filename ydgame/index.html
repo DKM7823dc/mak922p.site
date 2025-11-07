@@ -31,6 +31,11 @@
             window.open('https://www.qq.com', '_blank');
         }
 
+        // M2 method for Event menu
+        function m2() {
+            window.open('event.html', '_blank');
+        }
+
         // Social media methods
         function openFacebook() {
             window.open('https://www.facebook.com', '_blank');
@@ -363,6 +368,21 @@
                 min-width: max-content;
             }
         }
+
+        /* Privacy Policy mobile styling */
+        @media (max-width: 640px) {
+            .privacy-links {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+                space-y: 0 !important;
+                gap: 0.5rem !important;
+            }
+            .privacy-separator {
+                display: inline !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -392,6 +412,8 @@
                 <!-- Desktop Navigation Menu -->
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="text-white hover:text-gold-400 transition-colors font-medium">Home</a>
+					
+                    <a href="javascript:void(0)" onclick="m2()" class="text-white hover:text-gold-400 transition-colors font-medium">Event</a>
                     <a href="#games" class="text-white hover:text-gold-400 transition-colors font-medium">Games</a>
                     <a href="#features" class="text-white hover:text-gold-400 transition-colors font-medium">Features</a>
                     <a href="#earn" class="text-white hover:text-gold-400 transition-colors font-medium">Earn</a>
@@ -417,6 +439,8 @@
             <nav class="container mx-auto px-4 py-4">
                 <div class="flex flex-col space-y-4">
                     <a href="#home" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">Home</a>
+					
+                    <a href="javascript:void(0)" onclick="m2(); closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">Event</a>
                     <a href="#games" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">Games</a>
                     <a href="#features" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">Features</a>
                     <a href="#earn" onclick="closeMobileMenu()" class="text-white hover:text-gold-400 transition-colors font-medium py-2 border-b border-gray-700">Earn</a>
@@ -980,23 +1004,31 @@ Test your luck, trust your instincts, and enjoy every spin of this timeless game
             <i class="fas fa-download mr-2"></i>Download App Now
         </button>
     </div>
- <!-- Privacy Policy and Terms Links -->
+ <!-- Company and Legal Links -->
 <section class="bg-black py-8">
     <div class="container mx-auto px-4">
-        <div class="text-center">
-            <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-8">
-                
-                <a href="privacy.html" target="_blank" class="text-white hover:text-gold-400 transition-colors text-lg font-medium border-b-2 border-white hover:border-gold-400 pb-1">
-                    Privacy Policy
-                </a>
-                <span class="hidden sm:inline text-gray-400 text-xl">|</span>
-                <a href="terms.html" target="_blank" class="text-white hover:text-gold-400 transition-colors text-lg font-medium border-b-2 border-white hover:border-gold-400 pb-1">
-                    Terms of Service
-                </a>
-                <span class="hidden sm:inline text-gray-400 text-xl">|</span>
-                <a href="about.html" target="_blank" class="text-white hover:text-gold-400 transition-colors text-lg font-medium border-b-2 border-white hover:border-gold-400 pb-1">
-                    About Us
-                </a>
+        <div class="grid grid-cols-2 gap-4 sm:gap-8 max-w-4xl mx-auto">
+            <!-- Company Section -->
+            <div class="text-center">
+                <h3 class="text-lg sm:text-xl font-bold text-gold-400 mb-3 sm:mb-4">Company</h3>
+                <div class="space-y-2 sm:space-y-3">
+                    <a href="about.html" target="_blank" class="block text-white hover:text-gold-400 transition-colors text-sm sm:text-lg font-medium border-b-2 border-transparent hover:border-gold-400 pb-1">
+                        About Us
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Legal Section -->
+            <div class="text-center">
+                <h3 class="text-lg sm:text-xl font-bold text-gold-400 mb-3 sm:mb-4">Legal</h3>
+                <div class="space-y-2 sm:space-y-3">
+                    <a href="terms.html" target="_blank" class="block text-white hover:text-gold-400 transition-colors text-sm sm:text-lg font-medium border-b-2 border-transparent hover:border-gold-400 pb-1">
+                        Terms & Conditions
+                    </a>
+                    <a href="privacy.html" target="_blank" class="block text-white hover:text-gold-400 transition-colors text-sm sm:text-lg font-medium border-b-2 border-transparent hover:border-gold-400 pb-1">
+                        Privacy Policy
+                    </a>
+                </div>
             </div>
         </div>
     </div>
