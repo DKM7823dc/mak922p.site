@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>个人中心 - 云贷款</title>
+    <meta name="description" content="云贷款 - 个人中心">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#fb6f00',
+                        dark: '#181818'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自定义样式 */
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #5D5CDE, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0 auto 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #5D5CDE, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-right: 16px;
+        }
+
+        .btn-primary {
+            background: #5D5CDE;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(93, 92, 222, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(93, 92, 222, 0.4);
+        }
+
+        .btn-outline {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .btn-outline:hover {
+            background: linear-gradient(135deg, #e55a2b, #e6841a);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+            animation-play-state: paused;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(255, 107, 53, 0.7);
+            }
+        }
+
+        /* 底部导航样式 */
+        .nav-item {
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background: rgba(93, 92, 222, 0.1);
+        }
+        
+        .nav-text {
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 2px;
+            white-space: nowrap;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #5D5CDE;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #5D5CDE;
+        }
+
+        /* 步骤指示器 */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .step {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 4px;
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            background: #5D5CDE;
+            color: white;
+        }
+
+        .step.completed {
+            background: #10b981;
+            color: white;
+        }
+
+        /* 页面容器 */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* 协议复选框样式 */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 24px 0;
+            padding: 16px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .checkbox-input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #5D5CDE;
+        }
+
+        .checkbox-label {
+            font-size: 14px;
+            line-height: 1.4;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        /* 上传区域样式 */
+        .upload-area {
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            background: #f9fafb;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 16px;
+            position: relative;
+            min-height: 240px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .upload-area.front-card {
+            background-image: url('img/s1.png');
+            background-color: #f0f0f0;
+        }
+
+        .upload-area.back-card {
+            background-image: url('img/s2.png');
+            background-color: #f0f0f0;
+        }
+
+        .upload-area:hover {
+            border-color: #5D5CDE;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(93, 92, 222, 0.2);
+        }
+
+        .upload-area.active {
+            border-color: #5D5CDE;
+            box-shadow: 0 4px 15px rgba(93, 92, 222, 0.3);
+        }
+
+        .upload-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover .upload-overlay {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .upload-icon {
+            width: 48px;
+            height: 48px;
+            background: url('img/c1.png') no-repeat center;
+            background-size: contain;
+            margin: 0 auto 12px;
+        }
+
+        .upload-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 4px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .upload-hint {
+            font-size: 14px;
+            color: #6b7280;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        /* 深色模式下的上传区域 */
+        .dark .upload-overlay {
+            background: rgba(31, 41, 55, 0.9);
+        }
+
+        .dark .upload-area:hover .upload-overlay {
+            background: rgba(31, 41, 55, 0.95);
+        }
+
+        .dark .upload-text {
+            color: #f9fafb;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark .upload-hint {
+            color: #d1d5db;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .warning-text {
+            color: #dc2626;
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 16px 0;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 640px) {
+            .nav-text {
+                font-size: 11px;
+                margin-top: 1px;
+            }
+            
+            .nav-item {
+                min-height: 56px;
+                padding: 6px 4px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-text {
+                font-size: 10px;
+            }
+            
+            .nav-item {
+                min-height: 52px;
+                padding: 4px 2px;
+            }
+        }
+        
+        /* 深色模式 */
+        .dark .feature-card {
+            background: #374151;
+            border-color: #4b5563;
+        }
+        
+        .dark .modal-content {
+            background: #1f2937;
+            color: #f9fafb;
+        }
+
+        .dark .form-label {
+            color: #f9fafb;
+        }
+
+        .dark .form-input,
+        .dark .form-select {
+            background: #374151;
+            border-color: #4b5563;
+            color: #f9fafb;
+        }
+
+        .dark .form-input:focus,
+        .dark .form-select:focus {
+            border-color: #5D5CDE;
+        }
+
+        .dark .checkbox-group {
+            background: #374151;
+        }
+
+        .dark .checkbox-label {
+            color: #f9fafb;
+        }
+        
+        /* 通知样式 */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.error {
+            background: #ef4444;
+        }
+        
+        .notification.success {
+            background: #10b981;
+        }
+
+        /* 继续上传按钮样式 */
+        .continue-upload-btn {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+
+        .continue-upload-btn:hover {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            border-color: #5D5CDE;
+            color: #5D5CDE;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(93, 92, 222, 0.15);
+        }
+
+        .dark .continue-upload-btn {
+            background: linear-gradient(135deg, #374151, #4b5563);
+            border-color: #6b7280;
+        }
+
+        .dark .continue-upload-btn:hover {
+            background: linear-gradient(135deg, #4b5563, #6b7280);
+            border-color: #5D5CDE;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-dark min-h-screen">
+    
+    <!-- 个人中心页面 -->
+    <div id="profile-page" class="page active">
+        <!-- 顶部头部 -->
+        <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+            <div class="p-6">
+                <h1 class="text-xl font-bold mb-4">云贷款</h1>
+                <div class="flex text-xs space-x-1 opacity-90 mb-4">
+                    <span>远程在线审批</span>
+                    <span>｜</span>
+                    <span>贷款期限最长三年</span>
+                    <span>｜</span>
+                    <span>几秒钟即可获得贷款</span>
+                </div>
+                <button class="btn-outline" id="login-btn">登录/注册</button>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="p-4 pb-24">
+            
+            <!-- 个人中心标题 -->
+            <div class="mb-4">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">个人中心</h2>
+            </div>
+
+            <!-- 我的详细信息 -->
+            <section class="feature-card" id="user-details">
+                <div class="flex items-center cursor-pointer">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-1">我的详细信息</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">查看和编辑个人资料</p>
+                    </div>
+                    <div class="text-primary">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 我的贷款 -->
+            <section class="feature-card" id="my-loans">
+                <div class="flex items-center cursor-pointer">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
+                            <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-1">我的贷款</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">查看贷款记录和还款计划</p>
+                    </div>
+                    <div class="text-primary">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 修改密码 -->
+            <section class="feature-card" id="change-password">
+                <div class="flex items-center cursor-pointer">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-1">修改密码</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">更改您的登录密码</p>
+                    </div>
+                    <div class="text-primary">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 退出登录 -->
+            <section class="feature-card" id="logout">
+                <div class="flex items-center cursor-pointer">
+                    <div class="feature-icon bg-red-500">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 001-1h10.586l-2.293-2.293a1 1 0 10-1.414 1.414L14.586 5H4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V8a3 3 0 00-3-3H6.414l2.293-2.293a1 1 0 10-1.414-1.414L5 3.414V3z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-1">退出登录</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">安全退出当前账户</p>
+                    </div>
+                    <div class="text-red-500">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 底部装饰图 -->
+            <section class="mt-6">
+                <img src="img/b.jpg" alt="底部装饰图" class="w-full rounded-lg shadow-sm object-cover">
+            </section>
+
+        </main>
+    </div>
+
+    <!-- 详细信息页面 -->
+    <div id="details-page" class="page">
+        <!-- 顶部头部 -->
+        <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+            <div class="p-6 flex items-center">
+                <button id="back-btn" class="mr-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold">详细信息</h1>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="p-4 pb-32">
+            
+            <!-- 身份信息 -->
+            <section class="feature-card cursor-pointer" id="identity-info">
+                <div class="flex items-center justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">身份信息</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">请告诉我们您的基本情况</p>
+                    </div>
+                    <div class="text-primary ml-4">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 个人资料 -->
+            <section class="feature-card cursor-pointer" id="personal-info">
+                <div class="flex items-center justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">个人资料</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">请告诉我们您的个人资料</p>
+                    </div>
+                    <div class="text-primary ml-4">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 通过银行卡取款 -->
+            <section class="feature-card cursor-pointer" id="bank-info">
+                <div class="flex items-center justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">通过银行卡取款</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">提交后无法编辑</p>
+                    </div>
+                    <div class="text-primary ml-4">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 附加元素 -->
+            <section class="feature-card cursor-pointer" id="additional-elements">
+                <div class="flex items-center justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">附加元素</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">提高您的审批通过率</p>
+                    </div>
+                    <div class="text-primary ml-4">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 协议复选框 -->
+            <section class="feature-card">
+                <div class="checkbox-group dark:bg-gray-700">
+                    <input type="checkbox" id="agreement" class="checkbox-input">
+                    <label for="agreement" class="checkbox-label dark:text-gray-300">
+                        我已阅读并同意签署《消费贷款协议》和《获取个人信用报告同意书》，并且我也同意根据《主数据和财务信息政策》转移信用信息。
+                    </label>
+                </div>
+            </section>
+
+            <!-- 申请按钮 -->
+            <div class="fixed bottom-20 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
+                <button class="btn-primary w-full" id="apply-btn">马上申请</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 个人资料页面 -->
+    <div id="personal-info-page" class="page">
+        <!-- 顶部头部 -->
+        <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+            <div class="p-6 flex items-center">
+                <button id="personal-back-btn" class="mr-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold">个人资料</h1>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="p-4 pb-32">
+            
+            <!-- 标题 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">请准确填写真实信息</h2>
+            </div>
+
+            <!-- 工作信息 -->
+            <div class="feature-card mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">工作信息</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">工作地点</label>
+                    <input type="text" class="form-input text-base" id="work-location" placeholder="请输入工作地点">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">工作电话号码</label>
+                    <input type="tel" class="form-input text-base" id="work-phone" placeholder="请输入工作电话号码" maxlength="11">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">专业经验</label>
+                    <select class="form-select text-base" id="work-experience">
+                        <option value="">请选择专业经验</option>
+                        <option value="1年以下">1年以下</option>
+                        <option value="1-3年">1-3年</option>
+                        <option value="3-5年">3-5年</option>
+                        <option value="5-10年">5-10年</option>
+                        <option value="10年以上">10年以上</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">月收入</label>
+                    <select class="form-select text-base" id="monthly-income">
+                        <option value="">请选择月收入</option>
+                        <option value="3000元以下">3000元以下</option>
+                        <option value="3000-5000元">3000-5000元</option>
+                        <option value="5000-8000元">5000-8000元</option>
+                        <option value="8000-12000元">8000-12000元</option>
+                        <option value="12000-20000元">12000-20000元</option>
+                        <option value="20000元以上">20000元以上</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">地址</label>
+                    <input type="text" class="form-input text-base" id="address" placeholder="请输入详细地址">
+                </div>
+            </div>
+
+            <!-- 与近亲关系 -->
+            <div class="feature-card mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">与近亲关系</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">姓名</label>
+                    <input type="text" class="form-input text-base" id="relative-name" placeholder="请输入真实姓名和姓氏">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">电话号码</label>
+                    <input type="tel" class="form-input text-base" id="relative-phone" placeholder="请输入真实的电话号码" maxlength="11">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">关系</label>
+                    <select class="form-select text-base" id="relative-relation">
+                        <option value="">请选择关系</option>
+                        <option value="妻子">妻子</option>
+                        <option value="朋友">朋友</option>
+                        <option value="同事">同事</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 其他联系方式 -->
+            <div class="feature-card mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">其他联系方式</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">姓名</label>
+                    <input type="text" class="form-input text-base" id="other-name" placeholder="请输入真实姓名和姓氏">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">电话号码</label>
+                    <input type="tel" class="form-input text-base" id="other-phone" placeholder="请输入真实的电话号码" maxlength="11">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">关系</label>
+                    <select class="form-select text-base" id="other-relation">
+                        <option value="">请选择关系</option>
+                        <option value="妻子">妻子</option>
+                        <option value="朋友">朋友</option>
+                        <option value="同事">同事</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 提交按钮 -->
+            <div class="fixed bottom-20 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
+                <button class="btn-primary w-full" id="personal-submit-btn">提交</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 身份信息表单页面 -->
+    <div id="identity-form-page" class="page">
+        <!-- 顶部头部 -->
+        <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+            <div class="p-6 flex items-center">
+                <button id="identity-back-btn" class="mr-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold">身份信息</h1>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="p-4 pb-32">
+            
+            <!-- 标题 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">请填写正确真实的信息</h2>
+            </div>
+
+            <!-- 表单区域 -->
+            <div class="feature-card">
+                <div class="form-group">
+                    <label class="form-label">姓名</label>
+                    <input type="text" class="form-input text-base" id="fullname" placeholder="请输入您的真实姓名和姓氏">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">数字ID</label>
+                    <input type="text" class="form-input text-base" id="identity-number" placeholder="请输入您的真实身份证号码" maxlength="18">
+                </div>
+
+                <div class="warning-text">
+                    <p>*必须提供身份证件，且身份证件内容应清晰易懂。*请确保已启用照片权限。</p>
+                </div>
+
+                <!-- 上传区域 -->
+                <div class="upload-area front-card" id="upload-front">
+                    <div class="upload-overlay">
+                        <div class="upload-icon"></div>
+                        <div class="upload-text">扫描并上传您旧身份证的照片</div>
+                        <div class="upload-hint">点击上传身份证正面照片</div>
+                    </div>
+                </div>
+
+                <div class="upload-area back-card" id="upload-back">
+                    <div class="upload-overlay">
+                        <div class="upload-icon"></div>
+                        <div class="upload-text">扫描并上传您旧身份证的照片</div>
+                        <div class="upload-hint">点击上传身份证反面照片</div>
+                    </div>
+                </div>
+
+                <!-- 协议复选框 -->
+                <div class="checkbox-group dark:bg-gray-700">
+                    <input type="checkbox" id="identity-agreement" class="checkbox-input">
+                    <label for="identity-agreement" class="checkbox-label dark:text-gray-300">
+                        我已阅读并同意签署《消费贷款协议》和《获取个人信用报告同意书》，并且我也同意根据《主数据和财务信息政策》转移信用信息。
+                    </label>
+                </div>
+            </div>
+
+            <!-- 申请按钮 -->
+            <div class="fixed bottom-20 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
+                <button class="btn-primary w-full" id="identity-apply-btn">马上申请</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 附加元素页面 -->
+    <div id="additional-elements-page" class="page">
+        <!-- 顶部头部 -->
+        <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+            <div class="p-6 flex items-center">
+                <button id="additional-back-btn" class="mr-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold">附加元素</h1>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="p-4 pb-32">
+            
+            <!-- 标题 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">请上传您的：</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">驾驶证、房产证、工作证明、收入证明、社保卡、防欺诈证明</p>
+            </div>
+
+            <!-- 通用上传区域 -->
+            <div class="feature-card">
+                <div class="upload-area" id="universal-upload">
+                    <div class="upload-overlay">
+                        <div class="upload-icon"></div>
+                        <div class="upload-text" id="upload-text">点击上传文件</div>
+                        <div class="upload-hint" id="upload-hint">支持 JPG、PNG、PDF 格式</div>
+                    </div>
+                </div>
+
+                <!-- 已上传文件列表 -->
+                <div id="uploaded-files" class="mt-4 space-y-2" style="display: none;">
+                    <h4 class="text-sm font-semibold text-gray-800 dark:text-white mb-2">已上传文件：</h4>
+                    <div id="file-list"></div>
+                </div>
+
+                <!-- 继续上传按钮 -->
+                <div id="continue-upload-section" class="mt-4" style="display: none;">
+                    <button class="w-full py-4 px-6 continue-upload-btn rounded-lg text-gray-600 dark:text-gray-400 transition-all duration-300 flex flex-col items-center space-y-2" id="continue-upload-btn">
+                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div class="text-center">
+                            <div class="font-semibold text-base">继续添加更多文件</div>
+                            <div class="text-sm opacity-75">点击选择更多文件上传</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 确定提交按钮 -->
+            <div class="fixed bottom-20 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
+                <button class="btn-primary w-full" id="additional-submit-btn">确定提交</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 我的贷款页面 -->
+    <div id="my-loans-page" class="page">
+        <!-- 顶部头部 -->
+        <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+            <div class="p-6 flex items-center">
+                <button id="loans-back-btn" class="mr-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold">我的贷款</h1>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="p-4 pb-32 flex flex-col items-center justify-center min-h-[70vh]">
+            
+            <!-- 空状态图片 -->
+            <div class="mb-8">
+                <img src="img/p1.png" alt="暂无贷款" class="w-48 h-48 mx-auto object-contain">
+            </div>
+
+            <!-- 空状态文案 -->
+            <div class="text-center mb-8">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">您尚未申请贷款</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">开始您的第一笔贷款申请，享受快速审批服务</p>
+            </div>
+
+            <!-- 行动号召按钮 -->
+            <div class="w-full max-w-sm">
+                <button class="btn-primary w-full" id="apply-loan-btn">马上申请贷款</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 修改密码页面 -->
+    <div id="change-password-page" class="page">
+        <!-- 顶部头部 -->
+        <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+            <div class="p-6 flex items-center">
+                <button id="password-back-btn" class="mr-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold">修改密码</h1>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="p-4 pb-32">
+            
+            <!-- 表单区域 -->
+            <div class="feature-card">
+                <div class="mb-4">
+                    <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">设置新密码</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">请设置一个安全的新密码</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">旧密码</label>
+                    <input type="password" class="form-input text-base" id="old-password" placeholder="请输入当前密码">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">新密码</label>
+                    <input type="password" class="form-input text-base" id="new-password" placeholder="请输入新密码（6-20位）" maxlength="20">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">确认新密码</label>
+                    <input type="password" class="form-input text-base" id="confirm-password" placeholder="请再次输入新密码" maxlength="20">
+                </div>
+
+                <!-- 密码强度提示 -->
+                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mt-4">
+                    <h4 class="text-sm font-semibold text-blue-800 dark:text-blue-300 mb-2">密码要求：</h4>
+                    <ul class="text-sm text-blue-700 dark:text-blue-200 space-y-1">
+                        <li>• 长度在6-20位之间</li>
+                        <li>• 建议包含字母、数字和特殊符号</li>
+                        <li>• 避免使用生日、姓名等个人信息</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 确认修改按钮 -->
+            <div class="fixed bottom-20 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
+                <button class="btn-primary w-full" id="password-save-btn">确认修改</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 银行卡信息页面 -->
+    <div id="bank-card-page" class="page">
+        <!-- 顶部头部 -->
+        <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+            <div class="p-6 flex items-center">
+                <button id="bank-back-btn" class="mr-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold">通过银行卡取款</h1>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="p-4 pb-32">
+            
+            <!-- 表单区域 -->
+            <div class="feature-card">
+                <div class="form-group">
+                    <label class="form-label">存款银行</label>
+                    <input type="text" class="form-input text-base" id="deposit-bank" placeholder="请输入存款银行名称">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">银行卡号</label>
+                    <input type="text" class="form-input text-base" id="bank-card-number" placeholder="请输入银行卡号" maxlength="19">
+                </div>
+
+                <!-- 备注信息 -->
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mt-4">
+                    <h4 class="text-sm font-semibold text-yellow-800 dark:text-yellow-300 mb-2">备注：</h4>
+                    <p class="text-sm text-yellow-700 dark:text-yellow-200">
+                        提供的银行卡必须是本人所有的借记卡（存款卡）。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 保存按钮 -->
+            <div class="fixed bottom-20 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
+                <button class="btn-primary w-full" id="bank-save-btn">保存</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 底部导航 -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <div class="flex">
+            <a href="index.html" class="flex-1 text-center py-2 px-1 text-gray-600 dark:text-gray-400 nav-item">
+                <div class="w-6 h-6 mx-auto mb-1">
+                    <img src="img/home.png" alt="首页" class="w-full h-full object-contain">
+                </div>
+                <span class="nav-text">首页</span>
+            </a>
+            <a href="wall.html" class="flex-1 text-center py-2 px-1 text-gray-600 dark:text-gray-400 nav-item">
+                <div class="w-6 h-6 mx-auto mb-1">
+                    <img src="img/ico_foot22.png" alt="钱包" class="w-full h-full object-contain">
+                </div>
+                <span class="nav-text">钱包</span>
+            </a>
+            <a href="/profile" class="flex-1 text-center py-2 px-1 text-primary nav-item">
+                <div class="w-6 h-6 mx-auto mb-1">
+                    <img src="img/me2.png" alt="我的" class="w-full h-full object-contain">
+                </div>
+                <span class="nav-text">我的</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 登录/注册模态框 -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <h3 class="text-lg font-semibold mb-6" id="modal-title">登录/注册</h3>
+            <div id="login-form">
+                <div class="form-group">
+                    <label class="form-label">手机号</label>
+                    <input type="tel" class="form-input text-base" id="phone" placeholder="请输入手机号" maxlength="11">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">验证码</label>
+                    <div class="flex space-x-2">
+                        <input type="text" class="form-input text-base flex-1" id="code" placeholder="请输入验证码" maxlength="6">
+                        <button class="btn-outline px-3" id="send-code">发送验证码</button>
+                    </div>
+                </div>
+                <div class="flex space-x-3 mt-6">
+                    <button class="flex-1 py-2 px-4 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50" id="modal-cancel">取消</button>
+                    <button class="btn-primary flex-1" id="submit-login">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通知 -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // 深色模式检测
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            document.documentElement.classList.toggle('dark', event.matches);
+        });
+
+        // 显示通知函数
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+            setTimeout(() => notification.classList.remove('show'), 3000);
+        }
+
+        // 自定义确认对话框
+        function showConfirmDialog(message, onConfirm) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.style.display = 'flex';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">${message}</p>
+                    <div class="flex justify-end space-x-3">
+                        <button class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cancel-btn">取消</button>
+                        <button class="px-4 py-2 bg-primary text-white hover:bg-primary/90 rounded confirm-btn">确认</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            modal.querySelector('.cancel-btn').onclick = () => modal.remove();
+            modal.querySelector('.confirm-btn').onclick = () => {
+                modal.remove();
+                onConfirm();
+            };
+        }
+
+        // 页面导航
+        let currentStep = 1;
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function showStep(step) {
+            // 隐藏所有步骤内容
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // 显示当前步骤
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+            
+            // 更新步骤指示器
+            document.querySelectorAll('.step').forEach(stepEl => {
+                const stepNumber = parseInt(stepEl.dataset.step);
+                stepEl.classList.remove('active', 'completed');
+                
+                if (stepNumber < step) {
+                    stepEl.classList.add('completed');
+                } else if (stepNumber === step) {
+                    stepEl.classList.add('active');
+                }
+            });
+            
+            // 更新按钮状态
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            if (prevBtn) prevBtn.style.display = step === 1 ? 'none' : 'block';
+            if (nextBtn) nextBtn.textContent = step === 4 ? '马上申请' : '下一步';
+            
+            currentStep = step;
+        }
+
+        function validateStep(step) {
+            let isValid = true;
+            let message = '';
+            
+            switch(step) {
+                case 1:
+                    const fullname = document.getElementById('fullname')?.value.trim();
+                    const idcard = document.getElementById('idcard')?.value.trim();
+                    const gender = document.getElementById('gender')?.value;
+                    const birthdate = document.getElementById('birthdate')?.value;
+                    
+                    if (!fullname) {
+                        message = '请输入真实姓名';
+                        isValid = false;
+                    } else if (idcard && !/^\d{17}[\dX]$/.test(idcard)) {
+                        message = '身份证号码格式不正确';
+                        isValid = false;
+                    }
+                    break;
+                    
+                case 2:
+                    const address = document.getElementById('address')?.value.trim();
+                    const occupation = document.getElementById('occupation')?.value;
+                    const income = document.getElementById('income')?.value;
+                    const workyears = document.getElementById('workyears')?.value;
+                    
+                    if (address && !address) {
+                        message = '请输入居住地址';
+                        isValid = false;
+                    }
+                    break;
+                    
+                case 3:
+                    const bank = document.getElementById('bank');
+                    const bankphone = document.getElementById('bankphone');
+                    
+                    if (bank && !bank.value) {
+                        message = '请选择开户银行';
+                        isValid = false;
+                    } else if (bankphone && bankphone.value.trim() && !/^1[3-9]\d{9}$/.test(bankphone.value.trim())) {
+                        message = '手机号格式不正确';
+                        isValid = false;
+                    }
+                    break;
+                    
+                case 4:
+                    const emergencyname = document.getElementById('emergencyname');
+                    const emergencyphone = document.getElementById('emergencyphone');
+                    const relationship = document.getElementById('relationship');
+                    const loanamount = document.getElementById('loanamount');
+                    const agreement = document.getElementById('agreement');
+                    
+                    if (emergencyphone && emergencyphone.value.trim() && !/^1[3-9]\d{9}$/.test(emergencyphone.value.trim())) {
+                        message = '紧急联系人电话格式不正确';
+                        isValid = false;
+                    } else if (agreement && !agreement.checked) {
+                        message = '请阅读并同意相关协议';
+                        isValid = false;
+                    }
+                    break;
+            }
+            
+            if (!isValid) {
+                showNotification(message, 'error');
+            }
+            
+            return isValid;
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 登录按钮事件
+            document.getElementById('login-btn').addEventListener('click', () => {
+                window.location.href = 'login.html';
+            });
+
+            // 模态框关闭
+            document.getElementById('modal-cancel').addEventListener('click', () => {
+                document.getElementById('login-modal').style.display = 'none';
+            });
+
+            // 发送验证码
+            let countdown = 0;
+            document.getElementById('send-code').addEventListener('click', function() {
+                const phone = document.getElementById('phone').value.trim();
+                
+                if (!phone) {
+                    showNotification('请先输入手机号', 'error');
+                    return;
+                }
+                
+                if (!/^1[3-9]\d{9}$/.test(phone)) {
+                    showNotification('请输入正确的手机号', 'error');
+                    return;
+                }
+                
+                if (countdown > 0) {
+                    return;
+                }
+                
+                // 模拟发送验证码
+                showNotification('验证码已发送', 'success');
+                
+                // 倒计时
+                countdown = 60;
+                const button = this;
+                const interval = setInterval(() => {
+                    button.textContent = `${countdown}秒后重发`;
+                    button.disabled = true;
+                    button.style.opacity = '0.6';
+                    countdown--;
+                    
+                    if (countdown < 0) {
+                        clearInterval(interval);
+                        button.textContent = '发送验证码';
+                        button.disabled = false;
+                        button.style.opacity = '1';
+                    }
+                }, 1000);
+            });
+
+            // 提交登录
+            document.getElementById('submit-login').addEventListener('click', () => {
+                const phone = document.getElementById('phone').value.trim();
+                const code = document.getElementById('code').value.trim();
+                
+                if (!phone) {
+                    showNotification('请输入手机号', 'error');
+                    return;
+                }
+                
+                if (!/^1[3-9]\d{9}$/.test(phone)) {
+                    showNotification('请输入正确的手机号', 'error');
+                    return;
+                }
+                
+                if (!code) {
+                    showNotification('请输入验证码', 'error');
+                    return;
+                }
+                
+                if (code.length !== 6) {
+                    showNotification('验证码格式不正确', 'error');
+                    return;
+                }
+                
+                // 模拟登录
+                showNotification('登录成功', 'success');
+                document.getElementById('login-modal').style.display = 'none';
+            });
+
+            // 功能卡片点击事件
+            document.getElementById('user-details').addEventListener('click', () => {
+                showPage('details-page');
+            });
+
+            document.getElementById('my-loans').addEventListener('click', () => {
+                showPage('my-loans-page');
+            });
+
+            // 返回按钮
+            document.getElementById('back-btn').addEventListener('click', () => {
+                showPage('profile-page');
+            });
+
+            // 申请按钮
+            document.getElementById('apply-btn').addEventListener('click', () => {
+                const agreement = document.getElementById('agreement').checked;
+                
+                if (!agreement) {
+                    showNotification('请阅读并同意相关协议', 'error');
+                    return;
+                }
+                
+                // 立即跳转到首页
+                window.location.href = 'index.html';
+            });
+
+            // 身份信息点击事件
+            const identityCard = document.getElementById('identity-info');
+            if (identityCard) {
+                identityCard.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showPage('identity-form-page');
+                });
+            }
+
+            // 身份信息页面返回按钮
+            document.getElementById('identity-back-btn').addEventListener('click', () => {
+                showPage('details-page');
+            });
+
+            // 上传区域点击事件
+            document.getElementById('upload-front').addEventListener('click', () => {
+                showNotification('正在打开相机/相册...', 'success');
+            });
+
+            document.getElementById('upload-back').addEventListener('click', () => {
+                showNotification('正在打开相机/相册...', 'success');
+            });
+
+            // 个人资料点击事件
+            document.getElementById('personal-info').addEventListener('click', () => {
+                showPage('personal-info-page');
+            });
+
+            // 银行卡信息点击事件
+            document.getElementById('bank-info').addEventListener('click', () => {
+                showPage('bank-card-page');
+            });
+
+            // 身份信息"马上申请"按钮
+            document.getElementById('identity-apply-btn').addEventListener('click', () => {
+                const fullname = document.getElementById('fullname').value.trim();
+                const identityNumber = document.getElementById('identity-number').value.trim();
+                const agreement = document.getElementById('identity-agreement').checked;
+                
+                if (!fullname) {
+                    showNotification('请输入您的真实姓名', 'error');
+                    return;
+                }
+                
+                if (!identityNumber) {
+                    showNotification('请输入您的数字ID', 'error');
+                    return;
+                }
+                
+                if (!agreement) {
+                    showNotification('请阅读并同意相关协议', 'error');
+                    return;
+                }
+                
+                // 立即跳转到首页
+                window.location.href = 'index.html';
+            });
+
+            // 个人资料页面返回按钮
+            document.getElementById('personal-back-btn').addEventListener('click', () => {
+                showPage('details-page');
+            });
+
+            // 个人资料提交按钮
+            document.getElementById('personal-submit-btn').addEventListener('click', () => {
+                // 验证工作信息
+                const workLocation = document.getElementById('work-location').value.trim();
+                const workPhone = document.getElementById('work-phone').value.trim();
+                const workExperience = document.getElementById('work-experience').value;
+                const monthlyIncome = document.getElementById('monthly-income').value;
+                const address = document.getElementById('address').value.trim();
+
+                // 验证近亲关系
+                const relativeName = document.getElementById('relative-name').value.trim();
+                const relativePhone = document.getElementById('relative-phone').value.trim();
+                const relativeRelation = document.getElementById('relative-relation').value;
+
+                // 验证其他联系方式
+                const otherName = document.getElementById('other-name').value.trim();
+                const otherPhone = document.getElementById('other-phone').value.trim();
+                const otherRelation = document.getElementById('other-relation').value;
+
+                // 表单验证
+                if (!workLocation) {
+                    showNotification('请输入工作地点', 'error');
+                    return;
+                }
+                if (!workPhone) {
+                    showNotification('请输入工作电话号码', 'error');
+                    return;
+                }
+                if (!workExperience) {
+                    showNotification('请选择专业经验', 'error');
+                    return;
+                }
+                if (!monthlyIncome) {
+                    showNotification('请选择月收入', 'error');
+                    return;
+                }
+                if (!address) {
+                    showNotification('请输入地址', 'error');
+                    return;
+                }
+                if (!relativeName) {
+                    showNotification('请输入近亲联系人姓名', 'error');
+                    return;
+                }
+                if (!relativePhone) {
+                    showNotification('请输入近亲联系人电话号码', 'error');
+                    return;
+                }
+                if (!relativeRelation) {
+                    showNotification('请选择与近亲联系人的关系', 'error');
+                    return;
+                }
+                if (!otherName) {
+                    showNotification('请输入其他联系人姓名', 'error');
+                    return;
+                }
+                if (!otherPhone) {
+                    showNotification('请输入其他联系人电话号码', 'error');
+                    return;
+                }
+                if (!otherRelation) {
+                    showNotification('请选择与其他联系人的关系', 'error');
+                    return;
+                }
+
+                // 提交成功，返回上一页
+                showNotification('提交成功！', 'success');
+                setTimeout(() => {
+                    showPage('details-page');
+                }, 1500);
+            });
+
+            // 银行卡页面返回按钮
+            document.getElementById('bank-back-btn').addEventListener('click', () => {
+                showPage('details-page');
+            });
+
+            // 银行卡保存按钮
+            document.getElementById('bank-save-btn').addEventListener('click', () => {
+                const depositBank = document.getElementById('deposit-bank').value.trim();
+                const bankCardNumber = document.getElementById('bank-card-number').value.trim();
+
+                // 只验证是否为空
+                if (!depositBank) {
+                    showNotification('请输入存款银行名称', 'error');
+                    return;
+                }
+
+                if (!bankCardNumber) {
+                    showNotification('请输入银行卡号', 'error');
+                    return;
+                }
+
+                // 保存成功，返回详细信息页面
+                showNotification('银行卡信息保存成功！', 'success');
+                setTimeout(() => {
+                    showPage('details-page');
+                }, 1500);
+            });
+
+            // 银行卡号格式化（添加空格分隔）
+            document.getElementById('bank-card-number').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, ''); // 只保留数字
+                let formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 '); // 每4位添加空格
+                e.target.value = formattedValue;
+            });
+
+            // 附加元素点击事件
+            document.getElementById('additional-elements').addEventListener('click', () => {
+                showPage('additional-elements-page');
+            });
+
+            // 附加元素页面返回按钮
+            document.getElementById('additional-back-btn').addEventListener('click', () => {
+                showPage('details-page');
+            });
+
+            // 创建文件输入框
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*,.pdf';
+            fileInput.multiple = true; // 允许多选
+            fileInput.style.display = 'none';
+            document.body.appendChild(fileInput);
+
+            let uploadedFiles = [];
+
+            // 通用上传点击事件
+            document.getElementById('universal-upload').addEventListener('click', function() {
+                fileInput.click();
+            });
+
+            // 继续上传按钮点击事件
+            document.getElementById('continue-upload-btn').addEventListener('click', function() {
+                fileInput.click();
+            });
+
+            // 文件选择处理
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    Array.from(e.target.files).forEach(file => {
+                        // 添加到已上传文件列表
+                        uploadedFiles.push({
+                            name: file.name,
+                            size: file.size,
+                            type: file.type
+                        });
+                    });
+                    
+                    updateFileList();
+                    showNotification(`成功上传${e.target.files.length}个文件`, 'success');
+                    
+                    // 清空文件输入框以便下次使用
+                    fileInput.value = '';
+                }
+            });
+
+            // 更新文件列表显示
+            function updateFileList() {
+                const uploadedFilesDiv = document.getElementById('uploaded-files');
+                const fileListDiv = document.getElementById('file-list');
+                const continueUploadSection = document.getElementById('continue-upload-section');
+                const uploadText = document.getElementById('upload-text');
+                const uploadHint = document.getElementById('upload-hint');
+                
+                if (uploadedFiles.length > 0) {
+                    uploadedFilesDiv.style.display = 'block';
+                    continueUploadSection.style.display = 'block';
+                    
+                    // 更新上传区域的文字提示
+                    uploadText.textContent = '点击继续上传更多文件';
+                    uploadHint.textContent = `已上传 ${uploadedFiles.length} 个文件，继续添加更多`;
+                    
+                    fileListDiv.innerHTML = uploadedFiles.map((file, index) => `
+                        <div class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <div class="flex items-center flex-1">
+                                <div class="w-8 h-8 mr-3 flex items-center justify-center bg-primary text-white text-xs rounded">
+                                    ${file.type.startsWith('image/') ? '📷' : '📄'}
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-medium text-gray-800 dark:text-white truncate">${file.name}</div>
+                                    <div class="text-xs text-gray-500 dark:text-gray-400">${formatFileSize(file.size)}</div>
+                                </div>
+                            </div>
+                            <button class="text-red-500 hover:text-red-700 ml-2 p-1 hover:bg-red-50 dark:hover:bg-red-900/20 rounded" onclick="removeFile(${index})">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    `).join('');
+                } else {
+                    uploadedFilesDiv.style.display = 'none';
+                    continueUploadSection.style.display = 'none';
+                    
+                    // 恢复原始文字
+                    uploadText.textContent = '点击上传文件';
+                    uploadHint.textContent = '支持 JPG、PNG、PDF 格式';
+                }
+            }
+
+            // 格式化文件大小
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // 删除文件
+            window.removeFile = function(index) {
+                uploadedFiles.splice(index, 1);
+                updateFileList();
+                showNotification('文件已删除', 'success');
+            };
+
+            // 附加元素提交按钮
+            document.getElementById('additional-submit-btn').addEventListener('click', () => {
+                if (uploadedFiles.length === 0) {
+                    showNotification('请至少上传一个文件', 'error');
+                    return;
+                }
+
+                // 提交成功，返回详细信息页面
+                showNotification(`已成功提交${uploadedFiles.length}个文件`, 'success');
+                setTimeout(() => {
+                    showPage('details-page');
+                }, 1500);
+            });
+
+            // 我的贷款页面返回按钮
+            document.getElementById('loans-back-btn').addEventListener('click', () => {
+                showPage('profile-page');
+            });
+
+            // 申请贷款按钮
+            document.getElementById('apply-loan-btn').addEventListener('click', () => {
+                // 立即跳转到首页
+                window.location.href = 'index.html';
+            });
+
+            // 修改密码点击事件
+            document.getElementById('change-password').addEventListener('click', () => {
+                showPage('change-password-page');
+            });
+
+            // 修改密码页面返回按钮
+            document.getElementById('password-back-btn').addEventListener('click', () => {
+                showPage('profile-page');
+            });
+
+            // 密码修改保存按钮
+            document.getElementById('password-save-btn').addEventListener('click', () => {
+                const oldPassword = document.getElementById('old-password').value.trim();
+                const newPassword = document.getElementById('new-password').value.trim();
+                const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+                // 表单验证
+                if (!oldPassword) {
+                    showNotification('请输入旧密码', 'error');
+                    return;
+                }
+
+                if (!newPassword) {
+                    showNotification('请输入新密码', 'error');
+                    return;
+                }
+
+                if (newPassword.length < 6 || newPassword.length > 20) {
+                    showNotification('密码长度必须在6-20位之间', 'error');
+                    return;
+                }
+
+                if (!confirmPassword) {
+                    showNotification('请确认新密码', 'error');
+                    return;
+                }
+
+                if (newPassword !== confirmPassword) {
+                    showNotification('两次输入的密码不一致', 'error');
+                    return;
+                }
+
+                if (oldPassword === newPassword) {
+                    showNotification('新密码不能与旧密码相同', 'error');
+                    return;
+                }
+
+                // 模拟密码修改成功
+                showNotification('密码修改成功！', 'success');
+                setTimeout(() => {
+                    // 清空表单
+                    document.getElementById('old-password').value = '';
+                    document.getElementById('new-password').value = '';
+                    document.getElementById('confirm-password').value = '';
+                    // 返回个人中心
+                    showPage('profile-page');
+                }, 1500);
+            });
+
+            // 退出登录点击事件
+            document.getElementById('logout').addEventListener('click', () => {
+                showConfirmDialog('确定要退出登录吗？', () => {
+                    // 模拟退出登录
+                    showNotification('正在退出登录...', 'success');
+                    setTimeout(() => {
+                        showNotification('已安全退出', 'success');
+                        // 这里可以添加清除登录状态的逻辑
+                        // 比如清除本地存储的用户信息等
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>云贷款</title>
+    <meta name="description" content="云贷款 - 快速在线贷款申请平台">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#fb6f00',
+                        dark: '#181818'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自定义样式 */
+        .slider-container {
+            position: relative;
+            margin: 20px 0;
+            padding: 0 40px;
+        }
+        
+        .slider-track {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            position: relative;
+        }
+        
+        .slider-progress {
+            height: 100%;
+            background: #5D5CDE;
+            border-radius: 2px;
+            width: 10%;
+            transition: width 0.3s ease;
+        }
+        
+        .slider-thumb {
+            width: 20px;
+            height: 20px;
+            background: #5D5CDE;
+            border-radius: 50%;
+            position: absolute;
+            top: -8px;
+            left: 10%;
+            cursor: pointer;
+            transition: left 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: -8px;
+            width: 36px;
+            height: 36px;
+            background: #5D5CDE;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-btn:hover {
+            background: #4f46e5;
+            transform: scale(1.1);
+        }
+        
+        .slider-btn.subtract {
+            left: 0;
+        }
+        
+        .slider-btn.plus {
+            right: 0;
+        }
+        
+        .time-btn {
+            padding: 10px 8px;
+            margin: 2px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            flex: 1;
+            text-align: center;
+            min-width: 0;
+            white-space: nowrap;
+        }
+        
+        .time-btn:hover {
+            border-color: #5D5CDE;
+            color: #5D5CDE;
+        }
+        
+        .time-btn.active {
+            background: #5D5CDE;
+            border-color: #5D5CDE;
+            color: white;
+        }
+        
+        .time-options-container {
+            display: flex;
+            gap: 4px;
+            width: 100%;
+        }
+        
+        /* 移动端优化 */
+        @media (max-width: 640px) {
+            .time-btn {
+                font-size: 12px;
+                padding: 8px 4px;
+            }
+        }
+        
+        .success-marquee {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            height: 120px;
+        }
+        
+        .success-scroll {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .success-content {
+            animation: marqueeUp 25s linear infinite;
+            line-height: 26px;
+            font-size: 16px;
+        }
+        
+        @keyframes marqueeUp {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+        
+        .success-item {
+            padding: 2px 0;
+            font-size: 14px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .gundong_phone {
+            color: #1776d4;
+        }
+        
+        .gundong_money {
+            color: red;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: #5D5CDE;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #fb6f00;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #e55a00;
+        }
+        
+        /* 深色模式 */
+        .dark .slider-track {
+            background: #374151;
+        }
+        
+        .dark .time-btn {
+            background: #374151;
+            border-color: #4b5563;
+            color: #f9fafb;
+        }
+        
+        .dark .success-marquee {
+            background: #374151;
+        }
+        
+        .dark .modal-content {
+            background: #1f2937;
+            color: #f9fafb;
+        }
+        
+        /* 通知样式 */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.error {
+            background: #ef4444;
+        }
+        
+        .notification.success {
+            background: #10b981;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-dark min-h-screen">
+    <!-- 顶部头部 -->
+    <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+        <div class="p-6">
+            <h1 class="text-xl font-bold mb-4">云贷款</h1>
+            <div class="mb-2 text-sm opacity-90">最大贷款金额</div>
+            <div class="text-3xl font-bold text-yellow-300 mb-4">50,000,000</div>
+            <div class="flex text-xs space-x-1 opacity-90">
+                <span>在线远程审批</span>
+                <span>｜</span>
+                <span>贷款期限最长三年</span>
+                <span>｜</span>
+                <span>数秒放款</span>
+            </div>
+        </div>
+        
+        <!-- 产品信息 -->
+        <div class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-4">
+            <h2 class="text-base font-semibold mb-3">产品信息</h2>
+            <div class="space-y-2">
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-600 dark:text-gray-400">最低日利率</span>
+                    <span class="text-red-500">
+                        0.02%
+                        <span class="text-gray-500 line-through ml-2">0.06%</span>
+                    </span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-600 dark:text-gray-400">贷款金额</span>
+                    <span class="text-gray-500">0-50,000,000</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-600 dark:text-gray-400">分期还款期限</span>
+                    <span class="text-gray-500">1,12,36,72,96 月</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 申请金额显示 -->
+        <div class="bg-white dark:bg-gray-800 text-center py-4">
+            <div class="text-gray-600 dark:text-gray-400 text-sm mb-1">申请金额</div>
+            <div class="text-xl font-bold text-primary" id="money-display">0.00</div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="p-4 pb-24">
+        <!-- 滑块区域 -->
+        <section class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-lg p-4 mb-4 shadow-sm border border-blue-100 dark:border-gray-600">
+            <div class="slider-container">
+                <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-3">
+                    <span>0</span>
+                    <span>50,000,000</span>
+                </div>
+                <div class="relative">
+                    <button class="slider-btn subtract" id="subtract-btn">−</button>
+                    <div class="slider-track mx-10">
+                        <div class="slider-progress" id="slider-progress"></div>
+                        <div class="slider-thumb" id="slider-thumb"></div>
+                    </div>
+                    <button class="slider-btn plus" id="plus-btn">+</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 借款期限 -->
+        <section class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-700 rounded-lg p-4 mb-4 shadow-sm border border-purple-100 dark:border-gray-600">
+            <h3 class="text-base font-semibold mb-3 text-gray-800 dark:text-white">借款期限</h3>
+            <div class="time-options-container" id="time-options">
+                <!-- 期限按钮将由JavaScript生成 -->
+            </div>
+        </section>
+
+        <!-- 每期还款 -->
+        <section class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-700 rounded-lg p-4 mb-4 shadow-sm border border-green-100 dark:border-gray-600">
+            <h3 class="text-base font-semibold mb-3 text-gray-800 dark:text-white">每期应还金额</h3>
+            <div class="text-right">
+                <div class="text-lg font-bold text-primary" id="monthly-payment">0.00</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    (其中日利息 <span id="daily-interest">0.00</span>% 
+                    <span id="service-fee">0.00</span>)
+                </div>
+            </div>
+        </section>
+
+        <!-- 申请按钮 -->
+        <section class="mb-4">
+            <button class="btn-primary" id="apply-btn">立即申请</button>
+        </section>
+
+        <!-- 成功案例滚动 -->
+        <section class="success-marquee">
+            <div class="success-scroll">
+                <div class="success-content" id="success-content">
+                    <!-- 第一组内容 -->
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 138****8938</span> 贷款成功 <span class="gundong_money">2,636,127</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 139****5588</span> 贷款成功 <span class="gundong_money">4,785,046</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 137****7511</span> 贷款成功 <span class="gundong_money">4,015,433</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****3739</span> 贷款成功 <span class="gundong_money">3,833,920</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 189****8636</span> 贷款成功 <span class="gundong_money">3,990,078</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****1379</span> 贷款成功 <span class="gundong_money">4,274,938</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****8003</span> 贷款成功 <span class="gundong_money">4,453,032</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 139****6040</span> 贷款成功 <span class="gundong_money">1,127,374</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****6693</span> 贷款成功 <span class="gundong_money">1,088,352</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 139****8706</span> 贷款成功 <span class="gundong_money">2,284,600</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****9140</span> 贷款成功 <span class="gundong_money">2,971,492</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****1271</span> 贷款成功 <span class="gundong_money">2,219,428</span>! <br>
+                    </div>
+                    <!-- 第二组相同内容，用于无缝循环 -->
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 138****8938</span> 贷款成功 <span class="gundong_money">2,636,127</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 139****5588</span> 贷款成功 <span class="gundong_money">4,785,046</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 137****7511</span> 贷款成功 <span class="gundong_money">4,015,433</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****3739</span> 贷款成功 <span class="gundong_money">3,833,920</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 189****8636</span> 贷款成功 <span class="gundong_money">3,990,078</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****1379</span> 贷款成功 <span class="gundong_money">4,274,938</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****8003</span> 贷款成功 <span class="gundong_money">4,453,032</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 139****6040</span> 贷款成功 <span class="gundong_money">1,127,374</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****6693</span> 贷款成功 <span class="gundong_money">1,088,352</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 139****8706</span> 贷款成功 <span class="gundong_money">2,284,600</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****9140</span> 贷款成功 <span class="gundong_money">2,971,492</span>! <br>
+                    </div>
+                    <div class="success-item">
+                        <span>2025-11-08</span> : <span class="gundong_phone">+86 158****1271</span> 贷款成功 <span class="gundong_money">2,219,428</span>! <br>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部导航 -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <div class="flex">
+            <a href="/index.php?m=Index&a=index" class="flex-1 text-center py-3 text-primary">
+                <div class="w-6 h-6 mx-auto mb-1">
+                    <img src="img/home.png" alt="首页" class="w-full h-full">
+                </div>
+                <span class="text-xs">首页</span>
+            </a>
+            <a href="wall.html" class="flex-1 text-center py-3 text-gray-600 dark:text-gray-400">
+                <div class="w-6 h-6 mx-auto mb-1">
+                    <img src="img/ico_foot22.png" alt="钱包" class="w-full h-full">
+                </div>
+                <span class="text-xs">钱包</span>
+            </a>
+            <a href="me.html" class="flex-1 text-center py-3 text-gray-600 dark:text-gray-400">
+                <div class="w-6 h-6 mx-auto mb-1">
+                    <img src="img/me2.png" alt="我的" class="w-full h-full">
+                </div>
+                <span class="text-xs">我的</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 模态框 -->
+    <div class="modal" id="confirm-modal">
+        <div class="modal-content">
+            <h3 class="text-lg font-semibold mb-4" id="modal-title">确认信息</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6" id="modal-message"></p>
+            <div class="flex space-x-3">
+                <button class="flex-1 py-2 px-4 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50" id="modal-cancel">取消</button>
+                <button class="flex-1 py-2 px-4 bg-primary text-white rounded-lg hover:bg-primary/90" id="modal-confirm">确认</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通知 -->
+    <div class="notification" id="notification"></div>
+
+    <!-- 隐藏的表单 -->
+    <form id="order-form" method="post" action="/index.php?m=Order&a=daikuan" style="display: none;">
+        <input type="hidden" name="money" id="order-money">
+        <input type="hidden" name="month" id="order-month">
+    </form>
+
+    <script>
+        let currentMoney = 0;
+        let currentMonth = 12;
+        let isDragging = false;
+
+        // 深色模式检测
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            document.documentElement.classList.toggle('dark', event.matches);
+        });
+
+        // 金额格式化
+        function formatMoney(amount) {
+            return amount.toLocaleString('zh-CN', { minimumFractionDigits: 2 });
+        }
+
+        // 更新显示
+        function updateDisplay() {
+            document.getElementById('money-display').textContent = formatMoney(currentMoney);
+            
+            if (currentMoney > 0 && currentMonth > 0) {
+                // 日利率0.02%（与页面显示一致）
+                const dailyRate = 0.0002; // 0.02%
+                // 月利率 = 日利率 × 30天
+                const monthlyRate = dailyRate * 30; // 0.6%
+                
+                // 等额本息计算公式：每月还款额 = [贷款本金×月利率×(1+月利率)^还款月数]÷[(1+月利率)^还款月数-1]
+                let monthlyPayment;
+                if (monthlyRate === 0) {
+                    // 如果利率为0，则简单平分本金
+                    monthlyPayment = currentMoney / currentMonth;
+                } else {
+                    const temp = Math.pow(1 + monthlyRate, currentMonth);
+                    monthlyPayment = (currentMoney * monthlyRate * temp) / (temp - 1);
+                }
+                
+                // 每月利息部分（首月）
+                const monthlyInterest = currentMoney * monthlyRate;
+                // 每日利息金额
+                const dailyInterestAmount = currentMoney * dailyRate;
+                
+                document.getElementById('monthly-payment').textContent = formatMoney(monthlyPayment);
+                document.getElementById('daily-interest').textContent = (dailyRate * 100).toFixed(2);
+                document.getElementById('service-fee').textContent = formatMoney(monthlyInterest);
+            } else {
+                document.getElementById('monthly-payment').textContent = '0.00';
+                document.getElementById('daily-interest').textContent = '0.00';
+                document.getElementById('service-fee').textContent = '0.00';
+            }
+        }
+
+        // 更新滑块
+        function updateSlider(money) {
+            const percentage = (money / 50000000) * 100;
+            document.getElementById('slider-thumb').style.left = percentage + '%';
+            document.getElementById('slider-progress').style.width = percentage + '%';
+            updateDisplay();
+        }
+
+        // 更新金额
+        function updateMoney(newMoney) {
+            newMoney = Math.max(0, Math.min(50000000, newMoney));
+            currentMoney = newMoney;
+            updateSlider(newMoney);
+        }
+
+        // 期限选择
+        function selectMonth(month, buttonElement) {
+            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+            currentMonth = month;
+            updateDisplay();
+        }
+
+        // 显示通知
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification error show';
+            setTimeout(() => notification.classList.remove('show'), 3000);
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始化期限按钮
+            const timeContainer = document.getElementById('time-options');
+            [1, 12, 36, 72, 96].forEach(month => {
+                const button = document.createElement('button');
+                button.className = `time-btn ${month === 12 ? 'active' : ''}`;
+                button.innerHTML = `${month}月`;
+                button.addEventListener('click', () => selectMonth(month, button));
+                timeContainer.appendChild(button);
+            });
+
+            // 滑块按钮事件
+            document.getElementById('subtract-btn').addEventListener('click', () => {
+                const newMoney = currentMoney - 1000;
+                if (newMoney < 0) {
+                    showNotification('不能小于最小金额');
+                    return;
+                }
+                updateMoney(newMoney);
+            });
+
+            document.getElementById('plus-btn').addEventListener('click', () => {
+                const newMoney = currentMoney + 1000;
+                if (newMoney > 50000000) {
+                    showNotification('不能大于最大金额');
+                    return;
+                }
+                updateMoney(newMoney);
+            });
+
+            // 滑块拖拽
+            const sliderThumb = document.getElementById('slider-thumb');
+            
+            sliderThumb.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                e.preventDefault();
+            });
+
+            sliderThumb.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                const sliderTrack = document.querySelector('.slider-track');
+                const rect = sliderTrack.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+                const newMoney = Math.round((percentage / 100) * 50000000);
+                
+                updateMoney(newMoney);
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                
+                const touch = e.touches[0];
+                const sliderTrack = document.querySelector('.slider-track');
+                const rect = sliderTrack.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+                const newMoney = Math.round((percentage / 100) * 50000000);
+                
+                updateMoney(newMoney);
+            });
+
+            document.addEventListener('mouseup', () => { isDragging = false; });
+            document.addEventListener('touchend', () => { isDragging = false; });
+
+            // 申请按钮
+            document.getElementById('apply-btn').addEventListener('click', () => {
+                if (currentMoney <= 0) {
+                    showNotification('请选择贷款金额');
+                    return;
+                }
+                
+                // 显示确认模态框
+                const modal = document.getElementById('confirm-modal');
+                document.getElementById('modal-title').textContent = '确认申请';
+                document.getElementById('modal-message').textContent = 
+                    `您确定要申请 ${formatMoney(currentMoney)} 元的贷款，分 ${currentMonth} 个月还款吗？`;
+                modal.style.display = 'flex';
+                
+                // 确认按钮事件
+                const confirmBtn = document.getElementById('modal-confirm');
+                const cancelBtn = document.getElementById('modal-cancel');
+                
+                const handleConfirm = () => {
+                    modal.style.display = 'none';
+                    // 提交表单
+                    document.getElementById('order-money').value = currentMoney;
+                    document.getElementById('order-month').value = currentMonth;
+                    document.getElementById('order-form').submit();
+                    cleanup();
+                };
+                
+                const handleCancel = () => {
+                    modal.style.display = 'none';
+                    cleanup();
+                };
+                
+                const cleanup = () => {
+                    confirmBtn.removeEventListener('click', handleConfirm);
+                    cancelBtn.removeEventListener('click', handleCancel);
+                };
+                
+                confirmBtn.addEventListener('click', handleConfirm);
+                cancelBtn.addEventListener('click', handleCancel);
+            });
+
+            // 初始化显示
+            updateDisplay();
+        });
+    </script>
+</body>
+</html>
