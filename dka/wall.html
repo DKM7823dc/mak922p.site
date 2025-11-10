@@ -1,1 +1,483 @@
-待开发
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>钱包 - 云贷款</title>
+    <meta name="description" content="云贷款 - 钱包管理">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#fb6f00',
+                        dark: '#181818'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自定义样式 */
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #5D5CDE;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(93, 92, 222, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(93, 92, 222, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #e55a2b, #e6841a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #6b7280;
+            padding: 12px 32px;
+            border: 2px solid #e5e7eb;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: #5D5CDE;
+            color: #5D5CDE;
+            transform: translateY(-1px);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background: #f9fafb;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #5D5CDE;
+            background: white;
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .amount-card {
+            background: linear-gradient(135deg, #5D5CDE, #4f46e5);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .amount-item {
+            text-align: center;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .amount-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .amount-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .security-notice {
+            background: #f0f9ff;
+            border: 1px solid #7dd3fc;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .security-icon {
+            width: 24px;
+            height: 24px;
+            background: #0ea5e9;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* 底部导航样式 */
+        .nav-item {
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background: rgba(93, 92, 222, 0.1);
+        }
+        
+        .nav-text {
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 2px;
+            white-space: nowrap;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 640px) {
+            .nav-text {
+                font-size: 11px;
+                margin-top: 1px;
+            }
+            
+            .nav-item {
+                min-height: 56px;
+                padding: 6px 4px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-text {
+                font-size: 10px;
+            }
+            
+            .nav-item {
+                min-height: 52px;
+                padding: 4px 2px;
+            }
+        }
+        
+        /* 深色模式 */
+        .dark .feature-card {
+            background: #374151;
+            border-color: #4b5563;
+        }
+
+        .dark .form-label {
+            color: #f9fafb;
+        }
+
+        .dark .form-input {
+            background: #374151;
+            border-color: #4b5563;
+            color: #f9fafb;
+        }
+
+        .dark .form-input:focus {
+            border-color: #5D5CDE;
+            background: #4b5563;
+        }
+
+        .dark .btn-outline {
+            border-color: #4b5563;
+            color: #9ca3af;
+        }
+
+        .dark .btn-outline:hover {
+            border-color: #5D5CDE;
+            color: #5D5CDE;
+        }
+
+        .dark .security-notice {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        /* 通知样式 */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.error {
+            background: #ef4444;
+        }
+        
+        .notification.success {
+            background: #10b981;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-dark min-h-screen">
+    <!-- 顶部头部 -->
+    <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+        <div class="p-6">
+            <h1 class="text-xl font-bold mb-4">云贷款钱包</h1>
+            <div class="flex text-xs space-x-1 opacity-90">
+                <span>安全可靠</span>
+                <span>｜</span>
+                <span>快速到账</span>
+                <span>｜</span>
+                <span>24小时服务</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner图 -->
+    <section class="px-4 pt-4">
+        <img src="img/b.jpg" alt="Banner" class="w-full rounded-lg shadow-sm object-cover h-32">
+    </section>
+
+    <!-- 主要内容区域 -->
+    <main class="p-4 pb-24">
+        <!-- 金额显示卡片 -->
+        <section class="amount-card">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="amount-item">
+                    <div class="amount-label">进行中</div>
+                    <div class="amount-value">0.00</div>
+                </div>
+                <div class="amount-item">
+                    <div class="amount-label">可提现</div>
+                    <div class="amount-value">0.00</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 操作按钮 -->
+        <section class="feature-card">
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <button class="btn-primary" id="recharge-btn">充值</button>
+                <button class="btn-secondary" id="withdraw-btn">提现</button>
+            </div>
+
+            <!-- 提现密码输入 -->
+            <div class="form-group" id="password-section">
+                <label class="form-label">输入提现密码</label>
+                <input 
+                    type="password" 
+                    class="form-input text-base" 
+                    id="withdraw-password" 
+                    placeholder="请输入提现密码"
+                >
+            </div>
+
+            <!-- 提现操作按钮 -->
+            <div class="grid grid-cols-2 gap-4" id="withdraw-actions" style="display: none;">
+                <button class="btn-outline" id="cancel-btn">取消</button>
+                <button class="btn-primary" id="confirm-withdraw-btn">提现</button>
+            </div>
+        </section>
+
+        <!-- 安全提示 -->
+        <section class="security-notice dark:bg-slate-800 dark:border-slate-600">
+            <div class="security-icon">🛡️</div>
+            <div>
+                <div class="font-semibold text-sky-800 dark:text-sky-300">注意：</div>
+                <div class="text-sm text-sky-700 dark:text-sky-400">您的资金安全已由您的银行确认。</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部导航 -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <div class="flex">
+            <a href="index.html" class="flex-1 text-center py-2 px-1 text-gray-600 dark:text-gray-400 nav-item">
+                <div class="w-6 h-6 mx-auto mb-1">
+                    <img src="img/home.png" alt="首页" class="w-full h-full object-contain">
+                </div>
+                <span class="nav-text">首页</span>
+            </a>
+            <a href="wall.html" class="flex-1 text-center py-2 px-1 text-primary nav-item">
+                <div class="w-6 h-6 mx-auto mb-1">
+                    <img src="img/ico_foot22.png" alt="钱包" class="w-full h-full object-contain">
+                </div>
+                <span class="nav-text">钱包</span>
+            </a>
+            <a href="me.html" class="flex-1 text-center py-2 px-1 text-gray-600 dark:text-gray-400 nav-item">
+                <div class="w-6 h-6 mx-auto mb-1">
+                    <img src="img/me2.png" alt="我的" class="w-full h-full object-contain">
+                </div>
+                <span class="nav-text">我的</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 通知 -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // 深色模式检测
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            document.documentElement.classList.toggle('dark', event.matches);
+        });
+
+        // 显示通知函数
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+            setTimeout(() => notification.classList.remove('show'), 3000);
+        }
+
+        // 自定义确认对话框
+        function showConfirmDialog(message, onConfirm) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full mx-4">
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">${message}</p>
+                    <div class="flex justify-end space-x-3">
+                        <button class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded cancel-btn">取消</button>
+                        <button class="px-4 py-2 bg-primary text-white hover:bg-primary/90 rounded confirm-btn">确认</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            modal.querySelector('.cancel-btn').onclick = () => modal.remove();
+            modal.querySelector('.confirm-btn').onclick = () => {
+                modal.remove();
+                onConfirm();
+            };
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            const passwordSection = document.getElementById('password-section');
+            const withdrawActions = document.getElementById('withdraw-actions');
+            const rechargeBtn = document.getElementById('recharge-btn');
+            const withdrawBtn = document.getElementById('withdraw-btn');
+            const cancelBtn = document.getElementById('cancel-btn');
+            const confirmWithdrawBtn = document.getElementById('confirm-withdraw-btn');
+            const withdrawPassword = document.getElementById('withdraw-password');
+
+            // 充值按钮事件
+            rechargeBtn.addEventListener('click', () => {
+                showConfirmDialog('确认要进行充值操作吗？', () => {
+                    showNotification('充值功能暂未开放', 'error');
+                });
+            });
+
+            // 提现按钮事件
+            withdrawBtn.addEventListener('click', () => {
+                // 显示操作按钮
+                withdrawActions.style.display = 'grid';
+                withdrawPassword.focus();
+            });
+
+            // 取消按钮事件
+            cancelBtn.addEventListener('click', () => {
+                // 隐藏操作按钮
+                withdrawActions.style.display = 'none';
+                withdrawPassword.value = '';
+            });
+
+            // 确认提现按钮事件
+            confirmWithdrawBtn.addEventListener('click', () => {
+                const password = withdrawPassword.value.trim();
+                
+                if (!password) {
+                    showNotification('请输入提现密码', 'error');
+                    return;
+                }
+
+                showConfirmDialog('确认提现操作吗？', () => {
+                    // 模拟提现过程
+                    confirmWithdrawBtn.textContent = '处理中...';
+                    confirmWithdrawBtn.disabled = true;
+                    confirmWithdrawBtn.style.opacity = '0.7';
+                    
+                    setTimeout(() => {
+                        showNotification('提现申请已提交，请等待处理', 'success');
+                        
+                        // 重置界面
+                        withdrawActions.style.display = 'none';
+                        withdrawPassword.value = '';
+                        confirmWithdrawBtn.textContent = '提现';
+                        confirmWithdrawBtn.disabled = false;
+                        confirmWithdrawBtn.style.opacity = '1';
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
