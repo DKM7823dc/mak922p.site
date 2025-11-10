@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退職金融プランニング専門家 | 豊かな老後生活をサポート</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+	
+<script>
+  function kkb() {
+            window.open('https://line.me/R/ti/p/@yourlineaccount', '_blank');
+        }
+</script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1e3a8a',
+                        'ocean-blue': '#1e40af',
+                        'light-blue': '#3b82f6',
+                        'primary-orange': '#ff6b35',
+                        'deep-orange': '#e55527',
+                        'light-orange': '#ff8c69',
+                        dark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .ocean-background {
+            background: #1e40af;
+        }
+        
+        .orange-background {
+            background: #ff6b35;
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-delayed {
+            animation: float 6s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.6); }
+        }
+        
+        .geometric-shape {
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+        
+        .diamond-shape {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        
+        .wave-shape {
+            clip-path: ellipse(100% 55% at 48% 44%);
+        }
+        
+        .section-img-1 {
+            background: url('img/s1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .section-img-2 {
+            background: url('img/2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .section-img-3 {
+            background: url('img/3.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .section-img-4 {
+            background: url('img/4.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-3d:hover {
+            transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
+        }
+        
+        .number-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            background: #ff6b35;
+        }
+        
+        .number-circle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: #ff6b35;
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .bg-white { background-color: #0f172a !important; }
+            .text-gray-800 { color: #e2e8f0 !important; }
+            .text-gray-600 { color: #94a3b8 !important; }
+            .bg-gray-50 { background-color: #1e293b !important; }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-dark overflow-x-hidden">
+    <!-- 導航菜单 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-dark/90 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                     
+                    <div class="text-xl font-bold text-deep-blue dark:text-white">
+                        退職理財プランニング
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-primary-orange transition-colors">ホーム</a>
+                    <a href="#understanding" class="text-gray-700 dark:text-gray-300 hover:text-primary-orange transition-colors">年金理解</a>
+                    <a href="#lifestyle" class="text-gray-700 dark:text-gray-300 hover:text-primary-orange transition-colors">生活変化</a>
+                    <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-primary-orange transition-colors">サービス</a>
+                    <a href="#consultation" class="text-gray-700 dark:text-gray-300 hover:text-primary-orange transition-colors">専門相談</a>
+                </div>
+                <button onclick="kkb()" class="bg-primary-orange px-6 py-2 text-white font-semibold rounded-full hover:bg-deep-orange hover:scale-105 transition-all duration-300">
+                    無料相談
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ヘロセクション -->
+    <section id="home" class="min-h-screen ocean-background relative overflow-hidden">        
+        <div class="container mx-auto px-4 flex items-center min-h-screen relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center w-full">
+                <!-- 左侧内容 -->
+                <div class="text-white space-y-8">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-2 h-16 bg-primary-orange"></div>
+                        <span class="text-primary-orange font-medium tracking-wider">退職理財規劃</span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                        退職金融<br>
+                        <span class="text-primary-orange">プランニング専門家</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl opacity-90 leading-relaxed">
+                        証券業界40年の経験を持つ<br>
+                        <span class="text-light-orange font-semibold">浜刚がサポート</span>
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 pt-8">
+                        <button onclick="kkb()" class="bg-primary-orange px-10 py-4 text-xl font-bold text-white rounded-full hover:bg-deep-orange hover:scale-105 transition-all duration-300 pulse-glow">
+                            無料相談スタート
+                        </button>
+                        <button class="border-2 border-primary-orange text-primary-orange px-8 py-3 text-lg font-semibold rounded-full hover:bg-primary-orange hover:text-white transition-all duration-300">
+                            サービス詳細
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 右侧图片区域 -->
+                <div class="relative">
+                    <div class="section-img-1 h-96 rounded-3xl shadow-2xl relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 text-white">
+                            <h3 class="text-2xl font-bold mb-2">あなたの退職金と幸福な生活</h3>
+                            <p class="text-base leading-relaxed opacity-90">
+                                長年のお仕事でお疲れ様でした。蓄積された退職金は財産の象徴であり、将来の生活の保障でもあります。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 统计信息卡片 -->
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-4 text-center text-white border border-white/20">
+                            <div class="text-3xl font-bold text-primary-orange">40年+</div>
+                            <div class="text-sm opacity-90">証券業界経験</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-4 text-center text-white border border-white/20">
+                            <div class="text-3xl font-bold text-primary-orange">内藤証券</div>
+                            <div class="text-sm opacity-90">代表取締役社長</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专家简介区 -->
+    <section id="profile" class="py-20 bg-white dark:bg-dark relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-primary-orange font-semibold text-lg tracking-wider">専門家紹介</span>
+                <h2 class="text-4xl font-bold text-deep-blue dark:text-white mt-2 mb-4">浜刚のプロフィール</h2>
+                <div class="w-24 h-2 bg-primary-orange mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 md:p-12">
+                    <div class="text-center mb-8 relative">
+                        <div class="relative inline-block">
+                            <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-primary-orange shadow-2xl">
+                                <img src="img/s2.jpg" alt="浜刚" class="w-full h-full object-cover">
+                            </div>
+                            <!-- 营销徽章 -->
+                            <div class="absolute -top-2 -right-2 bg-deep-orange text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+                                信頼の専門家
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-deep-blue dark:text-white mb-2">内藤証券株式会社 代表取締役社長</h3>
+                        <p class="text-primary-orange font-semibold">証券業界歴40年の専門家</p>
+                        <!-- 营销元素 -->
+                        <div class="flex justify-center items-center space-x-4 mt-4">
+                            <span class="bg-primary-orange text-white px-3 py-1 rounded-full text-sm font-bold">安心の実績</span>
+                            <span class="bg-ocean-blue text-white px-3 py-1 rounded-full text-sm font-bold">無料診断実施中</span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-deep-blue dark:text-white mb-4">経歴</h4>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary-orange rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white font-bold text-sm">1984</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-deep-blue dark:text-white">近畿大学商経学部 中退後、東和証券入社</h5>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm">現：三菱UFJモルガン・スタンレー証券</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-ocean-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white font-bold text-sm">2003</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-deep-blue dark:text-white">内藤証券入社</h5>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm">19年間の東和証券での経験を活かし、内藤証券で新たなキャリアをスタート</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary-orange rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white font-bold text-sm">2014</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-deep-blue dark:text-white">内藤証券 常務取締役就任</h5>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm">11年間の実績が評価され、経営陣に参画</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-deep-orange rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-white font-bold text-sm">2024</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-deep-blue dark:text-white">内藤証券 代表取締役社長就任</h5>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm">2024年5月、40年間の証券業界経験を活かし、トップとして会社を牽引</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-700 rounded-2xl p-6 mt-8">
+                            <h4 class="text-lg font-bold text-deep-blue dark:text-white mb-3 text-center">専門分野</h4>
+                            <!-- 手机端横向显示 -->
+                            <div class="flex justify-center items-center space-x-6 md:space-x-8">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-primary-orange rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-semibold text-gray-700 dark:text-gray-300">退職福利管理</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-ocean-blue rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-semibold text-gray-700 dark:text-gray-300">資産管理</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-primary-orange rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs md:text-sm font-semibold text-gray-700 dark:text-gray-300">生涯規劃</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center pt-8">
+                            <button onclick="kkb()" class="bg-primary-orange px-8 py-4 text-lg font-bold text-white rounded-full hover:bg-deep-orange hover:scale-105 transition-all duration-300 pulse-glow">
+                                浜刚に無料相談する
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务流程可视化 -->
+    <section id="understanding" class="py-20 bg-gray-50 dark:bg-gray-900 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block relative">
+                    <h2 class="text-4xl font-bold text-deep-blue dark:text-white mb-4">あなたの年金を理解する</h2>
+                    <!-- 营销徽章 -->
+                    <div class="absolute -top-3 -right-8 bg-primary-orange text-white px-2 py-1 rounded-full text-xs font-bold animate-bounce">
+                        NEW
+                    </div>
+                </div>
+                <div class="w-24 h-2 bg-primary-orange mx-auto rounded-full"></div>
+                <p class="text-gray-600 dark:text-gray-300 mt-4">
+                    <span class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded text-sm font-semibold">
+                        限定サービス開始！
+                    </span>
+                </p>
+            </div>
+            
+            <!-- 流程可视化 -->
+            <div class="relative max-w-6xl mx-auto">
+                <!-- 连接线 -->
+                <div class="hidden lg:block absolute top-1/2 left-1/4 right-1/4 h-1 bg-primary-orange transform -translate-y-1/2 z-0"></div>
+                
+                <div class="grid lg:grid-cols-3 gap-8 relative z-10">
+                    <!-- 步骤1 -->
+                    <div class="text-center group">
+                        <div class="number-circle bg-primary-orange mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <span class="relative z-10 bg-deep-blue rounded-full w-16 h-16 flex items-center justify-center text-white">1</span>
+                        </div>
+                        <div class="card-3d bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl">
+                            <div class="w-16 h-16 bg-ocean-blue rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-deep-blue dark:text-white mb-3">退職金の解説</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                                企業退職金、社会保険、福利厚生など多様な源泉を詳しく分析
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 步骤2 -->
+                    <div class="text-center group">
+                        <div class="number-circle bg-primary-orange mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <span class="relative z-10 bg-deep-blue rounded-full w-16 h-16 flex items-center justify-center text-white">2</span>
+                        </div>
+                        <div class="card-3d bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl">
+                            <div class="w-16 h-16 bg-primary-orange rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-deep-blue dark:text-white mb-3">年金計算機</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                                AI技術で将来の年金収入を正確に見積もり、最適プランを提案
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 步骤3 -->
+                    <div class="text-center group">
+                        <div class="number-circle bg-primary-orange mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <span class="relative z-10 bg-deep-blue rounded-full w-16 h-16 flex items-center justify-center text-white">3</span>
+                        </div>
+                        <div class="card-3d bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl">
+                            <div class="w-16 h-16 bg-ocean-blue rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-deep-blue dark:text-white mb-3">実行サポート</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                                24時間体制で継続的なサポートとガイダンスを提供
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 创意卡片展示区 -->
+    <section id="lifestyle" class="py-20 bg-white dark:bg-dark relative overflow-hidden">
+        <!-- 背景装饰 -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-ocean-blue wave-shape opacity-10"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- 左侧内容区 -->
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-primary-orange font-semibold text-lg tracking-wider">ライフスタイル変革</span>
+                        <h2 class="text-4xl font-bold text-deep-blue dark:text-white mt-2 mb-6">老後生活の変化</h2>
+                    </div>
+                    
+                    <!-- 特色卡片组 -->
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-6 group">
+                            <div class="w-16 h-16 bg-primary-orange rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-deep-blue dark:text-white mb-2">仕事から退職への転換</h3>
+                                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                    退職生活の到来は、ライフスタイルの大きな変化を意味します。私たちは心構えの調整をサポートし、仕事の役割から悠々自適な退職生活への円滑な移行をお手伝いします。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6 group">
+                            <div class="w-16 h-16 bg-ocean-blue rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-deep-blue dark:text-white mb-2">ライフスタイルの調整</h3>
+                                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                    退職後の生活は朝九時から夕方五時までの生活ではありません。年金の変化に応じてライフスタイルを調整し、新しい興味や趣味を追求して理想的な退職生活を実現する方法をご指導します。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="kkb()" class="bg-primary-orange px-8 py-4 text-lg font-bold text-white rounded-full hover:bg-deep-orange hover:scale-105 transition-all duration-300 pulse-glow">
+                        今すぐ無料相談を受ける
+                    </button>
+                </div>
+                
+                <!-- 右侧视觉区 -->
+                <div class="relative">
+                    <div class="section-img-2 h-96 rounded-3xl shadow-2xl relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 text-white">
+                            <div class="text-3xl font-bold mb-2">専門サポート</div>
+                            <div class="text-lg opacity-90">あなたの理想の退職生活</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 浮动统计卡 -->
+                    <div class="absolute -top-8 -right-8 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl floating-animation">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary-orange">98%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-300">満足度</div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -left-6 bg-primary-orange text-white p-6 rounded-2xl shadow-xl floating-delayed">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold">24/7</div>
+                            <div class="text-sm">サポート</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 互动式服务展示 -->
+    <section id="services" class="py-20 ocean-background relative overflow-hidden">
+        <!-- 动态背景元素 -->
+        <div class="absolute inset-0">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-orange/10 rounded-full blur-3xl floating-animation"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-light-orange/10 rounded-full blur-2xl floating-delayed"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white mb-16">
+                <span class="text-primary-orange font-semibold text-lg tracking-wider">私たちのサービス</span>
+                <div class="relative inline-block">
+                    <h2 class="text-4xl font-bold mt-2 mb-4">老後クラブに参加しませんか</h2>
+                    <!-- 营销徽章 -->
+                    <div class="absolute -top-2 -right-16 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-bold animate-pulse">
+                        今なら特典付き！
+                    </div>
+                </div>
+                <div class="w-24 h-2 bg-primary-orange mx-auto rounded-full"></div>
+                <p class="mt-4 text-light-orange font-semibold">
+                    お客様満足度98%の実績 ⭐⭐⭐⭐⭐
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 服务卡片 1 -->
+                <div class="group">
+                    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 text-center text-white h-full">
+                        <div class="w-20 h-20 bg-primary-orange rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">社交とサポート</h3>
+                        <p class="text-sm opacity-90 leading-relaxed">
+                            退職は孤独を意味しません。志を同じくする友人たちと経験を共有し、深い友情を築きます。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 服务卡片 2 -->
+                <div class="group">
+                    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 text-center text-white h-full">
+                        <div class="w-20 h-20 bg-primary-orange rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m-8 4h8m-8 4h8M7 4h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">豊富な活動</h3>
+                        <p class="text-sm opacity-90 leading-relaxed">
+                            旅行、フィットネス、手工芸など様々な活動で心身の健康を保ち、充実した退職生活を。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 服务卡片 3 -->
+                <div class="group">
+                    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 text-center text-white h-full">
+                        <div class="w-20 h-20 bg-primary-orange rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">理財知識</h3>
+                        <p class="text-sm opacity-90 leading-relaxed">
+                            専門的な理財講座で、よくある理財の誤りを避けて財産を持続可能に。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 服务卡片 4 -->
+                <div class="group">
+                    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 text-center text-white h-full">
+                        <div class="w-20 h-20 bg-primary-orange rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">健康と幸福</h3>
+                        <p class="text-sm opacity-90 leading-relaxed">
+                            健康的な食事、運動、心理的健康のアドバイスで高品質な退職生活を。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专家咨询展示区 -->
+    <section id="consultation" class="py-20 bg-gray-50 dark:bg-gray-900 relative">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative order-2 lg:order-1">
+                    <div class="section-img-2 h-96 rounded-3xl shadow-2xl relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-deep-blue/60 to-primary-orange/40"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="w-24 h-24 bg-white/20 backdrop-blur-lg rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text-xl font-bold">専門相談</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 环绕统计信息 -->
+                    <div class="absolute -top-4 -left-4 bg-primary-orange text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg floating-animation">
+                        ✓ 40年経験
+                    </div>
+                    <div class="absolute top-1/2 -right-6 bg-deep-blue text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg floating-delayed">
+                        ✓ 内藤証券社長
+                    </div>
+                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 text-deep-blue px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                        ✓ 証券業界専門
+                    </div>
+                </div>
+                
+                <div class="space-y-8 order-1 lg:order-2">
+                    <div>
+                        <span class="text-primary-orange font-semibold text-lg tracking-wider">専門相談</span>
+                        <h2 class="text-4xl font-bold text-deep-blue dark:text-white mt-2 mb-6">専門相談とパーソナライズサービス</h2>
+                    </div>
+                    
+                    <div class="grid gap-6">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border-l-4 border-primary-orange">
+                            <h3 class="text-xl font-bold text-deep-blue dark:text-white mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-primary-orange rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">1</span>
+                                マンツーマン相談
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                専門的な理財アドバイザーがパーソナライズされた相談サービスを提供し、お客様のニーズを理解して実現可能な退職計画の策定をお手伝いします。
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border-l-4 border-ocean-blue">
+                            <h3 class="text-xl font-bold text-deep-blue dark:text-white mb-3 flex items-center">
+                                <span class="w-8 h-8 bg-ocean-blue rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">2</span>
+                                継続的なサポート
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                退職生活でどのような問題に遭遇されても、私たちのチームは常にあなたの側にいて、継続的なサポートとガイダンスを提供します。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button onclick="kkb()" class="bg-primary-orange px-8 py-4 text-lg font-bold text-white rounded-full hover:bg-deep-orange hover:scale-105 transition-all duration-300 pulse-glow">
+                            今すぐ無料相談を受ける
+                        </button>
+                        <button class="border-2 border-deep-blue text-deep-blue dark:text-white dark:border-white px-6 py-3 text-lg font-semibold rounded-full hover:bg-deep-blue hover:text-white dark:hover:bg-white dark:hover:text-deep-blue transition-all duration-300">
+                            詳細を見る
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-deep-blue text-white py-12">
+        <div class="container mx-auto px-4">
+          
+            
+            <hr class="border-gray-600 my-8">
+            
+            <!-- 风险警告和版权 -->
+            <div class="space-y-4">
+                <!-- 风险警告 -->
+                <div class="bg-deep-orange/10 border border-deep-orange/30 rounded-lg p-4">
+                    <h5 class="text-deep-orange font-semibold text-sm mb-2">⚠️ 重要な注意事項</h5>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        投資にはリスクが伴います。過去の実績は将来の成果を保証するものではありません。投資判断は必ずご自身の責任で行い、不明な点は専門家にご相談ください。当サービスは情報提供を目的としており、投資勧誘を目的とするものではありません。
+                    </p>
+                </div>
+                
+                <!-- 版权信息 -->
+                <div class="text-center text-gray-400 text-xs">
+                    <p>&copy; 2024 退職理財プランニング. All rights reserved. | プライバシーポリシー | 利用規約</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.card-3d, .number-circle');
+            animateElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+
+            // Stagger animation for service cards
+            const serviceCards = document.querySelectorAll('section:nth-child(4) .group');
+            serviceCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
