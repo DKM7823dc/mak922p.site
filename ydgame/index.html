@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rummy 91 | Trusted Online Gaming site | Discover Exciting Slots, Rummy, Teenpatti, Aviator &amp; Claim Daily Mystery Bonuses</title>
+    <title>Rummy 91 - India's Best Gaming Platform | Win Up to ₹5 Crores Daily</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 	
+		
 	<!-- SEO Meta Tags -->
     <meta name="description" content="Welcome to Rummy 91 ! Dive into a world of thrilling games like slots, Rummy, Teenpatti, Aviator, and more. As India's premier online gaming platform, we offer a wide selection of games and exciting opportunities to win big cash prizes. With our daily mystery bonus, your chances of hitting the jackpot are higher than ever! Join our passionate gaming community and start winning at Rummy 91 today">
     <meta name="author" content="Rummy 91">
@@ -20,8 +22,6 @@
     <meta name="twitter:title" content="Rummy 91 | Trusted Online Gaming site | Discover Exciting Slots, Rummy, Teenpatti, Aviator &amp; Claim Daily Mystery Bonuses">
     <meta name="twitter:description" content="Welcome to Rummy 91 ! Dive into a world of thrilling games like slots, Rummy, Teenpatti, Aviator, and more. As India's premier online gaming platform, we offer a wide selection of games and exciting opportunities to win big cash prizes. With our daily mystery bonus, your chances of hitting the jackpot are higher than ever! Join our passionate gaming community and start winning at Rummy 91 today">
 	
-	
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -194,6 +194,35 @@
             0% { transform: translateX(-50%) scale(1); }
             50% { transform: translateX(-50%) scale(1.05); }
             100% { transform: translateX(-50%) scale(1); }
+        }
+        
+        /* Mobile breathing + bouncing effect */
+        @keyframes breatheBounce {
+            0% { 
+                transform: translateX(-50%) translateY(0) scale(1); 
+                opacity: 0.8;
+                box-shadow: 0 4px 15px rgba(74, 229, 74, 0.4);
+            }
+            25% { 
+                transform: translateX(-50%) translateY(-8px) scale(1.03); 
+                opacity: 0.9;
+                box-shadow: 0 8px 25px rgba(74, 229, 74, 0.6);
+            }
+            50% { 
+                transform: translateX(-50%) translateY(-15px) scale(1.06); 
+                opacity: 1;
+                box-shadow: 0 12px 35px rgba(74, 229, 74, 0.8);
+            }
+            75% { 
+                transform: translateX(-50%) translateY(-8px) scale(1.03); 
+                opacity: 0.9;
+                box-shadow: 0 8px 25px rgba(74, 229, 74, 0.6);
+            }
+            100% { 
+                transform: translateX(-50%) translateY(0) scale(1); 
+                opacity: 0.8;
+                box-shadow: 0 4px 15px rgba(74, 229, 74, 0.4);
+            }
         }
         
         /* Hero Section Animations */
@@ -377,12 +406,37 @@
                 bottom: 20px;
                 left: 50%;
                 transform: translateX(-50%);
+                animation: breatheBounce 3s ease-in-out infinite !important;
             }
             .floating-button button {
                 padding: 10px 16px;
                 font-size: 14px;
                 white-space: nowrap;
                 min-width: max-content;
+            }
+            
+            /* Mobile section spacing - 7 units (1.75rem) */
+            section {
+                padding-top: 1.75rem !important;
+                padding-bottom: 1.75rem !important;
+            }
+            
+            /* Exception for hero section to maintain full height */
+            #home {
+                padding-top: 0 !important;
+                padding-bottom: 1.75rem !important;
+                min-height: 100vh;
+            }
+            
+            /* Exception for footer to maintain adequate spacing */
+            footer {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            
+            /* Remove floating animation from hero image on mobile */
+            .hero-mobile .floating-element {
+                animation: none !important;
             }
         }
 
@@ -492,7 +546,7 @@
                 <!-- Right Content - Mobile Image (shows first on mobile) -->
                 <div class="hero-mobile text-center lg:text-right order-1 lg:order-2">
                     <div class="relative inline-block">
-                        <img src="img/65.jpg" alt="Rummy 91 Mobile App" class="max-w-full h-auto max-h-80 md:max-h-96 lg:max-h-[600px] floating-element">
+                        <img src="img/65.jpg" alt="Rummy 91 Mobile App" class="max-w-full h-auto lg:max-h-[600px] floating-element">
                         
                         <!-- Floating Elements Around Phone -->
                         <div class="absolute -top-4 -left-4 w-12 h-12 md:w-16 md:h-16 bg-gold-400 rounded-full flex items-center justify-center text-black font-bold text-sm md:text-lg floating-element" style="animation-delay: 0.5s;">
