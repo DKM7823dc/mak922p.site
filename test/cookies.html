@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt" class="scroll-smooth">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/2x32.webp" sizes="32x32" />
-    <title>Política de Cookies - UM</title>
+    <title>سياسة ملفات تعريف الارتباط - UM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -40,6 +40,25 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        /* RTL support */
+        [dir="rtl"] .prose ul {
+            padding-right: 1.5rem;
+            padding-left: 0;
+        }
+        .custom-alert {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            color: #0369a1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+        .custom-alert.dark {
+            background: #0c4a6e;
+            border-color: #0ea5e9;
+            color: #7dd3fc;
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
@@ -49,10 +68,10 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl md:text-3xl font-bold">UM</h1>
-                    <p class="text-white/90 text-sm">O lar da mídia Full Color</p>
+                    <p class="text-white/90 text-sm">موطن الإعلام الملون الكامل</p>
                 </div>
                 <a href="index.html" class="text-white hover:text-gray-200 transition-colors duration-300 text-sm md:text-base">
-                    ← Voltar ao início
+                    ← العودة إلى الصفحة الرئيسية
                 </a>
             </div>
         </div>
@@ -63,10 +82,10 @@
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12 animate-fade-in">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="text-gradient">Política de Cookies</span>
+                    <span class="text-gradient">سياسة ملفات تعريف الارتباط</span>
                 </h1>
                 <p class="text-lg text-gray-600 dark:text-gray-300">
-                    Última atualização: outubro de 2025
+                    آخر تحديث: أكتوبر 2025
                 </p>
             </div>
 
@@ -74,35 +93,35 @@
                 <div class="space-y-8">
                     <!-- Section 1 -->
                     <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">1. O que são Cookies?</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">1. ما هي ملفات تعريف الارتباط (Cookies)؟</h2>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Os cookies são pequenos ficheiros de texto armazenados no seu dispositivo quando visita o nosso site. Permitem-nos melhorar a sua experiência de navegação e oferecer serviços personalizados.
+                            ملفات تعريف الارتباط (Cookies) هي ملفات نصية صغيرة يتم تخزينها على جهازك عند زيارتك لموقعنا. وهي تتيح لنا تحسين تجربتك في التصفح وتقديم خدمات مخصّصة لك.
                         </p>
                     </section>
 
                     <!-- Section 2 -->
                     <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">2. Tipos de Cookies Utilizados</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">2. أنواع ملفات تعريف الارتباط المستخدمة</h2>
                         
                         <div class="space-y-4">
-                            <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                                <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-2">Cookies Essenciais</h3>
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-r-4 border-blue-500">
+                                <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-2">ملفات تعريف الارتباط الأساسية</h3>
                                 <p class="text-gray-700 dark:text-gray-300">
-                                    Necessários para o funcionamento básico do site. Estes cookies não podem ser desativados.
+                                    وهي ضرورية لعمل الموقع الأساسي، ولا يمكن تعطيل هذه الملفات.
                                 </p>
                             </div>
                             
-                            <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border-l-4 border-green-500">
-                                <h3 class="text-lg font-semibold text-green-700 dark:text-green-300 mb-2">Cookies de Desempenho</h3>
+                            <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border-r-4 border-green-500">
+                                <h3 class="text-lg font-semibold text-green-700 dark:text-green-300 mb-2">ملفات تعريف الارتباط الخاصة بالأداء</h3>
                                 <p class="text-gray-700 dark:text-gray-300">
-                                    Recolhem informações anónimas sobre a forma como os visitantes utilizam o nosso site.
+                                    تجمع معلومات مجهولة حول كيفية استخدام الزائرين لموقعنا.
                                 </p>
                             </div>
                             
-                            <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg border-l-4 border-purple-500">
-                                <h3 class="text-lg font-semibold text-purple-700 dark:text-purple-300 mb-2">Cookies de Funcionalidade</h3>
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg border-r-4 border-purple-500">
+                                <h3 class="text-lg font-semibold text-purple-700 dark:text-purple-300 mb-2">ملفات تعريف الارتباط الخاصة بالوظائف</h3>
                                 <p class="text-gray-700 dark:text-gray-300">
-                                    Permitem recordar as suas preferências e personalizar a sua experiência.
+                                    تُمكّن من تذكّر تفضيلاتك وتخصيص تجربتك.
                                 </p>
                             </div>
                         </div>
@@ -110,23 +129,23 @@
 
                     <!-- Section 3 -->
                     <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">3. Por que Utilizamos Cookies?</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">3. لماذا نستخدم ملفات تعريف الارتباط؟</h2>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Utilizamos cookies para:
+                            نستخدم ملفات تعريف الارتباط من أجل:
                         </p>
                         <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-                            <li>Melhorar o desempenho e a funcionalidade do nosso site</li>
-                            <li>Analisar a utilização do site e melhorar os nossos serviços</li>
-                            <li>Memorizar as suas preferências e definições</li>
-                            <li>Fornecer conteúdos personalizados</li>
+                            <li>تحسين أداء ووظائف موقعنا؛</li>
+                            <li>تحليل استخدام الموقع وتحسين خدماتنا؛</li>
+                            <li>تذكّر تفضيلاتك وإعداداتك؛</li>
+                            <li>تقديم محتوى مخصّص لك.</li>
                         </ul>
                     </section>
 
                     <!-- Section 4 -->
                     <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">4. Gestão de Cookies</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">4. إدارة ملفات تعريف الارتباط</h2>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Pode controlar e gerir os cookies de várias formas:
+                            يمكنك التحكم في ملفات تعريف الارتباط وإدارتها بعدة طرق:
                         </p>
                         <div class="grid gap-4 md:grid-cols-3">
                             <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
@@ -136,8 +155,8 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
                                 </div>
-                                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Definições do navegador</h3>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Configure o seu navegador para bloquear ou eliminar cookies</p>
+                                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">إعدادات المتصفح</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">قم بضبط متصفحك لحظر ملفات تعريف الارتباط أو حذفها</p>
                             </div>
                             
                             <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
@@ -146,8 +165,8 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011-1h2a1 1 0 011 1v16.5A1.5 1.5 0 0119.5 19H4.5A1.5 1.5 0 013 17.5V4a1 1 0 011-1h2a1 1 0 011 1z"></path>
                                     </svg>
                                 </div>
-                                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Banner de consentimento</h3>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Utilize o nosso banner para gerir as suas preferências</p>
+                                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">لافتة الموافقة</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">استخدم لافتة الموافقة الخاصة بنا لإدارة تفضيلاتك</p>
                             </div>
                             
                             <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg text-center">
@@ -156,38 +175,38 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                                     </svg>
                                 </div>
-                                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Navegação privada</h3>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Utilize o modo privado para evitar o armazenamento de cookies</p>
+                                <h3 class="font-semibold text-gray-900 dark:text-white mb-2">التصفح الخاص</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">استخدم وضع التصفح الخاص لمنع تخزين ملفات تعريف الارتباط</p>
                             </div>
                         </div>
                     </section>
 
                     <!-- Section 5 -->
                     <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">5. Cookies de Terceiros</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">5. ملفات تعريف الارتباط الخاصة بالطرف الثالث</h2>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            O nosso site pode incluir cookies de serviços de terceiros, como o Google Analytics, para análise de tráfego. Estes serviços têm as suas próprias políticas de cookies, que recomendamos que consulte.
+                            قد يتضمن موقعنا ملفات تعريف ارتباط خاصة بخدمات أطراف ثالثة، مثل Google Analytics، لأغراض تحليل حركة المرور. وتمتلك هذه الخدمات سياسات خاصة بها لملفات تعريف الارتباط، ونوصيك بالاطلاع عليها.
                         </p>
                     </section>
 
                     <!-- Section 6 -->
                     <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">6. Duração de Conservação</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">6. مدة الاحتفاظ</h2>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Os cookies têm diferentes períodos de validade:
+                            لملفات تعريف الارتباط فترات صلاحية مختلفة:
                         </p>
                         <div class="grid gap-4 md:grid-cols-2">
                             <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg border border-orange-200 dark:border-orange-800">
-                                <h3 class="text-lg font-semibold text-orange-700 dark:text-orange-300 mb-2">Cookies de Sessão</h3>
+                                <h3 class="text-lg font-semibold text-orange-700 dark:text-orange-300 mb-2">ملفات تعريف الارتباط الخاصة بالجلسة</h3>
                                 <p class="text-gray-700 dark:text-gray-300">
-                                    São eliminados quando fecha o navegador
+                                    يتم حذفها عند إغلاق المتصفح.
                                 </p>
                             </div>
                             
                             <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg border border-indigo-200 dark:border-indigo-800">
-                                <h3 class="text-lg font-semibold text-indigo-700 dark:text-indigo-300 mb-2">Cookies Persistentes</h3>
+                                <h3 class="text-lg font-semibold text-indigo-700 dark:text-indigo-300 mb-2">ملفات تعريف الارتباط الدائمة</h3>
                                 <p class="text-gray-700 dark:text-gray-300">
-                                    Permanecem até à sua expiração ou eliminação manual
+                                    تبقى محفوظة حتى انتهاء صلاحيتها أو حذفها يدويًا.
                                 </p>
                             </div>
                         </div>
@@ -195,33 +214,38 @@
 
                     <!-- Section 7 -->
                     <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">7. Impacto da Desativação</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">7. تأثير التعطيل</h2>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            A desativação de determinados cookies pode afetar a funcionalidade do nosso site. Os cookies essenciais não podem ser desativados, uma vez que são necessários para o seu correto funcionamento.
+                            قد يؤثر تعطيل بعض ملفات تعريف الارتباط على وظائف موقعنا. ولا يمكن تعطيل ملفات تعريف الارتباط الأساسية لأنها ضرورية لعمل الموقع بشكل صحيح.
                         </p>
                     </section>
 
                     <!-- Section 8 -->
                     <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">8. Atualização desta Política</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">8. تحديث هذه السياسة</h2>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Esta política de cookies pode ser atualizada periodicamente para refletir alterações nas nossas práticas ou por motivos legais. Recomendamos que a consulte regularmente.
+                            قد يتم تحديث سياسة ملفات تعريف الارتباط هذه بشكل دوري لتعكس التغييرات في ممارساتنا أو لأسباب قانونية. ونوصي بمراجعتها بانتظام.
                         </p>
                     </section>
 
                     <!-- Section 9 -->
                     <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">9. As Suas Preferências de Cookies</h2>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">9. تفضيلاتك المتعلقة بملفات تعريف الارتباط</h2>
                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                            Pode alterar as suas preferências de cookies a qualquer momento, utilizando as definições do seu navegador ou contactando-nos diretamente.
+                            يمكنك تغيير تفضيلاتك المتعلقة بملفات تعريف الارتباط في أي وقت، وذلك باستخدام إعدادات المتصفح الخاص بك أو من خلال التواصل معنا مباشرة.
                         </p>
                         
+                        <!-- Alert Message -->
+                        <div id="alert-message" class="custom-alert">
+                            <p id="alert-text"></p>
+                        </div>
+                        
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
-                                Aceitar Todos os Cookies
+                            <button id="accept-all" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                                قبول جميع ملفات تعريف الارتباط
                             </button>
-                            <button class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
-                                Apenas Cookies Essenciais
+                            <button id="essential-only" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                                ملفات تعريف الارتباط الأساسية فقط
                             </button>
                         </div>
                     </section>
@@ -236,17 +260,17 @@
             <!-- First Row: Logo, Address, Contact -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-start">
                 <!-- Left: UM Logo -->
-                <div class="text-center md:text-left">
+                <div class="text-center md:text-right">
                     <h3 class="text-4xl md:text-5xl font-bold text-white">UM</h3>
                 </div>
                 
                 <!-- Center: Address -->
                 <div class="text-center">
-                    <h4 class="text-lg font-semibold mb-3 text-white">Sede Mundial</h4>
+                    <h4 class="text-lg font-semibold mb-3 text-white">المقر الرئيسي العالمي</h4>
                     <div class="space-y-1 text-white">
                         <p>100 West 33rd Street</p>
                         <p>New York, NY 10001</p>
-                        <p><a href="mailto:7-eleven@umww.cc" class="text-white hover:text-gray-200 transition-colors duration-300">7-eleven@umww.cc</a></p>
+                        <p><a href="/cdn-cgi/l/email-protection#083f256d646d7e6d66487d657f7f266b6b" class="text-white hover:text-gray-200 transition-colors duration-300"><span class="__cf_email__" data-cfemail="24130941484152414a64514953530a4747">[email&#160;protected]</span></a></p>
                         <p>212-883-4700</p>
                     </div>
                 </div>
@@ -256,19 +280,19 @@
             <div class="border-t border-white/20 pt-6">
                 <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-center">
                     <p class="text-white text-sm">
-                        © 2025 UM Estados Unidos (Sede Mundial)
+                        © 2025 UM الولايات المتحدة (المقر الرئيسي العالمي)
                     </p>
                     <div class="flex flex-wrap justify-center gap-6">
                         <a href="Privacy.html" class="text-white hover:text-gray-200 transition-colors duration-300 text-sm md:text-base">
-                            Aviso de Privacidade
+                            إشعار الخصوصية
                         </a>
                         <span class="text-white">|</span>
                         <a href="terms.html" class="text-white hover:text-gray-200 transition-colors duration-300 text-sm md:text-base">
-                            Termos de Uso
+                            شروط الاستخدام
                         </a>
                         <span class="text-white">|</span>
                         <a href="cookies.html" class="text-white hover:text-gray-200 transition-colors duration-300 text-sm md:text-base">
-                            Configurações de Cookies
+                            إعدادات ملفات تعريف الارتباط
                         </a>
                     </div>
                 </div>
@@ -276,6 +300,7 @@
         </div>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Dark mode detection
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -288,6 +313,24 @@
                 document.documentElement.classList.remove('dark');
             }
         });
+
+        // Custom alert function
+        function showAlert(message) {
+            const alertDiv = document.getElementById('alert-message');
+            const alertText = document.getElementById('alert-text');
+            alertText.textContent = message;
+            alertDiv.style.display = 'block';
+            
+            // Apply dark mode class if needed
+            if (document.documentElement.classList.contains('dark')) {
+                alertDiv.classList.add('dark');
+            }
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                alertDiv.style.display = 'none';
+            }, 3000);
+        }
 
         // Scroll animations
         const observerOptions = {
@@ -314,22 +357,22 @@
 
         // Cookie preference buttons functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const acceptAllBtn = document.querySelector('button:contains("Aceitar Todos os Cookies")');
-            const essentialOnlyBtn = document.querySelector('button:contains("Apenas Cookies Essenciais")');
+            const acceptAllBtn = document.getElementById('accept-all');
+            const essentialOnlyBtn = document.getElementById('essential-only');
             
-            // Simple button handlers - in a real implementation, these would interact with your cookie management system
             if (acceptAllBtn) {
                 acceptAllBtn.addEventListener('click', function() {
-                    alert('Todas as preferências de cookies foram aceites.');
+                    showAlert('تم قبول جميع تفضيلات ملفات تعريف الارتباط.');
                 });
             }
             
             if (essentialOnlyBtn) {
                 essentialOnlyBtn.addEventListener('click', function() {
-                    alert('Apenas cookies essenciais foram aceites.');
+                    showAlert('تم قبول ملفات تعريف الارتباط الأساسية فقط.');
                 });
             }
         });
     </script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"e73df9c240ba4d4381cd35ed3c46ed4c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>

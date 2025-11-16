@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt" class="scroll-smooth">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/2x32.webp" sizes="32x32" />
-    <title>Acordo de Termos e Condições de Utilização - UM</title>
+    <title>شروط الاستخدام - UM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -40,6 +40,25 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        /* RTL support */
+        [dir="rtl"] .prose ul {
+            padding-right: 1.5rem;
+            padding-left: 0;
+        }
+        .custom-alert {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            color: #0369a1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+        .custom-alert.dark {
+            background: #0c4a6e;
+            border-color: #0ea5e9;
+            color: #7dd3fc;
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
@@ -49,10 +68,10 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl md:text-3xl font-bold">UM</h1>
-                    <p class="text-white/90 text-sm">O lar da mídia Full Color</p>
+                    <p class="text-white/90 text-sm">موطن الإعلام الملون الكامل</p>
                 </div>
                 <a href="index.html" class="text-white hover:text-gray-200 transition-colors duration-300 text-sm md:text-base">
-                    ← Voltar ao início
+                    ← العودة إلى الصفحة الرئيسية
                 </a>
             </div>
         </div>
@@ -63,177 +82,196 @@
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12 animate-fade-in">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="text-gradient">Acordo de Termos e Condições de Utilização</span>
+                    <span class="text-gradient">اتفاقية شروط الاستخدام</span>
                 </h1>
                 <p class="text-lg text-gray-600 dark:text-gray-300">
-                    Atualização em: 16/07/2012
+                    آخر تحديث: 16/7/2012
                 </p>
             </div>
 
             <div class="prose prose-lg max-w-none dark:prose-invert animate-slide-up">
                 <div class="space-y-8">
-                    <!-- Introduction -->
+                    <!-- Section 1 -->
                     <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">Introdução</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Bem-vindo ao site da UM–Universal McCann ("Site"). O presente Acordo de Termos de Utilização ("Acordo") estabelece o contrato entre a UM – Universal McCann ("Empresa" ou "nós") e cada utilizador ("você" ou "utilizador"), regulando a sua utilização deste Site. Solicitamos que leia atentamente o presente Acordo antes de utilizar este Site. Ao utilizar este Site, aceita ficar vinculado pelos termos e condições aqui estabelecidos. Se não aceitar estes termos e condições, não poderá aceder nem utilizar este Site.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Podemos, a nosso exclusivo critério, modificar o presente Acordo com ou sem aviso prévio. A data indicada no topo deste Acordo sob "Última atualização" indica a data das últimas alterações. Ao continuar a aceder e a utilizar o Site após a modificação do presente Acordo, aceita essas alterações. Por conseguinte, deverá consultar este Acordo antes de cada utilização do Site. Além disso, ao utilizar determinados serviços ou funcionalidades, estará sujeito a quaisquer diretrizes ou políticas publicadas aplicáveis a esses serviços ou funcionalidades, que poderão ser disponibilizadas online periodicamente. Todas essas diretrizes ou políticas são, por este meio, incorporadas por referência no presente Acordo.
-                        </p>
-                    </section>
-
-                    <!-- Section II -->
-                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">II. Confidencialidade</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            A utilização deste Site está sujeita aos termos da nossa Política de Privacidade, a qual é, por este meio, incorporada e constitui parte integrante do presente Acordo. Solicitamos que leia atentamente a nossa Política de Privacidade. Ao utilizar este Site, aceita ficar vinculado pelos termos da nossa Política de Privacidade. Reservamo-nos o direito, e o utilizador autoriza-nos, a utilizar as informações relativas à sua utilização deste Site, bem como quaisquer outras informações pessoais que forneça, em conformidade com a nossa Política de Privacidade.
-                        </p>
-                    </section>
-
-                    <!-- Section III -->
-                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">III. Direitos de Autor; Marcas</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Reconhece que todos os conteúdos presentes no Site, incluindo o design do Site, gráficos, textos, sons, imagens, software e outros ficheiros, bem como a sua seleção e organização (coletivamente, os "Conteúdos"), são propriedade da Empresa ou dos seus licenciadores e estão sujeitos às leis e direitos relativos aos direitos de autor e outros direitos de propriedade intelectual dos Estados Unidos e internacionais. Todos os direitos relativos aos Conteúdos que não sejam expressamente concedidos no presente Acordo são reservados aos respetivos titulares dos direitos de propriedade intelectual.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Salvo autorização expressa no presente Acordo ou no Site, não poderá copiar, reproduzir, distribuir, republicar, descarregar, executar, exibir, publicar, transmitir, explorar, criar obras derivadas ou utilizar de qualquer outra forma os Conteúdos, sob qualquer forma ou por qualquer meio, sem a prévia autorização escrita da Empresa ou do titular dos direitos de propriedade intelectual em questão. A Empresa apenas autoriza a visualização e transferência dos Conteúdos para fins pessoais e não comerciais, desde que todos os avisos de direitos de autor e outros avisos de propriedade contidos nos Conteúdos originais sejam mantidos intactos. Não poderá modificar ou adaptar os Conteúdos de qualquer forma, nem utilizá-los para fins públicos ou comerciais.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            As marcas comerciais, marcas de serviço, nomes comerciais, imagens de marca e logótipos (coletivamente, as "Marcas") contidos ou descritos neste Site (incluindo, sem limitação, UM – Universal McCann) são propriedade exclusiva da Empresa e/ou dos seus licenciadores e não podem ser copiados, imitados ou utilizados de outra forma, total ou parcialmente, sem a prévia autorização escrita da Empresa e/ou dos seus licenciadores. Além disso, todos os cabeçalhos de página, gráficos personalizados, ícones de botões e scripts são Marcas da Empresa e não podem ser copiados, imitados ou utilizados de outra forma, total ou parcialmente, sem a prévia autorização escrita da Empresa. A Empresa fará valer os seus direitos de propriedade intelectual na máxima medida permitida por lei.
-                        </p>
-                    </section>
-
-                    <!-- Section IV -->
-                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">IV. Ligações; Sites de Terceiros</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            As ligações disponibilizadas no Site para sites de terceiros são fornecidas unicamente para sua conveniência. Se utilizar essas ligações, sairá do Site. A Empresa não controla nem aprova quaisquer desses sites de terceiros. O utilizador reconhece e aceita que a Empresa e as suas filiais não são responsáveis pelo conteúdo, bens ou serviços oferecidos nesses sites externos ou através deles, nem pela sua utilização ou impossibilidade de utilização desses sites. A utilização dessas ligações é da sua inteira responsabilidade.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Importa salientar que outros sites na Internet, incluindo os sites de terceiros ligados a partir deste Site, podem conter material ou informações que algumas pessoas possam considerar ofensivas ou inadequadas; ou que sejam inexatas, falsas, enganosas ou fraudulentas; ou que sejam difamatórias, caluniosas, violem direitos de terceiros ou sejam, de qualquer outra forma, ilegais. A Empresa declina expressamente toda e qualquer responsabilidade quanto ao conteúdo, legalidade, decência ou exatidão de qualquer informação, bem como relativamente a quaisquer produtos e serviços apresentados em qualquer site de terceiros.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Sem prejuízo do exposto, qualquer correspondência ou transação comercial com anunciantes encontrados no Site ou através dele — incluindo o pagamento e a entrega dos bens ou serviços correspondentes, bem como quaisquer outros termos, condições, garantias ou declarações associadas a essas transações — é efetuada exclusivamente entre o utilizador e o respetivo anunciante. O utilizador aceita que a Empresa e as suas filiais não são responsáveis por qualquer perda ou dano, de qualquer natureza, resultante dessas transações ou da presença desses anunciantes no Site.
-                        </p>
-                    </section>
-
-                    <!-- Section V -->
-                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">V. Aviso de Responsabilidade; Limitação de Responsabilidade</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            <strong>Compreende e aceita expressamente que:</strong>
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            A utilização deste Site é feita por sua conta e risco. O Site e os conteúdos nele disponibilizados são fornecidos "tal como se encontram" e "conforme disponíveis". Salvo disposição expressa em contrário no presente Acordo, a Empresa e as suas empresas afiliadas, bem como os respetivos administradores, diretores, empregados e outros representantes (coletivamente, "a Empresa e as suas Afiliadas"), rejeitam expressamente todas as garantias de qualquer natureza, expressas ou implícitas, incluindo, sem limitação, as garantias implícitas de comercialização, adequação a um fim específico e não violação de direitos.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Salvo disposição expressa em contrário no presente Acordo, a Empresa e as suas Afiliadas não garantem que: (1) O Site responderá às suas exigências; (2) O Site funcionará sem interrupções, de forma oportuna, segura ou livre de erros; (3) Os resultados obtidos através da utilização do Site serão exatos ou fiáveis; (4) A qualidade dos serviços, informações ou outros conteúdos obtidos através do Site corresponderá às suas expectativas; e (5) Quaisquer erros no Site serão corrigidos.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Qualquer conteúdo descarregado ou obtido de outra forma através do Site é feito por sua conta e risco, sendo o utilizador o único responsável por quaisquer danos causados ao seu sistema informático ou por qualquer perda de dados resultante do descarregamento desse conteúdo. Nenhum conselho ou informação, oral ou escrita, obtida da Empresa ou das suas Afiliadas, ou através do Site, constituirá qualquer garantia que não esteja expressamente prevista no presente Acordo.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            A Empresa e as suas Afiliadas não poderão, em caso algum, ser responsabilizadas por quaisquer danos de qualquer natureza decorrentes de, relacionados com ou resultantes da utilização ou impossibilidade de utilização do Site, incluindo, nomeadamente, qualquer responsabilidade: (1) Enquanto editoras de informações; (2) Por qualquer informação incorreta ou inexata; (3) Por qualquer acesso não autorizado às suas transmissões ou dados, ou pela divulgação dos mesmos; (4) Pelas declarações ou comportamentos de qualquer terceiro no Site; ou (5) Por qualquer outro assunto relacionado com o Site ou com qualquer site de terceiros.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Esta é uma limitação de responsabilidade abrangente que se aplica a todos os tipos de danos, incluindo danos diretos, indiretos, especiais, acidentais ou consequenciais (incluindo danos por perda de negócios, perda de lucros, perda de clientela, perda de uso, perda de dados, custos de obtenção de bens, serviços ou informações de substituição, litígios ou semelhantes), quer decorram de violação de contrato, violação de garantia, responsabilidade civil (incluindo negligência) ou outro fundamento jurídico, mesmo que uma parte tenha sido avisada da possibilidade de tais danos. Algumas jurisdições não permitem a exclusão de determinadas garantias ou a limitação ou exclusão de responsabilidade por certos tipos de danos. Por conseguinte, algumas das exclusões e limitações acima referidas poderão não se aplicar ao seu caso.
-                        </p>
-                    </section>
-
-                    <!-- Section VI -->
-                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">VI. Indemnização</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            O utilizador concorda em indemnizar, defender e isentar a Empresa e as suas Afiliadas de qualquer reclamação, exigência, causa de ação, perda, despesa, dano ou custo, incluindo honorários legais razoáveis, resultantes de ou relacionados com a sua utilização ou conduta no Site, qualquer atividade associada à sua utilização do Site, qualquer conteúdo que submeta, publique ou transmita através do Site, a sua violação do presente Acordo, a sua infração ou violação dos direitos de terceiros, ou a cessação do seu acesso ao Site.
-                        </p>
-                    </section>
-
-                    <!-- Section VII -->
-                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">VII. Utilização do Site; Cessação do Acesso</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Se fornecer informações neste Site, concorda em:
-                        </p>
-                        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 mb-4">
-                            <li>fornecer informações verdadeiras, exatas, atuais e completas sobre si, conforme solicitado pelo Site; e</li>
-                            <li>manter e atualizar prontamente essas informações, dentro do possível, para que permaneçam verdadeiras, exatas, atuais e completas.</li>
-                        </ul>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Se fornecer informações falsas, inexatas, desatualizadas ou incompletas, ou se a Empresa tiver motivos razoáveis para suspeitar que essas informações são falsas, inexatas, desatualizadas ou incompletas, a Empresa reserva-se o direito de suspender ou encerrar o seu acesso a este Site e de proibir qualquer utilização atual ou futura do Site (ou de qualquer parte deste).
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            O utilizador compromete-se a utilizar este Site apenas para fins legais e é responsável pela sua utilização e comunicações no Site. Concorda em não publicar nem transmitir através deste Site qualquer conteúdo ilegal, contrafator, ameaçador, assediante, difamatório, vulgar, obsceno, profano, indecente, ofensivo, odioso ou de outra forma censurável, incluindo qualquer conteúdo que incite à prática de atos criminosos ou que possa gerar responsabilidade civil, que infrinja direitos de propriedade intelectual de terceiros ou que viole de outra forma qualquer lei local, estadual, nacional ou internacional aplicável.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            A Empresa não garante que os Conteúdos presentes no Site sejam apropriados ou estejam disponíveis para utilização fora dos Estados Unidos, nem que o presente Acordo cumpra as leis de outros países. Os visitantes que utilizem o Site a partir de fora dos Estados Unidos fazem-no por sua própria iniciativa e são responsáveis pelo cumprimento de todas as leis locais aplicáveis.
-                        </p>
-                    </section>
-
-                    <!-- Section VIII -->
-                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">VIII. Regras Relativas a Sorteios, Concursos, Loterias, Inquéritos e Promoções Semelhantes</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Qualquer sorteio, concurso, lotaria, inquérito ou promoção semelhante oferecido através do Site será regido por regras específicas, distintas e adicionais ao presente Acordo. Ao participar em qualquer sorteio, concurso, lotaria, inquérito ou promoção semelhante, o utilizador estará sujeito a essas regras, que poderão divergir das disposições do presente Acordo. A Empresa recomenda que leia atentamente as regras aplicáveis, disponíveis através da ligação associada à atividade em questão, e que consulte a nossa Política de Privacidade, a qual, em complemento ao presente Acordo, regula todas as informações fornecidas no âmbito dessas atividades.
-                        </p>
-                    </section>
-
-                    <!-- Section IX -->
-                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">IX. Lei Aplicável; Jurisdição; Resolução de Litígios</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            O presente Acordo é regido e interpretado de acordo com as leis do Estado de Nova Iorque, nos Estados Unidos da América, sem consideração pelas suas disposições sobre conflitos de leis. O utilizador concorda em submeter-se à jurisdição pessoal dos tribunais do Estado de Nova Iorque e aceita ainda que qualquer ação decorrente de ou relacionada com a utilização deste Site ou com o presente Acordo seja instaurada exclusivamente nos tribunais federais ou estaduais localizados em Nova Iorque.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Na medida permitida pela legislação aplicável, o utilizador e a Empresa renunciam, pelo presente, ao direito a julgamento por júri em qualquer processo ou litígio instaurado entre ambas as partes em relação ao presente Acordo ou ao Site. Além disso, nem o utilizador nem a Empresa poderão juntar ou consolidar reclamações com as de outros utilizadores do Site, nem intentar uma ação judicial sob a forma de ação representativa, ação coletiva ou enquanto procurador-geral privado.
-                        </p>
-                    </section>
-
-                    <!-- Section X -->
-                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">X. Divisibilidade; Interpretação</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            Se qualquer disposição do presente Acordo for considerada ilegal, nula ou, por qualquer motivo, inexequível por um tribunal competente, a validade e a aplicabilidade das restantes disposições não serão afetadas. Sempre que o termo "incluindo" for utilizado no presente Acordo, entende-se que é seguido das palavras "sem limitação".
-                        </p>
-                    </section>
-
-                    <!-- Section XI -->
-                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">XI. Acordo Integral</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            O presente Acordo constitui o acordo completo e exclusivo entre a Empresa e cada utilizador deste Site relativamente ao seu objeto, substituindo qualquer acordo, declaração, garantia ou entendimento anterior ou contemporâneo, seja escrito ou oral, relacionado com o mesmo objeto.
-                        </p>
-                    </section>
-
-                    <!-- Section XII -->
-                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">XII. Disposições Diversas</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            O facto de a Empresa ou as suas Afiliadas não exigirem o cumprimento rigoroso de qualquer disposição do presente Acordo não constituirá renúncia a essa disposição, nem limitará o direito de exigir posteriormente o seu cumprimento rigoroso ou o de qualquer outra disposição deste Acordo.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            O utilizador concorda que, não obstante qualquer lei ou regulamento em contrário, qualquer reclamação ou causa de ação decorrente de ou relacionada com a utilização deste Site ou com o presente Acordo deverá ser apresentada no prazo máximo de um (1) ano após o surgimento da referida reclamação ou causa de ação, sob pena de caducidade definitiva.
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            As disposições relativas ao Aviso de Responsabilidade; Limitação de Responsabilidade do presente Acordo beneficiam a Empresa e as suas Afiliadas, conforme aqui definidas, e cada uma dessas pessoas ou entidades terá o direito de invocar e fazer cumprir essas disposições diretamente contra o utilizador, em nome próprio.
-                        </p>
-                    </section>
-
-                    <!-- Section XIII -->
-                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-                        <h2 class="text-2xl font-semibold mb-4 text-primary">XIII. Informações de Contacto</h2>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            Se tiver comentários, perguntas ou reclamações relativamente ao presente Acordo, ou se desejar comunicar qualquer violação do mesmo, contacte-nos através do seguinte endereço de e-mail:
-                        </p>
-                        <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded">
-                            <p class="text-gray-700 dark:text-gray-300">
-                                <a href="mailto:7-eleven@umww.cc" class="text-primary hover:text-primary-dark transition-colors font-medium">7-eleven@umww.cc</a>
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">أولاً: المقدمة</h2>
+                        <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+                            <p>
+                                مرحبًا بكم في موقع UM–Universal McCann ("الموقع"). توضح اتفاقية شروط الاستخدام هذه ("الاتفاقية") الاتفاق المبرم بين UM–Universal McCann ("الشركة" أو "نحن") وكل مستخدم ("أنت" أو "المستخدم") والمتعلق باستخدامك لهذا الموقع. يرجى قراءة هذه الاتفاقية بعناية قبل استخدام الموقع. وباستخدامك لهذا الموقع، فإنك توافق على الالتزام بالشروط والأحكام الواردة في هذه الاتفاقية. وإذا كنت لا توافق على تلك الشروط والأحكام، فلا يحق لك الدخول إلى هذا الموقع أو استخدامه بأي شكل.
+                            </p>
+                            <p>
+                                يجوز لنا، وفقًا لتقديرنا الخاص، تعديل هذه الاتفاقية مع أو بدون إشعار مسبق لك. وسيدل تاريخ "آخر تحديث" أعلى هذه الاتفاقية على وقت إجراء آخر التعديلات. وبمواصلتك الدخول إلى الموقع واستخدامه بعد تعديل هذه الاتفاقية، فإنك تعتبر موافقًا على تلك التعديلات. لذلك، ينبغي عليك مراجعة هذه الاتفاقية قبل كل استخدام للموقع.
+                            </p>
+                            <p>
+                                بالإضافة إلى ذلك، عند استخدامك لخدمات أو ميزات معينة، ستكون خاضعًا لأي إرشادات أو سياسات منشورة والخاصة بتلك الخدمات أو الميزات، والتي قد يتم نشرها من وقت لآخر. وتُعدّ جميع تلك الإرشادات أو السياسات جزءًا لا يتجزأ من هذه الاتفاقية بموجب الإحالة.
                             </p>
                         </div>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
-                            Faremos o possível para tratar qualquer questão com a maior diligência e no mais curto prazo possível.
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">ثانياً: الخصوصية</h2>
+                        <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+                            <p>
+                                يخضع استخدامك لهذا الموقع لشروط سياسة الخصوصية الخاصة بنا، والتي تُعدّ جزءًا لا يتجزأ من هذه الاتفاقية بموجب الإحالة. يرجى مراجعة سياسة الخصوصية بعناية. وباستخدامك لهذا الموقع، فإنك توافق على الالتزام بشروط سياسة الخصوصية.
+                            </p>
+                            <p>
+                                ونحتفظ بالحق، وتمنحنا بموجب ذلك تفويضًا، في استخدام المعلومات المتعلقة باستخدامك لهذا الموقع، وأي معلومات شخصية أخرى تقدمها لنا، وذلك وفقًا لما هو منصوص عليه في سياسة الخصوصية الخاصة بنا.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">ثالثاً: حقوق النشر والعلامات التجارية</h2>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            تُقدَّم الروابط الموجودة على هذا الموقع والمؤدية إلى مواقع تابعة لجهات خارجية كخدمةٍ لكم فقط، وإذا استخدمت هذه الروابط فإنك ستغادر الموقع. ولا تتحكم الشركة بأيٍّ من هذه المواقع ولا تقوم بتأييدها، وتوافق على أن الشركة وشركاتها التابعة غير مسؤولين عن أي محتوى أو بضائع أو خدمات تُقدَّم على تلك المواقع أو من خلالها أو عن استخدامك لها أو عجزك عن استخدامها، كما أن استخدامك لتلك الروابط سيكون على مسؤوليتك الشخصية.
                         </p>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">رابعًا: الروابط ومواقع الجهات الخارجية</h2>
+                        <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+                            <p>
+                                تُقدَّم الروابط الموجودة على هذا الموقع والمؤدية إلى مواقع تابعة لجهات خارجية كخدمةٍ لكم فقط، وإذا استخدمت هذه الروابط فإنك ستغادر الموقع. ولا تتحكم الشركة بأيٍّ من هذه المواقع ولا تقوم بتأييدها، وتوافق على أن الشركة وشركاتها التابعة غير مسؤولين ولن يتحملوا أي التزام عن أي محتوى أو بضائع أو خدمات تُقدَّم على تلك المواقع أو من خلالها، أو عن استخدامك لها أو عجزك عن استخدامها، ويكون استخدامك لهذه الروابط على مسؤوليتك الخاصة.
+                            </p>
+                            <p>
+                                كما قد تحتوي مواقع الإنترنت الأخرى، بما في ذلك مواقع الجهات الخارجية المرتبطة بهذا الموقع، على مواد قد يجدها بعض الأشخاص مسيئة أو غير مناسبة، أو قد تكون غير دقيقة أو مضللة أو خادعة، أو قد تكون تشهيرية أو منتهكة لحقوق الغير أو غير قانونية. وتتنصل الشركة صراحةً من أي مسؤولية عن المحتوى أو القانونية أو الملاءمة أو الدقة لأي معلومات، وكذلك عن أي منتجات أو خدمات تظهر على أي موقع تابع لجهة خارجية.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">خامسًا: إخلاء المسؤولية؛ تحديد المسؤولية</h2>
+                        <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+                            <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border-r-4 border-yellow-500">
+                                <p class="font-medium mb-2">تحذير مهم:</p>
+                                <p>
+                                    أنت تفهم وتوافق صراحةً على أن استخدامك للموقع هو على مسؤوليتك الخاصة. يتم تقديم هذا الموقع والمواد الواردة فيه على أساس "كما هو" و"حسب التوفر".
+                                </p>
+                            </div>
+                            <p>
+                                باستثناء ما هو منصوص عليه صراحةً في هذه الاتفاقية، فإن الشركة وشركاتها التابعة ومسؤوليها ومديريها وموظفيها وممثليها الآخرين يتنصلون صراحةً من جميع الضمانات بأنواعها، سواء كانت صريحة أو ضمنية، بما في ذلك، على سبيل المثال لا الحصر، الضمانات الضمنية المتعلقة بقابلية التسويق، والملاءمة لغرض معين، وعدم الانتهاك.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">سادسًا: التعويض</h2>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            توافق على تعويض الشركة وشركاتها التابعة والدفاع عنها وحمايتها من أي مطالبات أو دعاوى أو أسباب دعوى أو خسائر أو نفقات أو أضرار أو تكاليف، بما في ذلك أتعاب المحاماة المعقولة، الناتجة عن أو الناشئة من أو المتعلقة باستخدامك للموقع أو سلوكك عليه، أو أي نشاط يتعلق باستخدامك للموقع، أو أي مواد تقوم بتقديمها أو نشرها أو إرسالها عبر الموقع، أو إخلالك بهذه الاتفاقية، أو انتهاكك لأي حقوق تخص الغير، أو نتيجة إنهاء وصولك إلى الموقع.
+                        </p>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">سابعًا: استخدام الموقع؛ إنهاء الاستخدام</h2>
+                        <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+                            <p>
+                                إذا قمت بتقديم معلومات على هذا الموقع، فإنك توافق على: (أ) تقديم معلومات صحيحة ودقيقة وحديثة وكاملة عن نفسك كما يطلب منك الموقع، و(ب) حسب المسموح، المحافظة على تحديث تلك المعلومات فورًا لجعلها صحيحة ودقيقة وحديثة وكاملة.
+                            </p>
+                            <p>
+                                توافق على استخدام هذا الموقع للأغراض القانونية فقط، وأنك تتحمل مسؤولية استخدامك للموقع وما يصدر عنك من اتصالات من خلاله. كما توافق على عدم نشر أو إرسال أي مواد غير قانونية أو منتهِكة أو تهديدية أو مضايِقة أو تشهيرية أو فاحشة أو بذيئة أو مبتذلة أو غير لائقة أو مسيئة أو كريهة أو أي مواد أخرى غير مقبولة بأي شكل عبر هذا الموقع.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Section 8 -->
+                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">ثامنًا: القواعد الخاصة بالسحوبات والمسابقات واليانصيب والاستبيانات والعروض الترويجية المماثلة</h2>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            أي سحوبات أو مسابقات أو يانصيب أو استبيانات أو عروض ترويجية مماثلة يتم إتاحتها من خلال الموقع ستكون خاضعة لقواعد خاصة منفصلة عن هذه الاتفاقية وبالإضافة إليها. ومن خلال مشاركتك في أي من هذه السحوبات أو المسابقات أو اليانصيب أو الاستبيانات أو العروض الترويجية المماثلة، فإنك تصبح خاضعًا لتلك القواعد التي قد تختلف عن أحكام هذه الاتفاقية الواردة هنا.
+                        </p>
+                    </section>
+
+                    <!-- Section 9 -->
+                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">تاسعًا: القانون الواجب التطبيق؛ الاختصاص القضائي؛ تسوية المنازعات</h2>
+                        <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+                            <p>
+                                تُخضع هذه الاتفاقية وتُفسَّر وفقًا لقوانين ولاية نيويورك في الولايات المتحدة، دون اعتبار لقواعد تنازع القوانين الخاصة بها. وتوافق على الخضوع للاختصاص القضائي الشخصي في ولاية نيويورك، كما توافق على أن أي سبب دعوى ينشأ عن أو يتعلق باستخدام هذا الموقع أو بهذه الاتفاقية يجب رفعه حصريًا أمام المحاكم الفيدرالية أو محاكم الولاية الموجودة في ولاية نيويورك.
+                            </p>
+                            <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border-r-4 border-red-500">
+                                <p class="font-medium mb-2">تنازل عن المحاكمة أمام هيئة محلفين:</p>
+                                <p>
+                                    وبالحد الذي يسمح به القانون المعمول به، فإنك والشركة تتنازلان بموجب هذا عن الحق في المحاكمة أمام هيئة محلفين في أي إجراء أو دعوى قضائية تُقام من أحدكما ضد الآخر فيما يتعلق بهذه الاتفاقية أو بالموقع.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 10 -->
+                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">عاشرًا: قابلية الفصل؛ التفسير</h2>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            إذا اعتبرت أي مادة من مواد هذه الاتفاقية غير قانونية أو باطلة أو غير قابلة للتنفيذ لأي سبب من الأسباب من قبل محكمة ذات اختصاص، فلن يؤثر ذلك على صحة وقابلية تنفيذ باقي المواد الأخرى. وعند استخدام مصطلح "بما في ذلك" في هذه الاتفاقية، فإنه يُعد متبوعًا بعبارة "على سبيل المثال لا الحصر".
+                        </p>
+                    </section>
+
+                    <!-- Section 11 -->
+                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">الحادي عشر: الاتفاقية الكاملة</h2>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            تشكل هذه الاتفاقية كامل الاتفاقية والاتفاق الوحيد بين الشركة وكل مستخدم لهذا الموقع فيما يتعلق بموضوع هذه الاتفاقية، وتنسخ وتحل محل جميع الاتفاقيات أو الإقرارات أو الضمانات أو التفاهمات السابقة أو المتزامنة، سواء كانت مكتوبة أو شفهية، المتعلقة بموضوع هذه الاتفاقية.
+                        </p>
+                    </section>
+
+                    <!-- Section 12 -->
+                    <section class="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">الثاني عشر: أحكام عامة</h2>
+                        <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+                            <p>
+                                إن عدم تمسّك الشركة أو شركاتها التابعة بالتقيد الصارم بأي بند من بنود هذه الاتفاقية لا يُعد تنازلًا عن ذلك البند، ولا يُعتبر تنازلًا أو حدًا لحق ذلك الطرف لاحقًا في الإصرار على التقيد الصارم بذلك البند أو بأي بند آخر من بنود هذه الاتفاقية.
+                            </p>
+                            <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg border-r-4 border-orange-500">
+                                <p class="font-medium mb-2">مهلة التقاضي:</p>
+                                <p>
+                                    توافق على أنه بغض النظر عن أي نظام أو قانون يخالف ذلك، يجب رفع أي مطالبة أو سبب دعوى ينشأ عن أو يتعلق باستخدام هذا الموقع أو بهذه الاتفاقية خلال سنة واحدة من تاريخ نشوء تلك المطالبة أو سبب الدعوى، وإلا فسيُمنع رفعها إلى الأبد.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 13 -->
+                    <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">الثالث عشر: معلومات الاتصال</h2>
+                        <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+                            <p>
+                                إذا كانت لديك أي تعليقات أو أسئلة أو شكاوى بشأن هذه الاتفاقية، أو إذا رغبت في الإبلاغ عن أي انتهاك لأحكامها، فيرجى الاتصال بنا عبر الرابط التالي:
+                            </p>
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg text-center">
+                                <a href="mailto:7-eleven@umww.net" class="text-primary hover:text-primary-dark font-semibold text-lg">
+                                    7-eleven@umww.net
+                                </a>
+                            </div>
+                            <p>
+                                وسنعمل على معالجة أي مسألة في أقرب وقت ممكن وبأقصى ما نستطيع من جهد.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Accept Section -->
+                    <section class="bg-primary/5 dark:bg-primary-dark/20 p-6 rounded-lg border-2 border-primary/20">
+                        <h2 class="text-2xl font-semibold mb-4 text-primary">الموافقة على الشروط</h2>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                            باستخدامك لموقع UM، فإنك تؤكد أنك قد قرأت وفهمت جميع شروط وأحكام هذه الاتفاقية وتوافق على الالتزام بها.
+                        </p>
+                        
+                        <!-- Alert Message -->
+                        <div id="alert-message" class="custom-alert">
+                            <p id="alert-text"></p>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button id="accept-terms" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                                أوافق على جميع الشروط والأحكام
+                            </button>
+                            <button id="reject-terms" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200">
+                                لا أوافق على الشروط
+                            </button>
+                        </div>
                     </section>
                 </div>
             </div>
@@ -246,17 +284,17 @@
             <!-- First Row: Logo, Address, Contact -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-start">
                 <!-- Left: UM Logo -->
-                <div class="text-center md:text-left">
+                <div class="text-center md:text-right">
                     <h3 class="text-4xl md:text-5xl font-bold text-white">UM</h3>
                 </div>
                 
                 <!-- Center: Address -->
                 <div class="text-center">
-                    <h4 class="text-lg font-semibold mb-3 text-white">Sede Mundial</h4>
+                    <h4 class="text-lg font-semibold mb-3 text-white">المقر الرئيسي العالمي</h4>
                     <div class="space-y-1 text-white">
                         <p>100 West 33rd Street</p>
                         <p>New York, NY 10001</p>
-                        <p><a href="mailto:7-eleven@umww.cc" class="text-white hover:text-gray-200 transition-colors duration-300">7-eleven@umww.cc</a></p>
+                        <p><a href="/cdn-cgi/l/email-protection#083f256d646d7e6d66487d657f7f266b6b" class="text-white hover:text-gray-200 transition-colors duration-300"><span class="__cf_email__" data-cfemail="24130941484152414a64514953530a4747">[email&#160;protected]</span></a></p>
                         <p>212-883-4700</p>
                     </div>
                 </div>
@@ -266,19 +304,19 @@
             <div class="border-t border-white/20 pt-6">
                 <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-center">
                     <p class="text-white text-sm">
-                        © 2025 UM Estados Unidos (Sede Mundial)
+                        © 2025 UM الولايات المتحدة (المقر الرئيسي العالمي)
                     </p>
                     <div class="flex flex-wrap justify-center gap-6">
                         <a href="Privacy.html" class="text-white hover:text-gray-200 transition-colors duration-300 text-sm md:text-base">
-                            Aviso de Privacidade
+                            إشعار الخصوصية
                         </a>
                         <span class="text-white">|</span>
                         <a href="terms.html" class="text-white hover:text-gray-200 transition-colors duration-300 text-sm md:text-base">
-                            Termos de Uso
+                            شروط الاستخدام
                         </a>
                         <span class="text-white">|</span>
                         <a href="cookies.html" class="text-white hover:text-gray-200 transition-colors duration-300 text-sm md:text-base">
-                            Configurações de Cookies
+                            إعدادات ملفات تعريف الارتباط
                         </a>
                     </div>
                 </div>
@@ -286,6 +324,7 @@
         </div>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Dark mode detection
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -298,6 +337,24 @@
                 document.documentElement.classList.remove('dark');
             }
         });
+
+        // Custom alert function
+        function showAlert(message) {
+            const alertDiv = document.getElementById('alert-message');
+            const alertText = document.getElementById('alert-text');
+            alertText.textContent = message;
+            alertDiv.style.display = 'block';
+            
+            // Apply dark mode class if needed
+            if (document.documentElement.classList.contains('dark')) {
+                alertDiv.classList.add('dark');
+            }
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                alertDiv.style.display = 'none';
+            }, 3000);
+        }
 
         // Scroll animations
         const observerOptions = {
@@ -321,6 +378,25 @@
             el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(el);
         });
+
+        // Terms acceptance buttons functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const acceptBtn = document.getElementById('accept-terms');
+            const rejectBtn = document.getElementById('reject-terms');
+            
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', function() {
+                    showAlert('شكراً لك! لقد وافقت على شروط وأحكام الاستخدام.');
+                });
+            }
+            
+            if (rejectBtn) {
+                rejectBtn.addEventListener('click', function() {
+                    showAlert('لقد رفضت شروط الاستخدام. لا يمكنك متابعة استخدام الموقع دون الموافقة على الشروط.');
+                });
+            }
+        });
     </script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"e73df9c240ba4d4381cd35ed3c46ed4c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
