@@ -59,6 +59,11 @@
             border-color: #0ea5e9;
             color: #7dd3fc;
         }
+        /* Fix for email display in RTL layout */
+        .email-ltr {
+            direction: ltr;
+            display: inline-block;
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
@@ -242,7 +247,7 @@
                                 إذا كانت لديك أي تعليقات أو أسئلة أو شكاوى بشأن هذه الاتفاقية، أو إذا رغبت في الإبلاغ عن أي انتهاك لأحكامها، فيرجى الاتصال بنا عبر الرابط التالي:
                             </p>
                             <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg text-center">
-                                <a href="mailto:7-eleven@umww.net" class="text-primary hover:text-primary-dark font-semibold text-lg">
+                                <a href="mailto:7-eleven@umww.net" class="email-ltr text-primary hover:text-primary-dark font-semibold text-lg">
                                     7-eleven@umww.net
                                 </a>
                             </div>
@@ -295,7 +300,7 @@
                         <p>100 West 33rd Street</p>
                         <p>New York, NY 10001</p>
 						
-                        <p><a href="mailto:7-eleven@umww.net" class="text-white hover:text-gray-200 transition-colors duration-300">7-eleven@umww.net</a></p>
+                        <p><a href="mailto:7-eleven@umww.net" class="email-ltr text-white hover:text-gray-200 transition-colors duration-300">7-eleven@umww.net</a></p>
                          <p>212-883-4700</p>
                     </div>
                 </div>
@@ -397,6 +402,5 @@
             }
         });
     </script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"e73df9c240ba4d4381cd35ed3c46ed4c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
