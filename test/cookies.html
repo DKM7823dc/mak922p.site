@@ -60,10 +60,11 @@
             color: #7dd3fc;
         }
         /* Fix for English text display in RTL layout */
-        .ltr-text {
-            direction: ltr;
-            display: inline-block;
-        }
+         
+		.ltr-text {
+    direction: ltr;
+    display: block;  /* 改为 block 确保换行 */
+}
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">

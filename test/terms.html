@@ -64,6 +64,10 @@
             direction: ltr;
             display: inline-block;
         }
+		.ltr-text {
+    direction: ltr;
+    display: block;  /* 改为 block 确保换行 */
+}
     </style>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
@@ -293,15 +297,15 @@
                     <h3 class="text-4xl md:text-5xl font-bold text-white">UM</h3>
                 </div>
                 
-                <!-- Center: Address -->
+               <!-- Center: Address -->
                 <div class="text-center">
                     <h4 class="text-lg font-semibold mb-3 text-white">المقر الرئيسي العالمي</h4>
                     <div class="space-y-1 text-white">
-                        <p>100 West 33rd Street</p>
-                        <p>New York, NY 10001</p>
-						
-                        <p><a href="mailto:7-eleven@umww.net" class="email-ltr text-white hover:text-gray-200 transition-colors duration-300">7-eleven@umww.net</a></p>
-                         <p>212-883-4700</p>
+                        <p class="ltr-text">100 West 33rd Street</p>
+                        <p class="ltr-text">New York, NY 10001</p>
+
+                        <p><a href="mailto:7-eleven@umww.net" class="ltr-text text-white hover:text-gray-200 transition-colors duration-300">7-eleven@umww.net</a></p>                       
+					   <p class="ltr-text">212-883-4700</p>
                     </div>
                 </div>
             </div>
