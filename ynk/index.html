@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Keamanan & Perlindungan Dana Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:wght@400;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue-dark: #0A1628;
+            --deep-blue: #0F2744;
+            --deep-blue-medium: #1A3A5C;
+            --deep-blue-light: #2C5282;
+            --golden: #F6C90E;
+            --golden-light: #FFD93D;
+            --golden-dark: #D4A017;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--deep-blue-dark) 0%, var(--deep-blue) 50%, var(--deep-blue-medium) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(246, 201, 14, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(246, 201, 14, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--golden);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 20px rgba(246, 201, 14, 0.3);
+        }
+
+        .subtitle {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Alert Sections */
+        .alert-section {
+            margin: 60px auto;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .alert-card {
+            background: linear-gradient(135deg, rgba(26, 58, 92, 0.6) 0%, rgba(15, 39, 68, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(246, 201, 14, 0.2);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(246, 201, 14, 0.1) inset;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(246, 201, 14, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .alert-card:hover::before {
+            left: 100%;
+        }
+
+        .alert-card:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 15px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(246, 201, 14, 0.3) inset;
+            border-color: rgba(246, 201, 14, 0.4);
+        }
+
+        .alert-image-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(246, 201, 14, 0.3);
+        }
+
+        .alert-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .alert-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            line-height: 1.6;
+            color: var(--white);
+            font-weight: 600;
+            text-align: center;
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+
+        .alert-title::before {
+            content: '⚠';
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.2em;
+            color: var(--golden);
+            animation: pulse 2s infinite;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .gallery-title {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--golden);
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .gallery-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--golden), transparent);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--deep-blue);
+            border: 2px solid transparent;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(246, 201, 14, 0.2) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border-color: var(--golden);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Floating CTA Button */
+        .cta-button {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            animation: fadeInUp 1s ease-out 0.5s backwards, float 3s ease-in-out infinite;
+        }
+
+        .cta-btn {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--golden) 0%, var(--golden-dark) 100%);
+            color: var(--deep-blue-dark);
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow:
+                0 10px 30px rgba(246, 201, 14, 0.4),
+                0 0 0 3px rgba(246, 201, 14, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 15px 40px rgba(246, 201, 14, 0.6),
+                0 0 0 5px rgba(246, 201, 14, 0.3);
+        }
+
+        .cta-btn:active {
+            transform: scale(0.98);
+        }
+
+        .cta-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Decorative Elements */
+        .decoration-line {
+            width: 80%;
+            max-width: 600px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--golden), transparent);
+            margin: 60px auto;
+            opacity: 0.5;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            header {
+                padding: 40px 10px 20px;
+            }
+
+            .stats-section {
+                margin: 20px auto;
+                padding: 20px 0;
+            }
+
+            .trust-section {
+                margin: 20px auto;
+                padding: 20px 10px;
+            }
+
+            .urgency-banner {
+                margin: 20px auto;
+                padding: 20px 15px;
+            }
+
+            .decoration-line {
+                margin: 20px auto;
+            }
+
+            .alert-section {
+                margin: 20px auto;
+                padding: 0 10px;
+            }
+
+            .alert-card {
+                padding: 20px 10px;
+            }
+
+            .gallery-section {
+                margin: 20px auto;
+                padding: 0 10px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-bottom: 0;
+            }
+
+            .testimonials-section {
+                margin: 30px auto 80px;
+                padding: 0 10px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px;
+                width: 100%;
+                padding: 0 10px;
+                box-sizing: border-box;
+            }
+
+            .stat-card {
+                padding: 15px 5px;
+                min-height: 95px;
+            }
+
+            .stat-number {
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
+
+            .stat-label {
+                font-size: 0.6rem;
+                line-height: 1.15;
+                max-width: 95%;
+                word-wrap: break-word;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .badge {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .cta-btn {
+                padding: 14px 35px;
+                font-size: 0.95rem;
+                letter-spacing: 1.5px;
+            }
+
+            .cta-button {
+                bottom: 20px;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            margin: 60px auto;
+            padding: 40px 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(246, 201, 14, 0.1) 0%, rgba(26, 58, 92, 0.3) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(246, 201, 14, 0.3);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--golden);
+            box-shadow: 0 10px 30px rgba(246, 201, 14, 0.2);
+        }
+
+        .stat-number {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--golden);
+            line-height: 1;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Trust Badges */
+        .trust-section {
+            margin: 60px auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: rgba(246, 201, 14, 0.1);
+            border: 1px solid rgba(246, 201, 14, 0.3);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: rgba(246, 201, 14, 0.2);
+            border-color: var(--golden);
+        }
+
+        .badge-icon {
+            font-size: 1.3rem;
+        }
+
+        /* Urgency Banner */
+        .urgency-banner {
+            background: linear-gradient(90deg, rgba(246, 201, 14, 0.2) 0%, rgba(246, 201, 14, 0.05) 50%, rgba(246, 201, 14, 0.2) 100%);
+            border: 2px solid var(--golden);
+            border-radius: 15px;
+            padding: 25px 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .urgency-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                left: 100%;
+            }
+        }
+
+        .urgency-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: 600;
+            color: var(--golden);
+            position: relative;
+            z-index: 1;
+        }
+
+        .urgency-subtext {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            margin: 80px auto 120px;
+            padding: 0 20px;
+        }
+
+        .testimonials-title {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--golden);
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(26, 58, 92, 0.5) 0%, rgba(15, 39, 68, 0.7) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(246, 201, 14, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+        .testimonial-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(246, 201, 14, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid rgba(246, 201, 14, 0.3);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+
+        .testimonial-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            color: var(--golden);
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 2rem;
+            color: var(--golden);
+            opacity: 0.3;
+            line-height: 0;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="loading">
+            <h1 class="logo-title">Perlindungan Keamanan</h1>
+            <p class="subtitle">Lindungi Aset Digital Anda</p>
+        </header>
+
+        <!-- Stats Section -->
+        <section class="stats-section loading">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">15,000+</span>
+                    <span class="stat-label">Kasus Diselesaikan</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Tingkat Keberhasilan</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Dukungan Profesional</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Rp 45M+</span>
+                    <span class="stat-label">Dana Dipulihkan</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Badges -->
+        <section class="trust-section loading">
+            <div class="trust-badges">
+                <div class="badge">
+                    <span class="badge-icon">🛡️</span>
+                    <span>Terverifikasi & Terpercaya</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">⚡</span>
+                    <span>Respon Cepat < 30 Menit</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">🔒</span>
+                    <span>100% Kerahasiaan Terjamin</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Urgency Banner -->
+        <div class="urgency-banner loading">
+            <p class="urgency-text">⏰ Setiap Detik Berharga! Bertindak Cepat Meningkatkan Peluang Pemulihan Dana</p>
+            <p class="urgency-subtext">Tim ahli kami siap membantu 24/7 - Jangan biarkan penipu lolos!</p>
+        </div>
+
+        <div class="decoration-line loading"></div>
+
+        <!-- Alert Section 1 -->
+        <section class="alert-section loading">
+            <div class="alert-card">
+                <div class="alert-image-container">
+                    <img src="https://ynwq2.tstocke.com/static/photo_2025-06-01_17-47-12.jpg"
+                         alt="Online Fraud Warning"
+                         class="alert-image"
+                         loading="lazy">
+                </div>
+                <h2 class="alert-title">
+                    Penipuan online semakin marak dan telah mengancam keamanan harta benda warga negara Indonesia. Jika Anda mengalami penipuan online, silakan hubungi kami. Kami akan membantu Anda untuk mendapatkan kembali dana yang telah ditipu.
+                </h2>
+            </div>
+        </section>
+
+        <!-- Alert Section 2 -->
+        <section class="alert-section loading">
+            <div class="alert-card">
+                <div class="alert-image-container">
+                    <img src="https://ynwq2.tstocke.com/static/2025-06-02_182543.png"
+                         alt="Investment Fraud Warning"
+                         class="alert-image"
+                         loading="lazy">
+                </div>
+                <h2 class="alert-title">
+                    Jangan tertipu oleh penawaran menggiurkan yang palsu! Investasi yang terlihat sangat menguntungkan sering kali adalah penipuan. Harap selalu waspada! Jika Anda mengalami dugaan penipuan, segera hubungi kami untuk membantu memulihkan dana yang telah hilang.
+                </h2>
+            </div>
+        </section>
+
+        <div class="decoration-line loading"></div>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section loading">
+            <h2 class="gallery-title">Kasus & Dokumentasi</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://ynwq2.tstocke.com/static/photo_2025-06-01_17-47-52.jpg"
+                         alt="Case Study 1"
+                         class="gallery-image"
+                         loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://ynwq2.tstocke.com/static/photo_2025-09-17_17-49-37.jpg"
+                         alt="Case Study 2"
+                         class="gallery-image"
+                         loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://ynwq2.tstocke.com/static/photo_2025-06-01_17-47-36.jpg"
+                         alt="Case Study 3"
+                         class="gallery-image"
+                         loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://ynwq2.tstocke.com/static/photo_2025-09-17_17-49-38.jpg"
+                         alt="Case Study 4"
+                         class="gallery-image"
+                         loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section loading">
+            <h2 class="testimonials-title">Testimoni Klien Kami</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=faces" alt="Budi Wibowo">
+                        </div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Budi Wibowo</div>
+                            <div class="testimonial-meta">Jakarta • 2 minggu lalu</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Saya kehilangan Rp 85 juta dalam penipuan investasi palsu. Tim ini luar biasa profesional dan berhasil memulihkan 92% dana saya dalam waktu 3 minggu. Sangat merekomendasikan layanan mereka!
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=faces" alt="Siti Pratiwi">
+                        </div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Siti Pratiwi</div>
+                            <div class="testimonial-meta">Surabaya • 1 bulan lalu</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Proses sangat transparan dan cepat. Mereka menjelaskan setiap langkah dengan detail. Dana saya yang hilang sebesar Rp 42 juta berhasil dikembalikan sepenuhnya. Terima kasih banyak!
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&crop=faces" alt="Ahmad Hidayat">
+                        </div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Ahmad Hidayat</div>
+                            <div class="testimonial-meta">Bandung • 3 minggu lalu</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Awalnya saya ragu, tapi setelah konsultasi gratis, saya yakin mereka benar-benar ahli. Mereka membantu saya mendapatkan kembali Rp 120 juta dari penipuan trading forex. Sangat profesional!
+                    </p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&crop=faces" alt="Ratna Lestari">
+                        </div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Ratna Lestari</div>
+                            <div class="testimonial-meta">Medan • 1 minggu lalu</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Respons mereka sangat cepat, bahkan di tengah malam! Tim yang sangat berdedikasi. Mereka membantu memulihkan Rp 38 juta saya dengan proses yang aman dan terpercaya. Highly recommended!
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating CTA Button -->
+    <div class="cta-button">
+        <button class="cta-btn" onclick="k2()">
+            <span>HUBUNGI KAMI</span>
+        </button>
+    </div>
+
+    <script>
+        // K2 method to redirect to QQ
+        function k2() {
+            window.location.href = 'https://www.qq.com';
+        }
+
+        // Add loading animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all loading elements
+        document.querySelectorAll('.loading').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+
+        // Console log for debugging (objects logged as strings for inspectability)
+        console.log('Landing page initialized');
+        console.log(JSON.stringify({
+            theme: 'Deep Blue & Gold',
+            fonts: ['Cinzel', 'Crimson Pro', 'Montserrat'],
+            status: 'ready'
+        }));
+    </script>
+</body>
+</html>
