@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Premium Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-yellow: #ffc400;
+            --deep-blue: #0d2847;
+            --dark-blue: #0a1f44;
+            --text-light: #f5f5f5;
+            --text-gray: #d0e4f7;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #1a3a5c 0%, #0d2847 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 45vh;
+            overflow: hidden;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-image.active {
+            opacity: 1;
+        }
+
+        .content-section {
+            flex: 1;
+            padding: 2rem 1.5rem 6rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .feature-icon {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-yellow);
+            border-radius: 50%;
+            margin-right: 1rem;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-gray);
+            font-weight: 300;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            animation: breathe 2.5s ease-in-out infinite;
+            transition: transform 0.2s ease;
+            font-family: 'Lato', sans-serif;
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            white-space: nowrap;
+            max-width: 90%;
+        }
+
+        .whatsapp-button:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        .whatsapp-button i {
+            font-size: 1.25rem;
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6);
+            }
+        }
+
+
+        /* 深色模式支持 */
+        @media (prefers-color-scheme: light) {
+            body {
+                background: linear-gradient(135deg, #4a7ba7 0%, #2a5a7f 100%);
+            }
+
+            :root {
+                --deep-blue: #1e4d7a;
+                --dark-blue: #0a1f44;
+                --text-light: #f5f5f5;
+                --text-gray: #dceef7;
+            }
+        }
+
+        /* 适配更小的屏幕 */
+        @media (max-height: 640px) {
+            .hero-section {
+                height: 40vh;
+            }
+
+            .content-section {
+                padding: 1.5rem 1.5rem 5rem 1.5rem;
+            }
+
+            .brand-title {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .feature-item {
+                margin-bottom: 1rem;
+            }
+
+            .feature-text {
+                font-size: 0.9rem;
+            }
+
+            .whatsapp-button {
+                font-size: 0.9rem;
+                padding: 0.75rem 1.5rem;
+                bottom: 1rem;
+            }
+
+            .whatsapp-button i {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <div class="carousel">
+                <img src="img/1.jpg" alt="Luxury Bags" class="hero-image active">
+                <img src="img/2.jpg" alt="Luxury Bags" class="hero-image">
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div>
+                <h1 class="brand-title">Premium Collection</h1>
+
+                <ul class="features">
+                    <li class="feature-item">
+                        <div class="feature-icon"></div>
+                        <p class="feature-text">Shipping is available across all of Europe</p>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon"></div>
+                        <p class="feature-text">Guaranteed high quality at reasonable prices</p>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon"></div>
+                        <p class="feature-text">A wide range of products for reverse procurement available in Europe</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <button class="whatsapp-button" onclick="k2()">
+        <i class="fab fa-whatsapp"></i>
+        <span>Learn More</span>
+    </button>
+
+    <script>
+        function k2() {
+            window.open('https://diversion.salesmartly.com/split/whatsapp/e2apq30', '_blank');
+        }
+
+        // 图片轮播
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-image');
+        const totalSlides = slides.length;
+
+        function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // 每2秒切换一次图片
+        setInterval(showNextSlide, 2000);
+    </script>
+</body>
+</html>
