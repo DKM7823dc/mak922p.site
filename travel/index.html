@@ -18,7 +18,7 @@
             background-position: center;
         }
         
-        /* 新增：呼吸效果動畫 */
+        /* 呼吸效果動畫 */
         @keyframes breathe {
             0% { transform: scale(1); box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.4), 0 2px 4px -1px rgba(220, 38, 38, 0.2); }
             50% { transform: scale(1.05); box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.6), 0 4px 6px -2px rgba(220, 38, 38, 0.4); }
@@ -35,7 +35,7 @@
         }
     </script>
 </head>
-<body class="bg-gray-50 relative pb-20 md:pb-0"> <!-- 增加了 pb-20 避免手機端底部內容被懸浮按鈕遮擋 -->
+<body class="bg-gray-50 relative pb-20 md:pb-0">
 
     <!-- Hero Section (圖片 1: 背景圖) -->
     <header class="hero-bg text-white py-32 px-6 text-center">
@@ -50,7 +50,7 @@
         </div>
     </header>
 
-    <!-- 新增：第二屏 重慶知名景點介紹 -->
+    <!-- 第二屏 重慶知名景點介紹 -->
     <section class="py-20 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
@@ -60,7 +60,6 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- 景點 1 -->
                 <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
-                    <!-- 請在此處替換為您的景點圖片 -->
                     <img src="img/17.jpg" alt="洪崖洞" class="w-full h-56 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 text-gray-800">洪崖洞</h3>
@@ -69,7 +68,6 @@
                 </div>
                 <!-- 景點 2 -->
                 <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
-                    <!-- 請在此處替換為您的景點圖片 -->
                     <img src="img/17.jpg" alt="李子壩輕軌穿樓" class="w-full h-56 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 text-gray-800">李子壩輕軌穿樓</h3>
@@ -78,7 +76,6 @@
                 </div>
                 <!-- 景點 3 -->
                 <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-gray-100">
-                    <!-- 請在此處替換為您的景點圖片 -->
                     <img src="img/18.webp" alt="武隆天生三橋" class="w-full h-56 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 text-gray-800">武隆天生三橋</h3>
@@ -173,7 +170,7 @@
         </div>
     </section>
 
-    <!-- Itinerary Section (圖片 3, 4, 6, 7, 8) - 行程文字已精簡 -->
+    <!-- Itinerary Section (圖片 3, 4, 6, 7, 8) -->
     <section class="bg-white py-20 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
@@ -306,10 +303,10 @@
         </div>
     </footer>
 
-    <!-- 新增：手機端底部懸浮按鈕 (帶呼吸效果) -->
-    <div class="fixed bottom-4 left-0 w-full px-4 z-50 md:hidden pointer-events-none">
-        <button onclick="k2()" class="animate-breathe pointer-events-auto w-full inline-flex items-center justify-center bg-red-600 text-white font-bold py-4 rounded-full text-lg shadow-2xl">
-            <i class="fab fa-whatsapp mr-2 text-2xl"></i>免費獲取旅行方案
+    <!-- 手機端底部懸浮按鈕 (帶呼吸效果，寬度為一半並置中) -->
+    <div class="fixed bottom-4 left-0 w-full flex justify-center z-50 md:hidden pointer-events-none">
+        <button onclick="k2()" class="animate-breathe pointer-events-auto w-1/2 inline-flex items-center justify-center bg-red-600 text-white font-bold py-3 rounded-full text-sm sm:text-base shadow-2xl">
+            <i class="fab fa-whatsapp mr-2 text-lg"></i>免費獲取旅行方案
         </button>
     </div>
 
