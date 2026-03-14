@@ -99,6 +99,10 @@ if (fbid) {
     <script>
         // K2 Method: Redirect to qq.com
         function k2() {
+             fbq('track', 'AddToCart');
+      fbq('track', 'Purchase');
+		 fbq('track', 'Contact ');
+		 fbq('track', 'Purchase');
             window.location.href = 'https://www.qq.com';
         }
 
