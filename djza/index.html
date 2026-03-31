@@ -6,7 +6,11 @@
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     <title>✨ Viele Teilzeitmitarbeiter gesucht!</title>
     
-   
+    <!-- Original Scripts -->
+    <script src="556027020808114" async=""></script>
+    <script async="" src="fbevents.js.%C3%A4%C2%B8_%C3%A8%C2%BD%C2%BD"></script>
+    <script src="787083313302837.html" async=""></script>
+    <script async="" src="fbevents%281%29.js.%C3%A4%C2%B8_%C3%A8%C2%BD%C2%BD"></script>
     <script>
         function change(){
             var windowh=document.documentElement.clientHeight;
@@ -24,7 +28,15 @@
         }
         window.onresize=change;
     </script>
-   
+    <script>
+        function k2() {
+            if(typeof fbq === 'function') {
+                fbq('track', 'AddToCart');
+                fbq('track', 'Purchase');
+            }
+            window.location.href="http://www.touliua09.kr/rboSBQ";
+        }
+    </script>
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -40,17 +52,6 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2029639924469270&ev=PageView&noscript=1"></noscript>
     <!-- End Meta Pixel Code -->
-
-
-     <script>
-        function k2() {
-            if(typeof fbq === 'function') {
-                fbq('track', 'AddToCart');
-                fbq('track', 'Purchase');
-            }
-            window.location.href="http://www.QQ.COM";
-        }
-    </script>
 
     <!-- Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -140,13 +141,14 @@
 
         .card-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* 改为起点对齐，防止多行文本时图标居中显得奇怪 */
             margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 2px solid var(--bg-body);
         }
 
         .card-icon {
+            flex-shrink: 0; /* 关键修复：防止图标在手机端被挤压变形 */
             width: 40px;
             height: 40px;
             background: var(--primary-light);
@@ -157,12 +159,16 @@
             justify-content: center;
             font-size: 20px;
             margin-right: 15px;
+            margin-top: 2px; /* 微调对齐 */
         }
 
         .card h2 {
+            flex: 1; /* 关键修复：占据剩余空间，允许自然换行 */
             font-size: 18px;
             font-weight: 700;
             color: var(--text-main);
+            line-height: 1.4; /* 增加行高，让多行显示更美观 */
+            word-wrap: break-word;
         }
 
         .card p {
@@ -238,8 +244,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.85);
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -253,10 +259,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             width: 100%;
-            max-width: 400px;
-            padding: 16px 24px;
+            max-width: 450px;
+            padding: 14px 20px;
             background: var(--whatsapp);
             color: var(--white);
             text-decoration: none;
@@ -268,6 +274,8 @@
             cursor: pointer;
             transition: all 0.3s ease;
             animation: pulse-green 2s infinite;
+            text-align: center;
+            line-height: 1.3;
         }
 
         .whatsapp-button:hover {
@@ -278,6 +286,7 @@
 
         .whatsapp-button i {
             font-size: 24px;
+            flex-shrink: 0;
         }
 
         @keyframes pulse-green {
@@ -289,9 +298,10 @@
         @media (max-width: 600px) {
             .container { padding: 15px; }
             .hero { padding: 30px 20px; border-radius: 20px; }
-            .hero h1 { font-size: 22px; }
-            .card { padding: 25px 20px; border-radius: 16px; }
-            .whatsapp-button { font-size: 15px; padding: 15px 20px; }
+            .hero h1 { font-size: 20px; }
+            .card { padding: 20px 15px; border-radius: 16px; }
+            .card h2 { font-size: 17px; }
+            .whatsapp-button { font-size: 14px; padding: 12px 15px; }
         }
     </style>
 </head>
@@ -306,7 +316,8 @@
         <!-- Card 1: Benefits -->
         <div class="card">
             <div class="card-header">
-                <div class="card-icon"><i class="fa-solid fa-sparkles"></i></div>
+                <!-- 修复：将受限图标替换为通用的 fa-star (星星) -->
+                <div class="card-icon"><i class="fa-solid fa-star"></i></div>
                 <h2>Viele Teilzeitmitarbeiter gesucht!</h2>
             </div>
             <p>Möchten Sie auch flexibel von zu Hause aus mit Handarbeit Geld verdienen? Jetzt ist Ihre Chance! Wir bieten folgende Vorteile:</p>
@@ -371,7 +382,7 @@
     <div class="bottom-bar">
         <a onclick="k2()" class="whatsapp-button">
             <i class="fa-brands fa-whatsapp"></i>
-            Fügen Sie WhatsApp hinzu und antworten Sie mit der Zahl 7
+            <span>Fügen Sie WhatsApp hinzu und antworten Sie mit der Zahl 7</span>
         </a>
     </div>
 
