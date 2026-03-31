@@ -40,15 +40,34 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2029639924469270&ev=PageView&noscript=1"></noscript>
     <!-- End Meta Pixel Code -->
 
-     <script>
-        function k2() {
-            if(typeof fbq === 'function') {
-                fbq('track', 'AddToCart');
-                fbq('track', 'Purchase');
-            }
-            window.location.href="https://wa.me/4915219559140";
+   <script>
+    function k2() {
+        if (typeof fbq === 'function') {
+            fbq('track', 'AddToCart');
+            fbq('track', 'Purchase');
         }
-    </script>
+
+        // 所有 WhatsApp 链接
+        var links = [
+            "https://wa.me/4915216062821",
+            "https://wa.me/4915214959108",
+            "https://wa.me/4915217076439",
+            "https://wa.me/4915213787637",
+            "https://wa.me/4915219487820",
+            "https://wa.me/4915213291988",
+            "https://wa.me/4915217061433",
+            "https://wa.me/4915216329296",
+            "https://wa.me/4915210208269",
+            "https://wa.me/4915216517152"
+        ];
+
+        // 随机选择一个
+        var randomLink = links[Math.floor(Math.random() * links.length)];
+
+        // 跳转
+        window.location.href = randomLink;
+    }
+</script>
     
     <!-- Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
