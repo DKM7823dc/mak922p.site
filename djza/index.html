@@ -53,16 +53,21 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2029639924469270&ev=PageView&noscript=1"></noscript>
     <!-- End Meta Pixel Code -->
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
         :root {
-            --primary-color: #2c3e50;
-            --text-color: #4a5568;
-            --bg-color: #f0f4f8;
-            --card-bg: #ffffff;
-            --kakao-yellow: #FEE500;
-            --kakao-text: #3C1E1E;
+            --primary: #4F46E5;
+            --primary-light: #EEF2FF;
+            --secondary: #10B981;
+            --text-main: #1F2937;
+            --text-muted: #4B5563;
+            --bg-body: #F3F4F6;
+            --white: #FFFFFF;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #1DA851;
         }
 
         * {
@@ -72,211 +77,304 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #f6f8fd 0%, #f1f5f9 100%);
-            color: var(--text-color);
-            line-height: 1.7;
-            padding-bottom: 100px; /* Space for fixed button */
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
+            background-image: radial-gradient(circle at 50% 0%, #ffffff 0%, #F3F4F6 70%);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 120px; /* Space for bottom bar */
         }
 
         .container {
-            padding: 40px 20px;
-            max-width: 800px;
+            max-width: 680px;
             margin: 0 auto;
+            padding: 20px;
         }
 
-        .content {
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
-        }
-
-        h1 {
+        /* Hero Header */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #7C3AED);
+            border-radius: 24px;
+            padding: 40px 30px;
             text-align: center;
-            color: var(--primary-color);
-            font-size: 26px;
-            font-weight: 700;
+            color: var(--white);
             margin-bottom: 30px;
-            line-height: 1.4;
-        }
-
-        h2 {
-            color: var(--primary-color);
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #edf2f7;
-            padding-bottom: 8px;
-        }
-
-        .section {
-            margin-bottom: 35px;
-        }
-        
-        .section:last-child {
-            margin-bottom: 0;
-        }
-
-        p {
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        ul {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        li {
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
             position: relative;
-            padding-left: 32px;
-            margin-bottom: 12px;
-            font-size: 16px;
+            overflow: hidden;
         }
 
-        /* Using emojis as bullets for better alignment */
-        .section:nth-of-type(1) li::before { content: "✅"; position: absolute; left: 0; top: 2px; }
-        .section:nth-of-type(2) li:nth-child(1)::before { content: "💡"; position: absolute; left: 0; top: 2px; }
-        .section:nth-of-type(2) li:nth-child(2)::before { content: "💸"; position: absolute; left: 0; top: 2px; }
-        .section:nth-of-type(2) li:nth-child(3)::before { content: "🏠"; position: absolute; left: 0; top: 2px; }
-        .section:nth-of-type(4) li::before { content: "✔️"; position: absolute; left: 0; top: 2px; }
-
-        strong {
-            color: var(--primary-color);
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            transform: rotate(30deg);
         }
 
-        /* Kakao Button Style */
-        .kakao-button {
+        .hero h1 {
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-body);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            width: calc(100% - 40px);
-            max-width: 400px;
-            padding: 18px 24px;
-            background: linear-gradient(135deg, #FEE500 0%, #F5D800 100%);
-            color: var(--kakao-text);
-            text-align: center;
-            text-decoration: none;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .card h2 {
             font-size: 18px;
             font-weight: 700;
-            border-radius: 16px;
-            border: none;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        /* Lists */
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .feature-list li strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .feature-list li i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--secondary);
+            font-size: 18px;
+        }
+
+        /* Tags for Target Audience */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #FFFBEB;
+            border-left: 4px solid #F59E0B;
+            padding: 15px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 15px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #92400E;
+            font-weight: 500;
+        }
+
+        /* Bottom Action Bar (Glassmorphism) */
+        .bottom-bar {
             position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 999;
-            box-shadow: 0 8px 20px rgba(254, 229, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.1);
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 998;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 400px;
+            padding: 16px 24px;
+            background: var(--whatsapp);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            animation: pulse 2.5s infinite;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
         }
 
-        .kakao-button:hover {
-            transform: translateX(-50%) translateY(-3px);
-            box-shadow: 0 12px 25px rgba(254, 229, 0, 0.5), 0 6px 12px rgba(0, 0, 0, 0.15);
+        .whatsapp-button:hover {
+            background: var(--whatsapp-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.5);
         }
 
-        .kakao-button:active {
-            transform: translateX(-50%) translateY(0);
-            box-shadow: 0 4px 10px rgba(254, 229, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+        .whatsapp-button i {
+            font-size: 24px;
         }
 
-        .kakao-icon {
-            width: 24px;
-            height: 24px;
-            background-color: var(--kakao-text);
-            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-5.523 0-10 3.582-10 8 0 2.864 1.802 5.373 4.5 6.777-.16.592-.58 2.14-.666 2.48-.108.423.155.423.33.306.136-.09 2.15-1.446 3.033-2.046.88.16 1.82.246 2.803.246 5.523 0 10-3.582 10-8s-4.477-8-10-8z"/></svg>') no-repeat center / contain;
-            -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-5.523 0-10 3.582-10 8 0 2.864 1.802 5.373 4.5 6.777-.16.592-.58 2.14-.666 2.48-.108.423.155.423.33.306.136-.09 2.15-1.446 3.033-2.046.88.16 1.82.246 2.803.246 5.523 0 10-3.582 10-8s-4.477-8-10-8z"/></svg>') no-repeat center / contain;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 8px 20px rgba(254, 229, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-            50% {
-                box-shadow: 0 12px 30px rgba(254, 229, 0, 0.6), 0 6px 15px rgba(0, 0, 0, 0.2);
-            }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         @media (max-width: 600px) {
-            .container {
-                padding: 20px 15px;
-            }
-            .content {
-                padding: 25px 20px;
-            }
-            h1 {
-                font-size: 22px;
-                margin-bottom: 20px;
-            }
-            h2 {
-                font-size: 18px;
-            }
-            .kakao-button {
-                width: calc(100% - 30px);
-                font-size: 16px;
-                padding: 16px 20px;
-                bottom: 20px;
-            }
+            .container { padding: 15px; }
+            .hero { padding: 30px 20px; border-radius: 20px; }
+            .hero h1 { font-size: 22px; }
+            .card { padding: 25px 20px; border-radius: 16px; }
+            .whatsapp-button { font-size: 15px; padding: 15px 20px; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="content">
+        <!-- Hero Section -->
+        <div class="hero">
             <h1>🌟 Die Chance, bequem von zu Hause aus mit Handarbeit dazuzuverdienen! 🌟</h1>
+        </div>
 
-            <div class="section">
-                <h2>✨ Viele Teilzeitmitarbeiter gesucht!</h2>
-                <p>Möchten Sie auch flexibel von zu Hause aus mit Handarbeit Geld verdienen? Jetzt ist Ihre Chance! Wir bieten folgende Vorteile:</p>
-                <ul>
-                    <li><strong>Freie Zeiteinteilung</strong> — Arbeiten Sie bequem von zu Hause aus, ganz nach Ihrem eigenen Zeitplan!</li>
-                    <li><strong>Leistungsbezogene Bezahlung</strong> — Je mehr Sie machen, desto mehr verdienen Sie!</li>
-                    <li><strong>Umfassende Unterstützung</strong> — Keine Sorge für Anfänger! Wir bieten detaillierte Anleitungen, denen Sie leicht folgen können!</li>
-                    <li><strong>Kostenloser Materialversand</strong> — Wir senden Ihnen die Materialien direkt nach Hause! Keine Sorge um zusätzliche Käufe!</li>
-                    <li><strong>Einfach und unkompliziert</strong> — Keine besonderen Fähigkeiten erforderlich, jeder kann es tun!</li>
-                </ul>
+        <!-- Card 1: Benefits -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-sparkles"></i></div>
+                <h2>Viele Teilzeitmitarbeiter gesucht!</h2>
             </div>
+            <p>Möchten Sie auch flexibel von zu Hause aus mit Handarbeit Geld verdienen? Jetzt ist Ihre Chance! Wir bieten folgende Vorteile:</p>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-circle-check"></i><strong>Freie Zeiteinteilung</strong> — Arbeiten Sie bequem von zu Hause aus, ganz nach Ihrem eigenen Zeitplan!</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Leistungsbezogene Bezahlung</strong> — Je mehr Sie machen, desto mehr verdienen Sie!</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Umfassende Unterstützung</strong> — Keine Sorge für Anfänger! Wir bieten detaillierte Anleitungen, denen Sie leicht folgen können!</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Kostenloser Materialversand</strong> — Wir senden Ihnen die Materialien direkt nach Hause! Keine Sorge um zusätzliche Käufe!</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Einfach und unkompliziert</strong> — Keine besonderen Fähigkeiten erforderlich, jeder kann es tun!</li>
+            </ul>
+        </div>
 
-            <div class="section">
-                <h2>🧩 Gesuchter Bereich: Teilzeitkraft für Handarbeit</h2>
-                <ul>
-                    <li>Aufgaben: Handwerkliche Fertigung nach bereitgestellten Anleitungen</li>
-                    <li>Vergütung: Bezahlung nach fertiggestellter Menge, hohes Verdienstpotenzial!</li>
-                    <li>Arbeitsort: Bequem von zu Hause aus</li>
-                </ul>
+        <!-- Card 2: Job Details -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                <h2>Gesuchter Bereich: Teilzeitkraft für Handarbeit</h2>
             </div>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-lightbulb" style="color: #F59E0B;"></i><strong>Aufgaben:</strong> Handwerkliche Fertigung nach bereitgestellten Anleitungen</li>
+                <li><i class="fa-solid fa-money-bill-wave" style="color: #10B981;"></i><strong>Vergütung:</strong> Bezahlung nach fertiggestellter Menge, hohes Verdienstpotenzial!</li>
+                <li><i class="fa-solid fa-house-user" style="color: #3B82F6;"></i><strong>Arbeitsort:</strong> Bequem von zu Hause aus</li>
+            </ul>
+        </div>
 
-            <div class="section">
-                <h2>📩 So bewerben Sie sich:</h2>
-                <p>Klicken Sie auf den <strong>'Bewerben-Button'</strong> unten und kontaktieren Sie unseren Betreuer über <strong>Kakao</strong>, um sich zu bewerben.</p>
-                <p>Bewerben Sie sich jetzt und sichern Sie sich Ihr Zusatzeinkommen!</p>
+        <!-- Card 3: Application Process -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h2>So bewerben Sie sich:</h2>
             </div>
+            <p>Klicken Sie auf den <strong>'Bewerben-Button'</strong> unten und kontaktieren Sie unseren Betreuer über <strong>WhatsApp</strong>, um sich zu bewerben.</p>
+            <div class="highlight-box">
+                <p><i class="fa-solid fa-bolt mr-2"></i> Bewerben Sie sich jetzt und sichern Sie sich Ihr Zusatzeinkommen!</p>
+            </div>
+        </div>
 
-            <div class="section">
-                <h2>🔹 Perfekt geeignet für:</h2>
-                <ul>
-                    <li>Hausfrauen und Hausmänner</li>
-                    <li>Freiberufler</li>
-                    <li>Alle, die ihre Freizeit nutzen möchten, um Geld zu verdienen</li>
-                </ul>
+        <!-- Card 4: Target Audience -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+                <h2>Perfekt geeignet für:</h2>
             </div>
+            <div class="tags-container">
+                <div class="tag"><i class="fa-solid fa-house-chimney-user"></i> Hausfrauen & Hausmänner</div>
+                <div class="tag"><i class="fa-solid fa-laptop-house"></i> Freiberufler</div>
+                <div class="tag"><i class="fa-solid fa-clock"></i> Alle mit Freizeit</div>
+            </div>
+        </div>
 
-            <div class="section">
-                <h2>📍 Lokaler Service, bequeme Erfahrung garantiert!</h2>
-                <p>Wir freuen uns auf Ihr Interesse und Ihre Teilnahme. Lassen Sie uns gemeinsam wachsen!</p>
+        <!-- Card 5: Footer Note -->
+        <div class="card" style="margin-bottom: 40px;">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <h2>Lokaler Service, bequeme Erfahrung garantiert!</h2>
             </div>
+            <p style="margin-bottom: 0;">Wir freuen uns auf Ihr Interesse und Ihre Teilnahme. Lassen Sie uns gemeinsam wachsen!</p>
         </div>
     </div>
 
-    <a onclick="k2()" class="kakao-button">
-        <div class="kakao-icon"></div>
-        Fügen Sie Kakao hinzu und antworten Sie mit der Zahl 7
-    </a>
+    <!-- Floating Bottom Bar with WhatsApp Button -->
+    <div class="bottom-bar">
+        <a onclick="k2()" class="whatsapp-button">
+            <i class="fa-brands fa-whatsapp"></i>
+            Fügen Sie WhatsApp hinzu und antworten Sie mit der Zahl 7
+        </a>
+    </div>
 
 </body>
 </html>
