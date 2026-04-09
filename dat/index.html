@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- 确保移动端兼容性的关键 viewport 设置 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>랜딩 페이지 (Landing Page)</title>
+    <style>
+        /* 重置默认边距 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* 页面背景色 */
+        }
+
+        /* 居中容器，限制最大宽度以适配平板和PC，手机端自动100% */
+        .landing-container {
+            max-width: 750px; /* 移动端常用设计稿宽度 */
+            margin: 0 auto;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 图片响应式设置，去除图片底部的默认空白间隙 */
+        .landing-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            border: none;
+            /* 添加简单的点击反馈动画 */
+            transition: opacity 0.2s;
+        }
+
+        .landing-container img:active {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="landing-container">
+        <!-- 调用图片并绑定点击事件 -->
+        <img src="img/1.jpg" alt="이미지 1" onclick="k2()">
+        <img src="img/2.jpg" alt="이미지 2" onclick="k2()">
+        <img src="img/3.jpg" alt="이미지 3" onclick="k2()">
+        <img src="img/4.jpg" alt="이미지 4" onclick="k2()">
+        <img src="img/5.jpg" alt="이미지 5" onclick="k2()">
+    </div>
+
+    <script>
+        /**
+         * k2 方法：处理点击事件并跳转
+         */
+        function k2() {
+            // 在这里可以添加其他需要的 k2 逻辑（例如数据上报等）
+            console.log("k2 함수가 호출되었습니다. (k2方法被调用)");
+            
+            // 跳转到腾讯网
+            window.location.href = "https://www.qq.com/";
+        }
+    </script>
+
+</body>
+</html>
