@@ -147,8 +147,25 @@
         /* Modal Custom Styles */
         .modal-body-scroll { max-height: calc(100vh - 4rem); overflow-y: auto; }
         .radio-card-input:checked + div { border-color: #01798E; background-color: rgba(1,121,142,0.05); }
-        .radio-card-input:checked + div .radio-icon { color: #01798E; }
+        .radio-card-input:checked + div .radio-icon-color { color: #01798E; }
         .radio-card-input:checked + div .radio-text { color: #01798E; font-weight: 700; }
+        
+        /* Custom Radio Button Indicator */
+        .radio-circle {
+            width: 20px; height: 20px; border: 2px solid #cbd5e1; border-radius: 50%;
+            display: inline-block; position: relative; transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .radio-card-input:checked + div .radio-circle { border-color: #01798E; }
+        .radio-card-input:checked + div .radio-circle::after {
+            content: ''; position: absolute; width: 10px; height: 10px;
+            background: #01798E; border-radius: 50%; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Step Animations */
+        .fade-step { animation: fadeInStep 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes fadeInStep { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
@@ -163,96 +180,139 @@
 <div id="contactModal" class="fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop bg-black/60 p-4 transition-opacity duration-300">
     <div class="bg-white border border-gray-200 rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-2xl animate-pulse-border transform transition-all duration-300 scale-95 modal-body-scroll relative" id="modalContent">
         
-        <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 transition-colors">
+        <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 transition-colors z-10">
             <i class="fas fa-times"></i>
         </button>
 
-        <div class="text-center mb-6">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg" style="background: linear-gradient(135deg, #01798E, #015B6C);">
-                <i class="fas fa-clipboard-check text-2xl text-white"></i>
-            </div>
-            <h3 class="text-2xl font-black text-gray-900 leading-tight mb-2">Case Assessment</h3>
-            <p class="text-gray-500 text-sm font-medium">Please provide your correct information so our assistant can contact you to help resolve your issue.</p>
-        </div>
-
-        <form id="recoveryForm" onsubmit="handleFormSubmit(event)" class="space-y-6 text-left">
+        <form id="recoveryForm" onsubmit="handleFormSubmit(event)" class="text-left">
             
-            <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                <label class="block text-sm font-bold text-gray-900 mb-3">
-                    1. Please tell me, roughly speaking, how many US dollars you were scammed out of.
-                </label>
-                <div class="grid grid-cols-2 gap-3">
-                    <label class="cursor-pointer">
-                        <input type="radio" name="scam_amount" value="less_5000" class="peer sr-only radio-card-input" required>
-                        <div class="p-3 border-2 border-gray-200 rounded-xl transition-all text-center hover:border-gray-300 bg-white shadow-sm h-full flex items-center justify-center">
-                            <span class="radio-text text-sm font-semibold text-gray-600">Less than $5,000!</span>
-                        </div>
-                    </label>
-                    <label class="cursor-pointer">
-                        <input type="radio" name="scam_amount" value="over_5000" class="peer sr-only radio-card-input">
-                        <div class="p-3 border-2 border-gray-200 rounded-xl transition-all text-center hover:border-gray-300 bg-white shadow-sm h-full flex items-center justify-center">
-                            <span class="radio-text text-sm font-semibold text-gray-600">Over $5,000!</span>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                <label class="block text-sm font-bold text-gray-900 mb-3">
-                    2. Please tell me exactly how you were deceived!
-                </label>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <label class="cursor-pointer">
-                        <input type="radio" name="scam_method" value="crypto" class="peer sr-only radio-card-input" required>
-                        <div class="p-3 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-3 hover:border-gray-300 bg-white shadow-sm h-full">
-                            <i class="fas fa-chart-pie text-gray-400 radio-icon text-lg"></i>
-                            <span class="radio-text text-xs font-semibold text-gray-600 leading-tight">By investing in stocks & crypto!</span>
-                        </div>
-                    </label>
-                    <label class="cursor-pointer">
-                        <input type="radio" name="scam_method" value="emotions" class="peer sr-only radio-card-input">
-                        <div class="p-3 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-3 hover:border-gray-300 bg-white shadow-sm h-full">
-                            <i class="fas fa-heart-crack text-gray-400 radio-icon text-lg"></i>
-                            <span class="radio-text text-xs font-semibold text-gray-600 leading-tight">Exploiting Emotions for Fraud</span>
-                        </div>
-                    </label>
-                    <label class="cursor-pointer">
-                        <input type="radio" name="scam_method" value="tasks" class="peer sr-only radio-card-input">
-                        <div class="p-3 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-3 hover:border-gray-300 bg-white shadow-sm h-full">
-                            <i class="fas fa-list-check text-gray-400 radio-icon text-lg"></i>
-                            <span class="radio-text text-xs font-semibold text-gray-600 leading-tight">Committing Fraud Through Task-Based Scams</span>
-                        </div>
-                    </label>
-                    <label class="cursor-pointer">
-                        <input type="radio" name="scam_method" value="other" class="peer sr-only radio-card-input">
-                        <div class="p-3 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-3 hover:border-gray-300 bg-white shadow-sm h-full">
-                            <i class="fas fa-ellipsis text-gray-400 radio-icon text-lg"></i>
-                            <span class="radio-text text-xs font-semibold text-gray-600 leading-tight">Other Types</span>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 gap-4">
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i class="fas fa-user text-gray-400"></i>
+            <div id="step-1" class="form-step fade-step">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center gap-2 bg-teal-50 text-teal-600 px-3 py-1 rounded-full text-xs font-bold mb-4 uppercase tracking-wider">
+                        <i class="fas fa-spinner fa-spin"></i> Question 1 of 2
                     </div>
-                    <input type="text" id="userName" required class="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all" placeholder="Your Name">
+                    <h3 class="text-2xl font-black text-gray-900 leading-tight mb-2">Case Assessment</h3>
+                    <p class="text-gray-500 text-sm font-medium">Please answer a few quick questions so we can assist you better.</p>
                 </div>
-                
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i class="fab fa-whatsapp text-gray-400 text-lg"></i>
+
+                <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                    <label class="block text-base font-bold text-gray-900 mb-4">
+                        Please tell me, roughly speaking, how many US dollars you were scammed out of.
+                    </label>
+                    <div class="grid grid-cols-1 gap-3">
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="scam_amount" value="less_5000" class="peer sr-only radio-card-input" required>
+                            <div class="p-4 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-3 group-hover:border-teal-400 bg-white shadow-sm h-full">
+                                <span class="radio-circle"></span>
+                                <span class="radio-text text-sm font-semibold text-gray-600">Less than $5,000!</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="scam_amount" value="over_5000" class="peer sr-only radio-card-input">
+                            <div class="p-4 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-3 group-hover:border-teal-400 bg-white shadow-sm h-full">
+                                <span class="radio-circle"></span>
+                                <span class="radio-text text-sm font-semibold text-gray-600">Over $5,000!</span>
+                            </div>
+                        </label>
                     </div>
-                    <input type="tel" id="userPhone" required class="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all" placeholder="WhatsApp Number">
                 </div>
             </div>
 
-            <button type="submit" class="w-full btn-ripple flex justify-center items-center gap-2 text-white py-4 rounded-xl text-base font-black transition-all duration-300 shadow-xl hover:-translate-y-1" style="background:linear-gradient(to right,#CC313B,#B52B34);box-shadow:0 10px 20px rgba(204,49,59,0.25);">
-                Submit to Connect
-                <i class="fas fa-arrow-right"></i>
-            </button>
+            <div id="step-2" class="form-step fade-step hidden">
+                <div class="text-center mb-6">
+                    <button type="button" onclick="goToStep(1)" class="absolute top-5 left-5 text-gray-400 hover:text-gray-700 text-sm font-medium flex items-center gap-1 transition-colors">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <div class="inline-flex items-center gap-2 bg-teal-50 text-teal-600 px-3 py-1 rounded-full text-xs font-bold mb-4 uppercase tracking-wider">
+                        <i class="fas fa-spinner fa-spin"></i> Question 2 of 2
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 leading-tight mb-2">Scam Details</h3>
+                </div>
+
+                <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                    <label class="block text-base font-bold text-gray-900 mb-4">
+                        Please tell me exactly how you were deceived!
+                    </label>
+                    <div class="grid grid-cols-1 gap-3">
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="scam_method" value="crypto" class="peer sr-only radio-card-input" required>
+                            <div class="p-4 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-4 group-hover:border-teal-400 bg-white shadow-sm h-full">
+                                <span class="radio-circle"></span>
+                                <i class="fas fa-chart-pie text-gray-400 radio-icon-color text-xl w-6 text-center"></i>
+                                <span class="radio-text text-sm font-semibold text-gray-600 leading-tight">By investing in stocks & cryptocurrencies!</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="scam_method" value="emotions" class="peer sr-only radio-card-input">
+                            <div class="p-4 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-4 group-hover:border-teal-400 bg-white shadow-sm h-full">
+                                <span class="radio-circle"></span>
+                                <i class="fas fa-heart-crack text-gray-400 radio-icon-color text-xl w-6 text-center"></i>
+                                <span class="radio-text text-sm font-semibold text-gray-600 leading-tight">Exploiting Emotions for Fraud</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="scam_method" value="tasks" class="peer sr-only radio-card-input">
+                            <div class="p-4 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-4 group-hover:border-teal-400 bg-white shadow-sm h-full">
+                                <span class="radio-circle"></span>
+                                <i class="fas fa-list-check text-gray-400 radio-icon-color text-xl w-6 text-center"></i>
+                                <span class="radio-text text-sm font-semibold text-gray-600 leading-tight">Committing Fraud Through Task-Based Scams</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="scam_method" value="other" class="peer sr-only radio-card-input">
+                            <div class="p-4 border-2 border-gray-200 rounded-xl transition-all flex items-center gap-4 group-hover:border-teal-400 bg-white shadow-sm h-full">
+                                <span class="radio-circle"></span>
+                                <i class="fas fa-ellipsis text-gray-400 radio-icon-color text-xl w-6 text-center"></i>
+                                <span class="radio-text text-sm font-semibold text-gray-600 leading-tight">Other Types</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="step-3" class="form-step fade-step hidden">
+                <div class="text-center mb-6">
+                    <button type="button" onclick="goToStep(2)" class="absolute top-5 left-5 text-gray-400 hover:text-gray-700 text-sm font-medium flex items-center gap-1 transition-colors">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mb-6">
+                        <div class="bg-green-500 h-1.5 rounded-full w-full"></div>
+                    </div>
+                    
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl" style="background: linear-gradient(135deg, #CC313B, #B52B34);">
+                        <i class="fas fa-user-shield text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 leading-tight mb-2">Final Step: Connect</h3>
+                    <p class="text-gray-500 text-sm font-medium px-4">Please correctly fill in your information so our assistant can call you to resolve your problem immediately.</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-5 mb-6 bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Your Name</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-user text-gray-400"></i>
+                            </div>
+                            <input type="text" id="userName" required class="w-full pl-11 pr-4 py-3.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all shadow-sm" placeholder="e.g. John Doe">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">WhatsApp Number</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fab fa-whatsapp text-gray-400 text-lg"></i>
+                            </div>
+                            <input type="text" id="userPhone" required pattern="\d+" oninput="this.value = this.value.replace(/\D/g, '')" class="w-full pl-11 pr-4 py-3.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all shadow-sm" placeholder="Numbers only">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full btn-ripple flex justify-center items-center gap-2 text-white py-4 rounded-xl text-lg font-black transition-all duration-300 shadow-2xl hover:-translate-y-1 animate-pulse" style="background:linear-gradient(to right,#CC313B,#B52B34);box-shadow:0 10px 25px rgba(204,49,59,0.35);">
+                    Submit to Connect
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </form>
     </div>
 </div>
@@ -944,14 +1004,18 @@
         window.open('https://ffeekz.cc/NUxNKz', '_blank'); 
     }
 
+    /* Modal Display Logic */
     function openModal() {        
         var modal = document.getElementById('contactModal');        
         var content = document.getElementById('modalContent');
         
+        // Reset form to Step 1 every time it is opened
+        document.getElementById('recoveryForm').reset();
+        goToStep(1);
+
         modal.classList.remove('hidden');        
         modal.classList.add('flex');        
         
-        // Trigger small animation pop
         setTimeout(function() {
             modal.style.opacity = '1';
             content.classList.remove('scale-95');
@@ -973,25 +1037,42 @@
             modal.classList.add('hidden');        
             modal.classList.remove('flex');        
             document.body.style.overflow = '';    
-        }, 300); // Wait for transition
+        }, 300);
     }
 
+    /* Step-by-Step Logic */
+    function goToStep(stepNumber) {
+        document.querySelectorAll('.form-step').forEach(step => {
+            step.classList.add('hidden');
+        });
+        document.getElementById('step-' + stepNumber).classList.remove('hidden');
+    }
+
+    // Auto-advance for Question 1
+    document.querySelectorAll('input[name="scam_amount"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Small delay for visual feedback before transitioning
+            setTimeout(() => { goToStep(2); }, 350);
+        });
+    });
+
+    // Auto-advance for Question 2
+    document.querySelectorAll('input[name="scam_method"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Small delay for visual feedback before transitioning
+            setTimeout(() => { goToStep(3); }, 350);
+        });
+    });
+
+    /* Final Submit Logic */
     function handleFormSubmit(e) {
         e.preventDefault();
-        
-        // Optional: you can gather the data here if you need to post it somewhere first
-        const amount = document.querySelector('input[name="scam_amount"]:checked').value;
-        const method = document.querySelector('input[name="scam_method"]:checked').value;
-        const name = document.getElementById('userName').value;
-        const phone = document.getElementById('userPhone').value;
-        
-        console.log("Form submitted with: ", {amount, method, name, phone});
-
-        // Close modal and call the requested m1() function
+        // Call external URL
         closeModal();
         m1();
     }
 
+    /* Outside Click & Escape Key to close */
     document.getElementById('contactModal').addEventListener('click', function(e) {        
         if (e.target === this) { closeModal(); }    
     });    
@@ -999,6 +1080,7 @@
         if (e.key === 'Escape') { closeModal(); }    
     });
 
+    /* Smooth Scrolling */
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {        
         anchor.addEventListener('click', function(e) {            
             var target = document.querySelector(this.getAttribute('href'));            
@@ -1006,12 +1088,14 @@
         });    
     });
 
+    /* Navbar Scrolled effect */
     var navbar = document.getElementById('navbar');    
     window.addEventListener('scroll', function() {        
         if (window.pageYOffset > 100) { navbar.classList.add('navbar-scrolled'); }        
         else { navbar.classList.remove('navbar-scrolled'); }    
     });
 
+    /* Fade in section intersection observer */
     var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };    
     var observer = new IntersectionObserver(function(entries) {        
         entries.forEach(function(entry) {            
