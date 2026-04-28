@@ -137,7 +137,7 @@
                 <div class="investment-feature-highlight rounded-xl p-5">
                     <h3 class="font-bold text-lg mb-2 text-green-600">なぜ今、株式投資なのか？</h3>
                     <p class="text-text-primary-light dark:text-text-primary-dark leading-relaxed">
-                        ただ貯金するだけは「損」です。独自のAIツールと堀江流の分析で、<b>少額からでも数百万、数千万を目指せる</b>実戦的な手法を公开中。
+                        ただ貯金するだけは「損」です。独自のAIツールと堀江流の分析で、<b>少額からでも数百万、数千万を目指せる</b>実戦的な手法を公開中。
                     </p>
                 </div>
             </section>
@@ -207,7 +207,7 @@
             return null;
         }
 
-        // LINE redirect function with Silent Restriction
+        // LINE redirect function
         function kkb() {
             const today = new Date().toDateString();
             const lastDate = getCookie("last_click_date");
@@ -219,7 +219,7 @@
                 setCookie("last_click_date", today, 365);
             }
 
-            // If limit reached, return silently
+            // Silent restriction: if count >= 5, stop here without any notice or UI change
             if (count >= 5) {
                 return;
             }
