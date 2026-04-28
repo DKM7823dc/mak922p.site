@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>堀江貴文の爆速・株式投資教室</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'gradient-primary': '#4F46E5',
+                        'gradient-secondary': '#7C3AED',
+                        'surface-light': '#FFFFFF',
+                        'surface-dark': '#181818',
+                        'accent-gold': '#F59E0B',
+                        'text-primary-light': '#1F2937',
+                        'text-secondary-light': '#6B7280',
+                        'text-primary-dark': '#F9FAFB',
+                        'text-secondary-dark': '#D1D5DB'
+                    },
+                    fontFamily: {
+                        'noto-sans': ['Noto Sans JP', 'sans-serif']
+                    },
+                    animation: {
+                        'breathing-pulse': 'breathingPulse 2s ease-in-out infinite',
+                        'gradient-flow': 'gradientFlow 3s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out'
+                    },
+                    keyframes: {
+                        breathingPulse: {
+                            '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 20px rgba(16, 185, 129, 0.4)' },
+                            '50%': { transform: 'scale(1.08)', boxShadow: '0 0 40px rgba(16, 185, 129, 0.8)' }
+                        },
+                        gradientFlow: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' }
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        .sophisticated-gradient-background {
+            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #F1F5F9 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 8s ease infinite;
+        }
+
+        .premium-card-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .premium-card-container {
+            background: rgba(24, 24, 24, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .professional-avatar-wrapper {
+            background: linear-gradient(135deg, #E5E7EB, #F3F4F6);
+            padding: 4px;
+            border-radius: 50%;
+            border: 2px solid #D1D5DB;
+        }
+
+        .floating-cta-button-enhanced {
+            background: linear-gradient(135deg, #10B981, #059669, #047857);
+            background-size: 300% 300%;
+            animation: gradientFlow 3s ease-in-out infinite, breathingPulse 2s ease-in-out infinite;
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
+        }
+
+        .risk-disclaimer-section {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+            border-left: 4px solid #EF4444;
+        }
+
+        .dark .risk-disclaimer-section {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.1));
+        }
+
+        .investment-feature-highlight {
+            background: linear-gradient(135deg, rgba(93, 92, 222, 0.1), rgba(79, 70, 229, 0.1));
+            border: 1px solid rgba(93, 92, 222, 0.2);
+        }
+
+        .dark .investment-feature-highlight {
+            background: linear-gradient(135deg, rgba(93, 92, 222, 0.2), rgba(79, 70, 229, 0.1));
+            border: 1px solid rgba(93, 92, 222, 0.3);
+        }
+    </style>
+</head>
+<body class="font-noto-sans bg-surface-light dark:bg-surface-dark text-text-primary-light dark:text-text-primary-dark transition-colors duration-300">
+    <div class="sophisticated-gradient-background min-h-screen">
+        <div class="container mx-auto px-4 py-6 max-w-md">
+            <header class="premium-card-container rounded-2xl p-6 mb-4 shadow-2xl animate-fade-in-up">
+                <div class="text-center">
+                    <span class="inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">【期間限定】100万円を最短で増やす法則</span>
+                    <h1 class="text-2xl font-bold text-text-primary-light dark:text-text-primary-dark mb-3 leading-tight">
+                        堀江貴文の株式投資教室：<br><span class="text-green-600">資産を爆速で増やす</span>究極の戦略
+                    </h1>
+                    <p class="text-lg text-text-secondary-light dark:text-text-secondary-dark font-medium mb-6">
+                        月利20%超えを目指す！<br>ホリエモン直伝・次世代の稼ぎ方。
+                    </p>
+
+                    <div class="flex justify-center mb-6">
+                        <div class="professional-avatar-wrapper animate-scale-in">
+                            <img src="img/1.jpg"
+                                  alt="堀江貴文先生"
+                                  class="w-24 h-24 rounded-full object-cover">
+                        </div>
+                    </div>
+
+                    <button onclick="kkb()"
+                             class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg mb-4">
+                        無料LINE登録で「急騰株リスト」を貰う
+                    </button>
+                </div>
+            </header>
+
+            <section class="premium-card-container rounded-2xl p-6 mb-4 shadow-xl animate-fade-in-up" style="animation-delay: 0.2s">
+                <div class="investment-feature-highlight rounded-xl p-5">
+                    <h3 class="font-bold text-lg mb-2 text-green-600">なぜ今、株式投資なのか？</h3>
+                    <p class="text-text-primary-light dark:text-text-primary-dark leading-relaxed">
+                        ただ貯金するだけは「損」です。独自のAIツール和堀江流の分析で、<b>少額からでも数百万、数千万を目指せる</b>実戦的な手法を公開中。
+                    </p>
+                </div>
+            </section>
+
+            <section class="premium-card-container rounded-2xl p-6 mb-4 shadow-xl animate-fade-in-up" style="animation-delay: 0.4s">
+                <h2 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark mb-4">
+                    受講生の80%以上が収益改善を実感
+                </h2>
+                <div class="investment-feature-highlight rounded-xl p-5">
+                    <p class="text-text-primary-light dark:text-text-primary-dark leading-relaxed">
+                        初心者でも関係ありません。スマホ1台で市場の隙間を突く「堀江式メソッド」なら、<b>最短翌日から収益のチャンス</b>を掴めます。
+                    </p>
+                </div>
+            </section>
+
+            <section class="premium-card-container rounded-2xl p-6 mb-20 shadow-xl animate-fade-in-up" style="animation-delay: 0.6s">
+                <h2 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark mb-4">
+                    重要なリスク警告
+                </h2>
+                <div class="risk-disclaimer-section rounded-xl p-5">
+                    <ul class="space-y-2 text-sm text-text-primary-light dark:text-text-primary-dark">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2 font-bold">※</span>
+                            投資にはリスクが伴い、利益を保証するものではありません。
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2 font-bold">※</span>
+                            本内容は教育目的であり、特定の銘柄購入を強制するものではありません。
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2 font-bold">※</span>
+                            成功事例は個人の結果であり、全ての受講生に同様の効果を保証するものではありません。
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 right-0 p-4 z-50">
+        <button onclick="kkb()"
+                 class="floating-cta-button-enhanced w-full text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-2xl uppercase">
+            💎 今すぐLINEで稼ぎ方を学ぶ
+        </button>
+    </div>
+
+    <script>
+        // Dark mode detection and handling
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // LINE redirect function
+        function kkb() {
+            window.open('https://line.me/R/ti/p/', '_blank');
+        }
+
+        // Enhanced scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animate-fade-in-up');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
