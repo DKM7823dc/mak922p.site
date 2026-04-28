@@ -396,7 +396,7 @@
     <div class="container">
         <header>
             <h1>用户交叉关联分析系统</h1>
-            <p class="subtitle">跨场景匹配：注册IP × 登录IP × 下单IP 两两交叉关联追踪</p>
+            <p class="subtitle">跨场景匹配：注册IP × 登录IP × 下单IP 两两交叉无死角碰撞</p>
         </header>
         
         <div class="main-content">
@@ -407,7 +407,7 @@
                     <h3>订单数据 (order.json)</h3>
                     <div class="upload-area" id="orderUploadArea">
                         <p>点击或拖拽文件到此处上传</p>
-                        <p><small>支持JSON文件，应包含用户ID、下单ip等字段</small></p>
+                        <p><small>需包含：用户ID、下单ip 等字段</small></p>
                     </div>
                     <div class="file-info" id="orderFileInfo">未选择文件</div>
                     <input type="file" id="orderFileInput" accept=".json" style="display: none;">
@@ -417,7 +417,7 @@
                     <h3>用户数据 (user.json)</h3>
                     <div class="upload-area" id="userUploadArea">
                         <p>点击或拖拽文件到此处上传</p>
-                        <p><small>支持JSON文件，应包含用户ID、注册IP、最后登录IP等字段</small></p>
+                        <p><small>需包含：用户ID、注册ip、登录ip 等字段</small></p>
                     </div>
                     <div class="file-info" id="userFileInfo">未选择文件</div>
                     <input type="file" id="userFileInput" accept=".json" style="display: none;">
@@ -463,24 +463,23 @@
                             </div>
                             <div id="searchResultArea">
                                 <p style="color: #666; text-align: center; margin-top: 30px;">
-                                    💡 <b>底层逻辑说明</b>：只要两个用户的任何类型IP（注册、登录、下单）发生重合，即视为存在关联。<br>例如：A的登录IP = B的下单IP，系统将自动抓取并高亮显示该匹配路径。
+                                    💡 <b>底层交叉逻辑</b>：系统已将所有用户的 <span style="color:#d32f2f">注册IP</span>、<span style="color:#d32f2f">登录IP</span>、<span style="color:#d32f2f">下单IP</span> 投入底池。<br>
+                                    只要任意两个用户的任何类型IP发生重合（如A的登录IP = B的下单IP），即视为关联。<br><br>
+                                    👉 请点击上方 <b style="color:#28a745">“一键查看全部关联”</b> 按钮，或输入特定用户ID进行查询。
                                 </p>
                             </div>
                         </div>
 
                         <div class="tab-content" id="strong-pairs">
-                            <div id="strongPairsList">
-                                </div>
+                            <div id="strongPairsList"></div>
                         </div>
                         
                         <div class="tab-content" id="user-groups">
-                            <div id="userGroupsList">
-                                </div>
+                            <div id="userGroupsList"></div>
                         </div>
                         
                         <div class="tab-content" id="statistics">
-                            <div id="statisticsContent">
-                                </div>
+                            <div id="statisticsContent"></div>
                         </div>
                     </div>
                     
@@ -498,15 +497,15 @@
                     </ol>
                     <p style="margin-top: 20px;"><strong>JSON文件格式要求：</strong></p>
                     <ul style="margin-top: 5px; padding-left: 20px;">
-                        <li>订单数据：应包含<code>用户ID</code>和<code>下单ip</code>字段</li>
-                        <li>用户数据：应包含<code>用户ID</code>、<code>注册IP</code>和<code>最后登录IP</code>字段</li>
+                        <li>订单数据：包含<code>用户ID</code>、<code>下单ip</code></li>
+                        <li>用户数据：包含<code>用户ID</code>、<code>注册ip</code>、<code>登录ip</code> (大小写兼容)</li>
                     </ul>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p>用户交叉关联分析系统 &copy; 2026 | 基于全场景IP交叉匹配</p>
+            <p>用户交叉关联分析系统 &copy; 2026 | 基于全场景IP交叉无死角匹配</p>
         </footer>
     </div>
 
@@ -590,7 +589,6 @@
         async function autoLoadJsonFiles() {
             let filesLoaded = 0;
             try {
-                // 读取 order.json
                 const orderRes = await fetch('./order.json');
                 if (orderRes.ok) {
                     orderData = await orderRes.json();
@@ -599,7 +597,6 @@
                     filesLoaded++;
                 }
 
-                // 读取 user.json
                 const userRes = await fetch('./user.json');
                 if (userRes.ok) {
                     userData = await userRes.json();
@@ -608,13 +605,12 @@
                     filesLoaded++;
                 }
 
-                // 如果两个文件都加载成功，自动开始分析
                 if (filesLoaded === 2 && orderData && userData) {
                     analyzeBtn.disabled = false;
                     startAnalysis();
                 }
             } catch (err) {
-                console.log("无法自动加载本地JSON文件，可能是未在Web服务器环境运行。请手动上传。");
+                console.log("无法自动加载本地JSON文件，请手动上传。");
             }
         }
 
@@ -643,11 +639,11 @@
                 for (const ip in sharedIps) {
                     const info = sharedIps[ip];
                     
-                    // 明确指示出 跨类型 匹配的逻辑
+                    // 直观指示出跨类型匹配的逻辑
                     ipDetails += `
                         <div style="background:#f4f6f9; padding:12px; margin-top:8px; border-radius:6px; border-left: 4px solid #4b6cb7;">
                             <div style="font-weight: bold; margin-bottom: 8px; color: #333;">
-                                <i style="color:#4b6cb7;">🌐 发现交叉匹配 IP：</i> <span style="letter-spacing: 1px;">${ip}</span>
+                                <i style="color:#4b6cb7;">🌐 交叉点 IP：</i> <span style="letter-spacing: 1px;">${ip}</span>
                             </div>
                             <div style="display: flex; align-items: center; justify-content: center; font-size: 0.95em; color: #333; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #eee;">
                                 <span style="flex:1; text-align:right;">
@@ -671,7 +667,7 @@
                 html += `
                     <div class="relation-pair" style="margin-bottom:15px; padding:15px; background: #fff; border: 1px solid #e0e0e0; border-left: 4px solid #ff9800;">
                         <div style="font-weight:bold; font-size: 1.1em; margin-bottom:5px; color:#333;">
-                            ${index + 1}. 关联对象：<span style="color: #d32f2f;">${otherId}</span>
+                            ${index + 1}. 关联嫌疑人：<span style="color: #d32f2f;">${otherId}</span>
                         </div>
                         ${ipDetails}
                     </div>
@@ -711,7 +707,7 @@
             searchResultArea.innerHTML = generateUserRelationHTML(searchId, relations);
         }
 
-        // 一键全部查询
+        // 一键全部查询（需手动点击触发）
         function queryAllUsers() {
             if (!analysisResults || !analysisResults.userRelations) {
                 searchResultArea.innerHTML = '<p style="color:#d32f2f; text-align:center; margin-top:20px; font-weight:bold;">⚠️ 请先等待数据分析完成</p>';
@@ -738,7 +734,7 @@
                         一键扫描完毕：共抓取到 <span style="color:#e53935; font-size: 1.5rem;">${usersWithRelations.length}</span> 个存在交叉异常的用户。
                     </h3>
                     <p style="margin-top: 8px; color: #555; font-size: 0.95em;">
-                        以下列表展示了每个涉嫌关联的用户，以及与其重合的具体 IP 类型组合。
+                        以下列表展示了每个涉嫌关联的用户，以及与其重合的具体跨场景 IP 身份匹配明细。
                     </p>
                 </div>
             `;
@@ -757,15 +753,12 @@
                 e.preventDefault();
                 uploadArea.classList.add('highlight');
             });
-            
             uploadArea.addEventListener('dragleave', () => {
                 uploadArea.classList.remove('highlight');
             });
-            
             uploadArea.addEventListener('drop', (e) => {
                 e.preventDefault();
                 uploadArea.classList.remove('highlight');
-                
                 if (e.dataTransfer.files.length) {
                     const file = e.dataTransfer.files[0];
                     if (file.name.endsWith('.json')) {
@@ -777,27 +770,20 @@
             });
         }
         
-        // 处理文件选择
         function handleFileSelect(event, fileType) {
             const file = event.target.files[0];
-            if (file) {
-                handleFile(file, fileType);
-            }
+            if (file) handleFile(file, fileType);
         }
         
-        // 处理文件
         function handleFile(file, fileType) {
             if (!file.name.endsWith('.json')) {
                 showError('请选择JSON格式的文件');
                 return;
             }
-            
             const reader = new FileReader();
-            
             reader.onload = function(e) {
                 try {
                     const data = JSON.parse(e.target.result);
-                    
                     if (fileType === 'order') {
                         orderData = data;
                         orderFileInfo.textContent = `已加载: ${file.name} (${data.length} 条记录)`;
@@ -805,51 +791,38 @@
                         userData = data;
                         userFileInfo.textContent = `已加载: ${file.name} (${data.length} 条记录)`;
                     }
-                    
-                    // 检查是否两个文件都已加载
                     checkFilesLoaded();
                 } catch (err) {
                     showError(`解析JSON文件失败: ${err.message}`);
                 }
             };
-            
             reader.onerror = function() {
                 showError('读取文件失败');
             };
-            
             reader.readAsText(file);
         }
         
-        // 检查文件是否都已加载
         function checkFilesLoaded() {
-            if (orderData && userData) {
-                analyzeBtn.disabled = false;
-            }
+            if (orderData && userData) analyzeBtn.disabled = false;
         }
         
-        // 开始分析
         function startAnalysis() {
-            // 重置UI
             hideError();
             progressContainer.style.display = 'block';
             loadingIndicator.style.display = 'block';
             analyzeBtn.disabled = true;
             
-            // 模拟进度更新
             simulateProgress();
             
-            // 开始分析（使用setTimeout避免阻塞UI）
             setTimeout(() => {
                 try {
                     analysisResults = analyzeUserRelations(orderData, userData);
                     displayResults(analysisResults);
                     
-                    // 显示结果区域
                     resultsSection.style.display = 'block';
                     initialMessage.style.display = 'none';
                     downloadReport.style.display = 'inline-block';
                     
-                    // 隐藏进度条
                     progressContainer.style.display = 'none';
                     loadingIndicator.style.display = 'none';
                     analyzeBtn.disabled = false;
@@ -862,7 +835,6 @@
             }, 100);
         }
         
-        // 模拟进度条
         function simulateProgress() {
             let progress = 0;
             const interval = setInterval(() => {
@@ -874,33 +846,26 @@
                 } else if (progress <= 40) {
                     progressText.textContent = '聚合 注册IP/登录IP/下单IP 数据池...';
                 } else if (progress <= 60) {
-                    progressText.textContent = '两两交叉匹配碰撞中...';
+                    progressText.textContent = '两两无死角交叉碰撞中...';
                 } else if (progress <= 80) {
                     progressText.textContent = '正在构建交叉关联网络...';
                 } else {
                     progressText.textContent = '正在生成可视化报告...';
                 }
                 
-                if (progress >= 100) {
-                    clearInterval(interval);
-                }
+                if (progress >= 100) clearInterval(interval);
             }, 100);
         }
         
         // ==========================================
-        // 核心分析逻辑：基于 IP 池的无差别交叉碰撞
+        // 核心分析逻辑：基于 IP 池的全场景无差别交叉碰撞
         // ==========================================
         function analyzeUserRelations(orderData, userData) {
             
-            // 验证IP地址是否有效
             function isValidIP(ip) {
-                if (ip === null || ip === undefined || ip === '') {
-                    return false;
-                }
+                if (ip === null || ip === undefined || ip === '') return false;
                 const ipStr = String(ip).trim();
-                if (!ipStr || ipStr.toLowerCase() === 'nan' || ipStr.toLowerCase() === 'null' || ipStr === '') {
-                    return false;
-                }
+                if (!ipStr || ipStr.toLowerCase() === 'nan' || ipStr.toLowerCase() === 'null' || ipStr === '') return false;
                 return true;
             }
             
@@ -908,13 +873,14 @@
             const userToIps = {};  // 格式：{ 用户ID: { IP地址: ['注册IP', '下单IP'] } }
             const ipToUsers = {};  // 格式：{ IP地址: { 用户ID: ['注册IP', '下单IP'] } }
             
-            // 1. 处理用户数据 (提取注册IP, 登录IP)
+            // 1. 处理用户数据 (兼容各种大小写的 注册ip, 登录ip)
             for (const row of userData) {
                 const userId = String(row['用户ID'] || '').trim();
                 if (!userId || userId === 'nan') continue;
                 
-                const regIp = row['注册IP'];
-                const loginIp = row['最后登录IP'];
+                // 解决之前只有下单IP匹配的Bug：兼容各种可能的字段命名
+                const regIp = row['注册IP'] || row['注册ip'] || row['注册Ip'] || row['register_ip'];
+                const loginIp = row['登录IP'] || row['登录ip'] || row['最后登录IP'] || row['最后登录ip'] || row['login_ip'];
                 
                 if (!userToIps[userId]) userToIps[userId] = {};
                 
@@ -946,7 +912,8 @@
                 const userId = String(row['用户ID'] || '').trim();
                 if (!userId || userId === 'nan') continue;
                 
-                const orderIp = row['下单ip'];
+                // 兼容不同大小写
+                const orderIp = row['下单ip'] || row['下单IP'] || row['下单Ip'] || row['order_ip'];
                 
                 // 灌入下单IP
                 if (isValidIP(orderIp)) {
@@ -967,9 +934,9 @@
             
             for (const userId in userToIps) {
                 userRelations[userId] = {};
-                const userIps = Object.keys(userToIps[userId]); // 该用户有过的所有IP
+                const userIps = Object.keys(userToIps[userId]); // 该用户有过的所有IP (3种类型可能都在这里)
                 
-                // 【核心逻辑】：只要该用户的任何一个IP，也存在于其他用户的记录中，即为关联。完全无视IP的具体类型。
+                // 【核心交叉逻辑】：只要该用户的任何一个IP，也存在于其他用户的记录中，即为关联。完全无视IP的具体类型。
                 for (const ip of userIps) {
                     const otherUsers = ipToUsers[ip]; // 找出使用了这个IP的所有人
                     
@@ -1110,8 +1077,13 @@
             displayUserGroups(results.userGroups, results.userToIps);
             displayStatistics(results);
             
-            // 自动触发生一次“一键全部查询”让用户直接看到最直观的结果
-            queryAllUsers();
+            // 注意：已移除自动触发 queryAllUsers(); 需用户手动点击。
+            searchResultArea.innerHTML = `
+                <div style="text-align:center; padding: 40px; background: #f0f4ff; border-radius: 8px; border: 1px dashed #1a73e8;">
+                    <h3 style="color: #1a73e8; margin-bottom: 10px;">✅ 数据分析已完成！</h3>
+                    <p style="color: #555;">请点击上方的 <b>“一键查看全部关联”</b> 按钮开始浏览，<br>或输入特定的用户 ID 进行定向查询。</p>
+                </div>
+            `;
         }
         
         // 显示统计卡片
