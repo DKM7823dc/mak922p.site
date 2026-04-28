@@ -395,8 +395,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>用户关联关系分析工具</h1>
-            <p class="subtitle">基于IP地址分析用户关联关系，识别潜在风险群体</p>
+            <h1>用户交叉关联分析系统</h1>
+            <p class="subtitle">跨场景匹配：注册IP × 登录IP × 下单IP 两两交叉关联追踪</p>
         </header>
         
         <div class="main-content">
@@ -423,7 +423,7 @@
                     <input type="file" id="userFileInput" accept=".json" style="display: none;">
                 </div>
                 
-                <button class="btn" id="analyzeBtn" disabled>开始分析</button>
+                <button class="btn" id="analyzeBtn" disabled>开始交叉比对分析</button>
                 
                 <div class="progress-container" id="progressContainer">
                     <div class="progress-bar">
@@ -449,20 +449,22 @@
                     
                     <div class="tab-container">
                         <div class="tabs">
-                            <div class="tab active" data-tab="user-search">用户查询 (精确/全部)</div>
+                            <div class="tab active" data-tab="user-search">精准关联查询 (推荐)</div>
                             <div class="tab" data-tab="strong-pairs">最强关联对</div>
-                            <div class="tab" data-tab="user-groups">关联用户组</div>
-                            <div class="tab" data-tab="statistics">统计信息</div>
+                            <div class="tab" data-tab="user-groups">群组分析</div>
+                            <div class="tab" data-tab="statistics">全局统计</div>
                         </div>
                         
                         <div class="tab-content active" id="user-search">
                             <div class="search-box">
                                 <input type="text" id="searchUserId" placeholder="输入指定用户ID查询 (例如: U12345)">
-                                <button class="btn" id="searchUserBtn" style="width: auto; margin-top: 0;">指定查询</button>
-                                <button class="btn btn-green" id="queryAllBtn" style="width: auto; margin-top: 0;">一键全部查询</button>
+                                <button class="btn" id="searchUserBtn" style="width: auto; margin-top: 0;">精准查询</button>
+                                <button class="btn btn-green" id="queryAllBtn" style="width: auto; margin-top: 0;">一键查看全部关联</button>
                             </div>
                             <div id="searchResultArea">
-                                <p style="color: #666; text-align: center; margin-top: 30px;">支持查询指定用户的关联，或一键列出所有存在关联的用户。</p>
+                                <p style="color: #666; text-align: center; margin-top: 30px;">
+                                    💡 <b>底层逻辑说明</b>：只要两个用户的任何类型IP（注册、登录、下单）发生重合，即视为存在关联。<br>例如：A的登录IP = B的下单IP，系统将自动抓取并高亮显示该匹配路径。
+                                </p>
                             </div>
                         </div>
 
@@ -482,17 +484,17 @@
                         </div>
                     </div>
                     
-                    <a href="#" class="download-btn" id="downloadReport" style="display: none;">下载完整分析报告</a>
+                    <a href="#" class="download-btn" id="downloadReport" style="display: none;">导出 txt 分析报告</a>
                 </div>
                 
                 <div id="initialMessage">
-                    <h3>欢迎使用用户关联关系分析工具</h3>
+                    <h3>欢迎使用用户交叉关联分析系统</h3>
                     <p>系统将自动尝试加载目录下的 JSON 数据并开始分析。</p>
                     <p style="margin-top:10px; color:#666; font-size:0.9em;">如果未自动加载，请手动执行以下操作：</p>
                     <ol style="margin-top: 10px; padding-left: 20px;">
                         <li>上传订单数据JSON文件（order.json）</li>
                         <li>上传用户数据JSON文件（user.json）</li>
-                        <li>点击"开始分析"按钮</li>
+                        <li>点击"开始交叉比对分析"按钮</li>
                     </ol>
                     <p style="margin-top: 20px;"><strong>JSON文件格式要求：</strong></p>
                     <ul style="margin-top: 5px; padding-left: 20px;">
@@ -504,7 +506,7 @@
         </div>
         
         <footer>
-            <p>用户关联关系分析工具 &copy; 2026 | 基于IP地址分析用户关联关系</p>
+            <p>用户交叉关联分析系统 &copy; 2026 | 基于全场景IP交叉匹配</p>
         </footer>
     </div>
 
@@ -616,7 +618,9 @@
             }
         }
 
-        // 生成核心的HTML结构（用于展示关联匹配详情）
+        // ==========================================
+        // 核心渲染：两两匹配交叉显示的 UI 构造
+        // ==========================================
         function generateUserRelationHTML(targetUserId, relations) {
             // 将关联用户转为数组并按强度排序
             const relatedUsers = Object.keys(relations).map(id => {
@@ -624,9 +628,10 @@
             }).sort((a, b) => b.data.score - a.data.score);
             
             let html = `
-                <div class="user-group" style="margin-bottom: 25px; border-left: 4px solid #1a73e8;">
-                    <h3 style="color: #182848; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">
-                        🎯 用户 <strong>${targetUserId}</strong> (共匹配到 <span style="color:#e53935">${relatedUsers.length}</span> 个关联用户)
+                <div class="user-group" style="margin-bottom: 25px; border-left: 4px solid #1a73e8; background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h3 style="color: #182848; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px; font-size: 1.3rem;">
+                        🔍 分析对象：<strong style="color: #d32f2f;">${targetUserId}</strong> <br>
+                        <span style="font-size: 0.85em; color: #666; font-weight: normal;">该用户与以下 <span style="color:#e53935; font-weight: bold;">${relatedUsers.length}</span> 个用户存在 IP 交叉重合</span>
                     </h3>
             `;
             
@@ -637,23 +642,36 @@
                 let ipDetails = '';
                 for (const ip in sharedIps) {
                     const info = sharedIps[ip];
-                    // 直观展示 3 种 IP 的匹配关系
+                    
+                    // 明确指示出 跨类型 匹配的逻辑
                     ipDetails += `
-                        <div style="background:#fff; padding:10px; margin-top:8px; border-radius:4px; border: 1px solid #e0e0e0;">
-                            <div style="font-weight: bold; margin-bottom: 5px; color: #4b6cb7;">🌐 相同 IP: ${ip}</div>
-                            <div style="display: flex; align-items: center; font-size: 0.95em; color: #555;">
-                                <span style="flex:1; text-align:right;">[${targetUserId}] 的 <b style="color:#d32f2f">${info.user_types.join(' / ')}</b></span>
-                                <span style="margin: 0 15px; color:#999; font-weight:bold;">⟷ 匹配 ⟷</span>
-                                <span style="flex:1; text-align:left;">[${otherId}] 的 <b style="color:#d32f2f">${info.other_types.join(' / ')}</b></span>
+                        <div style="background:#f4f6f9; padding:12px; margin-top:8px; border-radius:6px; border-left: 4px solid #4b6cb7;">
+                            <div style="font-weight: bold; margin-bottom: 8px; color: #333;">
+                                <i style="color:#4b6cb7;">🌐 发现交叉匹配 IP：</i> <span style="letter-spacing: 1px;">${ip}</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: center; font-size: 0.95em; color: #333; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #eee;">
+                                <span style="flex:1; text-align:right;">
+                                    【本用户 ${targetUserId}】的 <br>
+                                    <b style="color:#1a73e8; display:inline-block; margin-top:4px;">[ ${info.user_types.join(' / ')} ]</b>
+                                </span>
+                                
+                                <span style="margin: 0 15px; color:#e53935; font-weight:bold; background: #ffebee; padding: 4px 10px; border-radius: 20px; font-size: 0.85em;">
+                                    ↔ 匹配 ↔
+                                </span>
+                                
+                                <span style="flex:1; text-align:left;">
+                                    【关联对象 ${otherId}】的 <br>
+                                    <b style="color:#1a73e8; display:inline-block; margin-top:4px;">[ ${info.other_types.join(' / ')} ]</b>
+                                </span>
                             </div>
                         </div>
                     `;
                 }
                 
                 html += `
-                    <div class="relation-pair" style="margin-bottom:12px; padding:15px; background: #fdfdfd; border-left: 3px solid #ff9800;">
-                        <div style="font-weight:bold; font-size: 1.05em; margin-bottom:5px; color:#333;">
-                            关联对象 ${index + 1}: ${otherId}
+                    <div class="relation-pair" style="margin-bottom:15px; padding:15px; background: #fff; border: 1px solid #e0e0e0; border-left: 4px solid #ff9800;">
+                        <div style="font-weight:bold; font-size: 1.1em; margin-bottom:5px; color:#333;">
+                            ${index + 1}. 关联对象：<span style="color: #d32f2f;">${otherId}</span>
                         </div>
                         ${ipDetails}
                     </div>
@@ -669,21 +687,23 @@
             const searchId = searchUserIdInput.value.trim();
             
             if (!searchId) {
-                searchResultArea.innerHTML = '<p style="color:#d32f2f; text-align:center; margin-top:20px;">请输入需要查询的用户ID</p>';
+                searchResultArea.innerHTML = '<p style="color:#d32f2f; text-align:center; margin-top:20px; font-weight:bold;">❌ 请输入需要查询的用户ID</p>';
                 return;
             }
             
             if (!analysisResults || !analysisResults.userRelations) {
-                searchResultArea.innerHTML = '<p style="color:#d32f2f; text-align:center; margin-top:20px;">请先等待数据分析完成</p>';
+                searchResultArea.innerHTML = '<p style="color:#d32f2f; text-align:center; margin-top:20px; font-weight:bold;">⚠️ 请先等待数据分析完成</p>';
                 return;
             }
             
             const relations = analysisResults.userRelations[searchId];
             if (!relations || Object.keys(relations).length === 0) {
                 searchResultArea.innerHTML = `
-                    <div style="text-align:center; padding: 30px; background: #f9f9f9; border-radius: 8px; margin-top: 20px;">
-                        <h3 style="color: #666;">未找到用户 <strong>${searchId}</strong> 的关联信息</h3>
-                        <p style="margin-top:10px; font-size:0.9em;">可能是该用户不存在，或者其注册/登录/下单IP未与其他任何用户重合。</p>
+                    <div style="text-align:center; padding: 40px; background: #f9f9f9; border-radius: 8px; margin-top: 20px; border: 1px solid #eee;">
+                        <h3 style="color: #28a745;">✅ 用户 <strong>${searchId}</strong> 很安全</h3>
+                        <p style="margin-top:10px; font-size:1em; color:#666;">
+                            系统遍历了该用户的所有 IP（注册IP、登录IP、下单IP），<br>未发现与任何其他用户存在 IP 交集。
+                        </p>
                     </div>`;
                 return;
             }
@@ -694,7 +714,7 @@
         // 一键全部查询
         function queryAllUsers() {
             if (!analysisResults || !analysisResults.userRelations) {
-                searchResultArea.innerHTML = '<p style="color:#d32f2f; text-align:center; margin-top:20px;">请先等待数据分析完成</p>';
+                searchResultArea.innerHTML = '<p style="color:#d32f2f; text-align:center; margin-top:20px; font-weight:bold;">⚠️ 请先等待数据分析完成</p>';
                 return;
             }
 
@@ -705,15 +725,21 @@
 
             if (usersWithRelations.length === 0) {
                 searchResultArea.innerHTML = `
-                    <div style="text-align:center; padding: 30px; background: #f9f9f9; border-radius: 8px; margin-top: 20px;">
-                        <h3 style="color: #666;">当前数据中没有发现任何存在关联的用户。</h3>
+                    <div style="text-align:center; padding: 40px; background: #f9f9f9; border-radius: 8px; margin-top: 20px; border: 1px solid #eee;">
+                        <h3 style="color: #28a745;">✅ 所有用户都很安全</h3>
+                        <p style="margin-top:10px; color:#666;">当前数据中没有发现任何两两存在 IP 交叉关联的用户。</p>
                     </div>`;
                 return;
             }
 
             let html = `
-                <div style="margin: 20px 0 20px 0; padding: 15px; background: #e8f0fe; border-radius: 6px; color:#1a73e8;">
-                    <h3 style="margin: 0;">一键查询结果：共发现 <span style="color:#e53935; font-size: 1.2em;">${usersWithRelations.length}</span> 个存在IP交集的用户。</h3>
+                <div style="margin: 20px 0 20px 0; padding: 20px; background: #e8f0fe; border-radius: 8px; color:#1a73e8; border-left: 5px solid #1a73e8;">
+                    <h3 style="margin: 0; font-size: 1.4rem;">
+                        一键扫描完毕：共抓取到 <span style="color:#e53935; font-size: 1.5rem;">${usersWithRelations.length}</span> 个存在交叉异常的用户。
+                    </h3>
+                    <p style="margin-top: 8px; color: #555; font-size: 0.95em;">
+                        以下列表展示了每个涉嫌关联的用户，以及与其重合的具体 IP 类型组合。
+                    </p>
                 </div>
             `;
 
@@ -846,13 +872,13 @@
                 if (progress <= 20) {
                     progressText.textContent = '正在读取数据...';
                 } else if (progress <= 40) {
-                    progressText.textContent = '提取 注册IP/登录IP/下单IP ...';
+                    progressText.textContent = '聚合 注册IP/登录IP/下单IP 数据池...';
                 } else if (progress <= 60) {
-                    progressText.textContent = '交叉匹配关联用户...';
+                    progressText.textContent = '两两交叉匹配碰撞中...';
                 } else if (progress <= 80) {
-                    progressText.textContent = '正在构建用户关联网络...';
+                    progressText.textContent = '正在构建交叉关联网络...';
                 } else {
-                    progressText.textContent = '正在生成分析结果...';
+                    progressText.textContent = '正在生成可视化报告...';
                 }
                 
                 if (progress >= 100) {
@@ -861,7 +887,9 @@
             }, 100);
         }
         
-        // 分析用户关系 - 主函数
+        // ==========================================
+        // 核心分析逻辑：基于 IP 池的无差别交叉碰撞
+        // ==========================================
         function analyzeUserRelations(orderData, userData) {
             
             // 验证IP地址是否有效
@@ -876,11 +904,11 @@
                 return true;
             }
             
-            // 数据结构
-            const userToIps = {};  // 用户 -> {IP地址: [使用类型列表]}
-            const ipToUsers = {};  // IP地址 -> {用户ID: 使用类型列表}
+            // 核心数据结构（以 IP 为第一主键，天然支持交叉）
+            const userToIps = {};  // 格式：{ 用户ID: { IP地址: ['注册IP', '下单IP'] } }
+            const ipToUsers = {};  // 格式：{ IP地址: { 用户ID: ['注册IP', '下单IP'] } }
             
-            // 处理用户数据 (提取注册IP, 登录IP)
+            // 1. 处理用户数据 (提取注册IP, 登录IP)
             for (const row of userData) {
                 const userId = String(row['用户ID'] || '').trim();
                 if (!userId || userId === 'nan') continue;
@@ -890,6 +918,7 @@
                 
                 if (!userToIps[userId]) userToIps[userId] = {};
                 
+                // 灌入注册IP
                 if (isValidIP(regIp)) {
                     const ipStr = String(regIp).trim();
                     if (!userToIps[userId][ipStr]) userToIps[userId][ipStr] = [];
@@ -900,24 +929,26 @@
                     if (!ipToUsers[ipStr][userId].includes('注册IP')) ipToUsers[ipStr][userId].push('注册IP');
                 }
                 
+                // 灌入登录IP
                 if (isValidIP(loginIp)) {
                     const ipStr = String(loginIp).trim();
                     if (!userToIps[userId][ipStr]) userToIps[userId][ipStr] = [];
-                    if (!userToIps[userId][ipStr].includes('最后登录IP')) userToIps[userId][ipStr].push('最后登录IP');
+                    if (!userToIps[userId][ipStr].includes('登录IP')) userToIps[userId][ipStr].push('登录IP');
                     
                     if (!ipToUsers[ipStr]) ipToUsers[ipStr] = {};
                     if (!ipToUsers[ipStr][userId]) ipToUsers[ipStr][userId] = [];
-                    if (!ipToUsers[ipStr][userId].includes('最后登录IP')) ipToUsers[ipStr][userId].push('最后登录IP');
+                    if (!ipToUsers[ipStr][userId].includes('登录IP')) ipToUsers[ipStr][userId].push('登录IP');
                 }
             }
             
-            // 处理订单数据 (提取下单IP)
+            // 2. 处理订单数据 (提取下单IP)
             for (const row of orderData) {
                 const userId = String(row['用户ID'] || '').trim();
                 if (!userId || userId === 'nan') continue;
                 
                 const orderIp = row['下单ip'];
                 
+                // 灌入下单IP
                 if (isValidIP(orderIp)) {
                     const ipStr = String(orderIp).trim();
                     
@@ -931,19 +962,19 @@
                 }
             }
             
-            // 构建关联关系
+            // 3. 构建用户之间的交叉关联关系
             const userRelations = {}; 
             
             for (const userId in userToIps) {
                 userRelations[userId] = {};
-                const userIps = Object.keys(userToIps[userId]);
+                const userIps = Object.keys(userToIps[userId]); // 该用户有过的所有IP
                 
-                // 只要该用户的任何一个IP，存在于其他用户的记录中，即为关联
+                // 【核心逻辑】：只要该用户的任何一个IP，也存在于其他用户的记录中，即为关联。完全无视IP的具体类型。
                 for (const ip of userIps) {
-                    const otherUsers = ipToUsers[ip];
+                    const otherUsers = ipToUsers[ip]; // 找出使用了这个IP的所有人
                     
                     for (const otherUserId in otherUsers) {
-                        if (otherUserId === userId) continue;
+                        if (otherUserId === userId) continue; // 排除自己
                         
                         if (!userRelations[userId][otherUserId]) {
                             userRelations[userId][otherUserId] = {
@@ -952,16 +983,16 @@
                             };
                         }
                         
-                        // 记录：我的某个类型IP = 你的某个类型IP
+                        // 记录碰撞点：我的 [xx类型] = 你的 [yy类型]
                         userRelations[userId][otherUserId].shared_ips[ip] = {
-                            user_types: userToIps[userId][ip],
-                            other_types: otherUsers[otherUserId]
+                            user_types: userToIps[userId][ip],      // 用户A在这个IP扮演的角色
+                            other_types: otherUsers[otherUserId]    // 用户B在这个IP扮演的角色
                         };
                     }
                 }
             }
             
-            // 计算关联强度得分 (仅排序用)
+            // 计算关联强度得分 (按重合的IP数量排序用)
             for (const userId in userRelations) {
                 for (const otherUserId in userRelations[userId]) {
                     const data = userRelations[userId][otherUserId];
@@ -969,7 +1000,7 @@
                 }
             }
             
-            // 找出关联组 (BFS)
+            // 找出关联组 (群组分群，把拔出萝卜带出泥的一串人都放在一组)
             const visited = new Set();
             const userGroups = [];
             for (const userId in userToIps) {
@@ -998,7 +1029,7 @@
             }
             userGroups.sort((a, b) => b.length - a.length);
             
-            // 收集去重关联对
+            // 收集去重关联对（主要用于展示"最强关联对"）
             const allRelationPairs = [];
             const recordedPairs = new Set();
             for (const userId in userRelations) {
@@ -1019,7 +1050,7 @@
             }
             allRelationPairs.sort((a, b) => b.score - a.score);
             
-            // 统计
+            // 全局统计分析
             const usersWithRelations = new Set();
             for (const userId in userRelations) {
                 if (Object.keys(userRelations[userId]).length > 0) {
@@ -1079,7 +1110,7 @@
             displayUserGroups(results.userGroups, results.userToIps);
             displayStatistics(results);
             
-            // 自动触发生一次“一键全部查询”让用户直接看到结果
+            // 自动触发生一次“一键全部查询”让用户直接看到最直观的结果
             queryAllUsers();
         }
         
@@ -1088,19 +1119,19 @@
             statsGrid.innerHTML = `
                 <div class="stat-card">
                     <div class="stat-value">${stats.totalUsers}</div>
-                    <div class="stat-label">总用户数</div>
+                    <div class="stat-label">总参与计算用户</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">${stats.totalIps}</div>
-                    <div class="stat-label">总IP数</div>
+                    <div class="stat-label">总清洗IP池大小</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">${stats.userGroupsCount}</div>
-                    <div class="stat-label">关联网络群组</div>
+                    <div class="stat-label">关联成串的黑产团伙数</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value" style="color:#d32f2f;">${stats.usersWithRelationsCount}</div>
-                    <div class="stat-label">有风险重合的用户数</div>
+                    <div class="stat-label">存在IP交叉关联的风险用户数</div>
                 </div>
             `;
         }
@@ -1111,7 +1142,7 @@
             const topPairs = relationPairs.slice(0, 20);
             
             if (topPairs.length === 0) {
-                strongPairsList.innerHTML = '<p>未发现关联用户对。</p>';
+                strongPairsList.innerHTML = '<p style="text-align:center; padding: 20px; color:#28a745;">✅ 数据库内未发现任何关联异常对。</p>';
                 return;
             }
             
@@ -1124,17 +1155,18 @@
                     const info = pair.sharedIps[ip];
                     ipDetails += `
                         <div class="ip-item">
-                            <strong>IP: ${ip}</strong><br>
-                            ${pair.user1} (${info.user_types.join(' / ')}) ↔ ${pair.user2} (${info.other_types.join(' / ')})
+                            <strong>共享 IP: <span style="color:#1a73e8">${ip}</span></strong><br>
+                            - <span style="color:#555">[${pair.user1}]</span> 的角色: <span style="color:#d32f2f; font-weight:bold;">${info.user_types.join(' / ')}</span><br>
+                            - <span style="color:#555">[${pair.user2}]</span> 的角色: <span style="color:#d32f2f; font-weight:bold;">${info.other_types.join(' / ')}</span>
                         </div>
                     `;
                 }
                 
                 pairElement.innerHTML = `
                     <div class="relation-header">
-                        <div class="relation-users">${index + 1}. ${pair.user1} ↔ ${pair.user2}</div>
+                        <div class="relation-users">${index + 1}. 用户 ${pair.user1} ↔ 匹配 ↔ 用户 ${pair.user2}</div>
                     </div>
-                    <div>共享了 ${pair.ipCount} 个相同IP</div>
+                    <div style="font-size:0.9em; color:#666;">累计发生 ${pair.ipCount} 次交叉碰撞</div>
                     <div class="relation-details">${ipDetails}</div>
                 `;
                 
@@ -1147,7 +1179,7 @@
             userGroupsList.innerHTML = '';
             
             if (userGroups.length === 0) {
-                userGroupsList.innerHTML = '<p>未发现关联用户组。</p>';
+                userGroupsList.innerHTML = '<p style="text-align:center; padding: 20px; color:#28a745;">✅ 数据库内未发现群聚行为。</p>';
                 return;
             }
             
@@ -1176,19 +1208,21 @@
                 for (const ip in sharedGroupIps) {
                     const users = sharedGroupIps[ip];
                     ipDetails += `
-                        <div class="shared-ip">
-                            <strong>IP: ${ip}</strong> (贯穿了 ${users.length} 个用户)<br>
+                        <div class="shared-ip" style="border: 1px solid #ddd;">
+                            <strong>🔥核心节点 IP: ${ip}</strong> (贯穿了 ${users.length} 个用户)<br>
+                            <div style="margin-top: 5px; padding: 5px; background: #f9f9f9;">
                             ${users.map(userId => {
                                 const types = userToIps[userId][ip] || [];
-                                return `${userId}: ${types.join(', ')}`;
+                                return `<span style="color:#666">用户 ${userId} 在此扮演:</span> <b style="color:#d32f2f">${types.join(', ')}</b>`;
                             }).join('<br>')}
+                            </div>
                         </div>
                     `;
                 }
                 
                 groupElement.innerHTML = `
                     <div class="group-header">
-                        <div><strong>第${index + 1}组黑产网络</strong> - 成员数: ${group.length}</div>
+                        <div><strong style="color:#e53935; font-size:1.1rem;">🚨 第 ${index + 1} 组黑产疑似网络</strong> - 成员规模: ${group.length} 人</div>
                     </div>
                     <div class="group-users">
                         ${group.map(userId => `<span class="user-badge">${userId}</span>`).join('')}
@@ -1206,11 +1240,11 @@
             
             statisticsContent.innerHTML = `
                 <div class="stat-card" style="grid-column: 1 / -1;">
-                    <p><strong>有IP关联的用户数:</strong> ${stats.usersWithRelationsCount} (${stats.usersWithRelationsPercent.toFixed(1)}%)</p>
-                    <p><strong>平均每个IP被用户使用数:</strong> ${stats.avgUsersPerIp.toFixed(2)}</p>
-                    <p><strong>最多用户使用的IP数:</strong> ${stats.maxUsersPerIp} 个用户</p>
-                    <p><strong>平均每个用户使用IP数:</strong> ${stats.avgIpsPerUser.toFixed(2)}</p>
-                    <p><strong>使用最多IP的用户:</strong> ${stats.maxIpsPerUser} 个IP</p>
+                    <p><strong>发生交叉关联的异常用户:</strong> ${stats.usersWithRelationsCount} (${stats.usersWithRelationsPercent.toFixed(1)}%)</p>
+                    <p><strong>平均每个IP被几个用户使用:</strong> ${stats.avgUsersPerIp.toFixed(2)}</p>
+                    <p><strong>热点最高IP承载用户数:</strong> ${stats.maxUsersPerIp} 人</p>
+                    <p><strong>平均每个用户涉及的IP数:</strong> ${stats.avgIpsPerUser.toFixed(2)}</p>
+                    <p><strong>疯狂换IP最高记录:</strong> ${stats.maxIpsPerUser} 个IP/人</p>
                 </div>
             `;
         }
@@ -1231,7 +1265,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = '用户关联关系分析报告.txt';
+            a.download = '用户交叉匹配分析报告.txt';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -1240,13 +1274,15 @@
         
         // 生成文本报告
         function generateTextReport(results) {
-            let report = "=== 用户关联关系分析报告 ===\n\n";
+            let report = "=== 用户交叉IP匹配分析报告 ===\n\n";
             const topPairs = results.allRelationPairs;
             topPairs.forEach((pair, index) => {
-                report += `${index + 1}. ${pair.user1} ↔ ${pair.user2}\n`;
+                report += `【${index + 1}】 用户 ${pair.user1} ↔ 匹配 ↔ 用户 ${pair.user2}\n`;
                 for (const ip in pair.sharedIps) {
                     const ipInfo = pair.sharedIps[ip];
-                    report += `   IP: ${ip} [${pair.user1}: ${ipInfo.user_types.join(', ')}] <-> [${pair.user2}: ${ipInfo.other_types.join(', ')}]\n`;
+                    report += `   IP: ${ip} \n`;
+                    report += `   -> ${pair.user1} 身份是: [${ipInfo.user_types.join(' / ')}]\n`;
+                    report += `   -> ${pair.user2} 身份是: [${ipInfo.other_types.join(' / ')}]\n`;
                 }
                 report += "-".repeat(40) + "\n";
             });
