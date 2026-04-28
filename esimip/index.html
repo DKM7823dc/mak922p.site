@@ -390,6 +390,38 @@
                 border-bottom: 1px solid #eee;
             }
         }
+
+        /* ================= 弹窗样式 (新增) ================= */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); z-index: 1000;
+            display: none; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: #fff; padding: 20px 25px; border-radius: 8px;
+            width: 450px; max-height: 80vh; overflow-y: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative;
+        }
+        .modal-close {
+            position: absolute; right: 20px; top: 15px;
+            cursor: pointer; font-size: 1.5rem; font-weight: bold; color: #999;
+        }
+        .modal-close:hover { color: #333; }
+        .ip-list {
+            margin-top: 15px; list-style: none; padding-left: 0;
+        }
+        .ip-list li {
+            padding: 10px 5px; border-bottom: 1px solid #eee; display: flex; align-items: center;
+        }
+        .ip-list li:last-child { border-bottom: none; }
+        .btn-tiny {
+            background: #f0f4ff; color: #1a73e8; border: 1px solid #c6d8f9;
+            padding: 3px 8px; border-radius: 4px; font-size: 0.75rem;
+            cursor: pointer; margin-left: 8px; vertical-align: middle;
+            transition: all 0.2s;
+        }
+        .btn-tiny:hover { background: #e8f0fe; border-color: #1a73e8; }
+        /* =================================================== */
     </style>
 </head>
 <body>
@@ -509,6 +541,13 @@
         </footer>
     </div>
 
+    <div class="modal-overlay" id="loginIpModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeLoginIpModal()">&times;</span>
+            <h3 id="loginIpModalTitle" style="color:#182848; border-bottom:1px solid #eee; padding-bottom:10px;">用户登录IP记录</h3>
+            <ul class="ip-list" id="loginIpList"></ul>
+        </div>
+    </div>
     <script>
         // 全局变量
         let orderData = null;
@@ -615,6 +654,56 @@
         }
 
         // ==========================================
+        // 弹窗展示该用户所有登录IP (新增)
+        // ==========================================
+        window.showLoginIps = function(userId) {
+            if (!analysisResults || !analysisResults.userToIps || !analysisResults.userToIps[userId]) return;
+            
+            const userIpsObj = analysisResults.userToIps[userId];
+            const loginIps = [];
+            
+            // 筛选出包含“登录”身份的IP
+            for (const ip in userIpsObj) {
+                const types = userIpsObj[ip];
+                if (types.some(t => t.includes('登录'))) {
+                    loginIps.push(ip);
+                }
+            }
+            
+            const modal = document.getElementById('loginIpModal');
+            const title = document.getElementById('loginIpModalTitle');
+            const list = document.getElementById('loginIpList');
+            
+            title.innerHTML = `用户 <b style="color:#d32f2f">${userId}</b> 的所有登录IP记录`;
+            
+            if (loginIps.length === 0) {
+                list.innerHTML = '<li style="color:#666;">未找到登录IP记录</li>';
+            } else {
+                list.innerHTML = loginIps.map((ip, index) => 
+                    `<li>
+                        <span style="display:inline-block; width:25px; color:#999;">${index + 1}.</span> 
+                        <span style="font-family:monospace; color:#1a73e8; font-weight:bold; font-size:1.1em;">${ip}</span>
+                    </li>`
+                ).join('');
+            }
+            
+            modal.style.display = 'flex';
+        };
+
+        window.closeLoginIpModal = function() {
+            document.getElementById('loginIpModal').style.display = 'none';
+        };
+
+        // 点击空白处关闭弹窗
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginIpModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+        // ==========================================
+
+        // ==========================================
         // 核心渲染：两两匹配交叉显示的 UI 构造
         // ==========================================
         function generateUserRelationHTML(targetUserId, relations) {
@@ -639,7 +728,14 @@
                 for (const ip in sharedIps) {
                     const info = sharedIps[ip];
                     
-                    // 直观指示出跨类型匹配的逻辑
+                    // 检查是否包含"登录"，如果有则显示按钮
+                    const hasLogin1 = info.user_types.some(t => t.includes('登录'));
+                    const hasLogin2 = info.other_types.some(t => t.includes('登录'));
+                    
+                    const btn1 = hasLogin1 ? `<button class="btn-tiny" onclick="showLoginIps('${targetUserId}')">查看所有登录IP</button>` : '';
+                    const btn2 = hasLogin2 ? `<button class="btn-tiny" onclick="showLoginIps('${otherId}')">查看所有登录IP</button>` : '';
+
+                    // 直观指示出跨类型匹配的逻辑，并注入小按钮
                     ipDetails += `
                         <div style="background:#f4f6f9; padding:12px; margin-top:8px; border-radius:6px; border-left: 4px solid #4b6cb7;">
                             <div style="font-weight: bold; margin-bottom: 8px; color: #333;">
@@ -649,6 +745,7 @@
                                 <span style="flex:1; text-align:right;">
                                     【本用户 ${targetUserId}】的 <br>
                                     <b style="color:#1a73e8; display:inline-block; margin-top:4px;">[ ${info.user_types.join(' / ')} ]</b>
+                                    ${btn1}
                                 </span>
                                 
                                 <span style="margin: 0 15px; color:#e53935; font-weight:bold; background: #ffebee; padding: 4px 10px; border-radius: 20px; font-size: 0.85em;">
@@ -658,6 +755,7 @@
                                 <span style="flex:1; text-align:left;">
                                     【关联对象 ${otherId}】的 <br>
                                     <b style="color:#1a73e8; display:inline-block; margin-top:4px;">[ ${info.other_types.join(' / ')} ]</b>
+                                    ${btn2}
                                 </span>
                             </div>
                         </div>
@@ -1125,11 +1223,19 @@
                 let ipDetails = '';
                 for (const ip in pair.sharedIps) {
                     const info = pair.sharedIps[ip];
+                    
+                    // 最强关联对列表里也加上 小按钮
+                    const hasLogin1 = info.user_types.some(t => t.includes('登录'));
+                    const hasLogin2 = info.other_types.some(t => t.includes('登录'));
+                    
+                    const btn1 = hasLogin1 ? `<button class="btn-tiny" onclick="showLoginIps('${pair.user1}')">查看所有登录IP</button>` : '';
+                    const btn2 = hasLogin2 ? `<button class="btn-tiny" onclick="showLoginIps('${pair.user2}')">查看所有登录IP</button>` : '';
+
                     ipDetails += `
                         <div class="ip-item">
                             <strong>共享 IP: <span style="color:#1a73e8">${ip}</span></strong><br>
-                            - <span style="color:#555">[${pair.user1}]</span> 的角色: <span style="color:#d32f2f; font-weight:bold;">${info.user_types.join(' / ')}</span><br>
-                            - <span style="color:#555">[${pair.user2}]</span> 的角色: <span style="color:#d32f2f; font-weight:bold;">${info.other_types.join(' / ')}</span>
+                            - <span style="color:#555">[${pair.user1}]</span> 的角色: <span style="color:#d32f2f; font-weight:bold;">${info.user_types.join(' / ')}</span> ${btn1}<br>
+                            - <span style="color:#555">[${pair.user2}]</span> 的角色: <span style="color:#d32f2f; font-weight:bold;">${info.other_types.join(' / ')}</span> ${btn2}
                         </div>
                     `;
                 }
@@ -1185,7 +1291,8 @@
                             <div style="margin-top: 5px; padding: 5px; background: #f9f9f9;">
                             ${users.map(userId => {
                                 const types = userToIps[userId][ip] || [];
-                                return `<span style="color:#666">用户 ${userId} 在此扮演:</span> <b style="color:#d32f2f">${types.join(', ')}</b>`;
+                                const btn = types.some(t => t.includes('登录')) ? `<button class="btn-tiny" onclick="showLoginIps('${userId}')">查看所有登录IP</button>` : '';
+                                return `<span style="color:#666">用户 ${userId} 在此扮演:</span> <b style="color:#d32f2f">${types.join(', ')}</b> ${btn}`;
                             }).join('<br>')}
                             </div>
                         </div>
