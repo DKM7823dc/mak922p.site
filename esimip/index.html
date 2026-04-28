@@ -400,7 +400,7 @@
         }
         .modal-content {
             background: #fff; padding: 20px 25px; border-radius: 8px;
-            width: 450px; max-height: 80vh; overflow-y: auto;
+            width: 480px; max-height: 80vh; overflow-y: auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative;
         }
         .modal-close {
@@ -412,7 +412,7 @@
             margin-top: 15px; list-style: none; padding-left: 0;
         }
         .ip-list li {
-            padding: 10px 5px; border-bottom: 1px solid #eee; display: flex; align-items: center;
+            padding: 12px 5px; border-bottom: 1px solid #eee; display: flex; align-items: flex-start;
         }
         .ip-list li:last-child { border-bottom: none; }
         .btn-tiny {
@@ -450,7 +450,7 @@
                     <h3>用户数据 (user.json)</h3>
                     <div class="upload-area" id="userUploadArea">
                         <p>点击或拖拽文件到此处上传</p>
-                        <p><small>需包含：用户ID、注册ip、登录ip、活跃应用、累积充值金额 等</small></p>
+                        <p><small>需包含：用户ID、注册ip、登录ip、活跃应用、累积充值金额、活跃时间 等</small></p>
                     </div>
                     <div class="file-info" id="userFileInfo">未选择文件</div>
                     <input type="file" id="userFileInput" accept=".json" style="display: none;">
@@ -531,7 +531,7 @@
                     <p style="margin-top: 20px;"><strong>JSON文件格式要求：</strong></p>
                     <ul style="margin-top: 5px; padding-left: 20px;">
                         <li>订单数据：包含<code>用户ID</code>、<code>下单ip</code></li>
-                        <li>用户数据：包含<code>用户ID</code>、<code>注册ip</code>、<code>登录ip</code>、<code>活跃应用</code>、<code>累积充值金额</code> (大小写兼容)</li>
+                        <li>用户数据：包含<code>用户ID</code>、<code>注册ip</code>、<code>登录ip</code>、<code>活跃应用</code>、<code>累积充值金额</code>、<code>活跃时间</code></li>
                     </ul>
                 </div>
             </div>
@@ -653,19 +653,26 @@
         }
 
         // ==========================================
-        // 弹窗展示该用户所有登录IP 
+        // 弹窗展示该用户所有登录IP 及活跃时间 (新增)
         // ==========================================
         window.showLoginIps = function(userId) {
             if (!analysisResults || !analysisResults.userToIps || !analysisResults.userToIps[userId]) return;
             
             const userIpsObj = analysisResults.userToIps[userId];
+            const userInfo = analysisResults.userInfo[userId] || {};
+            const loginTimes = userInfo.loginTimes || {};
+            
             const loginIps = [];
             
-            // 筛选出包含“登录”身份的IP
+            // 筛选出包含“登录”身份的IP，并获取对应的时间
             for (const ip in userIpsObj) {
                 const types = userIpsObj[ip];
                 if (types.some(t => t.includes('登录'))) {
-                    loginIps.push(ip);
+                    let timesStr = '未知时间';
+                    if (loginTimes[ip] && loginTimes[ip].size > 0) {
+                        timesStr = Array.from(loginTimes[ip]).join(' , ');
+                    }
+                    loginIps.push({ ip: ip, time: timesStr });
                 }
             }
             
@@ -678,10 +685,17 @@
             if (loginIps.length === 0) {
                 list.innerHTML = '<li style="color:#666;">未找到登录IP记录</li>';
             } else {
-                list.innerHTML = loginIps.map((ip, index) => 
+                list.innerHTML = loginIps.map((item, index) => 
                     `<li>
-                        <span style="display:inline-block; width:25px; color:#999;">${index + 1}.</span> 
-                        <span style="font-family:monospace; color:#1a73e8; font-weight:bold; font-size:1.1em;">${ip}</span>
+                        <div style="width: 100%;">
+                            <div>
+                                <span style="display:inline-block; width:25px; color:#999;">${index + 1}.</span> 
+                                <span style="font-family:monospace; color:#1a73e8; font-weight:bold; font-size:1.1em;">${item.ip}</span>
+                            </div>
+                            <div style="font-size:0.85em; color:#666; margin-left: 28px; margin-top: 6px; background: #f8f9fa; padding: 4px 8px; border-radius: 4px; display: inline-block;">
+                                🕒 活跃时间: <span style="color:#333; font-weight: 500;">${item.time}</span>
+                            </div>
+                        </div>
                     </li>`
                 ).join('');
             }
@@ -948,7 +962,7 @@
             
             const userToIps = {};  
             const ipToUsers = {};  
-            const userInfo = {}; // 新增：保存用户基础信息
+            const userInfo = {}; 
             
             // 1. 处理用户数据 
             for (const row of userData) {
@@ -958,11 +972,18 @@
                 const regIp = row['注册IP'] || row['注册ip'] || row['注册Ip'] || row['register_ip'];
                 const loginIp = row['登录IP'] || row['登录ip'] || row['最后登录IP'] || row['最后登录ip'] || row['login_ip'];
                 
-                // 提取活跃应用和累积充值金额
                 const activeApp = row['活跃应用'] || '未知';
                 const totalRecharge = row['累积充值金额'] || row['累计充值金额'] || row['充值金额'] || '0';
                 
-                if (!userInfo[userId]) userInfo[userId] = { activeApp, totalRecharge };
+                // 新增：提取活跃时间
+                const activeTime = row['活跃时间'] || row['最后活跃时间'] || row['登录时间'] || '未知';
+                
+                if (!userInfo[userId]) {
+                    userInfo[userId] = { activeApp, totalRecharge, loginTimes: {} };
+                }
+                if (!userInfo[userId].loginTimes) {
+                    userInfo[userId].loginTimes = {};
+                }
 
                 if (!userToIps[userId]) userToIps[userId] = {};
                 
@@ -984,6 +1005,14 @@
                     if (!ipToUsers[ipStr]) ipToUsers[ipStr] = {};
                     if (!ipToUsers[ipStr][userId]) ipToUsers[ipStr][userId] = [];
                     if (!ipToUsers[ipStr][userId].includes('登录IP')) ipToUsers[ipStr][userId].push('登录IP');
+
+                    // 保存活跃时间
+                    if (!userInfo[userId].loginTimes[ipStr]) {
+                        userInfo[userId].loginTimes[ipStr] = new Set();
+                    }
+                    if (activeTime && activeTime !== '未知' && activeTime !== 'nan') {
+                        userInfo[userId].loginTimes[ipStr].add(activeTime);
+                    }
                 }
             }
             
@@ -992,8 +1021,12 @@
                 const userId = String(row['用户ID'] || '').trim();
                 if (!userId || userId === 'nan') continue;
                 
-                // 防止用户只在订单表而不在用户表
-                if (!userInfo[userId]) userInfo[userId] = { activeApp: '未知', totalRecharge: '0' };
+                if (!userInfo[userId]) {
+                    userInfo[userId] = { activeApp: '未知', totalRecharge: '0', loginTimes: {} };
+                }
+                if (!userInfo[userId].loginTimes) {
+                    userInfo[userId].loginTimes = {};
+                }
 
                 const orderIp = row['下单ip'] || row['下单IP'] || row['下单Ip'] || row['order_ip'];
                 
@@ -1129,7 +1162,7 @@
                 userRelations,
                 userGroups,
                 allRelationPairs,
-                userInfo, // 将新增的基础信息传递出去
+                userInfo, 
                 stats: {
                     totalUsers: Object.keys(userToIps).length,
                     totalIps: Object.keys(ipToUsers).length,
