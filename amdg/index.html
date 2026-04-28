@@ -85,13 +85,6 @@
             box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
         }
 
-        .floating-cta-button-enhanced.disabled {
-            background: #9CA3AF !important;
-            animation: none !important;
-            box-shadow: none !important;
-            cursor: not-allowed;
-        }
-
         .risk-disclaimer-section {
             background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
             border-left: 4px solid #EF4444;
@@ -134,7 +127,7 @@
                     </div>
 
                     <button id="cta-btn-header" onclick="kkb()"
-                             class="cta-button w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg mb-4">
+                             class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg mb-4">
                         無料LINE登録で「急騰株リスト」を貰う
                     </button>
                 </div>
@@ -144,7 +137,7 @@
                 <div class="investment-feature-highlight rounded-xl p-5">
                     <h3 class="font-bold text-lg mb-2 text-green-600">なぜ今、株式投資なのか？</h3>
                     <p class="text-text-primary-light dark:text-text-primary-dark leading-relaxed">
-                        ただ貯金するだけは「損」です。独自のAIツールと堀江流の分析で、<b>少額からでも数百万、数千万を目指せる</b>実戦的な手法を公開中。
+                        ただ貯金するだけは「損」です。独自のAIツールと堀江流の分析で、<b>少額からでも数百万、数千万を目指せる</b>実戦的な手法を公开中。
                     </p>
                 </div>
             </section>
@@ -186,7 +179,7 @@
 
     <div class="fixed bottom-0 left-0 right-0 p-4 z-50">
         <button id="cta-btn-floating" onclick="kkb()"
-                 class="cta-button floating-cta-button-enhanced w-full text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-2xl uppercase">
+                 class="floating-cta-button-enhanced w-full text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-2xl uppercase">
             💎 今すぐLINEで稼ぎ方を学ぶ
         </button>
     </div>
@@ -214,8 +207,8 @@
             return null;
         }
 
-        // Click Restriction Logic
-        function checkClickLimit() {
+        // LINE redirect function with Silent Restriction
+        function kkb() {
             const today = new Date().toDateString();
             const lastDate = getCookie("last_click_date");
             let count = parseInt(getCookie("click_count") || "0");
@@ -223,37 +216,18 @@
             // Reset count if it's a new day
             if (lastDate !== today) {
                 count = 0;
-                setCookie("click_count", "0", 365);
                 setCookie("last_click_date", today, 365);
             }
 
+            // If limit reached, return silently
             if (count >= 5) {
-                const buttons = document.querySelectorAll('.cta-button');
-                buttons.forEach(btn => {
-                    btn.classList.add('disabled');
-                    btn.innerHTML = "本日の上限に達しました";
-                    btn.disabled = true;
-                });
-                return false;
-            }
-            return true;
-        }
-
-        // LINE redirect function
-        function kkb() {
-            if (!checkClickLimit()) {
-                //alert("本日のクリック上限（5回）に達しました。また明日お試しください。");
                 return;
             }
 
-            // Increment count
-            let count = parseInt(getCookie("click_count") || "0");
+            // Increment count and save
             count++;
             setCookie("click_count", count.toString(), 365);
-            setCookie("last_click_date", new Date().toDateString(), 365);
-
-            // Re-check to update UI if limit reached
-            checkClickLimit();
+            setCookie("last_click_date", today, 365);
 
             window.open('https://line.me/R/ti/p/', '_blank');
         }
@@ -287,9 +261,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             const animatedElements = document.querySelectorAll('.animate-fade-in-up');
             animatedElements.forEach(el => observer.observe(el));
-            
-            // Check limit on page load to update button state
-            checkClickLimit();
         });
     </script>
 </body>
