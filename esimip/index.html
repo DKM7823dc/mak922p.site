@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户关联关系分析工具</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 600px;
+        }
+        
+        .left-panel {
+            flex: 1;
+            min-width: 300px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-right: 1px solid #eee;
+        }
+        
+        .right-panel {
+            flex: 2;
+            min-width: 500px;
+            padding: 25px;
+            overflow-y: auto;
+            max-height: 800px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4b6cb7;
+            color: #182848;
+        }
+        
+        .upload-section {
+            margin-bottom: 30px;
+        }
+        
+        .upload-area {
+            border: 2px dashed #4b6cb7;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            background-color: #f0f4ff;
+        }
+        
+        .upload-area.highlight {
+            background-color: #e8f0fe;
+            border-color: #1a73e8;
+        }
+        
+        .file-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .progress-container {
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .results-section {
+            display: none;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #4b6cb7;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #182848;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .tab-container {
+            margin-bottom: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid #4b6cb7;
+            font-weight: bold;
+            color: #4b6cb7;
+        }
+        
+        .tab:hover:not(.active) {
+            background-color: #f5f7fa;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .relation-pair {
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4b6cb7;
+        }
+        
+        .relation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .relation-users {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .relation-score {
+            background-color: #4b6cb7;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .relation-details {
+            background-color: white;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .ip-item {
+            border-bottom: 1px dashed #eee;
+            padding: 8px 0;
+        }
+        
+        .ip-item:last-child {
+            border-bottom: none;
+        }
+        
+        .user-group {
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .group-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .group-users {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .user-badge {
+            background-color: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .shared-ip {
+            background-color: white;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* 搜索框相关样式 */
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #4b6cb7;
+            box-shadow: 0 0 5px rgba(75, 108, 183, 0.3);
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4b6cb7;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .left-panel {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>用户关联关系分析工具</h1>
+            <p class="subtitle">基于IP地址分析用户关联关系，识别潜在风险群体</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="left-panel">
+                <h2 class="section-title">数据上传</h2>
+                
+                <div class="upload-section">
+                    <h3>订单数据 (order.json)</h3>
+                    <div class="upload-area" id="orderUploadArea">
+                        <p>点击或拖拽文件到此处上传</p>
+                        <p><small>支持JSON文件，应包含用户ID、下单ip等字段</small></p>
+                    </div>
+                    <div class="file-info" id="orderFileInfo">未选择文件</div>
+                    <input type="file" id="orderFileInput" accept=".json" style="display: none;">
+                </div>
+                
+                <div class="upload-section">
+                    <h3>用户数据 (user.json)</h3>
+                    <div class="upload-area" id="userUploadArea">
+                        <p>点击或拖拽文件到此处上传</p>
+                        <p><small>支持JSON文件，应包含用户ID、注册IP、最后登录IP等字段</small></p>
+                    </div>
+                    <div class="file-info" id="userFileInfo">未选择文件</div>
+                    <input type="file" id="userFileInput" accept=".json" style="display: none;">
+                </div>
+                
+                <button class="btn" id="analyzeBtn" disabled>开始分析</button>
+                
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">准备分析...</div>
+                </div>
+                
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <p>正在分析数据，请稍候...</p>
+                </div>
+                
+                <div class="error-message" id="errorMessage"></div>
+            </div>
+            
+            <div class="right-panel">
+                <div id="resultsSection" class="results-section">
+                    <h2 class="section-title">分析结果</h2>
+                    
+                    <div class="stats-grid" id="statsGrid">
+                        </div>
+                    
+                    <div class="tab-container">
+                        <div class="tabs">
+                            <div class="tab active" data-tab="user-search">特定用户查询</div>
+                            <div class="tab" data-tab="strong-pairs">最强关联对</div>
+                            <div class="tab" data-tab="user-groups">关联用户组</div>
+                            <div class="tab" data-tab="statistics">统计信息</div>
+                        </div>
+                        
+                        <div class="tab-content active" id="user-search">
+                            <div class="search-box">
+                                <input type="text" id="searchUserId" placeholder="请输入你要查询的用户ID (例如: U12345)">
+                                <button class="btn" id="searchUserBtn" style="width: auto; margin-top: 0;">查询关联关系</button>
+                            </div>
+                            <div id="searchResultArea">
+                                <p style="color: #666; text-align: center; margin-top: 30px;">输入用户ID，查看与之存在IP关联的所有用户。</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="strong-pairs">
+                            <div id="strongPairsList">
+                                </div>
+                        </div>
+                        
+                        <div class="tab-content" id="user-groups">
+                            <div id="userGroupsList">
+                                </div>
+                        </div>
+                        
+                        <div class="tab-content" id="statistics">
+                            <div id="statisticsContent">
+                                </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="download-btn" id="downloadReport" style="display: none;">下载完整分析报告</a>
+                </div>
+                
+                <div id="initialMessage">
+                    <h3>欢迎使用用户关联关系分析工具</h3>
+                    <p>系统将自动尝试加载目录下的 JSON 数据并开始分析。</p>
+                    <p style="margin-top:10px; color:#666; font-size:0.9em;">如果未自动加载，请手动执行以下操作：</p>
+                    <ol style="margin-top: 10px; padding-left: 20px;">
+                        <li>上传订单数据JSON文件（order.json）</li>
+                        <li>上传用户数据JSON文件（user.json）</li>
+                        <li>点击"开始分析"按钮</li>
+                    </ol>
+                    <p style="margin-top: 20px;"><strong>JSON文件格式要求：</strong></p>
+                    <ul style="margin-top: 5px; padding-left: 20px;">
+                        <li>订单数据：应包含<code>用户ID</code>和<code>下单ip</code>字段</li>
+                        <li>用户数据：应包含<code>用户ID</code>、<code>注册IP</code>和<code>最后登录IP</code>字段</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>用户关联关系分析工具 &copy; 2026 | 基于IP地址分析用户关联关系</p>
+        </footer>
+    </div>
+
+    <script>
+        // 全局变量
+        let orderData = null;
+        let userData = null;
+        let analysisResults = null;
+        
+        // DOM元素
+        const orderUploadArea = document.getElementById('orderUploadArea');
+        const userUploadArea = document.getElementById('userUploadArea');
+        const orderFileInput = document.getElementById('orderFileInput');
+        const userFileInput = document.getElementById('userFileInput');
+        const orderFileInfo = document.getElementById('orderFileInfo');
+        const userFileInfo = document.getElementById('userFileInfo');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const errorMessage = document.getElementById('errorMessage');
+        const resultsSection = document.getElementById('resultsSection');
+        const initialMessage = document.getElementById('initialMessage');
+        const statsGrid = document.getElementById('statsGrid');
+        const strongPairsList = document.getElementById('strongPairsList');
+        const userGroupsList = document.getElementById('userGroupsList');
+        const statisticsContent = document.getElementById('statisticsContent');
+        const downloadReport = document.getElementById('downloadReport');
+        const tabs = document.querySelectorAll('.tab');
+
+        // 查询功能DOM
+        const searchUserBtn = document.getElementById('searchUserBtn');
+        const searchUserIdInput = document.getElementById('searchUserId');
+        const searchResultArea = document.getElementById('searchResultArea');
+        
+        // 事件监听器
+        document.addEventListener('DOMContentLoaded', function() {
+            // 尝试自动加载同目录下的 JSON 文件
+            autoLoadJsonFiles();
+
+            // 文件上传区域事件
+            orderUploadArea.addEventListener('click', () => orderFileInput.click());
+            userUploadArea.addEventListener('click', () => userFileInput.click());
+            
+            // 文件输入变化事件
+            orderFileInput.addEventListener('change', (e) => handleFileSelect(e, 'order'));
+            userFileInput.addEventListener('change', (e) => handleFileSelect(e, 'user'));
+            
+            // 拖拽上传功能
+            setupDragAndDrop(orderUploadArea, 'order');
+            setupDragAndDrop(userUploadArea, 'user');
+            
+            // 分析按钮事件
+            analyzeBtn.addEventListener('click', startAnalysis);
+            
+            // 选项卡切换
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+
+            // 搜索功能事件
+            searchUserBtn.addEventListener('click', searchUserRelations);
+            searchUserIdInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchUserRelations();
+                }
+            });
+            
+            // 下载报告事件
+            downloadReport.addEventListener('click', downloadAnalysisReport);
+        });
+
+        // 自动加载JSON文件机制
+        async function autoLoadJsonFiles() {
+            let filesLoaded = 0;
+            try {
+                // 读取 order.json
+                const orderRes = await fetch('./order.json');
+                if (orderRes.ok) {
+                    orderData = await orderRes.json();
+                    orderFileInfo.textContent = `自动加载成功: order.json (${orderData.length} 条记录)`;
+                    orderUploadArea.classList.add('highlight');
+                    filesLoaded++;
+                }
+
+                // 读取 user.json
+                const userRes = await fetch('./user.json');
+                if (userRes.ok) {
+                    userData = await userRes.json();
+                    userFileInfo.textContent = `自动加载成功: user.json (${userData.length} 条记录)`;
+                    userUploadArea.classList.add('highlight');
+                    filesLoaded++;
+                }
+
+                // 如果两个文件都加载成功，自动开始分析
+                if (filesLoaded === 2 && orderData && userData) {
+                    analyzeBtn.disabled = false;
+                    startAnalysis();
+                }
+            } catch (err) {
+                console.log("无法自动加载本地JSON文件，可能是未在Web服务器环境运行。请手动上传。");
+            }
+        }
+
+        // 特定用户查询逻辑
+        function searchUserRelations() {
+            const searchId = searchUserIdInput.value.trim();
+            
+            if (!searchId) {
+                searchResultArea.innerHTML = '<p style="color:#d32f2f; text-align:center; margin-top:20px;">请输入需要查询的用户ID</p>';
+                return;
+            }
+            
+            if (!analysisResults || !analysisResults.userRelations) {
+                searchResultArea.innerHTML = '<p style="color:#d32f2f; text-align:center; margin-top:20px;">请先等待数据分析完成</p>';
+                return;
+            }
+            
+            const relations = analysisResults.userRelations[searchId];
+            if (!relations || Object.keys(relations).length === 0) {
+                searchResultArea.innerHTML = `
+                    <div style="text-align:center; padding: 30px; background: #f9f9f9; border-radius: 8px; margin-top: 20px;">
+                        <h3 style="color: #666;">未找到用户 <strong>${searchId}</strong> 的关联信息</h3>
+                        <p style="margin-top:10px; font-size:0.9em;">可能是该用户不存在，或者未与其他用户共享过IP。</p>
+                    </div>`;
+                return;
+            }
+            
+            // 将关联用户转为数组并按强度排序
+            const relatedUsers = Object.keys(relations).map(id => {
+                return { id: id, data: relations[id] };
+            }).sort((a, b) => b.data.score - a.data.score);
+            
+            // 渲染结果
+            let html = `
+                <div style="margin: 20px 0 15px 0; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                    <h3 style="color: #182848;">用户 <strong>${searchId}</strong> 共发现 <span style="color:#e53935">${relatedUsers.length}</span> 个关联用户</h3>
+                </div>
+            `;
+            
+            relatedUsers.forEach((rel, index) => {
+                const otherId = rel.id;
+                const score = rel.data.score.toFixed(2);
+                const sharedIps = rel.data.shared_ips;
+                const ipCount = Object.keys(sharedIps).length;
+                
+                let ipDetails = '';
+                for (const ip in sharedIps) {
+                    const info = sharedIps[ip];
+                    ipDetails += `
+                        <div class="ip-item" style="background:#fff; padding:10px; margin-top:5px; border-radius:4px; border-left:3px solid #1a73e8;">
+                            <strong>共享 IP: ${ip}</strong><br>
+                            <span style="color:#555; font-size:0.9em;">- 该用户(${searchId}) 使用作为: ${info.user_types.join(', ')}</span><br>
+                            <span style="color:#555; font-size:0.9em;">- 关联用户(${otherId}) 使用作为: ${info.other_types.join(', ')}</span>
+                        </div>
+                    `;
+                }
+                
+                html += `
+                    <div class="relation-pair">
+                        <div class="relation-header">
+                            <div class="relation-users">${index + 1}. 关联对象: ${otherId}</div>
+                            <div class="relation-score">关联得分: ${score}</div>
+                        </div>
+                        <div style="font-size:0.95em; color:#666; margin-bottom:10px;">共发现 ${ipCount} 个相同IP节点</div>
+                        <div class="relation-details" style="background:transparent; padding:0;">
+                            ${ipDetails}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            searchResultArea.innerHTML = html;
+        }
+        
+        // 设置拖拽上传
+        function setupDragAndDrop(uploadArea, fileType) {
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('highlight');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('highlight');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('highlight');
+                
+                if (e.dataTransfer.files.length) {
+                    const file = e.dataTransfer.files[0];
+                    if (file.name.endsWith('.json')) {
+                        handleFile(file, fileType);
+                    } else {
+                        showError('请选择JSON格式的文件');
+                    }
+                }
+            });
+        }
+        
+        // 处理文件选择
+        function handleFileSelect(event, fileType) {
+            const file = event.target.files[0];
+            if (file) {
+                handleFile(file, fileType);
+            }
+        }
+        
+        // 处理文件
+        function handleFile(file, fileType) {
+            if (!file.name.endsWith('.json')) {
+                showError('请选择JSON格式的文件');
+                return;
+            }
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (fileType === 'order') {
+                        orderData = data;
+                        orderFileInfo.textContent = `已加载: ${file.name} (${data.length} 条记录)`;
+                    } else {
+                        userData = data;
+                        userFileInfo.textContent = `已加载: ${file.name} (${data.length} 条记录)`;
+                    }
+                    
+                    // 检查是否两个文件都已加载
+                    checkFilesLoaded();
+                } catch (err) {
+                    showError(`解析JSON文件失败: ${err.message}`);
+                }
+            };
+            
+            reader.onerror = function() {
+                showError('读取文件失败');
+            };
+            
+            reader.readAsText(file);
+        }
+        
+        // 检查文件是否都已加载
+        function checkFilesLoaded() {
+            if (orderData && userData) {
+                analyzeBtn.disabled = false;
+            }
+        }
+        
+        // 开始分析
+        function startAnalysis() {
+            // 重置UI
+            hideError();
+            progressContainer.style.display = 'block';
+            loadingIndicator.style.display = 'block';
+            analyzeBtn.disabled = true;
+            
+            // 模拟进度更新
+            simulateProgress();
+            
+            // 开始分析（使用setTimeout避免阻塞UI）
+            setTimeout(() => {
+                try {
+                    analysisResults = analyzeUserRelations(orderData, userData);
+                    displayResults(analysisResults);
+                    
+                    // 显示结果区域
+                    resultsSection.style.display = 'block';
+                    initialMessage.style.display = 'none';
+                    downloadReport.style.display = 'inline-block';
+                    
+                    // 隐藏进度条
+                    progressContainer.style.display = 'none';
+                    loadingIndicator.style.display = 'none';
+                    analyzeBtn.disabled = false;
+                } catch (err) {
+                    showError(`分析失败: ${err.message}`);
+                    progressContainer.style.display = 'none';
+                    loadingIndicator.style.display = 'none';
+                    analyzeBtn.disabled = false;
+                }
+            }, 100);
+        }
+        
+        // 模拟进度条
+        function simulateProgress() {
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressFill.style.width = `${progress}%`;
+                
+                if (progress <= 20) {
+                    progressText.textContent = '正在读取数据...';
+                } else if (progress <= 40) {
+                    progressText.textContent = '正在分析用户数据...';
+                } else if (progress <= 60) {
+                    progressText.textContent = '正在分析订单数据...';
+                } else if (progress <= 80) {
+                    progressText.textContent = '正在构建用户关联关系...';
+                } else {
+                    progressText.textContent = '正在生成分析结果...';
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                }
+            }, 100);
+        }
+        
+        // 分析用户关系 - 主函数
+        function analyzeUserRelations(orderData, userData) {
+            console.log("正在分析数据...");
+            
+            // 验证IP地址是否有效
+            function isValidIP(ip) {
+                if (ip === null || ip === undefined || ip === '') {
+                    return false;
+                }
+                
+                const ipStr = String(ip).trim();
+                if (!ipStr || ipStr.toLowerCase() === 'nan' || ipStr.toLowerCase() === 'null' || ipStr === '') {
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            // 数据结构
+            const userToIps = {};  // 用户 -> {IP地址: [使用类型列表]}
+            const ipToUsers = {};  // IP地址 -> {用户ID: 使用类型列表}
+            
+            console.log("正在分析用户数据表(注册IP, 最后登录IP)...");
+            
+            // 处理用户数据
+            for (const row of userData) {
+                const userId = String(row['用户ID'] || '').trim();
+                if (!userId || userId === 'nan') continue;
+                
+                const regIp = row['注册IP'];
+                const loginIp = row['最后登录IP'];
+                
+                if (!userToIps[userId]) {
+                    userToIps[userId] = {};
+                }
+                
+                if (isValidIP(regIp)) {
+                    const ipStr = String(regIp).trim();
+                    if (!userToIps[userId][ipStr]) {
+                        userToIps[userId][ipStr] = [];
+                    }
+                    userToIps[userId][ipStr].push('注册IP');
+                    
+                    if (!ipToUsers[ipStr]) {
+                        ipToUsers[ipStr] = {};
+                    }
+                    if (!ipToUsers[ipStr][userId]) {
+                        ipToUsers[ipStr][userId] = [];
+                    }
+                    ipToUsers[ipStr][userId].push('注册IP');
+                }
+                
+                if (isValidIP(loginIp)) {
+                    const ipStr = String(loginIp).trim();
+                    if (!userToIps[userId][ipStr]) {
+                        userToIps[userId][ipStr] = [];
+                    }
+                    userToIps[userId][ipStr].push('最后登录IP');
+                    
+                    if (!ipToUsers[ipStr]) {
+                        ipToUsers[ipStr] = {};
+                    }
+                    if (!ipToUsers[ipStr][userId]) {
+                        ipToUsers[ipStr][userId] = [];
+                    }
+                    ipToUsers[ipStr][userId].push('最后登录IP');
+                }
+            }
+            
+            console.log("正在分析订单数据表(下单IP)...");
+            
+            // 处理订单数据
+            for (const row of orderData) {
+                const userId = String(row['用户ID'] || '').trim();
+                if (!userId || userId === 'nan') continue;
+                
+                const orderIp = row['下单ip'];
+                
+                if (isValidIP(orderIp)) {
+                    const ipStr = String(orderIp).trim();
+                    
+                    if (!userToIps[userId]) {
+                        userToIps[userId] = {};
+                    }
+                    if (!userToIps[userId][ipStr]) {
+                        userToIps[userId][ipStr] = [];
+                    }
+                    userToIps[userId][ipStr].push('下单IP');
+                    
+                    if (!ipToUsers[ipStr]) {
+                        ipToUsers[ipStr] = {};
+                    }
+                    if (!ipToUsers[ipStr][userId]) {
+                        ipToUsers[ipStr][userId] = [];
+                    }
+                    ipToUsers[ipStr][userId].push('下单IP');
+                }
+            }
+            
+            console.log("正在构建用户关联关系...");
+            
+            // 存储用户之间的关联关系
+            const userRelations = {}; // 格式: {user_id: {related_user: {shared_ips: {ip: {user_types, other_types}}, score}}}
+            
+            // 为每个用户计算关联
+            for (const userId in userToIps) {
+                userRelations[userId] = {};
+                const userIps = Object.keys(userToIps[userId]);
+                
+                // 对于每个IP，找到使用这个IP的其他用户
+                for (const ip of userIps) {
+                    const otherUsers = ipToUsers[ip];
+                    
+                    for (const otherUserId in otherUsers) {
+                        if (otherUserId === userId) continue;
+                        
+                        // 记录关联关系
+                        if (!userRelations[userId][otherUserId]) {
+                            userRelations[userId][otherUserId] = {
+                                shared_ips: {},
+                                score: 0
+                            };
+                        }
+                        
+                        // 添加共享IP信息
+                        userRelations[userId][otherUserId].shared_ips[ip] = {
+                            user_types: [...new Set(userToIps[userId][ip])],  // 去重
+                            other_types: [...new Set(otherUsers[otherUserId])]  // 去重
+                        };
+                    }
+                }
+            }
+            
+            console.log("正在计算关联强度和生成结果...");
+            
+            // 计算关联强度得分
+            for (const userId in userRelations) {
+                for (const otherUserId in userRelations[userId]) {
+                    const data = userRelations[userId][otherUserId];
+                    
+                    // 关联强度得分 = 共享IP数 + 每个IP的使用类型多样性
+                    let score = Object.keys(data.shared_ips).length;
+                    
+                    for (const ip in data.shared_ips) {
+                        const ipInfo = data.shared_ips[ip];
+                        let typeScore = 0;
+                        
+                        const allTypes = [...ipInfo.user_types, ...ipInfo.other_types];
+                        for (const type of allTypes) {
+                            if (type === '注册IP') typeScore += 2;
+                            else if (type === '下单IP') typeScore += 1.5;
+                            else if (type === '最后登录IP') typeScore += 1;
+                        }
+                        
+                        score += typeScore * 0.1;
+                    }
+                    
+                    data.score = score;
+                }
+            }
+            
+            console.log("正在找出关联用户组...");
+            
+            // 使用BFS查找连通分量（关联用户组）
+            const visited = new Set();
+            const userGroups = [];
+            
+            for (const userId in userToIps) {
+                if (visited.has(userId)) continue;
+                
+                // 使用BFS找到所有关联用户
+                const queue = [userId];
+                const group = new Set();
+                
+                while (queue.length > 0) {
+                    const currentUser = queue.shift();
+                    if (visited.has(currentUser)) continue;
+                    
+                    visited.add(currentUser);
+                    group.add(currentUser);
+                    
+                    // 添加直接关联的用户
+                    if (userRelations[currentUser]) {
+                        for (const relatedUser in userRelations[currentUser]) {
+                            if (!visited.has(relatedUser)) {
+                                queue.push(relatedUser);
+                            }
+                        }
+                    }
+                }
+                
+                if (group.size > 1) {  // 只有关联用户数大于1才记录
+                    userGroups.push(Array.from(group).sort());
+                }
+            }
+            
+            // 按组大小排序
+            userGroups.sort((a, b) => b.length - a.length);
+            
+            console.log("正在生成分析结果...");
+            
+            // 收集所有关联对（避免重复）
+            const allRelationPairs = [];
+            const recordedPairs = new Set();
+            
+            for (const userId in userRelations) {
+                for (const otherUserId in userRelations[userId]) {
+                    const pairKey = [userId, otherUserId].sort().join('|');
+                    
+                    if (!recordedPairs.has(pairKey)) {
+                        recordedPairs.add(pairKey);
+                        
+                        const data = userRelations[userId][otherUserId];
+                        allRelationPairs.push({
+                            user1: userId,
+                            user2: otherUserId,
+                            score: data.score,
+                            ipCount: Object.keys(data.shared_ips).length,
+                            sharedIps: data.shared_ips
+                        });
+                    }
+                }
+            }
+            
+            // 按关联强度排序
+            allRelationPairs.sort((a, b) => b.score - a.score);
+            
+            // 找出有IP关联的用户数
+            const usersWithRelations = new Set();
+            for (const userId in userRelations) {
+                if (Object.keys(userRelations[userId]).length > 0) {
+                    usersWithRelations.add(userId);
+                    for (const otherUserId in userRelations[userId]) {
+                        usersWithRelations.add(otherUserId);
+                    }
+                }
+            }
+            
+            // IP使用统计
+            const ipUsageCounts = [];
+            for (const ip in ipToUsers) {
+                ipUsageCounts.push(Object.keys(ipToUsers[ip]).length);
+            }
+            
+            const avgUsersPerIp = ipUsageCounts.length > 0 ? 
+                ipUsageCounts.reduce((a, b) => a + b, 0) / ipUsageCounts.length : 0;
+            const maxUsersPerIp = ipUsageCounts.length > 0 ? Math.max(...ipUsageCounts) : 0;
+            
+            // 用户IP数统计
+            const userIpCounts = [];
+            for (const userId in userToIps) {
+                userIpCounts.push(Object.keys(userToIps[userId]).length);
+            }
+            
+            const avgIpsPerUser = userIpCounts.length > 0 ? 
+                userIpCounts.reduce((a, b) => a + b, 0) / userIpCounts.length : 0;
+            const maxIpsPerUser = userIpCounts.length > 0 ? Math.max(...userIpCounts) : 0;
+            
+            // 找出使用最多IP的用户
+            let maxIpUser = { userId: null, count: 0 };
+            for (const userId in userToIps) {
+                const ipCount = Object.keys(userToIps[userId]).length;
+                if (ipCount > maxIpUser.count) {
+                    maxIpUser = { userId, count: ipCount };
+                }
+            }
+            
+            // 找出最多用户使用的IP
+            let maxUserIp = { ip: null, count: 0 };
+            for (const ip in ipToUsers) {
+                const userCount = Object.keys(ipToUsers[ip]).length;
+                if (userCount > maxUserIp.count) {
+                    maxUserIp = { ip, count: userCount };
+                }
+            }
+            
+            console.log("分析完成！");
+            
+            return {
+                userToIps,
+                ipToUsers,
+                userRelations,
+                userGroups,
+                allRelationPairs,
+                stats: {
+                    totalUsers: Object.keys(userToIps).length,
+                    totalIps: Object.keys(ipToUsers).length,
+                    userGroupsCount: userGroups.length,
+                    usersWithRelationsCount: usersWithRelations.size,
+                    usersWithRelationsPercent: Object.keys(userToIps).length > 0 ? 
+                        (usersWithRelations.size / Object.keys(userToIps).length * 100) : 0,
+                    avgUsersPerIp,
+                    maxUsersPerIp,
+                    avgIpsPerUser,
+                    maxIpsPerUser,
+                    maxIpUser,
+                    maxUserIp
+                }
+            };
+        }
+        
+        // 显示分析结果
+        function displayResults(results) {
+            // 显示统计信息
+            displayStats(results.stats);
+            
+            // 显示最强关联对
+            displayStrongPairs(results.allRelationPairs);
+            
+            // 显示关联用户组
+            displayUserGroups(results.userGroups, results.userToIps);
+            
+            // 显示详细统计信息
+            displayStatistics(results);
+        }
+        
+        // 显示统计卡片
+        function displayStats(stats) {
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-value">${stats.totalUsers}</div>
+                    <div class="stat-label">总用户数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.totalIps}</div>
+                    <div class="stat-label">总IP数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.userGroupsCount}</div>
+                    <div class="stat-label">关联用户组数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.usersWithRelationsCount}</div>
+                    <div class="stat-label">有IP关联的用户数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.avgUsersPerIp.toFixed(2)}</div>
+                    <div class="stat-label">平均每个IP被用户使用数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.avgIpsPerUser.toFixed(2)}</div>
+                    <div class="stat-label">平均每个用户使用IP数</div>
+                </div>
+            `;
+        }
+        
+        // 显示最强关联对
+        function displayStrongPairs(relationPairs) {
+            strongPairsList.innerHTML = '';
+            
+            // 只显示前20个最强关联对
+            const topPairs = relationPairs.slice(0, 20);
+            
+            if (topPairs.length === 0) {
+                strongPairsList.innerHTML = '<p>未发现关联用户对。</p>';
+                return;
+            }
+            
+            topPairs.forEach((pair, index) => {
+                const pairElement = document.createElement('div');
+                pairElement.className = 'relation-pair';
+                
+                let ipDetails = '';
+                for (const ip in pair.sharedIps) {
+                    const ipInfo = pair.sharedIps[ip];
+                    ipDetails += `
+                        <div class="ip-item">
+                            <strong>IP: ${ip}</strong><br>
+                            ${pair.user1}: ${ipInfo.user_types.join(', ')}<br>
+                            ${pair.user2}: ${ipInfo.other_types.join(', ')}
+                        </div>
+                    `;
+                }
+                
+                pairElement.innerHTML = `
+                    <div class="relation-header">
+                        <div class="relation-users">${index + 1}. ${pair.user1} ↔ ${pair.user2}</div>
+                        <div class="relation-score">关联强度: ${pair.score.toFixed(2)}</div>
+                    </div>
+                    <div>共享IP数: ${pair.ipCount}</div>
+                    <div class="relation-details">
+                        ${ipDetails}
+                    </div>
+                `;
+                
+                strongPairsList.appendChild(pairElement);
+            });
+        }
+        
+        // 显示关联用户组
+        function displayUserGroups(userGroups, userToIps) {
+            userGroupsList.innerHTML = '';
+            
+            if (userGroups.length === 0) {
+                userGroupsList.innerHTML = '<p>未发现关联用户组。</p>';
+                return;
+            }
+            
+            // 限制显示前10个组
+            const displayGroups = userGroups.slice(0, 10);
+            
+            displayGroups.forEach((group, index) => {
+                const groupElement = document.createElement('div');
+                groupElement.className = 'user-group';
+                
+                // 计算组内共享IP统计
+                const groupIps = {};
+                group.forEach(userId => {
+                    if (userToIps[userId]) {
+                        Object.keys(userToIps[userId]).forEach(ip => {
+                            if (!groupIps[ip]) {
+                                groupIps[ip] = new Set();
+                            }
+                            groupIps[ip].add(userId);
+                        });
+                    }
+                });
+                
+                // 找出组内共享的IP（被多个用户使用）
+                const sharedGroupIps = {};
+                for (const ip in groupIps) {
+                    if (groupIps[ip].size > 1) {
+                        sharedGroupIps[ip] = Array.from(groupIps[ip]);
+                    }
+                }
+                
+                let ipDetails = '';
+                for (const ip in sharedGroupIps) {
+                    const users = sharedGroupIps[ip];
+                    ipDetails += `
+                        <div class="shared-ip">
+                            <strong>IP: ${ip}</strong> (被 ${users.length} 个用户使用)<br>
+                            ${users.map(userId => {
+                                const types = userToIps[userId][ip] || [];
+                                return `${userId}: ${types.join(', ')}`;
+                            }).join('<br>')}
+                        </div>
+                    `;
+                }
+                
+                groupElement.innerHTML = `
+                    <div class="group-header">
+                        <div><strong>第${index + 1}组</strong> - 用户数: ${group.length}</div>
+                    </div>
+                    <div class="group-users">
+                        ${group.map(userId => `<span class="user-badge">${userId}</span>`).join('')}
+                    </div>
+                    ${ipDetails ? `<div style="margin-top: 15px;"><strong>共享IP详情:</strong>${ipDetails}</div>` : ''}
+                `;
+                
+                userGroupsList.appendChild(groupElement);
+            });
+            
+            if (userGroups.length > 10) {
+                const moreInfo = document.createElement('p');
+                moreInfo.textContent = `... 还有 ${userGroups.length - 10} 个关联用户组未显示`;
+                moreInfo.style.marginTop = '20px';
+                moreInfo.style.fontStyle = 'italic';
+                userGroupsList.appendChild(moreInfo);
+            }
+        }
+        
+        // 显示详细统计信息
+        function displayStatistics(results) {
+            const stats = results.stats;
+            
+            statisticsContent.innerHTML = `
+                <div class="stat-card" style="grid-column: 1 / -1;">
+                    <p><strong>有IP关联的用户数:</strong> ${stats.usersWithRelationsCount} (${stats.usersWithRelationsPercent.toFixed(1)}%)</p>
+                    <p><strong>平均每个IP被用户使用数:</strong> ${stats.avgUsersPerIp.toFixed(2)}</p>
+                    <p><strong>最多用户使用的IP数:</strong> ${stats.maxUsersPerIp} 个用户</p>
+                    <p><strong>平均每个用户使用IP数:</strong> ${stats.avgIpsPerUser.toFixed(2)}</p>
+                    <p><strong>使用最多IP的用户:</strong> ${stats.maxIpsPerUser} 个IP</p>
+                </div>
+                ${stats.maxIpUser.userId ? `
+                <div class="stat-card">
+                    <div class="stat-value">${stats.maxIpUser.userId}</div>
+                    <div class="stat-label">使用最多IP的用户</div>
+                    <div class="stat-value">${stats.maxIpUser.count}</div>
+                    <div class="stat-label">使用了 ${stats.maxIpUser.count} 个不同IP</div>
+                </div>
+                ` : ''}
+                ${stats.maxUserIp.ip ? `
+                <div class="stat-card">
+                    <div class="stat-value">${stats.maxUserIp.ip}</div>
+                    <div class="stat-label">最多用户使用的IP</div>
+                    <div class="stat-value">${stats.maxUserIp.count}</div>
+                    <div class="stat-label">被 ${stats.maxUserIp.count} 个用户使用</div>
+                </div>
+                ` : ''}
+            `;
+        }
+        
+        // 切换选项卡
+        function switchTab(tabId) {
+            // 更新选项卡状态
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
+            
+            // 更新内容显示
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+        }
+        
+        // 下载分析报告
+        function downloadAnalysisReport() {
+            if (!analysisResults) return;
+            
+            const report = generateTextReport(analysisResults);
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '用户关联关系分析报告.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // 生成文本报告
+        function generateTextReport(results) {
+            let report = "=== 用户关联关系分析报告 ===\n";
+            report += `生成时间: ${new Date().toLocaleString()}\n`;
+            report += `总用户数: ${results.stats.totalUsers}\n`;
+            report += `总IP数: ${results.stats.totalIps}\n`;
+            report += `关联用户组数: ${results.stats.userGroupsCount}\n`;
+            report += "=".repeat(60) + "\n\n";
+            
+            // 最强关联对
+            report += "一、最强用户关联对（按关联强度排序）:\n";
+            report += "-".repeat(60) + "\n";
+            
+            const topPairs = results.allRelationPairs.slice(0, 20);
+            topPairs.forEach((pair, index) => {
+                report += `${index + 1}. ${pair.user1} ↔ ${pair.user2}\n`;
+                report += `   关联强度: ${pair.score.toFixed(2)} | 共享IP数: ${pair.ipCount}\n`;
+                for (const ip in pair.sharedIps) {
+                    const ipInfo = pair.sharedIps[ip];
+                    report += `   IP: ${ip}\n`;
+                    report += `     ${pair.user1}: ${ipInfo.user_types.join(', ')}\n`;
+                    report += `     ${pair.user2}: ${ipInfo.other_types.join(', ')}\n`;
+                }
+                report += "-".repeat(40) + "\n";
+            });
+            
+            report += "\n\n";
+            
+            // 关联用户组
+            report += "二、关联用户组（按组大小排序）:\n";
+            report += "-".repeat(60) + "\n";
+            
+            results.userGroups.forEach((group, index) => {
+                report += `\n第${index + 1}组 - 用户数: ${group.length}\n`;
+                report += `用户: ${group.join(', ')}\n`;
+                
+                // 计算组内共享IP统计
+                const groupIps = {};
+                group.forEach(userId => {
+                    if (results.userToIps[userId]) {
+                        Object.keys(results.userToIps[userId]).forEach(ip => {
+                            if (!groupIps[ip]) {
+                                groupIps[ip] = new Set();
+                            }
+                            groupIps[ip].add(userId);
+                        });
+                    }
+                });
+                
+                // 找出组内共享的IP
+                const sharedGroupIps = {};
+                for (const ip in groupIps) {
+                    if (groupIps[ip].size > 1) {
+                        sharedGroupIps[ip] = Array.from(groupIps[ip]);
+                    }
+                }
+                
+                if (Object.keys(sharedGroupIps).length > 0) {
+                    report += "共享IP详情:\n";
+                    for (const ip in sharedGroupIps) {
+                        const users = sharedGroupIps[ip];
+                        report += `  IP: ${ip} (被${users.length}个用户使用)\n`;
+                        users.forEach(userId => {
+                            const types = results.userToIps[userId][ip] || [];
+                            report += `    ${userId}: ${types.join(', ')}\n`;
+                        });
+                    }
+                }
+            });
+            
+            report += "\n\n";
+            
+            // 统计信息
+            report += "三、统计信息:\n";
+            report += "-".repeat(60) + "\n";
+            report += `有IP关联的用户数: ${results.stats.usersWithRelationsCount} (${results.stats.usersWithRelationsPercent.toFixed(1)}%)\n`;
+            report += `平均每个IP被 ${results.stats.avgUsersPerIp.toFixed(2)} 个用户使用\n`;
+            report += `最多用户使用的IP数: ${results.stats.maxUsersPerIp} 个用户\n`;
+            report += `平均每个用户使用 ${results.stats.avgIpsPerUser.toFixed(2)} 个IP\n`;
+            report += `使用最多IP的用户: ${results.stats.maxIpsPerUser} 个IP\n`;
+            
+            if (results.stats.maxIpUser.userId) {
+                report += `使用最多IP的用户: ${results.stats.maxIpUser.userId} (使用了 ${results.stats.maxIpUser.count} 个不同IP)\n`;
+            }
+            
+            if (results.stats.maxUserIp.ip) {
+                report += `最多用户使用的IP: ${results.stats.maxUserIp.ip} (被 ${results.stats.maxUserIp.count} 个用户使用)\n`;
+            }
+            
+            return report;
+        }
+        
+        // 显示错误信息
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+        }
+        
+        // 隐藏错误信息
+        function hideError() {
+            errorMessage.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
