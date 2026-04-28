@@ -649,7 +649,7 @@
         function getUserDisplay(uid) {
             if (!analysisResults || !analysisResults.userInfo || !analysisResults.userInfo[uid]) return uid;
             const info = analysisResults.userInfo[uid];
-            return `${uid} <span style="font-size:0.85em; color:#2e7d32; font-weight:normal; background:#e8f5e9; border: 1px solid #c8e6c9; padding:2px 6px; border-radius:4px; margin-left:4px; display:inline-block;">应用: ${info.activeApp} | 充值: ￥${info.totalRecharge}</span>`;
+            return `${uid} <span style="font-size:0.85em; color:#2e7d32; font-weight:normal; background:#e8f5e9; border: 1px solid #c8e6c9; padding:2px 6px; border-radius:4px; margin-left:4px; display:inline-block;">应用: ${info.activeApp} | 充值: ${info.totalRecharge}</span>`;
         }
 
         // ==========================================
