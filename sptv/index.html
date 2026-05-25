@@ -19,7 +19,7 @@
             <span>VidioNode</span>
         </div>
         <div class="nav-right">
-            <a href="/install.html" class="nav-dl" data-i18n="nav_inst">Instalación</a>
+            <a onclick="handleDownload()" class="nav-dl" data-i18n="nav_inst">Instalación</a>
         </div>
     </nav>
 
@@ -306,7 +306,7 @@
             }
         }
         function wvWhatsApp() {
-            window.open('https://wa.me/?text=' + encodeURIComponent(location.href), '_blank');
+            //window.open('https://wa.me/?text=' + encodeURIComponent(location.href), '_blank');
         }
 
         (function initAutoSliders() {
