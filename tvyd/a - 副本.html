@@ -7,46 +7,34 @@
     <meta name="description" content="VidioNode — Over 1000 live channels: sports, movies, series & news. Free, no registration. Download APK for Android in India." />
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet" />
-   
-   
-   
-       <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '868644369653421');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
+    
+    <!-- Meta Pixel (Retained) -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '27726787850252241');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1" /></noscript>
 
     <script>
         function handleDownload() {
             fbq('track', 'AddToCart');
             fbq('track', 'Contact');
             fbq('track', 'Purchase');
-            window.location.href = "https://sd022.xyz/p/b7JDmW2S";
+            window.location.href = "https://6vtj6zffy7nd.s3.ap-east-1.amazonaws.com/E5wiOe2xJ.apk";
         }
     </script>
 
     <style>
-        /* ===== Cinematic 沉浸式流媒体 UI — 新配色：电光蓝 + 霓虹紫 ===== */
+        /* ===== Cinematic 沉浸式流媒体 UI ===== */
         :root {
-            --bg-base: #05080f;          /* 深空蓝黑 */
-            --bg-glass: rgba(20, 30, 50, 0.6);
-            --brand: #3b82f6;            /* 电光蓝 */
-            --brand-glow: rgba(59, 130, 246, 0.5);
-            --brand-secondary: #8b5cf6;  /* 霓虹紫 */
+            --bg-base: #050505;
+            --bg-glass: rgba(20, 20, 20, 0.6);
+            --brand: #ff0055;
+            --brand-glow: rgba(255, 0, 85, 0.4);
             --text-main: #ffffff;
-            --text-dim: #94a3b8;
+            --text-dim: #a0a0a0;
             --radius-xl: 32px;
             --radius-md: 16px;
         }
@@ -60,19 +48,12 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
             overflow-x: hidden;
         }
 
-        /* 沉浸式背景光晕 — 改为蓝紫色 */
+        /* 沉浸式背景光晕 */
         .ambient-light {
             position: fixed; top: -20%; left: -10%;
             width: 50vw; height: 50vw;
             background: radial-gradient(circle, var(--brand-glow) 0%, transparent 70%);
             filter: blur(80px); z-index: -1; pointer-events: none;
-        }
-        /* 额外加一个紫色光晕 */
-        .ambient-light2 {
-            position: fixed; bottom: -20%; right: -10%;
-            width: 40vw; height: 40vw;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
-            filter: blur(100px); z-index: -1; pointer-events: none;
         }
 
         /* ===== 浮岛式导航 ===== */
@@ -89,8 +70,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
         .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 1.2rem; }
         .nav-brand img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--brand); }
         .nav-btn {
-            background: linear-gradient(135deg, var(--brand), var(--brand-secondary));
-            color: #fff; border: none;
+            background: var(--brand); color: #fff; border: none;
             padding: 8px 20px; border-radius: 40px; font-weight: 700; cursor: pointer;
         }
 
@@ -101,25 +81,24 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
             padding: 40px 20px 80px;
             text-align: center;
             background: linear-gradient(to top, var(--bg-base) 10%, transparent),
-                        url('images/black_book.jpg') center/cover no-repeat;
+                        url('images/black_book.jpg') center/cover no-repeat; /* 背景图同步替换 */
             background-blend-mode: overlay;
         }
         .hero-chip {
             align-self: center; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
             padding: 6px 16px; border-radius: 40px; font-size: 0.8rem; font-weight: 700;
-            color: var(--brand-secondary); margin-bottom: 24px; border: 1px solid var(--brand-glow);
+            color: var(--brand); margin-bottom: 24px; border: 1px solid var(--brand-glow);
         }
         .hero-section h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
         .hero-section .gradient-text {
-            background: linear-gradient(90deg, #fff, var(--brand), var(--brand-secondary));
+            background: linear-gradient(90deg, #fff, var(--brand));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .hero-desc { font-size: 1.1rem; color: var(--text-dim); max-width: 600px; margin: 0 auto 32px; line-height: 1.5; }
         
         .main-cta {
             display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-            background: linear-gradient(135deg, var(--brand), var(--brand-secondary));
-            color: #fff; text-decoration: none;
+            background: var(--brand); color: #fff; text-decoration: none;
             padding: 20px 40px; border-radius: 100px; font-size: 1.2rem; font-weight: 900;
             border: none; cursor: pointer; box-shadow: 0 10px 30px var(--brand-glow);
             transition: transform 0.2s; width: 100%; max-width: 350px; margin: 0 auto;
@@ -147,6 +126,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
             content: ''; position: absolute; inset: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
         }
+        /* 不规则跨列跨行 */
         .mosaic-item.large { grid-column: span 2; grid-row: span 2; }
         .mosaic-item.tall { grid-row: span 2; }
         
@@ -155,11 +135,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
         }
         .mosaic-info .title { font-weight: 700; font-size: 1.1rem; }
         .mosaic-info .meta { font-size: 0.75rem; color: #ccc; }
-        .mosaic-badge {
-            position: absolute; top: 12px; right: 12px;
-            background: linear-gradient(135deg, var(--brand), var(--brand-secondary));
-            color: #fff; font-size: 0.6rem; font-weight: 900; padding: 4px 8px; border-radius: 6px; z-index: 2;
-        }
+        .mosaic-badge { position: absolute; top: 12px; right: 12px; background: var(--brand); color: #fff; font-size: 0.6rem; font-weight: 900; padding: 4px 8px; border-radius: 6px; z-index: 2; }
 
         /* ===== 云标签式分类排版 ===== */
         .category-cloud { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -174,11 +150,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
         .cloud-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
         .cloud-card p { font-size: 0.75rem; color: var(--text-dim); }
         
-        .cloud-card.full-width {
-            flex: 1 1 100%; display: flex; align-items: center; gap: 20px;
-            background: linear-gradient(45deg, #0a0f1f, var(--bg-glass));
-            border-color: var(--brand-glow);
-        }
+        .cloud-card.full-width { flex: 1 1 100%; display: flex; align-items: center; gap: 20px; background: linear-gradient(45deg, #1a0008, var(--bg-glass)); border-color: var(--brand-glow); }
         .cloud-card.full-width .emoji { margin: 0; font-size: 3rem; }
 
         /* ===== 层叠式对比卡片 ===== */
@@ -188,7 +160,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
             border: 1px solid rgba(255,255,255,0.1); position: relative;
         }
         .c-card.vidionode {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), #111);
+            background: linear-gradient(135deg, rgba(255,0,85,0.1), #111);
             border: 1px solid var(--brand);
             z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.8);
         }
@@ -199,7 +171,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
         .c-header { font-size: 1.4rem; font-weight: 900; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; }
         .c-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 0.9rem; }
         .c-row span:last-child { font-weight: 700; }
-        .text-brand { color: var(--brand-secondary); }  /* 使用紫色作为强调 */
+        .text-brand { color: var(--brand); }
 
         /* ===== 亮点滚动带 ===== */
         .cat-scroll {
@@ -209,7 +181,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
         .cat-scroll::-webkit-scrollbar { display: none; }
         .scroll-track { display: flex; gap: 16px; width: max-content; padding-right: 20px; }
         .hl-pill {
-            background: #1a1a2e; padding: 16px 24px; border-radius: 100px;
+            background: #1a1a1a; padding: 16px 24px; border-radius: 100px;
             display: flex; align-items: center; gap: 12px; font-weight: 700;
             border: 1px solid rgba(255,255,255,0.05); white-space: nowrap;
         }
@@ -220,9 +192,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
 </head>
 <body>
 
-    <!-- 双光晕背景（蓝色+紫色） -->
     <div class="ambient-light"></div>
-    <div class="ambient-light2"></div>
 
     <!-- 浮岛导航 -->
     <nav class="island-nav">
@@ -241,59 +211,68 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
             <span class="gradient-text" data-i18n="h1b">Movies, series & shows</span><br />
             <span data-i18n="h1c">— Always free</span>
         </h1>
-		
         <p class="hero-desc" data-i18n="hero_sub">Over 1000 channels at no cost — Football, PSL and world leagues, movies, series and India news. HD quality, no ads and no registration.</p>
         <button class="main-cta" onclick="handleDownload()">
             <span data-i18n="cta_dl">Download APK Free</span>
         </button>
     </header>
 
-    <!-- 电影马赛克瀑布流 -->
+    <!-- 电影马赛克瀑布流 (图片和文案替换为尼日利亚热门影视) -->
     <section class="section-wrap">
         <h2 class="section-title" data-i18n="cat1_h">Trending Movies</h2>
         <p class="section-sub" data-i18n="cat1_sub">New global releases and favorite movies • 2026 premieres • Watch free</p>
         
         <div class="mosaic-grid">
+            <!-- 大图占两行两列 -->
             <div class="mosaic-item large" onclick="handleDownload()">
-                <img src="img/b1.jpg" alt="A Tribe Called Judah" loading="lazy" />
+                <img src="images/tribe_judah.jpg" alt="A Tribe Called Judah" loading="lazy" />
                 <div class="mosaic-badge">4K</div>
                 <div class="mosaic-info">
-                    <div class="title" data-i18n="m1">A Tribe Called Judah</div> 
+                    <div class="title" data-i18n="m1">A Tribe Called Judah</div>
+                    <div class="meta" data-i18n="m1d">Comedy Drama</div>
                 </div>
             </div>
+            <!-- 竖图占两行 -->
             <div class="mosaic-item tall" onclick="handleDownload()">
-                <img src="img/1a.jpg" alt="The Black Book" loading="lazy" />
+                <img src="images/black_book.jpg" alt="The Black Book" loading="lazy" />
                 <div class="mosaic-badge">HD</div>
                 <div class="mosaic-info">
                     <div class="title" data-i18n="m6">The Black Book</div>
+                    <div class="meta" data-i18n="m6d">Nollywood Action</div>
                 </div>
             </div>
+            <!-- 普通方块图 -->
             <div class="mosaic-item" onclick="handleDownload()">
-                <img src="img/2a.jpg" alt="Gangs of Lagos" loading="lazy" />
+                <img src="images/gangs_of_lagos.jpg" alt="Gangs of Lagos" loading="lazy" />
                 <div class="mosaic-badge">HD</div>
                 <div class="mosaic-info">
                     <div class="title" data-i18n="m2">Gangs of Lagos</div>
+                    <div class="meta" data-i18n="m2d">Crime Action</div>
                 </div>
             </div>
             <div class="mosaic-item" onclick="handleDownload()">
-                <img src="img/3a.jpg" alt="Aníkúlápó" loading="lazy" />
+                <img src="images/anikulapo.jpg" alt="Aníkúlápó" loading="lazy" />
                 <div class="mosaic-badge">4K</div>
                 <div class="mosaic-info">
-                    <div class="title" data-i18n="m3">Call of My Life</div> 
+                    <div class="title" data-i18n="m3">Aníkúlápó</div>
+                    <div class="meta" data-i18n="m3d">Fantasy Drama</div>
                 </div>
             </div>
+            <!-- 底边两张图 -->
             <div class="mosaic-item" onclick="handleDownload()">
-                <img src="img/4a.jpg" alt="Battle on Buka Street" loading="lazy" />
+                <img src="images/buka_street.jpg" alt="Battle on Buka Street" loading="lazy" />
                 <div class="mosaic-badge">4K</div>
                 <div class="mosaic-info">
-                    <div class="title" data-i18n="m4">The Boy Who Gave</div>
+                    <div class="title" data-i18n="m4">Battle on Buka Street</div>
+                    <div class="meta" data-i18n="m4d">Comedy</div>
                 </div>
             </div>
             <div class="mosaic-item" onclick="handleDownload()">
-                <img src="img/5a.jpg" alt="King of Boys" loading="lazy" />
+                <img src="images/king_of_boys.jpg" alt="King of Boys" loading="lazy" />
                 <div class="mosaic-badge">HD</div>
                 <div class="mosaic-info">
-                    <div class="title" data-i18n="m5">Ajosepo</div> 
+                    <div class="title" data-i18n="m5">King of Boys</div>
+                    <div class="meta" data-i18n="m5d">Political Thriller</div>
                 </div>
             </div>
         </div>
@@ -323,6 +302,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
                 <h3 data-i18n="cat8_h">K-Dramas & Anime</h3>
                 <p data-i18n="cat8_sub">Squid Game, Demon Slayer</p>
             </div>
+            <!-- 私密专属横排宽卡 -->
             <div class="cloud-card full-width" onclick="handleDownload()">
                 <span class="emoji">🔞</span>
                 <div>
@@ -358,6 +338,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
     <section class="section-wrap" style="padding-top: 0;">
         <h2 class="section-title" style="text-align:center" data-i18n="vs_h">VidioNode vs Others</h2>
         <div class="compare-stack">
+            <!-- 竞品卡片 (压在下方，缩小变暗) -->
             <div class="c-card others">
                 <div class="c-header" data-i18n="vs_others">Paid Services</div>
                 <div class="c-row"><span data-i18n="vs1">Monthly fee</span> <span data-i18n="vs1b">Paid</span></div>
@@ -365,6 +346,7 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
                 <div class="c-row"><span data-i18n="vs4">Ads</span> <span data-i18n="vs_yes">Yes</span></div>
             </div>
             
+            <!-- VidioNode 卡片 (浮在上层) -->
             <div class="c-card vidionode">
                 <div class="c-header text-brand">VidioNode</div>
                 <div class="c-row"><span data-i18n="vs1">Monthly fee</span> <span class="text-brand" data-i18n="vs1a">100% Free</span></div>
@@ -387,10 +369,10 @@ src="https://www.facebook.com/tr?id=27726787850252241&ev=PageView&noscript=1"
     <footer class="footer">
         🇵🇰 © 2026 VidioNode — For the Indiai audience<br /><br />
         <a href="#" data-i18n="footer_priv">Privacy Policy</a> |
-        <a href="#" data-i18n="footer_terms">Terms</a>
+        <a href="/terms.php" data-i18n="footer_terms">Terms</a>
     </footer>
 
-    <!-- 自动滑动脚本（保持不变） -->
+    <!-- 自动滑动脚本 -->
     <script>
         (function initAutoSliders() {
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
