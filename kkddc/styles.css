@@ -111,6 +111,7 @@ body {
   background: var(--bg-deep);
   overflow-x: hidden;
   min-height: 100vh;
+  touch-action: manipulation;
 }
 
 /* Selection */
@@ -1351,11 +1352,11 @@ h4 { font-size: clamp(0.95rem, 1.1vw, 1.05rem); }
 
   /* Telegram button */
   .telegram-float {
-    right: var(--space-4);
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
 
   .telegram-float svg {
@@ -1752,6 +1753,13 @@ h4 { font-size: clamp(0.95rem, 1.1vw, 1.05rem); }
   display: inline-block;
   font-variant-numeric: tabular-nums;
   transition: opacity 0.3s ease;
+  contain: layout style;
+}
+/* Reserve space so counter text width changes don't shift layout */
+.metric-value[data-count],
+[data-count].metric-value {
+  min-width: 3.5em;
+  text-align: center;
 }
 
 .hero-image-bg img {
