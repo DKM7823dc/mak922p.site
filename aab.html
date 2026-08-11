@@ -30,12 +30,7 @@
         function k2() {
 
             // 发送自定义事件“下载”（推荐使用 trackCustom）
-            fbq('trackCustom', '下载');
-
-            // 延迟跳转，确保事件有机会发送成功
-            setTimeout(function() {
-                window.location.href = 'https://www.qq.com';
-            }, 5030);   // 延迟 500 毫秒，可根据情况调整
+            fbq('trackCustom', '下载'); 
         }
     </script>
 
